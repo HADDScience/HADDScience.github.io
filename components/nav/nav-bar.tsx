@@ -39,7 +39,7 @@ export function NavBar({
   }
 
   return (
-    <header className="border-border sticky top-0 z-40 border-b bg-white/88 backdrop-blur-[16px] backdrop-saturate-180">
+    <header className="border-border sticky top-0 z-40 border-b bg-background/88 backdrop-blur-[16px] backdrop-saturate-180">
       <Container className="flex h-19 items-center gap-10">
         <Link
           href={localePath(lang, "/")}
@@ -75,7 +75,7 @@ export function NavBar({
                   {item.label}
                 </Link>
                 {item.children?.length ? (
-                  <div className="border-border shadow-ds-md invisible absolute top-full left-1/2 grid w-48 -translate-x-1/2 gap-1 rounded-lg border bg-white p-2 opacity-0 transition-opacity duration-200 ease-[var(--ease-standard)] group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <div className="border-border shadow-ds-md invisible absolute top-full left-1/2 grid w-48 -translate-x-1/2 gap-1 rounded-lg border bg-popover text-popover-foreground p-2 opacity-0 transition-opacity duration-200 ease-[var(--ease-standard)] group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
@@ -112,7 +112,7 @@ export function NavBar({
 
       {/* 모바일 */}
       {open ? (
-        <div id="mobile-nav" className="border-border border-t bg-white lg:hidden">
+        <div id="mobile-nav" className="border-border border-t bg-background lg:hidden">
           <Container className="grid gap-1 py-4">
             {items.map((item) => (
               <div key={item.href} className="py-2">

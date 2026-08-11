@@ -164,7 +164,7 @@ export default async function HomePage({
               className="max-w-xs"
             />
             <div>
-              <div className="border-border rounded-lg border bg-white px-6">
+              <div className="border-border bg-card rounded-lg border px-6">
                 {c.news.items.slice(0, 4).map((item) => (
                   <NewsCard key={item.id} item={item} lang={lang} layout="row" />
                 ))}
