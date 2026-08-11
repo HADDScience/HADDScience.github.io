@@ -1,0 +1,245 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------------------------------------
+ * HADD SCIENCE 디자인시스템 매핑
+ * shadcn preset b1aKNEYd6 (luma / mist / blue / large) 위에
+ * claude.ai/design 프로젝트의 tokens/*.css 실측값을 덮어쓴 결과.
+ * 모든 oklch() 값은 디자인시스템 HEX 를 변환한 것이며 주석에 원본을 남긴다.
+ * ------------------------------------------------------------------------ */
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+
+    /* 브랜드 스케일 — shadcn 시맨틱 토큰으로 표현되지 않는 색.
+     * bg-brand-blue-700, text-brand-orange-500, border-brand-magenta-100 … */
+    --color-brand-blue-900: var(--brand-blue-900);
+    --color-brand-blue-800: var(--brand-blue-800);
+    --color-brand-blue-700: var(--brand-blue-700);
+    --color-brand-blue-600: var(--brand-blue-600);
+    --color-brand-blue-500: var(--brand-blue-500);
+    --color-brand-blue-300: var(--brand-blue-300);
+    --color-brand-blue-100: var(--brand-blue-100);
+    --color-brand-blue-50: var(--brand-blue-50);
+    --color-brand-orange-600: var(--brand-orange-600);
+    --color-brand-orange-500: var(--brand-orange-500);
+    --color-brand-orange-100: var(--brand-orange-100);
+    --color-brand-magenta-600: var(--brand-magenta-600);
+    --color-brand-magenta-500: var(--brand-magenta-500);
+    --color-brand-magenta-100: var(--brand-magenta-100);
+
+    /* 상태 색 — destructive 하나로 부족한 성공/경고/정보 */
+    --color-status-success: var(--status-success);
+    --color-status-success-bg: var(--status-success-bg);
+    --color-status-warning: var(--status-warning);
+    --color-status-warning-bg: var(--status-warning-bg);
+    --color-status-danger: var(--status-danger);
+    --color-status-danger-bg: var(--status-danger-bg);
+
+    /* 제품 액센트 */
+    --color-product-addgel: var(--product-addgel);
+    --color-product-addheal: var(--product-addheal);
+    --color-product-livegel: var(--product-livegel);
+
+    /* 제품 사진 플레이트. 컷아웃 사진이 흰 배경 위에서 촬영됐고 mix-blend-multiply 로
+     * 합성하므로, 다크 모드에서도 밝게 고정해야 한다 (readme: Imagery / Cards). */
+    --color-surface-plate: var(--surface-plate);
+
+    /* Elevation — tokens/elevation.css. shadow-ds-sm / shadow-ds-lg … */
+    --shadow-ds-xs: 0 1px 2px rgba(17, 21, 26, 0.06);
+    --shadow-ds-sm: 0 2px 8px rgba(17, 21, 26, 0.06);
+    --shadow-ds-md: 0 8px 24px rgba(17, 21, 26, 0.08);
+    --shadow-ds-lg: 0 18px 48px rgba(6, 46, 99, 0.12);
+    --shadow-ds-brand: 0 12px 32px rgba(12, 77, 162, 0.18);
+
+    /* Motion — tokens/motion.css. 단일 커브 하나만 쓴다. */
+    --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
+    --animate-rise: rise 0.6s var(--ease-standard) both;
+
+    /* Layout — tokens/spacing.css */
+    --container-max: 1280px;
+    --container-narrow: 840px;
+    --spacing-gutter: 32px;
+    --spacing-section: 120px;
+    --spacing-section-compact: 80px;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+:root {
+    /* --- 브랜드 원색 (tokens/colors.css 그대로) --- */
+    --brand-blue-900: oklch(0.310 0.103 257.6); /* #062E63 */
+    --brand-blue-800: oklch(0.422 0.121 252.8); /* #0C4E8D */
+    --brand-blue-700: oklch(0.436 0.151 258.0); /* #0C4DA2 */
+    --brand-blue-600: oklch(0.539 0.132 244.5); /* #0874B5 */
+    --brand-blue-500: oklch(0.638 0.146 239.8); /* #0095DA */
+    --brand-blue-300: oklch(0.773 0.105 228.7); /* #66C2EA */
+    --brand-blue-100: oklch(0.933 0.029 230.3); /* #D6EDF9 */
+    --brand-blue-50: oklch(0.972 0.011 234.8); /* #EFF7FC */
+    --brand-orange-600: oklch(0.667 0.153 60.6); /* #D67A0C */
+    --brand-orange-500: oklch(0.754 0.165 62.8); /* #F7941D */
+    --brand-orange-100: oklch(0.946 0.039 74.8); /* #FDEAD1 */
+    --brand-magenta-600: oklch(0.526 0.214 358.9); /* #C10068 */
+    --brand-magenta-500: oklch(0.600 0.244 358.6); /* #E6007E */
+    --brand-magenta-100: oklch(0.919 0.045 343.3); /* #FBD9EC */
+
+    --status-success: oklch(0.558 0.135 154.9); /* #0E8A4F */
+    --status-success-bg: oklch(0.955 0.022 163.1); /* #E4F5EC */
+    --status-warning: oklch(0.621 0.132 70.2); /* #B8760A */
+    --status-warning-bg: oklch(0.963 0.028 79.5); /* #FDF1DE */
+    --status-danger: oklch(0.538 0.189 26.4); /* #C42B2B */
+    --status-danger-bg: oklch(0.944 0.022 17.5); /* #FBE7E7 */
+
+    --product-addgel: var(--brand-magenta-500);
+    --product-addheal: var(--brand-magenta-500);
+    --product-livegel: var(--brand-blue-600);
+
+    /* 라이트 · 다크 양쪽에서 동일하게 밝다. .dark 에서 재정의하지 말 것. */
+    --surface-plate: oklch(0.972 0.003 247.9); /* #F4F6F8  neutral-50 */
+
+    /* --- shadcn 시맨틱 매핑 --- */
+    --background: oklch(1 0 0); /* #FFFFFF  surface-page */
+    --foreground: oklch(0.194 0.012 254.1); /* #11151A  text-strong */
+    --card: oklch(1 0 0); /* #FFFFFF  surface-card */
+    --card-foreground: oklch(0.194 0.012 254.1);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.194 0.012 254.1);
+    --primary: var(--brand-blue-700); /* action-primary */
+    --primary-foreground: oklch(1 0 0); /* text-inverse, 대비 8.08:1 */
+    --secondary: oklch(0.972 0.003 247.9); /* #F4F6F8  neutral-50 */
+    --secondary-foreground: oklch(0.194 0.012 254.1);
+    --muted: oklch(0.972 0.003 247.9); /* surface-subtle */
+    --muted-foreground: oklch(0.548 0.022 253.0); /* #68727E  text-muted */
+    --accent: var(--brand-blue-50); /* surface-tint */
+    --accent-foreground: var(--brand-blue-700); /* text-brand, 대비 7.46:1 */
+    --destructive: var(--status-danger);
+    --border: oklch(0.944 0.007 247.9); /* #E9EDF1  border-subtle (Card default) */
+    --input: oklch(0.898 0.012 252.1); /* #D8DEE5  border-default (Input) */
+    --ring: var(--brand-blue-700); /* focus-ring rgba(12,77,162,.28) */
+    --radius: 1rem; /* --radius-lg: 16px */
+
+    /* 차트: 브랜드 3색 축 (blue → orange → magenta) */
+    --chart-1: var(--brand-blue-700);
+    --chart-2: var(--brand-blue-500);
+    --chart-3: var(--brand-orange-500);
+    --chart-4: var(--brand-magenta-500);
+    --chart-5: var(--brand-blue-300);
+
+    --sidebar: oklch(0.988 0.002 247.8); /* #FAFBFC  neutral-25 */
+    --sidebar-foreground: oklch(0.194 0.012 254.1);
+    --sidebar-primary: var(--brand-blue-700);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: var(--brand-blue-50);
+    --sidebar-accent-foreground: var(--brand-blue-700);
+    --sidebar-border: oklch(0.944 0.007 247.9);
+    --sidebar-ring: var(--brand-blue-700);
+}
+
+/* 디자인시스템에 다크 모드 정의가 없어 브랜드 스케일에서 파생한 값.
+ * 정식 다크 스펙이 나오면 이 블록을 교체할 것. */
+.dark {
+    --background: oklch(0.194 0.012 254.1); /* #11151A  neutral-900 */
+    --foreground: oklch(0.988 0.002 247.8); /* #FAFBFC  neutral-25 */
+    --card: oklch(0.266 0.016 252.4); /* #20262D  neutral-800 */
+    --card-foreground: oklch(0.988 0.002 247.8);
+    --popover: oklch(0.266 0.016 252.4);
+    --popover-foreground: oklch(0.988 0.002 247.8);
+    --primary: var(--brand-blue-600); /* #0874B5, 흰 글자 대비 5.03:1 */
+    --primary-foreground: oklch(1 0 0);
+    --secondary: oklch(0.349 0.019 251.4); /* #333B44  neutral-700 */
+    --secondary-foreground: oklch(0.988 0.002 247.8);
+    --muted: oklch(0.349 0.019 251.4);
+    --muted-foreground: oklch(0.810 0.017 250.9); /* #B9C2CC  neutral-300 */
+    --accent: oklch(0.349 0.019 251.4);
+    --accent-foreground: oklch(0.988 0.002 247.8);
+    --destructive: oklch(0.680 0.180 26.4); /* status-danger 를 다크용으로 명도 상향 */
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 18%);
+    --ring: var(--brand-blue-500);
+
+    --chart-1: var(--brand-blue-500);
+    --chart-2: var(--brand-blue-300);
+    --chart-3: var(--brand-orange-500);
+    --chart-4: var(--brand-magenta-500);
+    --chart-5: var(--brand-blue-600);
+
+    --sidebar: oklch(0.266 0.016 252.4);
+    --sidebar-foreground: oklch(0.988 0.002 247.8);
+    --sidebar-primary: var(--brand-blue-500);
+    --sidebar-primary-foreground: oklch(0.194 0.012 254.1);
+    --sidebar-accent: oklch(0.349 0.019 251.4);
+    --sidebar-accent-foreground: oklch(0.988 0.002 247.8);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: var(--brand-blue-500);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    /* tokens/typography.css: --tracking-body, --line-height-body */
+    letter-spacing: -0.01em;
+    line-height: 1.7;
+    }
+  html {
+    @apply font-sans;
+    }
+  h1, h2, h3, h4, h5, h6 {
+    /* --tracking-heading */
+    letter-spacing: -0.02em;
+    line-height: 1.28;
+    }
+}

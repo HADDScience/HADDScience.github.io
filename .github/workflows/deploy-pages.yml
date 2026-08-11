@@ -1,0 +1,58 @@
+name: Deploy to GitHub Pages
+
+# 대표님 컨펌용 배포. main 에 푸시하면 haddscience.github.io 에 반영된다.
+# 실도메인(haddscience.com)은 Synology 로 별도 배포한다 — deploy/README.md 참고.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 배포는 한 번에 하나만. 진행 중인 실행을 취소하지는 않는다(중간 상태로 남지 않도록).
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # package.json 의 packageManager 필드를 corepack 이 그대로 따른다.
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint
+
+      # next build + scripts/postbuild.mjs (.nojekyll, 루트 index.html 생성)
+      # DEPLOY_TARGET=pages 면 postbuild 가 색인을 차단한다. 컨펌용 사이트가
+      # 실도메인과 중복 콘텐츠로 검색에 경쟁하는 것을 막기 위한 것이다.
+      - run: pnpm build
+        env:
+          DEPLOY_TARGET: pages
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
