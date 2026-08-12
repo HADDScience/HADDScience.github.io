@@ -35,18 +35,21 @@ export const en: SiteContent = {
         name: "Gowoon Advanced Institute of Science and Technology",
         address:
           "Room 505, 5F, Gowoon Advanced Institute of Science and Technology, The University of Suwon, 17 Wauan-gil, Bongdam-eup, Hwaseong-si, Gyeonggi-do, Republic of Korea",
+        mapQuery: "경기도 화성시 봉담읍 와우안길 17 수원대학교 고운첨단과학기술원",
       },
       {
         kind: "Research Collaboration Center",
         name: "Branics Lab, Sungkyunkwan University",
         address:
           "Branics Lab, 6F, N Center, Natural Science Campus, Sungkyunkwan University, Suwon, Gyeonggi-do, Republic of Korea",
+        mapQuery: "성균관대학교 자연과학캠퍼스 N센터",
       },
       {
         kind: "Research Institute",
         name: "Gyeonggi Bio Center Lab Station",
         address:
           "Lab Station 8B, 8F, Gyeonggi Bio Center, 147 Gwanggyo-ro, Yeongtong-gu, Suwon-si, Gyeonggi-do, Republic of Korea",
+        mapQuery: "경기도 수원시 영통구 광교로 147 경기바이오센터",
       },
     ],
   },
@@ -310,6 +313,13 @@ export const en: SiteContent = {
     pageTitle: "Location",
     breadcrumb: "ABOUT",
     headline: "Head Office & Research Institute",
+    mapNote: "Drag or zoom the map to explore.",
+    directions: "Directions",
+    mapProviders: [
+      { id: "google", label: "Google Maps" },
+      { id: "kakao", label: "Kakao Map" },
+      { id: "naver", label: "Naver Map" },
+    ],
   },
 
   products: [

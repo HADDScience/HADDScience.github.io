@@ -86,6 +86,11 @@ export interface OfficeLocation {
   kind: string
   name: string
   address: string
+  /**
+   * 지도 검색어. 좌표가 아니라 질의문으로 두는 이유는 API 키 없이 쓰는
+   * 임베드가 질의 기반이고, 주소가 바뀌면 이 문자열만 고치면 되기 때문이다.
+   */
+  mapQuery: string
 }
 
 export interface SiteContent {
@@ -164,6 +169,10 @@ export interface SiteContent {
     pageTitle: string
     breadcrumb: string
     headline: string
+    mapNote: string
+    directions: string
+    /** 길찾기 링크로 내보낼 지도 서비스. 한국 사용자는 카카오·네이버를 더 많이 쓴다. */
+    mapProviders: { id: "google" | "kakao" | "naver"; label: string }[]
   }
   products: ProductFamily[]
   productsPage: {

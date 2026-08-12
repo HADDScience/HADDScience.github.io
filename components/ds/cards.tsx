@@ -12,7 +12,6 @@ import type {
   SiteContent,
   TeamMember,
 } from "@/content/types"
-import { cn } from "@/lib/utils"
 
 /* -------------------------------------------------------------------------
  * ProductCard — 사진은 neutral-50 플레이트(24px 라디우스) 위에 올리고,
@@ -225,29 +224,6 @@ export function TeamCard({ member }: { member: TeamMember }) {
         </p>
         <p className="text-sm text-muted-foreground">{member.bio}</p>
       </div>
-    </SurfaceCard>
-  )
-}
-
-/* -------------------------------------------------------------------------
- * LocationCard
- * ---------------------------------------------------------------------- */
-export function LocationCard({
-  kind,
-  name,
-  address,
-  className,
-}: {
-  kind: string
-  name: string
-  address: string
-  className?: string
-}) {
-  return (
-    <SurfaceCard className={cn("grid gap-2 p-6", className)}>
-      <Tag>{kind}</Tag>
-      <p className="text-lg font-semibold">{name}</p>
-      <p className="text-sm text-muted-foreground">{address}</p>
     </SurfaceCard>
   )
 }

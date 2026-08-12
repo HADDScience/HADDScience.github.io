@@ -28,16 +28,19 @@ export const ko: SiteContent = {
         kind: "본사",
         name: "수원대학교 고운첨단과학기술원",
         address: "경기도 화성시 봉담읍 와우안길 17, 수원대학교 고운첨단과학기술원 5층 505호",
+        mapQuery: "경기도 화성시 봉담읍 와우안길 17 수원대학교 고운첨단과학기술원",
       },
       {
         kind: "연구협력기관",
         name: "성균관대학교 Branics Lab",
         address: "성균관대학교 자연과학캠퍼스 N센터 6층 Branics Lab",
+        mapQuery: "성균관대학교 자연과학캠퍼스 N센터",
       },
       {
         kind: "연구소",
         name: "경기바이오센터 랩스테이션",
         address: "경기도 수원시 영통구 광교로 147, 경기바이오센터 8층 랩스테이션 8B",
+        mapQuery: "경기도 수원시 영통구 광교로 147 경기바이오센터",
       },
     ],
   },
@@ -280,6 +283,13 @@ export const ko: SiteContent = {
     pageTitle: "위치",
     breadcrumb: "ABOUT",
     headline: "본사 및 연구소",
+    mapNote: "지도를 눌러 확대하거나 이동할 수 있습니다.",
+    directions: "길찾기",
+    mapProviders: [
+      { id: "kakao", label: "카카오맵" },
+      { id: "naver", label: "네이버 지도" },
+      { id: "google", label: "Google 지도" },
+    ],
   },
 
   products: [

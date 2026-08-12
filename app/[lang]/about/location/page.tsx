@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-import { LocationCard } from "@/components/ds/cards"
+import { LocationMap } from "@/components/ds/location-map"
 import { PageHeader } from "@/components/ds/page-header"
 import { Container, Section, SurfaceCard } from "@/components/ds/primitives"
 import { getContent, isLang, localePath } from "@/content"
@@ -43,10 +43,9 @@ export default async function LocationPage({
             {c.location.headline}
           </h2>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {c.company.locations.map((loc) => (
-              <LocationCard key={loc.kind} {...loc} />
-            ))}
+          {/* 사업장 목록은 지도의 탭이 겸한다. 카드를 따로 또 깔면 같은 정보가 두 번 나온다. */}
+          <div className="mt-12">
+            <LocationMap locations={c.company.locations} labels={c.location} />
           </div>
 
           <SurfaceCard
