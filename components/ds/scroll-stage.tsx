@@ -43,7 +43,7 @@ export function ScrollStage({
   )
 
   return (
-    <section className="relative h-[300svh]">
+    <section id="scroll-stage" className="relative h-[300svh]">
       {/* 고정 배경 */}
       <div className="sticky top-0 h-svh overflow-hidden bg-brand-blue-900">
         {/*

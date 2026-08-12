@@ -3,6 +3,7 @@ import Link from "next/link"
 
 import { NewsCard, ProductCard } from "@/components/ds/cards"
 import { PartnerMarquee } from "@/components/ds/partner-marquee"
+import { NavReveal } from "@/components/ds/nav-reveal"
 import { ScrollStage } from "@/components/ds/scroll-stage"
 import {
   Container,
@@ -42,6 +43,12 @@ export default async function HomePage({
         주요 수치 밴드부터 일반 스크롤로 이어진다.
       */}
       <ScrollStage lang={lang} content={c} />
+
+      {/*
+        스테이지가 화면에 걸쳐 있는 동안 상단 네비를 숨긴다. 스테이지 끝이 헤더에 닿는
+        순간 — 즉 주요 수치 밴드가 시작될 때 — 네비가 다시 나타난다.
+      */}
+      <NavReveal stageId="scroll-stage" />
 
       {/* 지표 밴드 */}
       <Section compact className="border-b border-border">

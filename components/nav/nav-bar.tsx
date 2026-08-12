@@ -39,7 +39,10 @@ export function NavBar({
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/88 backdrop-blur-[16px] backdrop-saturate-180">
+    <header
+      data-site-header
+      className="sticky top-0 z-40 border-b border-border bg-background/88 backdrop-blur-[16px] backdrop-saturate-180"
+    >
       <Container className="flex h-19 items-center gap-10">
         <Link
           href={localePath(lang, "/")}
