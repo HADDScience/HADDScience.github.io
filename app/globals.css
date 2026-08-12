@@ -104,6 +104,32 @@
     --spacing-gutter: 32px;
     --spacing-section: 120px;
     --spacing-section-compact: 80px;
+
+    /* Marquee — Magic UI (components/ui/marquee.tsx). 파트너 로고 띠에 쓴다.
+     * 디자인시스템의 "no auto-playing carousels" 는 사용자가 놓치면 안 되는 콘텐츠를
+     * 자동으로 넘기는 것을 금지하는 규칙이다. 파트너 로고는 개별 항목을 읽히려는
+     * 것이 아니라 "이만큼 많다"를 보여주는 띠이므로 여기서는 허용 범위로 본다.
+     * 대신 hover 로 멈추고, prefers-reduced-motion 에서는 정지한다(아래 base 레이어). */
+    --animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+    @keyframes marquee {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(calc(-100% - var(--gap)));
+        }
+    }
+
+    @keyframes marquee-vertical {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(calc(-100% - var(--gap)));
+        }
+    }
 }
 
 @keyframes rise {
@@ -245,5 +271,14 @@
     /* --tracking-heading */
     letter-spacing: -0.02em;
     line-height: 1.28;
+    }
+
+  /* 모션을 줄이도록 설정한 사용자에게는 마퀴를 멈춘다.
+     디자인시스템이 parallax·자동재생을 금지하는 취지와도 맞다. */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-marquee-vertical {
+      animation: none !important;
+      }
     }
 }

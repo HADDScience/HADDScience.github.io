@@ -137,7 +137,7 @@ export interface SiteContent {
     productSection: { eyebrow: string; title: string; heading: string; cta: string }
     newsSection: { eyebrow: string; title: string; description: string; cta: string }
     aboutSection: { eyebrow: string; title: string; body: string[]; cta: string }
-    partners: { title: string; description: string }
+    partners: { eyebrow: string; title: string; description: string }
     ctaBand: { tag: string; title: string; description: string; cta: string }
   }
   about: {

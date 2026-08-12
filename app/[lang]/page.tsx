@@ -3,6 +3,7 @@ import Link from "next/link"
 
 import { NewsCard, ProductCard } from "@/components/ds/cards"
 import { Hero } from "@/components/ds/hero"
+import { PartnerMarquee } from "@/components/ds/partner-marquee"
 import {
   Container,
   Eyebrow,
@@ -14,6 +15,7 @@ import {
 } from "@/components/ds/primitives"
 import { Button } from "@/components/ui/button"
 import { getContent, isLang, localePath } from "@/content"
+import { partnersFor } from "@/content/partners"
 import { cn } from "@/lib/utils"
 import { notFound } from "next/navigation"
 
@@ -153,8 +155,16 @@ export default async function HomePage({
         </Container>
       </Section>
 
+      {/* 파트너 */}
+      <PartnerMarquee
+        eyebrow={c.home.partners.eyebrow}
+        title={c.home.partners.title}
+        description={c.home.partners.description}
+        partners={partnersFor(lang)}
+      />
+
       {/* 뉴스 */}
-      <Section tone="subtle">
+      <Section>
         <Container>
           <div className="grid gap-12 md:grid-cols-[1fr_1.6fr]">
             <SectionHeading

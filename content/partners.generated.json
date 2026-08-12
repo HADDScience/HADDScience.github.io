@@ -1,0 +1,219 @@
+[
+  {
+    "id": "skku",
+    "name": "성균관대학교",
+    "src": "/partners/skku.webp",
+    "width": 346,
+    "height": 98
+  },
+  {
+    "id": "snu-medicine",
+    "name": "서울대학교 의과대학",
+    "src": "/partners/snu-medicine.webp",
+    "width": 274,
+    "height": 120
+  },
+  {
+    "id": "kbri",
+    "name": "한국뇌연구원",
+    "src": "/partners/kbri.webp",
+    "width": 546,
+    "height": 114
+  },
+  {
+    "id": "ulsan",
+    "name": "울산대학교",
+    "src": "/partners/ulsan.webp",
+    "width": 341,
+    "height": 67
+  },
+  {
+    "id": "sm-kukil-graphene",
+    "name": "SM국일그래핀",
+    "src": "/partners/sm-kukil-graphene.webp",
+    "width": 333,
+    "height": 46
+  },
+  {
+    "id": "biospero",
+    "name": "BioSpero",
+    "src": "/partners/biospero.webp",
+    "width": 342,
+    "height": 116
+  },
+  {
+    "id": "eas",
+    "name": "EAS Electronic Auto System",
+    "src": "/partners/eas.webp",
+    "width": 235,
+    "height": 120
+  },
+  {
+    "id": "gachon-medicine",
+    "name": "가천대학교 의과대학",
+    "src": "/partners/gachon-medicine.webp",
+    "width": 177,
+    "height": 30
+  },
+  {
+    "id": "dadalab",
+    "name": "DADALAB",
+    "src": "/partners/dadalab.webp",
+    "width": 315,
+    "height": 120
+  },
+  {
+    "id": "binaree",
+    "name": "BINAREE",
+    "src": "/partners/binaree.webp",
+    "width": 120,
+    "height": 46
+  },
+  {
+    "id": "chungnam-medicine",
+    "name": "충남대학교 의과대학",
+    "src": "/partners/chungnam-medicine.webp",
+    "width": 148,
+    "height": 54
+  },
+  {
+    "id": "kbio-company",
+    "name": "KBIO COMPANY",
+    "src": "/partners/kbio-company.webp",
+    "width": 300,
+    "height": 65
+  },
+  {
+    "id": "chain",
+    "name": "CHAIN",
+    "src": "/partners/chain.webp",
+    "width": 113,
+    "height": 47
+  },
+  {
+    "id": "kh-medicare",
+    "name": "KH MEDICARE",
+    "src": "/partners/kh-medicare.webp",
+    "width": 279,
+    "height": 38
+  },
+  {
+    "id": "orient-bio",
+    "name": "오리엔트바이오",
+    "src": "/partners/orient-bio.webp",
+    "width": 242,
+    "height": 42
+  },
+  {
+    "id": "glofle",
+    "name": "glofle",
+    "src": "/partners/glofle.webp",
+    "width": 314,
+    "height": 120
+  },
+  {
+    "id": "bonitolab",
+    "name": "BONITOLAB",
+    "src": "/partners/bonitolab.webp",
+    "width": 136,
+    "height": 37
+  },
+  {
+    "id": "ajou-hospital",
+    "name": "아주대학교병원",
+    "src": "/partners/ajou-hospital.webp",
+    "width": 153,
+    "height": 54
+  },
+  {
+    "id": "suwon",
+    "name": "수원대학교",
+    "src": "/partners/suwon.webp",
+    "width": 236,
+    "height": 77
+  },
+  {
+    "id": "mifi",
+    "name": "발효미생물산업진흥원",
+    "src": "/partners/mifi.webp",
+    "width": 212,
+    "height": 30
+  },
+  {
+    "id": "woojung-bio",
+    "name": "우정바이오",
+    "src": "/partners/woojung-bio.webp",
+    "width": 133,
+    "height": 45
+  },
+  {
+    "id": "harvard-medical",
+    "name": "Harvard Medical School",
+    "src": "/partners/harvard-medical.svg",
+    "width": 291,
+    "height": 75
+  },
+  {
+    "id": "houston-medicine",
+    "name": "University of Houston College of Medicine",
+    "src": "/partners/houston-medicine.webp",
+    "width": 232,
+    "height": 48
+  },
+  {
+    "id": "miami-miller",
+    "name": "Miller School of Medicine, University of Miami",
+    "src": "/partners/miami-miller.svg",
+    "width": 410,
+    "height": 77
+  },
+  {
+    "id": "nexel",
+    "name": "NEXEL",
+    "src": "/partners/nexel.svg",
+    "width": 588,
+    "height": 120
+  },
+  {
+    "id": "hanwha-solutions",
+    "name": "한화솔루션",
+    "src": "/partners/hanwha-solutions.svg",
+    "width": 1812,
+    "height": 544
+  },
+  {
+    "id": "jeju-veterinary",
+    "name": "제주대학교 수의학과",
+    "src": "/partners/jeju-veterinary.webp",
+    "width": 161,
+    "height": 72
+  },
+  {
+    "id": "harvard",
+    "name": "Harvard University",
+    "src": "/partners/harvard.svg",
+    "width": 1123,
+    "height": 294
+  },
+  {
+    "id": "boston",
+    "name": "Boston University",
+    "src": "/partners/boston.webp",
+    "width": 265,
+    "height": 120
+  },
+  {
+    "id": "kist",
+    "name": "한국과학기술연구원",
+    "src": "/partners/kist.svg",
+    "width": 519,
+    "height": 100
+  },
+  {
+    "id": "meditec",
+    "name": "메디텍",
+    "src": "/partners/meditec.webp",
+    "width": 541,
+    "height": 120
+  }
+]

@@ -152,6 +152,7 @@ export const ko: SiteContent = {
       cta: "회사 소개 보기",
     },
     partners: {
+      eyebrow: "Partners",
       title: "함께 만드는 기술의 미래",
       description: "하드사이언스의 파트너들입니다.",
     },

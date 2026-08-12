@@ -163,6 +163,7 @@ export const en: SiteContent = {
       cta: "About the company",
     },
     partners: {
+      eyebrow: "Partners",
       title: "Building the future of technology together",
       description: "These are the partners of HADD Science.",
     },
