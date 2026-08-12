@@ -3,7 +3,13 @@ import Link from "next/link"
 import { ProductCard } from "@/components/ds/cards"
 import { FaqAccordion } from "@/components/ds/faq-accordion"
 import { PageHeader } from "@/components/ds/page-header"
-import { Container, Eyebrow, Section, SurfaceCard } from "@/components/ds/primitives"
+import {
+  Container,
+  Eyebrow,
+  Section,
+  SurfaceCard,
+} from "@/components/ds/primitives"
+import { BlurFade } from "@/components/ui/blur-fade"
 import { Button } from "@/components/ui/button"
 import { localePath, type Lang } from "@/content"
 import type { SiteContent } from "@/content/types"
@@ -40,7 +46,7 @@ export function ProductFamilyPage({
             <h2 className="text-3xl font-bold tracking-[-0.02em] text-balance md:text-4xl">
               {family.tagline}
             </h2>
-            <p className="text-muted-foreground text-lg">{family.heading}</p>
+            <p className="text-lg text-muted-foreground">{family.heading}</p>
           </div>
 
           <div
@@ -50,20 +56,27 @@ export function ProductFamilyPage({
                 : "mt-12 grid gap-6 md:max-w-md"
             }
           >
-            {family.variants.map((variant) => (
-              <ProductCard
+            {family.variants.map((variant, i) => (
+              <BlurFade
                 key={variant.id}
-                variant={variant}
-                description={family.description}
-                regulatory={family.regulatory}
-                href={path("/contact")}
-                cta={variant.sampleRequest ? p.sampleCta : p.inquiryCta}
-                ui={content.ui}
-              />
+                inView
+                delay={i * 0.1}
+                className="h-full"
+              >
+                <ProductCard
+                  variant={variant}
+                  description={family.description}
+                  regulatory={family.regulatory}
+                  href={path("/contact")}
+                  cta={variant.sampleRequest ? p.sampleCta : p.inquiryCta}
+                  ui={content.ui}
+                  lens
+                />
+              </BlurFade>
             ))}
           </div>
 
-          <p className="text-muted-foreground mt-6 text-sm">* {p.imageNote}</p>
+          <p className="mt-6 text-sm text-muted-foreground">* {p.imageNote}</p>
         </Container>
       </Section>
 
@@ -86,9 +99,18 @@ export function ProductFamilyPage({
               <h2 className="text-2xl font-bold text-white md:text-3xl">
                 {content.home.ctaBand.title}
               </h2>
-              <p className="text-lg text-white/72">{content.home.ctaBand.description}</p>
+              <p className="text-lg text-white/72">
+                {content.home.ctaBand.description}
+              </p>
             </div>
-            <Button nativeButton={false} size="lg" className="text-brand-blue-900 bg-white hover:bg-white/88" render={<Link href={path("/contact")} />}>{content.home.ctaBand.cta}</Button>
+            <Button
+              nativeButton={false}
+              size="lg"
+              className="bg-white text-brand-blue-900 hover:bg-white/88"
+              render={<Link href={path("/contact")} />}
+            >
+              {content.home.ctaBand.cta}
+            </Button>
           </SurfaceCard>
         </Container>
       </Section>

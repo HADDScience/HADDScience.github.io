@@ -249,6 +249,7 @@ export const en: SiteContent = {
         name: "Neuro H",
         specialty: "Biomaterials Research & Commercialization Specialist",
         bio: "With 17 years of expertise in 3D cell culture and biomaterials research, she has been transforming scientific discoveries into real-world innovations, bridging the worlds of science and business with vision and leadership.",
+        photo: "/team/neuro-h.webp",
       },
       {
         role: "CMO",
@@ -256,18 +257,21 @@ export const en: SiteContent = {
         specialty:
           "16+ Years in Bio & Research · Pharmaceutical · Hospital Sales Experience",
         bio: "Great technology only creates value when it reaches the market. Leveraging a strong network of researchers and industry partners, he is leading the global expansion and commercialization of ADDGEL.",
+        photo: "/team/kh.webp",
       },
       {
         role: "CAO",
         name: "YH",
         specialty: "Bio & AI-Driven Marketing Strategist",
         bio: "With 13 years of experience in biopharma marketing and technical support, he combines scientific expertise with AI-driven analytics to connect innovation with researchers. His mission is to bring the value of ADDGEL to the global scientific community.",
+        photo: "/team/yh.webp",
       },
       {
         role: "R&D Leader",
         name: "Ari",
         specialty: "Ph.D. in Biomedical Engineering · 3D Cell Culture & Biomaterials Expert",
         bio: "With over 10 years of experience in stem cell culture and biomaterials research, he leads the optimization of ADDGEL and spearheads the development of next-generation biomaterial solutions.",
+        photo: "/team/ari.webp",
       },
       {
         role: "Technical Support & Regulatory Team Leader",
@@ -275,24 +279,29 @@ export const en: SiteContent = {
         specialty:
           "M.S. in Pharmaceutical Sciences · Laboratory & Regulatory Affairs Specialist",
         bio: "Leveraging experience across healthcare and research institutions, he drives product validation, scientific affairs, and prototype development — building trusted solutions backed by scientific evidence.",
+        photo: "/team/noh.webp",
       },
       {
         role: "Manufacturing & Certification Researcher",
         name: "Sojeong Park",
         specialty: "M.Eng. · Certification & Productization Researcher",
         bio: "Holding a master’s degree in engineering from Kyung Hee University, she conducts synthetic biology and nanomaterial process research, and owns product certification and productization processes.",
+        photo: "/team/sojeong-park.webp",
       },
       {
         role: "AI Solutions Developer",
         name: "Woochang Jung",
-        specialty: "AI Talent Program · ML/DL · Multi-modal",
-        bio: "As an undergraduate research intern, he specializes in ML/DL and multimodal AI modeling, supporting biomedical data analysis and scientific research through AI-driven approaches.",
+        // 라이브 사이트는 두 사람의 설명이 서로 바뀌어 있다(2026-08-12 확인). 여기서 바로잡았다.
+        specialty: "AI Talent Program · Agentic AI · Software Engineering",
+        bio: "He specializes in Agentic AI and software development, building AI-powered solutions on top of biomedical data.",
+        photo: "/team/woochang-jung.webp",
       },
       {
         role: "AI Development Intern",
         name: "Yongseok Ju",
-        specialty: "AI Talent Program · Agentic AI · Software Engineering",
-        bio: "As an undergraduate research intern, he specializes in Agentic AI and software development, developing AI-powered solutions built on biomedical data.",
+        specialty: "AI Talent Program · ML/DL · Multi-modal",
+        bio: "As an undergraduate research intern, he specializes in ML/DL and multimodal AI modeling, supporting biomedical data analysis and scientific research through AI-driven approaches.",
+        photo: "/team/yongseok-ju.webp",
       },
     ],
   },

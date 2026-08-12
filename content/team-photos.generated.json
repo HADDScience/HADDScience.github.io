@@ -1,0 +1,50 @@
+[
+  {
+    "id": "neuro-h",
+    "src": "/team/neuro-h.webp",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "id": "kh",
+    "src": "/team/kh.webp",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "id": "yh",
+    "src": "/team/yh.webp",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "id": "ari",
+    "src": "/team/ari.webp",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "id": "noh",
+    "src": "/team/noh.webp",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "id": "sojeong-park",
+    "src": "/team/sojeong-park.webp",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "id": "woochang-jung",
+    "src": "/team/woochang-jung.webp",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "id": "yongseok-ju",
+    "src": "/team/yongseok-ju.webp",
+    "width": 800,
+    "height": 600
+  }
+]

@@ -22,13 +22,23 @@ export function Pagination({
     "flex size-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors duration-120 ease-[var(--ease-standard)] hover:bg-muted hover:text-foreground"
 
   return (
-    <nav aria-label={labels.pagination} className="flex items-center justify-center gap-2">
+    <nav
+      aria-label={labels.pagination}
+      className="flex items-center justify-center gap-2"
+    >
       {page > 1 ? (
-        <Link href={hrefFor(page - 1)} aria-label={labels.prevPage} className={arrow}>
+        <Link
+          href={hrefFor(page - 1)}
+          aria-label={labels.prevPage}
+          className={arrow}
+        >
           <span aria-hidden>‹</span>
         </Link>
       ) : (
-        <span aria-hidden className={cn(arrow, "pointer-events-none opacity-40")}>
+        <span
+          aria-hidden
+          className={cn(arrow, "pointer-events-none opacity-40")}
+        >
           ‹
         </span>
       )}
@@ -48,11 +58,18 @@ export function Pagination({
         </Link>
       ))}
       {page < totalPages ? (
-        <Link href={hrefFor(page + 1)} aria-label={labels.nextPage} className={arrow}>
+        <Link
+          href={hrefFor(page + 1)}
+          aria-label={labels.nextPage}
+          className={arrow}
+        >
           <span aria-hidden>›</span>
         </Link>
       ) : (
-        <span aria-hidden className={cn(arrow, "pointer-events-none opacity-40")}>
+        <span
+          aria-hidden
+          className={cn(arrow, "pointer-events-none opacity-40")}
+        >
           ›
         </span>
       )}

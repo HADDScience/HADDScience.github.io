@@ -1,5 +1,7 @@
 import * as React from "react"
 
+import { NumberTicker } from "@/components/ui/number-ticker"
+
 import { cn } from "@/lib/utils"
 
 /* -------------------------------------------------------------------------
@@ -148,7 +150,9 @@ export function Badge({
   className,
   tone = "neutral",
   ...props
-}: React.ComponentProps<"span"> & { tone?: "neutral" | "success" | "warning" }) {
+}: React.ComponentProps<"span"> & {
+  tone?: "neutral" | "success" | "warning"
+}) {
   const tones = {
     neutral: "bg-muted text-muted-foreground",
     success: "bg-status-success-bg text-status-success",
@@ -192,7 +196,7 @@ export function SurfaceCard({
       className={cn(
         "rounded-lg border transition-all duration-200 ease-[var(--ease-standard)]",
         cardVariants[variant],
-        interactive && "hover:shadow-ds-lg hover:-translate-y-1",
+        interactive && "hover:-translate-y-1 hover:shadow-ds-lg",
         className
       )}
       {...props}
@@ -215,7 +219,9 @@ export function FeatureItem({
 }) {
   return (
     <div className="grid gap-3 border-t-2 border-primary pt-5">
-      <span className="text-brand-blue-500 font-mono text-sm font-bold">{index}</span>
+      <span className="font-mono text-sm font-bold text-brand-blue-500">
+        {index}
+      </span>
       <h3 className="text-xl font-semibold">{title}</h3>
       <p className="text-muted-foreground">{description}</p>
     </div>
@@ -229,20 +235,38 @@ export function StatBlock({
   value,
   suffix,
   label,
+  delay = 0,
 }: {
   value: string
   suffix?: string
   label: string
+  delay?: number
 }) {
+  // 숫자만으로 된 값은 스크롤에 들어올 때 카운트업한다.
+  // "2024" 같은 연도도 숫자지만 세는 게 자연스러우므로 함께 적용한다.
+  const numeric = /^\d+$/.test(value) ? Number(value) : null
+
   return (
     <div className="grid gap-2">
       <p className="text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
-        {value}
+        {numeric === null ? (
+          value
+        ) : (
+          <NumberTicker
+            value={numeric}
+            delay={delay}
+            // 연도는 1000 단위 구분 없이 그대로 읽혀야 한다.
+            useGrouping={value.length !== 4}
+            className="tracking-[-0.03em] text-foreground"
+          />
+        )}
         {suffix ? (
-          <span className="text-brand-orange-500 ml-1 text-2xl font-bold">{suffix}</span>
+          <span className="ml-1 text-2xl font-bold text-brand-orange-500">
+            {suffix}
+          </span>
         ) : null}
       </p>
-      <p className="text-muted-foreground text-sm">{label}</p>
+      <p className="text-sm text-muted-foreground">{label}</p>
     </div>
   )
 }

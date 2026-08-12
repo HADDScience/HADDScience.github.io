@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { TeamCard } from "@/components/ds/cards"
 import { PageHeader } from "@/components/ds/page-header"
 import { Container, Section } from "@/components/ds/primitives"
+import { BlurFade } from "@/components/ui/blur-fade"
 import { getContent, isLang, localePath } from "@/content"
 
 export async function generateMetadata({
@@ -48,7 +49,7 @@ export default async function TeamPage({
                 </span>
               ))}
             </h2>
-            <div className="text-muted-foreground grid content-start gap-3 text-lg">
+            <div className="grid content-start gap-3 text-lg text-muted-foreground">
               {t.intro.map((line) => (
                 <p key={line}>{line}</p>
               ))}
@@ -56,8 +57,15 @@ export default async function TeamPage({
           </div>
 
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {t.members.map((member) => (
-              <TeamCard key={`${member.role}-${member.name}`} member={member} />
+            {t.members.map((member, i) => (
+              <BlurFade
+                key={`${member.role}-${member.name}`}
+                inView
+                delay={i * 0.06}
+                className="h-full"
+              >
+                <TeamCard member={member} />
+              </BlurFade>
             ))}
           </div>
         </Container>

@@ -39,7 +39,7 @@ export function NavBar({
   }
 
   return (
-    <header className="border-border sticky top-0 z-40 border-b bg-background/88 backdrop-blur-[16px] backdrop-saturate-180">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/88 backdrop-blur-[16px] backdrop-saturate-180">
       <Container className="flex h-19 items-center gap-10">
         <Link
           href={localePath(lang, "/")}
@@ -68,19 +68,19 @@ export function NavBar({
                   className={cn(
                     "border-b-2 pb-1 text-sm font-semibold tracking-wide transition-colors duration-120 ease-[var(--ease-standard)]",
                     active
-                      ? "text-primary border-primary"
-                      : "text-foreground hover:text-primary border-transparent hover:border-primary"
+                      ? "border-primary text-primary"
+                      : "border-transparent text-foreground hover:border-primary hover:text-primary"
                   )}
                 >
                   {item.label}
                 </Link>
                 {item.children?.length ? (
-                  <div className="border-border shadow-ds-md invisible absolute top-full left-1/2 grid w-48 -translate-x-1/2 gap-1 rounded-lg border bg-popover text-popover-foreground p-2 opacity-0 transition-opacity duration-200 ease-[var(--ease-standard)] group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <div className="invisible absolute top-full left-1/2 grid w-48 -translate-x-1/2 gap-1 rounded-lg border border-border bg-popover p-2 text-popover-foreground opacity-0 shadow-ds-md transition-opacity duration-200 ease-[var(--ease-standard)] group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
                         href={localePath(lang, child.href)}
-                        className="hover:bg-accent hover:text-accent-foreground rounded-[6px] px-3 py-2 text-sm font-medium transition-colors duration-120 ease-[var(--ease-standard)]"
+                        className="rounded-[6px] px-3 py-2 text-sm font-medium transition-colors duration-120 ease-[var(--ease-standard)] hover:bg-accent hover:text-accent-foreground"
                       >
                         {child.label}
                       </Link>
@@ -94,14 +94,21 @@ export function NavBar({
 
         <div className="ml-auto flex items-center gap-3 lg:ml-0">
           <LanguageSwitcher lang={lang} labels={ui} />
-          <Button nativeButton={false} size="sm" className="hidden sm:inline-flex" render={<Link href={localePath(lang, "/contact")} />}>{cta}</Button>
+          <Button
+            nativeButton={false}
+            size="sm"
+            className="hidden sm:inline-flex"
+            render={<Link href={localePath(lang, "/contact")} />}
+          >
+            {cta}
+          </Button>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={ui.menu}
-            className="border-border text-foreground flex size-10 items-center justify-center rounded-full border lg:hidden"
+            className="flex size-10 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
           >
             <span aria-hidden className="text-lg leading-none">
               {open ? "×" : "≡"}
@@ -112,7 +119,10 @@ export function NavBar({
 
       {/* 모바일 */}
       {open ? (
-        <div id="mobile-nav" className="border-border border-t bg-background lg:hidden">
+        <div
+          id="mobile-nav"
+          className="border-t border-border bg-background lg:hidden"
+        >
           <Container className="grid gap-1 py-4">
             {items.map((item) => (
               <div key={item.href} className="py-2">
@@ -130,7 +140,7 @@ export function NavBar({
                         key={child.href}
                         href={localePath(lang, child.href)}
                         onClick={close}
-                        className="text-muted-foreground hover:text-primary py-1 text-sm"
+                        className="py-1 text-sm text-muted-foreground hover:text-primary"
                       >
                         {child.label}
                       </Link>
@@ -139,9 +149,12 @@ export function NavBar({
                 ) : null}
               </div>
             ))}
-            <Button nativeButton={false}
+            <Button
+              nativeButton={false}
               className="mt-3 w-full"
-              render={<Link href={localePath(lang, "/contact")} onClick={close} />}
+              render={
+                <Link href={localePath(lang, "/contact")} onClick={close} />
+              }
             >
               {cta}
             </Button>

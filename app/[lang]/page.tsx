@@ -13,6 +13,7 @@ import {
   SurfaceCard,
   Tag,
 } from "@/components/ds/primitives"
+import { BlurFade } from "@/components/ui/blur-fade"
 import { Button } from "@/components/ui/button"
 import { getContent, isLang, localePath } from "@/content"
 import { partnersFor } from "@/content/partners"
@@ -43,11 +44,14 @@ export default async function HomePage({
       />
 
       {/* 지표 밴드 */}
-      <Section compact className="border-border border-b">
+      <Section compact className="border-b border-border">
         <Container>
           <div className="grid grid-cols-2 gap-10 lg:grid-cols-4">
-            {c.home.stats.map((s) => (
-              <StatBlock key={s.label} {...s} />
+            {c.home.stats.map((s, i) => (
+              <BlurFade key={s.label} inView delay={i * 0.08}>
+                {/* 카운트업은 BlurFade 가 끝난 뒤 시작하도록 delay 를 맞춘다 */}
+                <StatBlock {...s} delay={i * 0.08 + 0.2} />
+              </BlurFade>
             ))}
           </div>
         </Container>
@@ -58,12 +62,17 @@ export default async function HomePage({
         auto-playing carousel 을 금지하므로 나머지 두 장면을 제품 소개 밴드로 편다.
       */}
       {restSlides.map((slide, i) => (
-        <Section key={slide.title.join()} tone={i % 2 === 0 ? "subtle" : "page"}>
+        <Section
+          key={slide.title.join()}
+          tone={i % 2 === 0 ? "subtle" : "page"}
+        >
           <Container>
             <div className="grid items-center gap-12 md:grid-cols-2">
               <div
                 className={
-                  i % 2 === 0 ? "grid gap-5" : "grid gap-5 md:order-2 md:justify-self-end"
+                  i % 2 === 0
+                    ? "grid gap-5"
+                    : "grid gap-5 md:order-2 md:justify-self-end"
                 }
               >
                 {slide.eyebrow ? <Eyebrow>{slide.eyebrow}</Eyebrow> : null}
@@ -74,21 +83,27 @@ export default async function HomePage({
                     </span>
                   ))}
                 </h2>
-                <div className="text-muted-foreground grid gap-1 text-lg">
+                <div className="grid gap-1 text-lg text-muted-foreground">
                   {slide.description.map((line) => (
                     <p key={line}>{line}</p>
                   ))}
                 </div>
                 {slide.cta ? (
                   <div className="mt-2">
-                    <Button nativeButton={false} size="lg" render={<Link href={path(slide.cta.href)} />}>{slide.cta.label}</Button>
+                    <Button
+                      nativeButton={false}
+                      size="lg"
+                      render={<Link href={path(slide.cta.href)} />}
+                    >
+                      {slide.cta.label}
+                    </Button>
                   </div>
                 ) : null}
               </div>
               {slide.image ? (
                 <div
                   className={cn(
-                    "bg-surface-plate relative h-80 rounded-[24px]",
+                    "relative h-80 rounded-[24px] bg-surface-plate",
                     i % 2 !== 0 && "md:order-1"
                   )}
                 >
@@ -115,23 +130,38 @@ export default async function HomePage({
               title={c.home.productSection.title}
               description={c.home.productSection.heading}
             />
-            <Button nativeButton={false} variant="outline" render={<Link href={path("/products")} />}>{c.home.productSection.cta}</Button>
+            <Button
+              nativeButton={false}
+              variant="outline"
+              render={<Link href={path("/products")} />}
+            >
+              {c.home.productSection.cta}
+            </Button>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {addgel.variants.map((v) => (
-              <ProductCard
-                key={v.id}
-                variant={v}
-                description={addgel.description}
-                regulatory={addgel.regulatory}
-                href={path(addgel.href)}
-                cta={c.ui.viewDetail}
-                ui={c.ui}
-              />
+            {addgel.variants.map((v, i) => (
+              <BlurFade key={v.id} inView delay={i * 0.1} className="h-full">
+                <ProductCard
+                  variant={v}
+                  description={addgel.description}
+                  regulatory={addgel.regulatory}
+                  href={path(addgel.href)}
+                  cta={c.ui.viewDetail}
+                  ui={c.ui}
+                />
+              </BlurFade>
             ))}
           </div>
         </Container>
       </Section>
+
+      {/* 파트너 */}
+      <PartnerMarquee
+        eyebrow={c.home.partners.eyebrow}
+        title={c.home.partners.title}
+        description={c.home.partners.description}
+        partners={partnersFor(lang)}
+      />
 
       {/* 회사 소개 */}
       <Section>
@@ -148,20 +178,18 @@ export default async function HomePage({
                 ))}
               </div>
               <div>
-                <Button nativeButton={false} variant="outline" render={<Link href={path("/about")} />}>{c.home.aboutSection.cta}</Button>
+                <Button
+                  nativeButton={false}
+                  variant="outline"
+                  render={<Link href={path("/about")} />}
+                >
+                  {c.home.aboutSection.cta}
+                </Button>
               </div>
             </div>
           </div>
         </Container>
       </Section>
-
-      {/* 파트너 */}
-      <PartnerMarquee
-        eyebrow={c.home.partners.eyebrow}
-        title={c.home.partners.title}
-        description={c.home.partners.description}
-        partners={partnersFor(lang)}
-      />
 
       {/* 뉴스 */}
       <Section>
@@ -174,13 +202,21 @@ export default async function HomePage({
               className="max-w-xs"
             />
             <div>
-              <div className="border-border bg-card rounded-lg border px-6">
-                {c.news.items.slice(0, 4).map((item) => (
-                  <NewsCard key={item.id} item={item} lang={lang} layout="row" />
+              <div className="rounded-lg border border-border bg-card px-6">
+                {c.news.items.slice(0, 4).map((item, i) => (
+                  <BlurFade key={item.id} inView delay={i * 0.07}>
+                    <NewsCard item={item} lang={lang} layout="row" />
+                  </BlurFade>
                 ))}
               </div>
               <div className="mt-6">
-                <Button nativeButton={false} variant="ghost" render={<Link href={path("/news")} />}>{c.home.newsSection.cta} <span aria-hidden>→</span></Button>
+                <Button
+                  nativeButton={false}
+                  variant="ghost"
+                  render={<Link href={path("/news")} />}
+                >
+                  {c.home.newsSection.cta} <span aria-hidden>→</span>
+                </Button>
               </div>
             </div>
           </div>
@@ -201,11 +237,18 @@ export default async function HomePage({
               <h2 className="text-2xl font-bold text-white md:text-3xl">
                 {c.home.ctaBand.title}
               </h2>
-              <p className="max-w-xl text-lg text-white/72">{c.home.ctaBand.description}</p>
+              <p className="max-w-xl text-lg text-white/72">
+                {c.home.ctaBand.description}
+              </p>
             </div>
-            <Button nativeButton={false}
+            <Button
+              nativeButton={false}
               size="lg"
-              className="text-brand-blue-900 bg-white hover:bg-white/88" render={<Link href={path("/contact")} />}>{c.home.ctaBand.cta}</Button>
+              className="bg-white text-brand-blue-900 hover:bg-white/88"
+              render={<Link href={path("/contact")} />}
+            >
+              {c.home.ctaBand.cta}
+            </Button>
           </SurfaceCard>
         </Container>
       </Section>

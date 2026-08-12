@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 
 import { PageHeader } from "@/components/ds/page-header"
 import { Container, Section } from "@/components/ds/primitives"
+import { BlurFade } from "@/components/ui/blur-fade"
 import { Button } from "@/components/ui/button"
 import { AVAILABLE_LANGS, getContent, isLang, localePath } from "@/content"
 
@@ -51,7 +52,9 @@ export default async function NewsDetailPage({
 
       <Section>
         <Container narrow>
-          <time className="text-muted-foreground font-mono text-sm">{item.date}</time>
+          <time className="font-mono text-sm text-muted-foreground">
+            {item.date}
+          </time>
 
           {/*
             아임웹 원문의 본문은 텍스트 없이 1024×1024 카드뉴스 이미지로만 이루어져 있다.
@@ -60,16 +63,17 @@ export default async function NewsDetailPage({
           */}
           <div className="mt-8 grid gap-4">
             {item.cards.map((src, i) => (
-              <Image
-                key={src}
-                src={src}
-                alt={`${item.title} — ${i + 1}/${item.cards!.length}`}
-                width={1080}
-                height={1080}
-                sizes="(min-width: 840px) 840px, 100vw"
-                priority={i === 0}
-                className="bg-muted h-auto w-full rounded-lg"
-              />
+              <BlurFade key={src} inView delay={Math.min(i, 3) * 0.08}>
+                <Image
+                  src={src}
+                  alt={`${item.title} — ${i + 1}/${item.cards!.length}`}
+                  width={1080}
+                  height={1080}
+                  sizes="(min-width: 840px) 840px, 100vw"
+                  priority={i === 0}
+                  className="h-auto w-full rounded-lg bg-muted"
+                />
+              </BlurFade>
             ))}
           </div>
 

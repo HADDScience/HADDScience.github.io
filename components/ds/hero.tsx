@@ -55,15 +55,25 @@ export function Hero({
           {(cta || secondaryCta) && (
             <div className="mt-2 flex flex-wrap gap-3">
               {cta ? (
-                <Button nativeButton={false}
+                <Button
+                  nativeButton={false}
                   size="lg"
-                  className="bg-white text-brand-blue-900 hover:bg-white/88" render={<Link href={cta.href} />}>{cta.label}</Button>
+                  className="bg-white text-brand-blue-900 hover:bg-white/88"
+                  render={<Link href={cta.href} />}
+                >
+                  {cta.label}
+                </Button>
               ) : null}
               {secondaryCta ? (
-                <Button nativeButton={false}
+                <Button
+                  nativeButton={false}
                   size="lg"
                   variant="outline"
-                  className="border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white dark:bg-transparent dark:hover:bg-white/10" render={<Link href={secondaryCta.href} />}>{secondaryCta.label}</Button>
+                  className="border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white dark:bg-transparent dark:hover:bg-white/10"
+                  render={<Link href={secondaryCta.href} />}
+                >
+                  {secondaryCta.label}
+                </Button>
               ) : null}
             </div>
           )}

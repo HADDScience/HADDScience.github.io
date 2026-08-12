@@ -47,14 +47,18 @@ export default async function ContactPage({
                   value={c.company.email}
                   href={`mailto:${c.company.email}`}
                 />
-                <Row label="TEL" value={c.company.tel} href={`tel:${c.company.tel.replace(/\s/g, "")}`} />
+                <Row
+                  label="TEL"
+                  value={c.company.tel}
+                  href={`tel:${c.company.tel.replace(/\s/g, "")}`}
+                />
                 <Row label="FAX" value={c.company.fax} />
               </SurfaceCard>
 
               <SurfaceCard className="grid gap-4 p-6">
                 {c.company.locations.map((loc) => (
                   <div key={loc.kind} className="grid gap-1">
-                    <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                    <p className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
                       {loc.kind}
                     </p>
                     <p className="text-sm">{loc.address}</p>
@@ -80,13 +84,13 @@ function Row({
 }) {
   return (
     <div className="grid gap-1">
-      <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+      <p className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
         {label}
       </p>
       {href ? (
         <a
           href={href}
-          className="text-primary text-sm font-semibold transition-colors duration-120 ease-[var(--ease-standard)] hover:text-brand-blue-500"
+          className="text-sm font-semibold text-primary transition-colors duration-120 ease-[var(--ease-standard)] hover:text-brand-blue-500"
         >
           {value}
         </a>

@@ -22,5 +22,11 @@ export default async function LiveGelPage({
 }) {
   const { lang } = await params
   if (!isLang(lang)) notFound()
-  return <ProductFamilyPage lang={lang} content={getContent(lang)} familyId="livegel" />
+  return (
+    <ProductFamilyPage
+      lang={lang}
+      content={getContent(lang)}
+      familyId="livegel"
+    />
+  )
 }

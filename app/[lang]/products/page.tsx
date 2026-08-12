@@ -22,5 +22,11 @@ export default async function ProductsPage({
 }) {
   const { lang } = await params
   if (!isLang(lang)) notFound()
-  return <ProductFamilyPage lang={lang} content={getContent(lang)} familyId="addgel" />
+  return (
+    <ProductFamilyPage
+      lang={lang}
+      content={getContent(lang)}
+      familyId="addgel"
+    />
+  )
 }

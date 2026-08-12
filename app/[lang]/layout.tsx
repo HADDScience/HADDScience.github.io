@@ -76,7 +76,12 @@ export default async function LangLayout({
     <html
       lang={lang}
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", pretendard.variable)}
+      className={cn(
+        "antialiased",
+        fontMono.variable,
+        "font-sans",
+        pretendard.variable
+      )}
     >
       <body>
         <ThemeProvider>

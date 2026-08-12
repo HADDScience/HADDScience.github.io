@@ -1,17 +1,18 @@
 import type { Lang } from "./types"
 
 /**
- * 협력 파트너 로고.
+ * 협력 파트너 로고 — haddscience.com 파트너 섹션에 실제로 실린 목록.
  *
- * 출처: NAS/HADD Science/99. 각종 발표 자료s/항목별  분할 모음/
- *       하(사업화,연혁,사업장)/협력 파트너십(HRP)_260324.pptx
+ * 원본 사이트는 이 섹션을 로고 한 장(1920×2011 JPEG)으로 합쳐서 쓴다. 그래서
+ * `scripts/split-partner-collage.mjs` 로 행·열 투영으로 잘라내고 흰 배경을
+ * 알파로 바꿨다. 결과는 public/partners/site/ 에 있다.
  *
- * `scripts/extract-partner-logos.mjs` 가 pptx 에서 원본을 뽑아
- * public/partners/ 로 옮긴다. PPT 가 갱신되면 그 스크립트의 MEDIA 매핑을 고치고
- * 다시 돌린 뒤 이 파일을 재생성할 것.
+ * 목록이 바뀌면 원본 사이트의 콜라주를 다시 받아 스크립트를 돌리고 이 파일의 MAP
+ * 순서를 맞춘다 (scripts 안의 MAP 주석 참고).
  *
- * 이름은 로고 아트워크에 인쇄된 표기를 따랐다. 로고는 언어와 무관하게 같은 파일을
- * 쓰므로 목록을 여기 한 곳에 두고 alt 만 언어별로 고른다.
+ * public/partners/ 루트에는 사내 PPT(협력 파트너십(HRP)_260324.pptx)에서 뽑은 로고
+ * 31개가 그대로 있다. 원본 사이트에 없는 기관이 다수라 지금은 쓰지 않지만, 나중에
+ * 파트너 목록이 늘어나면 쓸 수 있어 지우지 않았다. 그쪽이 해상도가 더 높고 원색이다.
  */
 export interface PartnerLogo {
   id: string
@@ -23,37 +24,35 @@ export interface PartnerLogo {
 }
 
 export const partnerLogos: PartnerLogo[] = [
-  { id: "skku", src: "/partners/skku.webp", width: 346, height: 98, nameKo: "성균관대학교", nameEn: "Sungkyunkwan University" },
-  { id: "snu-medicine", src: "/partners/snu-medicine.webp", width: 274, height: 120, nameKo: "서울대학교 의과대학", nameEn: "Seoul National University College of Medicine" },
-  { id: "kbri", src: "/partners/kbri.webp", width: 546, height: 114, nameKo: "한국뇌연구원", nameEn: "Korea Brain Research Institute" },
-  { id: "ulsan", src: "/partners/ulsan.webp", width: 341, height: 67, nameKo: "울산대학교", nameEn: "University of Ulsan" },
-  { id: "sm-kukil-graphene", src: "/partners/sm-kukil-graphene.webp", width: 333, height: 46, nameKo: "SM국일그래핀", nameEn: "SM Kukil Graphene" },
-  { id: "biospero", src: "/partners/biospero.webp", width: 342, height: 116, nameKo: "BioSpero", nameEn: "BioSpero" },
-  { id: "eas", src: "/partners/eas.webp", width: 235, height: 120, nameKo: "EAS Electronic Auto System", nameEn: "EAS Electronic Auto System" },
-  { id: "gachon-medicine", src: "/partners/gachon-medicine.webp", width: 177, height: 30, nameKo: "가천대학교 의과대학", nameEn: "Gachon University College of Medicine" },
-  { id: "dadalab", src: "/partners/dadalab.webp", width: 315, height: 120, nameKo: "DADALAB", nameEn: "DADALAB" },
-  { id: "binaree", src: "/partners/binaree.webp", width: 120, height: 46, nameKo: "BINAREE", nameEn: "BINAREE" },
-  { id: "chungnam-medicine", src: "/partners/chungnam-medicine.webp", width: 148, height: 54, nameKo: "충남대학교 의과대학", nameEn: "Chungnam National University College of Medicine" },
-  { id: "kbio-company", src: "/partners/kbio-company.webp", width: 300, height: 65, nameKo: "KBIO COMPANY", nameEn: "KBIO COMPANY" },
-  { id: "chain", src: "/partners/chain.webp", width: 113, height: 47, nameKo: "CHAIN", nameEn: "CHAIN" },
-  { id: "kh-medicare", src: "/partners/kh-medicare.webp", width: 279, height: 38, nameKo: "KH MEDICARE", nameEn: "KH MEDICARE" },
-  { id: "orient-bio", src: "/partners/orient-bio.webp", width: 242, height: 42, nameKo: "오리엔트바이오", nameEn: "Orient Bio" },
-  { id: "glofle", src: "/partners/glofle.webp", width: 314, height: 120, nameKo: "glofle", nameEn: "glofle" },
-  { id: "bonitolab", src: "/partners/bonitolab.webp", width: 136, height: 37, nameKo: "BONITOLAB", nameEn: "BONITOLAB" },
-  { id: "ajou-hospital", src: "/partners/ajou-hospital.webp", width: 153, height: 54, nameKo: "아주대학교병원", nameEn: "Ajou University Hospital" },
-  { id: "suwon", src: "/partners/suwon.webp", width: 236, height: 77, nameKo: "수원대학교", nameEn: "The University of Suwon" },
-  { id: "mifi", src: "/partners/mifi.webp", width: 212, height: 30, nameKo: "발효미생물산업진흥원", nameEn: "Microbial Institute for Fermentation Industry" },
-  { id: "woojung-bio", src: "/partners/woojung-bio.webp", width: 133, height: 45, nameKo: "우정바이오", nameEn: "Woojung Bio" },
-  { id: "harvard-medical", src: "/partners/harvard-medical.svg", width: 291, height: 75, nameKo: "Harvard Medical School", nameEn: "Harvard Medical School" },
-  { id: "houston-medicine", src: "/partners/houston-medicine.webp", width: 232, height: 48, nameKo: "University of Houston College of Medicine", nameEn: "University of Houston College of Medicine" },
-  { id: "miami-miller", src: "/partners/miami-miller.svg", width: 410, height: 77, nameKo: "Miller School of Medicine, University of Miami", nameEn: "Miller School of Medicine, University of Miami" },
-  { id: "nexel", src: "/partners/nexel.svg", width: 588, height: 120, nameKo: "NEXEL", nameEn: "NEXEL" },
-  { id: "hanwha-solutions", src: "/partners/hanwha-solutions.svg", width: 1812, height: 544, nameKo: "한화솔루션", nameEn: "Hanwha Solutions" },
-  { id: "jeju-veterinary", src: "/partners/jeju-veterinary.webp", width: 161, height: 72, nameKo: "제주대학교 수의학과", nameEn: "Jeju National University College of Veterinary Medicine" },
-  { id: "harvard", src: "/partners/harvard.svg", width: 1123, height: 294, nameKo: "Harvard University", nameEn: "Harvard University" },
-  { id: "boston", src: "/partners/boston.webp", width: 265, height: 120, nameKo: "Boston University", nameEn: "Boston University" },
-  { id: "kist", src: "/partners/kist.svg", width: 519, height: 100, nameKo: "한국과학기술연구원", nameEn: "Korea Institute of Science and Technology" },
-  { id: "meditec", src: "/partners/meditec.webp", width: 541, height: 120, nameKo: "메디텍", nameEn: "Meditec" },
+  { id: "mss", src: "/partners/site/mss.webp", width: 361, height: 71, nameKo: "중소벤처기업부", nameEn: "Ministry of SMEs and Startups" },
+  { id: "msit", src: "/partners/site/msit.webp", width: 436, height: 75, nameKo: "과학기술정보통신부", nameEn: "Ministry of Science and ICT" },
+  { id: "motie", src: "/partners/site/motie.webp", width: 162, height: 120, nameKo: "산업통상자원부", nameEn: "Ministry of Trade, Industry and Energy" },
+  { id: "hwaseong", src: "/partners/site/hwaseong.webp", width: 248, height: 104, nameKo: "화성특례시", nameEn: "Hwaseong Special City" },
+  { id: "gbsa", src: "/partners/site/gbsa.webp", width: 331, height: 118, nameKo: "경기도경제과학진흥원", nameEn: "Gyeonggi Business & Science Accelerator" },
+  { id: "gyeonggi-bio-center", src: "/partners/site/gyeonggi-bio-center.webp", width: 419, height: 118, nameKo: "경기바이오센터", nameEn: "Gyeonggi Bio Center" },
+  { id: "skku-bridge", src: "/partners/site/skku-bridge.webp", width: 262, height: 120, nameKo: "SKKU BRIDGE", nameEn: "SKKU BRIDGE" },
+  { id: "skku", src: "/partners/site/skku.webp", width: 355, height: 84, nameKo: "성균관대학교", nameEn: "Sungkyunkwan University" },
+  { id: "kbri", src: "/partners/site/kbri.webp", width: 210, height: 74, nameKo: "한국뇌연구원", nameEn: "Korea Brain Research Institute" },
+  { id: "gachon-medicine", src: "/partners/site/gachon-medicine.webp", width: 415, height: 66, nameKo: "가천대학교 의과대학", nameEn: "Gachon University College of Medicine" },
+  { id: "chungnam-medicine", src: "/partners/site/chungnam-medicine.webp", width: 273, height: 105, nameKo: "충남대학교 의과대학", nameEn: "Chungnam National University College of Medicine" },
+  { id: "suwon", src: "/partners/site/suwon.webp", width: 235, height: 100, nameKo: "수원대학교", nameEn: "The University of Suwon" },
+  { id: "jeonbuk", src: "/partners/site/jeonbuk.webp", width: 369, height: 89, nameKo: "전북대학교", nameEn: "Jeonbuk National University" },
+  { id: "ajou", src: "/partners/site/ajou.webp", width: 375, height: 97, nameKo: "아주대학교", nameEn: "Ajou University" },
+  { id: "snu", src: "/partners/site/snu.webp", width: 122, height: 120, nameKo: "서울대학교", nameEn: "Seoul National University" },
+  { id: "ksmb", src: "/partners/site/ksmb.webp", width: 344, height: 91, nameKo: "한국마이크로바이옴학회", nameEn: "Korean Society for Microbiome" },
+  { id: "msc-data-center", src: "/partners/site/msc-data-center.webp", width: 435, height: 86, nameKo: "제조서비스 융합 데이터 실증 연구센터", nameEn: "Manufacturing-Service Convergence Data Validation Research Center" },
+  { id: "eas", src: "/partners/site/eas.webp", width: 235, height: 120, nameKo: "EAS", nameEn: "EAS Electronic Auto System" },
+  { id: "chain", src: "/partners/site/chain.webp", width: 203, height: 112, nameKo: "CHAIN", nameEn: "CHAIN" },
+  { id: "kh-medicare", src: "/partners/site/kh-medicare.webp", width: 678, height: 99, nameKo: "KH MEDICARE", nameEn: "KH MEDICARE" },
+  { id: "jmr", src: "/partners/site/jmr.webp", width: 119, height: 120, nameKo: "JMR", nameEn: "JMR" },
+  { id: "bonitolab", src: "/partners/site/bonitolab.webp", width: 345, height: 93, nameKo: "BONITOLAB", nameEn: "BONITOLAB" },
+  { id: "woojung-bio", src: "/partners/site/woojung-bio.webp", width: 374, height: 120, nameKo: "우정바이오", nameEn: "Woojung Bio" },
+  { id: "intelligent-solution", src: "/partners/site/intelligent-solution.webp", width: 340, height: 120, nameKo: "인텔리전트솔루션", nameEn: "intelligent solution" },
+  { id: "leica", src: "/partners/site/leica.webp", width: 196, height: 120, nameKo: "라이카 마이크로시스템즈", nameEn: "Leica Microsystems" },
+  { id: "curiosis", src: "/partners/site/curiosis.webp", width: 257, height: 43, nameKo: "CURIOSIS", nameEn: "CURIOSIS" },
+  { id: "orient-bio", src: "/partners/site/orient-bio.webp", width: 252, height: 120, nameKo: "오리엔트바이오", nameEn: "Orient Bio" },
+  { id: "organoid-society", src: "/partners/site/organoid-society.webp", width: 280, height: 120, nameKo: "The Organoid Society", nameEn: "The Organoid Society" },
+  { id: "rise", src: "/partners/site/rise.webp", width: 217, height: 48, nameKo: "RISE사업단", nameEn: "RISE Project Group" },
 ]
 
 /** 언어에 맞는 표기명으로 바꿔 준다. alt 텍스트에 쓴다. */

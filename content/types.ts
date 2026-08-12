@@ -78,6 +78,8 @@ export interface TeamMember {
   name: string
   specialty: string
   bio: string
+  /** haddscience.com/Team 의 인물 사진. scripts/fetch-team-photos.mjs 가 가져온다. */
+  photo: string
 }
 
 export interface OfficeLocation {

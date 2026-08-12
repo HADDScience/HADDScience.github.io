@@ -49,13 +49,16 @@ export default async function LocationPage({
             ))}
           </div>
 
-          <SurfaceCard variant="flat" className="mt-6 grid gap-4 p-8 sm:grid-cols-2">
+          <SurfaceCard
+            variant="flat"
+            className="mt-6 grid gap-4 p-8 sm:grid-cols-2"
+          >
             <div className="grid gap-1">
-              <p className="text-muted-foreground text-sm font-semibold">TEL</p>
+              <p className="text-sm font-semibold text-muted-foreground">TEL</p>
               <p className="text-lg font-semibold">{c.company.tel}</p>
             </div>
             <div className="grid gap-1">
-              <p className="text-muted-foreground text-sm font-semibold">FAX</p>
+              <p className="text-sm font-semibold text-muted-foreground">FAX</p>
               <p className="text-lg font-semibold">{c.company.fax}</p>
             </div>
           </SurfaceCard>

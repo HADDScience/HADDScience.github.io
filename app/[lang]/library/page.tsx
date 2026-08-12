@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 
 import { PageHeader } from "@/components/ds/page-header"
 import { Container, Section, SurfaceCard } from "@/components/ds/primitives"
+import { BlurFade } from "@/components/ui/blur-fade"
 import { getContent, isLang } from "@/content"
 
 export async function generateMetadata({
@@ -37,12 +38,18 @@ export default async function LibraryPage({
       <Section>
         <Container narrow>
           <div className="grid gap-4">
-            {l.items.map((item) => (
-              <SurfaceCard key={item.title} className="grid gap-3 p-6 md:p-8">
-                <time className="text-muted-foreground font-mono text-xs">{item.date}</time>
-                <h2 className="text-xl font-bold text-balance">{item.title}</h2>
-                <p className="text-muted-foreground">{item.excerpt}</p>
-              </SurfaceCard>
+            {l.items.map((item, i) => (
+              <BlurFade key={item.title} inView delay={i * 0.06}>
+                <SurfaceCard className="grid gap-3 p-6 md:p-8">
+                  <time className="font-mono text-xs text-muted-foreground">
+                    {item.date}
+                  </time>
+                  <h2 className="text-xl font-bold text-balance">
+                    {item.title}
+                  </h2>
+                  <p className="text-muted-foreground">{item.excerpt}</p>
+                </SurfaceCard>
+              </BlurFade>
             ))}
           </div>
         </Container>

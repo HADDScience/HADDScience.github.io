@@ -30,7 +30,8 @@ export function ContactForm({ content }: { content: SiteContent }) {
     const next: Errors = {}
     if (!value("name")) next.name = t.required
     if (!value("email")) next.email = t.required
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value("email"))) next.email = t.invalidEmail
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value("email")))
+      next.email = t.invalidEmail
     if (!value("message")) next.message = t.required
     if (!data.get("consent")) next.consent = t.required
 
@@ -38,7 +39,8 @@ export function ContactForm({ content }: { content: SiteContent }) {
     if (Object.keys(next).length > 0) return
 
     const topicLabel =
-      t.topicOptions.find((o) => o.value === value("topic"))?.label ?? value("topic")
+      t.topicOptions.find((o) => o.value === value("topic"))?.label ??
+      value("topic")
     const body = [
       `${t.name}: ${value("name")}`,
       `${t.organization}: ${value("organization")}`,
@@ -61,7 +63,11 @@ export function ContactForm({ content }: { content: SiteContent }) {
         <p className="text-xl font-bold">{t.successTitle}</p>
         <p className="text-muted-foreground">{t.successBody}</p>
         <div>
-          <Button variant="outline" onClick={() => setSent(false)} className="mt-2">
+          <Button
+            variant="outline"
+            onClick={() => setSent(false)}
+            className="mt-2"
+          >
             {t.reset}
           </Button>
         </div>
@@ -73,7 +79,12 @@ export function ContactForm({ content }: { content: SiteContent }) {
     <form onSubmit={handleSubmit} noValidate className="grid gap-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <Field label={t.name} htmlFor="name" required error={errors.name}>
-          <Input id="name" name="name" placeholder={t.namePlaceholder} aria-invalid={!!errors.name} />
+          <Input
+            id="name"
+            name="name"
+            placeholder={t.namePlaceholder}
+            aria-invalid={!!errors.name}
+          />
         </Field>
         <Field label={t.organization} htmlFor="organization">
           <Input
@@ -92,7 +103,12 @@ export function ContactForm({ content }: { content: SiteContent }) {
           />
         </Field>
         <Field label={t.phone} htmlFor="phone">
-          <Input id="phone" name="phone" type="tel" placeholder={t.phonePlaceholder} />
+          <Input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder={t.phonePlaceholder}
+          />
         </Field>
       </div>
 
@@ -101,7 +117,7 @@ export function ContactForm({ content }: { content: SiteContent }) {
           id="topic"
           name="topic"
           defaultValue={t.topicOptions[0]?.value}
-          className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/30 h-12 w-full rounded-[6px] border px-4 text-base transition-colors duration-120 ease-[var(--ease-standard)] outline-none focus-visible:ring-3"
+          className="h-12 w-full rounded-[6px] border border-input bg-background px-4 text-base transition-colors duration-120 ease-[var(--ease-standard)] outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30"
         >
           {t.topicOptions.map((o) => (
             <option key={o.value} value={o.value}>
@@ -111,7 +127,12 @@ export function ContactForm({ content }: { content: SiteContent }) {
         </select>
       </Field>
 
-      <Field label={t.message} htmlFor="message" required error={errors.message}>
+      <Field
+        label={t.message}
+        htmlFor="message"
+        required
+        error={errors.message}
+      >
         <Textarea
           id="message"
           name="message"
@@ -126,7 +147,7 @@ export function ContactForm({ content }: { content: SiteContent }) {
           <input
             type="checkbox"
             name="consent"
-            className="accent-primary mt-1 size-4 shrink-0"
+            className="mt-1 size-4 shrink-0 accent-primary"
             aria-invalid={!!errors.consent}
           />
           <span>
@@ -134,7 +155,7 @@ export function ContactForm({ content }: { content: SiteContent }) {
           </span>
         </label>
         {errors.consent ? (
-          <p className="text-status-danger pl-7 text-sm">{errors.consent}</p>
+          <p className="pl-7 text-sm text-status-danger">{errors.consent}</p>
         ) : null}
       </div>
 
@@ -164,10 +185,12 @@ function Field({
     <div className="grid gap-2">
       <Label htmlFor={htmlFor} className="text-sm font-semibold">
         {label}
-        {required ? <span className="text-status-danger ml-0.5">*</span> : null}
+        {required ? <span className="ml-0.5 text-status-danger">*</span> : null}
       </Label>
       {children}
-      {error ? <p className={cn("text-status-danger text-sm")}>{error}</p> : null}
+      {error ? (
+        <p className={cn("text-sm text-status-danger")}>{error}</p>
+      ) : null}
     </div>
   )
 }

@@ -8,19 +8,19 @@ import * as React from "react"
  */
 export function FaqAccordion({ items }: { items: { q: string; a: string }[] }) {
   return (
-    <div className="border-border divide-border divide-y border-t border-b">
+    <div className="divide-y divide-border border-t border-b border-border">
       {items.map((item) => (
         <details key={item.q} className="group">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-semibold [&::-webkit-details-marker]:hidden">
             <span className="text-balance">{item.q}</span>
             <span
               aria-hidden
-              className="text-primary shrink-0 text-2xl leading-none font-light transition-transform duration-200 ease-[var(--ease-standard)] group-open:rotate-45"
+              className="shrink-0 text-2xl leading-none font-light text-primary transition-transform duration-200 ease-[var(--ease-standard)] group-open:rotate-45"
             >
               +
             </span>
           </summary>
-          <p className="text-muted-foreground pb-5">{item.a}</p>
+          <p className="pb-5 text-muted-foreground">{item.a}</p>
         </details>
       ))}
     </div>

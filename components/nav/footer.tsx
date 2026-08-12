@@ -5,7 +5,13 @@ import { Container } from "@/components/ds/primitives"
 import { localePath, type Lang } from "@/content"
 import type { SiteContent } from "@/content/types"
 
-export function Footer({ lang, content }: { lang: Lang; content: SiteContent }) {
+export function Footer({
+  lang,
+  content,
+}: {
+  lang: Lang
+  content: SiteContent
+}) {
   const { company, footer, ui } = content
 
   return (
@@ -14,7 +20,9 @@ export function Footer({ lang, content }: { lang: Lang; content: SiteContent }) 
         <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
           <div className="grid content-start gap-4">
             <p className="text-xl font-bold text-white">{company.nameEn}</p>
-            <p className="text-brand-blue-300 text-sm font-semibold">{footer.tagline}</p>
+            <p className="text-sm font-semibold text-brand-blue-300">
+              {footer.tagline}
+            </p>
           </div>
 
           <div className="grid gap-10 sm:grid-cols-3">
@@ -39,8 +47,12 @@ export function Footer({ lang, content }: { lang: Lang; content: SiteContent }) 
 
         <div className="mt-14 grid gap-8 border-t border-white/14 pt-10 lg:grid-cols-[1.2fr_2fr]">
           <div className="grid content-start gap-1 text-sm">
-            <p className="font-semibold text-white">{ui.mainLine} {company.tel}</p>
-            <p>{ui.fax} {company.fax}</p>
+            <p className="font-semibold text-white">
+              {ui.mainLine} {company.tel}
+            </p>
+            <p>
+              {ui.fax} {company.fax}
+            </p>
             <p>
               <a
                 href={`mailto:${company.email}`}

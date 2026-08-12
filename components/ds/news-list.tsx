@@ -2,6 +2,7 @@ import { NewsCard } from "@/components/ds/cards"
 import { PageHeader } from "@/components/ds/page-header"
 import { Pagination } from "@/components/ds/pagination"
 import { Container, Section } from "@/components/ds/primitives"
+import { BlurFade } from "@/components/ui/blur-fade"
 import { localePath, type Lang } from "@/content"
 import type { SiteContent } from "@/content/types"
 
@@ -41,8 +42,10 @@ export function NewsListPage({
       <Section>
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((item) => (
-              <NewsCard key={item.id} item={item} lang={lang} />
+            {items.map((item, i) => (
+              <BlurFade key={item.id} inView delay={i * 0.06}>
+                <NewsCard item={item} lang={lang} />
+              </BlurFade>
             ))}
           </div>
 
