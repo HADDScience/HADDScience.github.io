@@ -41,7 +41,7 @@ export function NavBar({
   return (
     <header
       data-site-header
-      className="sticky top-0 z-40 border-b border-border bg-background/88 backdrop-blur-[16px] backdrop-saturate-180"
+      className="sticky top-0 z-40 border-b border-border bg-background/88 backdrop-blur-[16px] backdrop-saturate-180 over-hero:border-white/14 over-hero:bg-white/8 over-hero:backdrop-blur-[14px] over-hero:backdrop-saturate-100"
     >
       <Container className="flex h-19 items-center gap-10">
         <Link
@@ -49,14 +49,30 @@ export function NavBar({
           className="flex shrink-0 items-center"
           aria-label={companyName}
         >
-          <Image
-            src="/logo/logo-primary.png"
-            alt={companyName}
-            width={1000}
-            height={153}
-            priority
-            className="h-7 w-auto"
-          />
+          {/*
+            히어로 위에서는 흰 로고, 그 외에는 컬러 로고. 두 장을 겹쳐 두고 CSS 로만
+            바꾼다 — NavBar 에 state 를 두지 않기 위한 선택이다(레이아웃 공유 컴포넌트).
+            합쳐 28KB 이고 둘 다 스크롤 중에 쓰이므로 어차피 받게 된다.
+          */}
+          <span className="relative block h-7">
+            <Image
+              src="/logo/logo-primary.png"
+              alt={companyName}
+              width={1000}
+              height={153}
+              priority
+              className="h-7 w-auto transition-opacity duration-240 ease-[var(--ease-standard)] over-hero:opacity-0"
+            />
+            <Image
+              src="/logo/logo-white.png"
+              alt=""
+              aria-hidden
+              width={677}
+              height={104}
+              priority
+              className="absolute inset-0 h-7 w-auto opacity-0 transition-opacity duration-240 ease-[var(--ease-standard)] over-hero:opacity-100"
+            />
+          </span>
         </Link>
 
         {/* 데스크톱 */}
@@ -71,8 +87,8 @@ export function NavBar({
                   className={cn(
                     "border-b-2 pb-1 text-sm font-semibold tracking-wide transition-colors duration-120 ease-[var(--ease-standard)]",
                     active
-                      ? "border-primary text-primary"
-                      : "border-transparent text-foreground hover:border-primary hover:text-primary"
+                      ? "border-primary text-primary over-hero:border-white over-hero:text-white"
+                      : "border-transparent text-foreground hover:border-primary hover:text-primary over-hero:text-white/78 over-hero:hover:border-white over-hero:hover:text-white"
                   )}
                 >
                   {item.label}
@@ -100,7 +116,7 @@ export function NavBar({
           <Button
             nativeButton={false}
             size="sm"
-            className="hidden sm:inline-flex"
+            className="hidden sm:inline-flex over-hero:bg-white over-hero:text-brand-blue-900 over-hero:hover:bg-white/88"
             render={<Link href={localePath(lang, "/contact")} />}
           >
             {cta}
@@ -111,7 +127,7 @@ export function NavBar({
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={ui.menu}
-            className="flex size-10 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
+            className="flex size-10 items-center justify-center rounded-full border border-border text-foreground lg:hidden over-hero:border-white/40 over-hero:text-white"
           >
             <span aria-hidden className="text-lg leading-none">
               {open ? "×" : "≡"}

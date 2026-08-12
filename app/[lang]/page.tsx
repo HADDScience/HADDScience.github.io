@@ -42,11 +42,22 @@ export default async function HomePage({
         세 패널이 위로 올라온다. 섹션이 끝나면 배경이 위로 밀려 올라가고 아래의
         주요 수치 밴드부터 일반 스크롤로 이어진다.
       */}
+      {/*
+        첫 페인트 전에 속성을 심는다. NavReveal 의 effect 는 하이드레이션 이후에 돌기
+        때문에, 이 스크립트가 없으면 어두운 히어로 위에 흰 헤더가 한 번 번쩍인다.
+        테마 스크립트와 같은 no-flash 기법이다.
+      */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.body.dataset.navOverHero="true"`,
+        }}
+      />
+
       <ScrollStage lang={lang} content={c} />
 
       {/*
-        스테이지가 화면에 걸쳐 있는 동안 상단 네비를 숨긴다. 스테이지 끝이 헤더에 닿는
-        순간 — 즉 주요 수치 밴드가 시작될 때 — 네비가 다시 나타난다.
+        스테이지가 화면에 걸쳐 있는 동안 네비를 투명하게 얹는다. 스테이지 끝이 헤더에
+        닿는 순간 — 즉 주요 수치 밴드가 시작될 때 — 평소의 흰 반투명 네비로 돌아온다.
       */}
       <NavReveal stageId="scroll-stage" />
 

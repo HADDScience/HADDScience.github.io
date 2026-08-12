@@ -58,6 +58,8 @@ export function LanguageSwitcher({
       className={cn(
         "relative flex h-8 w-[4.25rem] shrink-0 items-center rounded-full border border-border",
         "bg-muted transition-colors duration-200 ease-[var(--ease-standard)]",
+        // 히어로 위에서는 투명 헤더에 맞춰 반전
+        "over-hero:border-white/40 over-hero:bg-white/12",
         "outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30"
       )}
     >
@@ -65,7 +67,7 @@ export function LanguageSwitcher({
       <span
         aria-hidden
         className={cn(
-          "absolute top-0.5 bottom-0.5 w-[calc(50%-0.125rem)] rounded-full bg-primary",
+          "absolute top-0.5 bottom-0.5 w-[calc(50%-0.125rem)] rounded-full bg-primary over-hero:bg-white/90",
           "transition-transform duration-200 ease-[var(--ease-standard)]",
           isOn ? "translate-x-[calc(100%+0.125rem)]" : "translate-x-0.5"
         )}
@@ -76,7 +78,9 @@ export function LanguageSwitcher({
           aria-hidden
           className={cn(
             "relative z-10 flex-1 text-center text-[11px] font-bold transition-colors duration-200 ease-[var(--ease-standard)]",
-            code === lang ? "text-primary-foreground" : "text-muted-foreground"
+            code === lang
+              ? "text-primary-foreground over-hero:text-brand-blue-900"
+              : "text-muted-foreground over-hero:text-white/60"
           )}
         >
           {LABELS[code]}

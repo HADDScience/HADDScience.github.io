@@ -67,7 +67,13 @@ const PORTRAIT = {
   ],
 }
 
-/** 네이비 스크림. 사진 위에 얹어 브랜드 색이 먼저 읽히게 한다. */
+/**
+ * 네이비 스크림.
+ *
+ * 처음에는 alpha 0.62 로 강하게 덮어 파란 워시처럼 보였다. 사용자 피드백("반투명 파랑
+ * 말고 투명에 블러로")에 따라 워시를 크게 줄이고, 대신 **블러와 밝기**로 사진을
+ * 눌러 배경으로 물러나게 한다. 파란 기운은 남기되 색면이 아니라 사진의 흐린 결로 읽힌다.
+ */
 async function scrim(width, height) {
   return sharp({
     create: {
@@ -75,7 +81,7 @@ async function scrim(width, height) {
       height,
       channels: 4,
       // --brand-blue-900 #062E63
-      background: { r: 6, g: 46, b: 99, alpha: 0.62 },
+      background: { r: 6, g: 46, b: 99, alpha: 0.26 },
     },
   })
     .png()
@@ -105,10 +111,10 @@ async function compose({ width, height, cells }, picks, out) {
       ...tiles,
       { input: await scrim(width, height), blend: "over" },
     ])
-    // 스크림을 얹은 뒤 한 번 더 눌러 사진이 앞으로 나오지 않게 한다.
-    .modulate({ brightness: 0.55, saturation: 0.5 })
-    // 아주 약한 블러. 텍스트 가독성을 돕고 사진의 세부가 시선을 끌지 않게 한다.
-    .blur(1.4)
+    // 색면 대신 밝기로 누른다. 대비는 여기서 확보한다.
+    .modulate({ brightness: 0.42, saturation: 0.62 })
+    // 블러가 이 배경의 주된 성격이다. 사진의 세부가 사라지고 흐린 결만 남는다.
+    .blur(18)
     .webp({ quality: 76 })
     .toFile(out)
 

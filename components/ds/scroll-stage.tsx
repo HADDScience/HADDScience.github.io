@@ -43,7 +43,11 @@ export function ScrollStage({
   )
 
   return (
-    <section id="scroll-stage" className="relative h-[300svh]">
+    // -mt-[77px]: 스티키 헤더는 투명해도 문서 흐름에서 자리를 그대로 차지한다.
+    // 77px = h-19(76px) + border-b(1px). 76px 만 당기면 1px 흰 줄이 남는다. 그만큼
+    // 끌어올려 배경이 화면 맨 위부터 채우게 한다. 스테이지 이후 콘텐츠도 76px 올라오는데,
+    // 네비가 되살아나는 시점이 정확히 "스테이지 끝 = 헤더 아래" 라서 겹치지 않는다.
+    <section id="scroll-stage" className="relative -mt-[77px] h-[300svh]">
       {/* 고정 배경 */}
       <div className="sticky top-0 h-svh overflow-hidden bg-brand-blue-900">
         {/*
@@ -70,10 +74,11 @@ export function ScrollStage({
           />
         </picture>
         {/*
-          텍스트가 놓이는 좌측·하단을 한 번 더 눌러 대비를 확보한다.
-          디자인시스템이 허용한 히어로 그라디언트(120° navy)를 이 자리에 쓴다.
+          텍스트가 놓이는 좌측을 눌러 대비를 확보한다. 디자인시스템이 허용한 히어로
+          그라디언트(120° navy)를 이 자리에 쓴다. 파란 색면으로 덮이지 않도록 알파를
+          낮게 잡았고, 어둡게 만드는 일은 콜라주 자체의 밝기·블러가 담당한다.
         */}
-        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(6,46,99,0.92)_0%,rgba(6,46,99,0.66)_55%,rgba(8,116,181,0.5)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(6,46,99,0.78)_0%,rgba(6,46,99,0.42)_55%,rgba(8,116,181,0.28)_100%)]" />
       </div>
 
       {/* 배경 위로 흐르는 패널 */}
@@ -215,7 +220,8 @@ export function ScrollStage({
 /** 패널 하나 = 화면 한 장. 스티키 헤더(76px) 아래로 내용이 들어가지 않게 여백을 준다. */
 function StagePanel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative flex h-svh items-center pt-19">
+    // 스테이지 구간에는 네비가 없으므로 헤더 회피 여백을 두지 않고 화면 전체에 중앙 정렬한다.
+    <div className="relative flex h-svh items-center">
       <Container>{children}</Container>
     </div>
   )

@@ -4,6 +4,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* 랜딩 히어로(스크롤 스테이지) 위에 네비가 얹혀 있는 상태.
+ * NavBar 에서 `over-hero:text-white` 처럼 쓴다. 상태는 body 속성이라 레이아웃 공유
+ * 컴포넌트인 NavBar 에 state 를 두지 않고도 페이지별로 스타일을 바꿀 수 있다. */
+@custom-variant over-hero (body[data-nav-over-hero="true"] &);
+
 /* ---------------------------------------------------------------------------
  * HADD SCIENCE 디자인시스템 매핑
  * shadcn preset b1aKNEYd6 (luma / mist / blue / large) 위에
@@ -282,21 +287,14 @@
     line-height: 1.28;
   }
 
-  /* 랜딩 스크롤 스테이지 구간에서는 상단 네비를 감춘다.
-     body[data-nav-hidden] 은 components/ds/nav-reveal.tsx 가 켜고 끈다.
-     visibility 까지 끄는 이유: opacity 0 만으로는 키보드 탭 순서에 남아
-     보이지 않는 링크에 포커스가 들어간다. */
+  /* 랜딩 스크롤 스테이지 위에서는 네비가 투명하게 얹힌다.
+     body[data-nav-over-hero] 는 components/ds/nav-reveal.tsx 가 켜고 끈다.
+     스테이지를 지나면 속성이 사라지고 평소의 흰 반투명 + 블러로 돌아온다. */
   header[data-site-header] {
     transition:
-      transform 240ms var(--ease-standard),
-      opacity 240ms var(--ease-standard),
-      visibility 240ms allow-discrete;
-  }
-  body[data-nav-hidden="true"] header[data-site-header] {
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+      background-color 240ms var(--ease-standard),
+      border-color 240ms var(--ease-standard),
+      backdrop-filter 240ms var(--ease-standard);
   }
 
   /* 모션을 줄이도록 설정한 사용자에게는 마퀴를 멈춘다.
