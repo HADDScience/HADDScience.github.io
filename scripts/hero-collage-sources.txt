@@ -1,0 +1,15 @@
+랜딩 히어로 배경 콜라주 원본 (NAS)
+scripts/build-hero-collage.mjs 로 생성. 사진을 바꾸려면 그 파일의 PICKS 를 고칠 것.
+
+1. 실험실 · 벤치 작업
+   /Users/jeong-uchang/NAS/HADD Science/(2026) 아이코어 과제 수행폴더/미국/미국 사진첩/셀렉본/20260618_104152.jpg
+2. 수상식 무대 · 창업인큐베이팅 대상
+   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/20251125_150404.jpg
+3. BIO USA 코리아관 발표
+   /Users/jeong-uchang/NAS/HADD Science/(2026) 아이코어 과제 수행폴더/미국/미국 사진첩/셀렉본/20260622_153409.jpg
+4. KASBP 심포지엄 · 네트워킹
+   /Users/jeong-uchang/NAS/HADD Science/(2026) 아이코어 과제 수행폴더/미국/미국 사진첩/셀렉본/20260619_225337.jpg
+5. 내부 미팅
+   /Users/jeong-uchang/NAS/HADD Science/(2026) 아이코어 과제 수행폴더/미국/미국 사진첩/셀렉본/KakaoTalk_20260629_154226590_11.jpg
+6. Aquillius 네트워킹 리셉션
+   /Users/jeong-uchang/NAS/HADD Science/(2026) 아이코어 과제 수행폴더/미국/미국 사진첩/셀렉본/20260618_190040.jpg

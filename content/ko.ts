@@ -154,6 +154,22 @@ export const ko: SiteContent = {
       ],
       cta: "회사 소개 보기",
     },
+    stage: {
+      vision: {
+        eyebrow: "Vision",
+        title: ["ADD the values to", "Human life."],
+        body: [
+          "바이오테크놀로지와 생명과학 분야에서 도전을 이어갑니다.",
+          "최첨단 기술과 창의적인 접근으로 인류 건강을 위한 배양액 솔루션을 만듭니다.",
+        ],
+      },
+      lineup: {
+        eyebrow: "Product lineup",
+        title: "연구가 필요한 형태로, 네 가지",
+        description: "제형만 고르면 3차원 배양이 시작됩니다.",
+      },
+      scrollHint: "스크롤",
+    },
     partners: {
       eyebrow: "Partners",
       title: "함께 만드는 기술의 미래",

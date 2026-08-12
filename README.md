@@ -142,6 +142,29 @@ JPEG 이 서브되는 증상).
 어두운 판 위에서는 읽히지 않고, 디자인시스템도 이 판을 UI 표면이 아니라 촬영 표면
 (`white or a light-grey plate`)으로 규정한다. `.dark` 에서 재정의하지 말 것.
 
+## 랜딩 첫 화면 (ScrollStage)
+
+`components/ds/scroll-stage.tsx` — 배경은 고정된 채 패널 세 장(히어로 · 비전 · 제품
+라인업)이 위로 흐르고, 섹션이 끝나면 배경이 밀려 올라가면서 주요 수치 밴드로 이어진다.
+
+섹션 높이를 `300svh` 로 두고 그 안에 `sticky top-0 h-svh` 배경을 깐 것이 전부다.
+**JS 스크롤 계산을 쓰지 않는다** — 정적 배포에서 JS 가 늦게 붙어도 레이아웃이 무너지지
+않는다. 패널 등장만 BlurFade 가 맡는다. 실측: 패널 3×807px, scrollY 800·1600 에서
+배경 `top:0` 고정, 2400 에서 `-709px` 로 이탈.
+
+배경 콜라주는 `scripts/build-hero-collage.mjs` 가 만든다. 사내 활동 사진 6장(실험실 ·
+수상식 무대 · BIO USA 코리아관 · 심포지엄 · 내부 미팅 · 네트워킹)에 네이비 스크림을
+씌워 어둡게 눌렀다. 흰 글자 대비 8.89:1. 원본은 NAS 에 있고 레포에 넣지 않는다 —
+경로는 `scripts/hero-collage-sources.txt` 에 있다(`public/` 에 두면 배포 사이트로
+NAS 경로가 노출된다).
+
+> 디자인시스템은 "No patterns, no textures, no stock-photo backgrounds" 라고 못박는다.
+> 여기 쓰는 것은 스톡이 아닌 자사 기록이고 네이비 스크림 아래 텍스처로만 쓰이므로
+> 히어로 한 곳에 한해 확장했다. 다른 곳에 사진 배경을 늘리지 말 것.
+
+와이드/세로 두 장을 `<picture>` 의 `source media` 로 갈랐다. next/image 두 개를
+`hidden`/`sm:hidden` 으로 감추면 **숨긴 쪽도 다운로드된다**(데스크톱에서 76KB 낭비).
+
 ## 위치 지도
 
 `components/ds/location-map.tsx` 는 사업장 3곳을 탭으로 고르고 지도 하나를 바꿔 보여준다.

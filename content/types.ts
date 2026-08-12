@@ -144,6 +144,15 @@ export interface SiteContent {
     productSection: { eyebrow: string; title: string; heading: string; cta: string }
     newsSection: { eyebrow: string; title: string; description: string; cta: string }
     aboutSection: { eyebrow: string; title: string; body: string[]; cta: string }
+    /**
+     * 랜딩 첫 화면의 고정 배경 위로 올라오는 패널들.
+     * 히어로는 heroSlides[0] 을 그대로 쓰고, 아래 둘은 이 스테이지 전용 카피다.
+     */
+    stage: {
+      vision: { eyebrow: string; title: string[]; body: string[] }
+      lineup: { eyebrow: string; title: string; description: string }
+      scrollHint: string
+    }
     partners: { eyebrow: string; title: string; description: string }
     ctaBand: { tag: string; title: string; description: string; cta: string }
   }

@@ -2,8 +2,8 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { NewsCard, ProductCard } from "@/components/ds/cards"
-import { Hero } from "@/components/ds/hero"
 import { PartnerMarquee } from "@/components/ds/partner-marquee"
+import { ScrollStage } from "@/components/ds/scroll-stage"
 import {
   Container,
   Eyebrow,
@@ -30,18 +30,18 @@ export default async function HomePage({
 
   const c = getContent(lang)
   const path = (href: string) => localePath(lang, href)
-  const [lead, ...restSlides] = c.home.heroSlides
+  // 첫 슬라이드는 ScrollStage 의 히어로 패널이 쓰고, 나머지는 아래 제품 밴드가 쓴다.
+  const [, ...restSlides] = c.home.heroSlides
   const addgel = c.products[0]
 
   return (
     <>
-      <Hero
-        title={lead.title}
-        description={lead.description}
-        cta={{ label: c.home.productSection.cta, href: path("/products") }}
-        secondaryCta={{ label: c.navCta, href: path("/contact") }}
-        priority
-      />
+      {/*
+        첫 화면: 배경(자사 활동 사진 콜라주)은 고정된 채 히어로 · 비전 · 제품 라인업
+        세 패널이 위로 올라온다. 섹션이 끝나면 배경이 위로 밀려 올라가고 아래의
+        주요 수치 밴드부터 일반 스크롤로 이어진다.
+      */}
+      <ScrollStage lang={lang} content={c} />
 
       {/* 지표 밴드 */}
       <Section compact className="border-b border-border">

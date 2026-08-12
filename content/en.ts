@@ -165,6 +165,22 @@ export const en: SiteContent = {
       ],
       cta: "About the company",
     },
+    stage: {
+      vision: {
+        eyebrow: "Vision",
+        title: ["ADD the values to", "Human life."],
+        body: [
+          "We keep taking on the challenges of biotechnology and life sciences.",
+          "With advanced technology and a creative approach, we build culture media solutions for human health.",
+        ],
+      },
+      lineup: {
+        eyebrow: "Product lineup",
+        title: "Four forms, shaped by how research works",
+        description: "Pick a format and 3D culture begins.",
+      },
+      scrollHint: "Scroll",
+    },
     partners: {
       eyebrow: "Partners",
       title: "Building the future of technology together",
