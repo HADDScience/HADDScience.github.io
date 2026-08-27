@@ -38,5 +38,6 @@ function preferredLang(request: NextRequest) {
 
 export const config = {
   // _next 내부 자산, public 파일, 파일 확장자가 있는 요청은 건드리지 않는다.
-  matcher: ["/((?!_next|.*\\..*).*)"],
+  // /admin 은 언어 라우팅 밖에 있는 관리 화면이라 함께 제외한다.
+  matcher: ["/((?!_next|admin|.*\\..*).*)"],
 }

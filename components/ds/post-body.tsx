@@ -13,7 +13,17 @@ import type { PostBlock } from "@/content/types"
  * `prose` 같은 타이포그래피 플러그인을 쓰지 않는 이유: 디자인시스템이 본문 크기 ·
  * 행간 · 여백을 이미 정해 두었고, 플러그인 기본값이 그것을 덮어쓴다.
  */
-export function PostBody({ blocks }: { blocks: PostBlock[] }) {
+export function PostBody({
+  blocks,
+  resolveSrc,
+}: {
+  blocks: PostBlock[]
+  /**
+   * 이미지 경로를 실제로 불러올 주소로 바꾼다. 관리자 미리보기에서 아직 커밋하지
+   * 않은 이미지를 blob: URL 로 보여주기 위한 것으로, 사이트에서는 쓰지 않는다.
+   */
+  resolveSrc?: (src: string) => string
+}) {
   // alt 가 비어 있을 때 쓸 "n/총장수" 를 미리 계산한다. 렌더 중 카운터를 증가시키면
   // 리렌더에서 값이 어긋난다(react-hooks/immutability).
   const imageOrdinals = new Map<number, number>()
@@ -71,7 +81,7 @@ export function PostBody({ blocks }: { blocks: PostBlock[] }) {
               <BlurFade key={i} inView delay={delay}>
                 <figure className="grid gap-2">
                   <Image
-                    src={block.src}
+                    src={resolveSrc ? resolveSrc(block.src) : block.src}
                     alt={alt}
                     width={1080}
                     height={1080}

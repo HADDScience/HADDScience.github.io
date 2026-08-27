@@ -74,6 +74,16 @@ export interface PostLocale {
   /** 목록 카드 · 검색 · OG 설명에 쓰는 한두 문장. */
   summary: string
   blocks: PostBlock[]
+  /**
+   * 이 번역이 만들어진 원문의 해시. 원문이 바뀌면 값이 달라지고, CI 의 번역 스크립트가
+   * 그 차이를 보고 다시 번역한다. 원문 로케일에는 없다.
+   */
+  translatedFrom?: string
+  /**
+   * 사람이 직접 손댄 번역. 자동 번역이 덮어쓰지 않는다.
+   * 관리자 페이지에서 원문이 아닌 언어를 편집하면 켜진다.
+   */
+  manual?: boolean
 }
 
 /**

@@ -1,9 +1,8 @@
 import type { Metadata } from "next"
-import { Geist_Mono } from "next/font/google"
-import localFont from "next/font/local"
 import { notFound } from "next/navigation"
 
 import "../globals.css"
+import { fontMono, pretendard } from "../fonts"
 import { Footer } from "@/components/nav/footer"
 import { NavBar } from "@/components/nav/nav-bar"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -11,26 +10,6 @@ import { AVAILABLE_LANGS, isLang } from "@/content"
 import { getContent } from "@/content/server"
 import { cn } from "@/lib/utils"
 
-// 디자인시스템 tokens/fonts.css 의 @font-face 와 동일한 가변 축(45~920).
-const pretendard = localFont({
-  src: "../fonts/PretendardVariable.woff2",
-  weight: "45 920",
-  style: "normal",
-  display: "swap",
-  variable: "--font-sans",
-  fallback: [
-    "-apple-system",
-    "BlinkMacSystemFont",
-    "Apple SD Gothic Neo",
-    "Malgun Gothic",
-    "sans-serif",
-  ],
-})
-
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
 
 export function generateStaticParams() {
   return AVAILABLE_LANGS.map((lang) => ({ lang }))

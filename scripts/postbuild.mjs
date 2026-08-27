@@ -104,7 +104,14 @@ function sitemapFrom(files) {
   const urls = files
     .filter((f) => path.basename(f) === "index.html")
     .map((f) => path.relative(OUT, path.dirname(f)))
-    .filter((rel) => rel !== "" && !rel.startsWith("_") && !rel.startsWith("404"))
+    // /admin 은 사내 관리 화면이다. 색인되어서도, 사이트맵에 실려서도 안 된다.
+    .filter(
+      (rel) =>
+        rel !== "" &&
+        !rel.startsWith("_") &&
+        !rel.startsWith("404") &&
+        !rel.startsWith("admin")
+    )
     .map((rel) => `${SITE_URL}/${rel.split(path.sep).join("/")}/`)
     .sort()
 
@@ -137,7 +144,7 @@ async function main() {
   } else {
     await fs.writeFile(
       path.join(OUT, "robots.txt"),
-      `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`
+      `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${SITE_URL}/sitemap.xml\n`
     )
     await fs.writeFile(path.join(OUT, "sitemap.xml"), sitemapFrom(files))
     console.log("postbuild(production): robots Allow + sitemap.xml 생성")
@@ -151,6 +158,7 @@ async function main() {
     "_next",
     `${DEFAULT_LANG}/index.html`,
     "en/index.html",
+    "admin/index.html",
   ]
   const missing = []
   for (const c of checks) if (!(await exists(path.join(OUT, c)))) missing.push(c)
