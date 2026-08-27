@@ -438,6 +438,10 @@ export const en: SiteContent = {
     breadcrumb: "NEWS",
     headline: "News & Media",
     description: "Updates and press coverage from HADD Science.",
+    prevPost: "Previous",
+    nextPost: "Next",
+    backToList: "Back to list",
+    readOriginal: "Read the original",
     items: [],
   },
 

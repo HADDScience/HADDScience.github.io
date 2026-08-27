@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { NewsListPage } from "@/components/ds/news-list"
-import { getContent, isLang } from "@/content"
+import { isLang } from "@/content"
+import { getContent } from "@/content/server"
 
 export async function generateMetadata({
   params,

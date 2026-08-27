@@ -7,7 +7,8 @@ import "../globals.css"
 import { Footer } from "@/components/nav/footer"
 import { NavBar } from "@/components/nav/nav-bar"
 import { ThemeProvider } from "@/components/theme-provider"
-import { AVAILABLE_LANGS, getContent, isLang } from "@/content"
+import { AVAILABLE_LANGS, isLang } from "@/content"
+import { getContent } from "@/content/server"
 import { cn } from "@/lib/utils"
 
 // 디자인시스템 tokens/fonts.css 의 @font-face 와 동일한 가변 축(45~920).

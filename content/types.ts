@@ -53,18 +53,57 @@ export interface ProductFamily {
   variants: ProductVariant[]
 }
 
+/**
+ * 기사 본문 블록.
+ *
+ * 아임웹 시절 기사는 본문이 통째로 카드뉴스 이미지였다(텍스트 0자). 그래서 스크린리더도
+ * 검색엔진도 내용을 읽지 못했다. 앞으로 쓰는 글은 text 블록을 본문으로 삼고, 이미지는
+ * 보조로 붙인다.
+ *
+ * text 블록은 자동 번역 대상이고, image 블록은 언어별로 직접 넣는다 — 카드뉴스처럼
+ * 이미지 안에 글자가 박히는 경우가 있어 공용으로 쓸 수 없기 때문이다.
+ */
+export type PostBlock =
+  | { type: "heading"; text: string }
+  | { type: "text"; text: string }
+  | { type: "quote"; text: string; cite?: string }
+  | { type: "image"; src: string; alt: string; caption?: string }
+
+export interface PostLocale {
+  title: string
+  /** 목록 카드 · 검색 · OG 설명에 쓰는 한두 문장. */
+  summary: string
+  blocks: PostBlock[]
+}
+
+/**
+ * 기사 한 건. `content/data/news/<id>.json` 한 파일이 이 모양이다.
+ * 모든 언어를 한 파일에 담아 원문과 번역이 항상 같은 커밋에서 움직이게 한다.
+ */
+export interface Post {
+  id: string
+  /** 표시용 날짜 문자열. `2026.07.08` */
+  date: string
+  /** 번역 원본 언어. 번역 스크립트가 이 언어를 읽어 나머지를 채운다. */
+  sourceLang: Lang
+  /** 목록 카드 썸네일. 언어 공통이다. */
+  thumbnail: string
+  /** 본문을 아직 옮기지 않은 글은 아임웹 원문으로 보낸다. 옮기면 null 로 바꾼다. */
+  externalHref: string | null
+  content: Partial<Record<Lang, PostLocale>>
+}
+
+/** 목록에서 쓰는 표시용 모델. Post 에서 언어 하나를 골라 만든다. */
 export interface NewsItem {
   id: string
   date: string
   title: string
   image: string
   href: string
-  /**
-   * 카드뉴스 이미지 경로. 이 배열이 있으면 사이트 안에 상세 페이지(`/news/<id>`)가 생기고,
-   * 없으면 `href` 가 아임웹 원본 게시글을 가리킨다.
-   * 아임웹 뉴스 게시글은 본문이 전부 1024×1024 카드뉴스 이미지이고 텍스트가 없다.
-   */
-  cards?: string[]
+  /** 목록 카드에 보여줄 한두 문장. 없으면 제목만 나온다. */
+  summary?: string
+  /** 사이트 안에 상세 페이지가 있는가. 없으면 `href` 가 아임웹 원문을 가리킨다. */
+  hasArticle: boolean
 }
 
 export interface LibraryItem {
@@ -198,6 +237,11 @@ export interface SiteContent {
     breadcrumb: string
     headline: string
     description: string
+    /** 기사 상세의 이전/다음 글 · 원문 링크 라벨 */
+    prevPost: string
+    nextPost: string
+    backToList: string
+    readOriginal: string
     items: NewsItem[]
   }
   library: {

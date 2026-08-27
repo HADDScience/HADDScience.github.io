@@ -403,6 +403,10 @@ export const ko: SiteContent = {
     breadcrumb: "NEWS",
     headline: "News & Media",
     description: "하드사이언스의 소식과 보도자료입니다.",
+    prevPost: "이전 글",
+    nextPost: "다음 글",
+    backToList: "목록으로",
+    readOriginal: "원문 보기",
     items: [],
   },
 

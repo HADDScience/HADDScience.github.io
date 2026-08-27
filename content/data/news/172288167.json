@@ -1,0 +1,111 @@
+{
+  "id": "172288167",
+  "date": "2026.07.08",
+  "sourceLang": "ko",
+  "thumbnail": "/news/thumb/172288167.webp",
+  "externalHref": null,
+  "content": {
+    "ko": {
+      "title": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍",
+      "summary": "",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "/news/172288167/01.webp",
+          "alt": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍 — 1/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/02.webp",
+          "alt": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍 — 2/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/03.webp",
+          "alt": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍 — 3/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/04.webp",
+          "alt": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍 — 4/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/05.webp",
+          "alt": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍 — 5/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/06.webp",
+          "alt": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍 — 6/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/07.webp",
+          "alt": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍 — 7/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/08.webp",
+          "alt": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍 — 8/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/09.webp",
+          "alt": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍 — 9/9"
+        }
+      ]
+    },
+    "en": {
+      "title": "[BIO USA] HADD Science steps onto the world’s largest bio stage 🌍",
+      "summary": "",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "/news/172288167/01.webp",
+          "alt": "[BIO USA] HADD Science steps onto the world’s largest bio stage 🌍 — 1/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/02.webp",
+          "alt": "[BIO USA] HADD Science steps onto the world’s largest bio stage 🌍 — 2/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/03.webp",
+          "alt": "[BIO USA] HADD Science steps onto the world’s largest bio stage 🌍 — 3/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/04.webp",
+          "alt": "[BIO USA] HADD Science steps onto the world’s largest bio stage 🌍 — 4/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/05.webp",
+          "alt": "[BIO USA] HADD Science steps onto the world’s largest bio stage 🌍 — 5/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/06.webp",
+          "alt": "[BIO USA] HADD Science steps onto the world’s largest bio stage 🌍 — 6/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/07.webp",
+          "alt": "[BIO USA] HADD Science steps onto the world’s largest bio stage 🌍 — 7/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/08.webp",
+          "alt": "[BIO USA] HADD Science steps onto the world’s largest bio stage 🌍 — 8/9"
+        },
+        {
+          "type": "image",
+          "src": "/news/172288167/09.webp",
+          "alt": "[BIO USA] HADD Science steps onto the world’s largest bio stage 🌍 — 9/9"
+        }
+      ]
+    }
+  }
+}

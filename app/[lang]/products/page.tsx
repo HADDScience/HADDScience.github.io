@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { ProductFamilyPage } from "@/components/ds/product-family"
-import { getContent, isLang } from "@/content"
+import { isLang } from "@/content"
+import { getContent } from "@/content/server"
 
 export async function generateMetadata({
   params,

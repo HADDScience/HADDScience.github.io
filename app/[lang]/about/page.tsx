@@ -11,7 +11,8 @@ import {
   SurfaceCard,
 } from "@/components/ds/primitives"
 import { Button } from "@/components/ui/button"
-import { getContent, isLang, localePath } from "@/content"
+import { isLang, localePath } from "@/content"
+import { getContent } from "@/content/server"
 
 export async function generateMetadata({
   params,

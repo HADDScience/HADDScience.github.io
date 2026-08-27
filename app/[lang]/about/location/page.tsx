@@ -4,7 +4,8 @@ import { notFound } from "next/navigation"
 import { LocationMap } from "@/components/ds/location-map"
 import { PageHeader } from "@/components/ds/page-header"
 import { Container, Section, SurfaceCard } from "@/components/ds/primitives"
-import { getContent, isLang, localePath } from "@/content"
+import { isLang, localePath } from "@/content"
+import { getContent } from "@/content/server"
 
 export async function generateMetadata({
   params,

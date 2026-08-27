@@ -5,7 +5,8 @@ import { TeamCard } from "@/components/ds/cards"
 import { PageHeader } from "@/components/ds/page-header"
 import { Container, Section } from "@/components/ds/primitives"
 import { BlurFade } from "@/components/ui/blur-fade"
-import { getContent, isLang, localePath } from "@/content"
+import { isLang, localePath } from "@/content"
+import { getContent } from "@/content/server"
 
 export async function generateMetadata({
   params,

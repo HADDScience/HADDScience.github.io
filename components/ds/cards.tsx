@@ -183,6 +183,12 @@ export function NewsCard({
           <p className="line-clamp-3 font-semibold text-balance group-hover:text-primary">
             {item.title}
           </p>
+          {/* 요약은 관리자 페이지에서 쓴 글에만 있다. 카드뉴스 이관분은 비어 있다. */}
+          {item.summary ? (
+            <p className="line-clamp-2 text-sm text-muted-foreground">
+              {item.summary}
+            </p>
+          ) : null}
         </div>
       </Link>
     </SurfaceCard>

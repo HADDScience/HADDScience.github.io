@@ -4,7 +4,8 @@ import { notFound } from "next/navigation"
 import { PageHeader } from "@/components/ds/page-header"
 import { Container, Section, SurfaceCard } from "@/components/ds/primitives"
 import { ContactForm } from "@/components/forms/contact-form"
-import { getContent, isLang } from "@/content"
+import { isLang } from "@/content"
+import { getContent } from "@/content/server"
 
 export async function generateMetadata({
   params,

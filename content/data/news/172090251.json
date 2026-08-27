@@ -1,0 +1,81 @@
+{
+  "id": "172090251",
+  "date": "2026.06.29",
+  "sourceLang": "ko",
+  "thumbnail": "/news/thumb/172090251.webp",
+  "externalHref": null,
+  "content": {
+    "ko": {
+      "title": "🧬 KASBP 2026 Spring Symposium",
+      "summary": "",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "/news/172090251/01.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 1/6"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090251/02.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 2/6"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090251/03.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 3/6"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090251/04.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 4/6"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090251/05.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 5/6"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090251/06.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 6/6"
+        }
+      ]
+    },
+    "en": {
+      "title": "🧬 KASBP 2026 Spring Symposium",
+      "summary": "",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "/news/172090251/01.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 1/6"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090251/02.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 2/6"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090251/03.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 3/6"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090251/04.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 4/6"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090251/05.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 5/6"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090251/06.webp",
+          "alt": "🧬 KASBP 2026 Spring Symposium — 6/6"
+        }
+      ]
+    }
+  }
+}

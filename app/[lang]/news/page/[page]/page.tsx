@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { NewsListPage, newsTotalPages } from "@/components/ds/news-list"
-import { AVAILABLE_LANGS, getContent, isLang } from "@/content"
+import { AVAILABLE_LANGS, isLang } from "@/content"
+import { getContent } from "@/content/server"
 
 export function generateStaticParams() {
   const params: { lang: string; page: string }[] = []

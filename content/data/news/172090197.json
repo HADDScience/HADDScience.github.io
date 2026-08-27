@@ -1,0 +1,91 @@
+{
+  "id": "172090197",
+  "date": "2026.06.29",
+  "sourceLang": "ko",
+  "thumbnail": "/news/thumb/172090197.webp",
+  "externalHref": null,
+  "content": {
+    "ko": {
+      "title": "🎤 Aquillius ‘Symbiosyx’ 피칭, 샌디에이고 바이오 허브에 하드사이언스가 찾아가다",
+      "summary": "",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "/news/172090197/01.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ 피칭, 샌디에이고 바이오 허브에 하드사이언스가 찾아가다 — 1/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/02.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ 피칭, 샌디에이고 바이오 허브에 하드사이언스가 찾아가다 — 2/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/03.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ 피칭, 샌디에이고 바이오 허브에 하드사이언스가 찾아가다 — 3/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/04.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ 피칭, 샌디에이고 바이오 허브에 하드사이언스가 찾아가다 — 4/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/05.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ 피칭, 샌디에이고 바이오 허브에 하드사이언스가 찾아가다 — 5/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/06.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ 피칭, 샌디에이고 바이오 허브에 하드사이언스가 찾아가다 — 6/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/07.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ 피칭, 샌디에이고 바이오 허브에 하드사이언스가 찾아가다 — 7/7"
+        }
+      ]
+    },
+    "en": {
+      "title": "🎤 Aquillius ‘Symbiosyx’ pitch — HADD Science heads to the San Diego bio hub",
+      "summary": "",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "/news/172090197/01.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ pitch — HADD Science heads to the San Diego bio hub — 1/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/02.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ pitch — HADD Science heads to the San Diego bio hub — 2/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/03.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ pitch — HADD Science heads to the San Diego bio hub — 3/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/04.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ pitch — HADD Science heads to the San Diego bio hub — 4/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/05.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ pitch — HADD Science heads to the San Diego bio hub — 5/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/06.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ pitch — HADD Science heads to the San Diego bio hub — 6/7"
+        },
+        {
+          "type": "image",
+          "src": "/news/172090197/07.webp",
+          "alt": "🎤 Aquillius ‘Symbiosyx’ pitch — HADD Science heads to the San Diego bio hub — 7/7"
+        }
+      ]
+    }
+  }
+}
