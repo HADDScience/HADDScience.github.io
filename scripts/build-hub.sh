@@ -22,9 +22,13 @@ git clone --quiet --depth 1 --branch "$REF" https://github.com/HADDScience/hub.g
 cd "$WORK/hub"
 corepack enable >/dev/null 2>&1 || true
 pnpm install --frozen-lockfile --silent
-NEXT_PUBLIC_OMNIS_URL="${HUB_OMNIS_URL:-https://haddscience.vercel.app/omnis}" \
-NEXT_PUBLIC_SSO_APP_ID="${HUB_SSO_APP_ID:-hub-vercel}" \
-NEXT_PUBLIC_BASE_PATH=/hub \
+# Vercel 의 Next 빌더는 환경변수로 이 프로젝트의 outputFileTracingRoot(/vercel/path0)를
+# 주입한다. 허브는 /tmp 에서 빌드되므로 그 값을 물려받으면 "distDir 가 projectPath 밖"
+# 이라며 Turbopack 이 죽는다. 허브 빌드는 빈 환경에서 돌린다 — 필요한 건 PATH 와 아래 셋뿐.
+env -i PATH="$PATH" HOME="$HOME" \
+  NEXT_PUBLIC_OMNIS_URL="${HUB_OMNIS_URL:-https://haddscience.vercel.app/omnis}" \
+  NEXT_PUBLIC_SSO_APP_ID="${HUB_SSO_APP_ID:-hub-vercel}" \
+  NEXT_PUBLIC_BASE_PATH=/hub \
   pnpm build
 
 cd - >/dev/null
