@@ -15,8 +15,11 @@ import { CARD_SIZE } from "@/lib/cardnews"
  * Safari 는 foreignObject 안의 폰트·이미지 처리가 불안정하므로 **Chrome 을 권장**한다.
  */
 
-/** 노드 안의 이미지와 문서 폰트가 전부 준비될 때까지 기다린다. 미완 상태로 찍으면 빈 칸이 남는다. */
-async function waitForAssets(node: HTMLElement) {
+/**
+ * 노드 안의 이미지와 문서 폰트가 전부 준비될 때까지 기다린다. 미완 상태로 찍으면 빈 칸이 남는다.
+ * 조판 검사(`lintCard`)도 같은 조건을 요구한다 — 폰트가 바뀌면 줄바꿈이 바뀌기 때문이다.
+ */
+export async function waitForAssets(node: HTMLElement) {
   await document.fonts.ready
   const imgs = Array.from(node.querySelectorAll("img"))
   await Promise.all(
