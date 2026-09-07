@@ -38,3 +38,6 @@ next-env.d.ts
 # 도구 상태 (Playwright MCP, oh-my-claudecode)
 /.playwright-mcp/
 /.omc/
+
+# Vercel 프로젝트 링크
+.vercel
