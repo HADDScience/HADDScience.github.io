@@ -9,9 +9,8 @@ const nextConfig: NextConfig = {
    */
 
   // 상위 디렉터리의 lockfile 때문에 워크스페이스 루트가 홈 디렉터리로 잘못 추론된다.
-  turbopack: {
-    root: path.resolve(import.meta.dirname),
-  },
+  // 로컬에서만 고정한다 — Vercel 빌드에서는 이 값이 "projectPath 밖" 으로 판정돼 빌드가 죽는다.
+  ...(process.env.VERCEL ? {} : { turbopack: { root: path.resolve(import.meta.dirname) } }),
 
   images: {
     // 최적화를 켜지 않는다. 사진은 관리 화면이 올릴 때 이미 1600px webp 로 줄여 두고,
