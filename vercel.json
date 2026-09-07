@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
   "buildCommand": "bash scripts/build-hub.sh && pnpm build",
   "rewrites": [
     { "source": "/omnis", "destination": "https://omnis-hadd.vercel.app/omnis" },
