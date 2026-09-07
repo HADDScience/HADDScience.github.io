@@ -9,7 +9,7 @@
  * ip-platform 과 같은 구조이고, 정본은 Omnis 저장소의 `mydocs/tech/auth-architecture.md`.
  *
  * 흐름:
- *   1. startSignIn()  → https://omnis-hadd.vercel.app/sso/authorize?app=website-admin&next=/admin/
+ *   1. startSignIn()  → https://haddscience.vercel.app/omnis/sso/authorize?app=website-admin-vercel&next=/admin/
  *   2. Omnis 가 로그인을 확인하고 /admin/#sso=<grant> 로 돌려보낸다 (60초·1회용)
  *   3. takeGrantFromHash() → redeemGrant() → 8시간짜리 세션 토큰 + 프로필
  *   4. 새로고침마다 verifyStoredSession() 으로 아직 유효한지 되묻는다
@@ -22,8 +22,13 @@
  * 화면에는 "Omnis" 라는 이름이 나가지 않는다. 사용자에게는 「HADD 계정」이다.
  */
 
+/**
+ * 발급자 주소. 경로(/omnis)가 붙어 있다 — haddscience.vercel.app 이 /omnis/* 를 Omnis 로
+ * rewrite 하므로, 한 도메인에서는 같은 오리진 호출이 되고 github.io 처럼 다른 오리진에서는
+ * CORS 로 간다. `new URL("/path", OMNIS_ORIGIN)` 은 이 경로를 지우므로 문자열로 이어 붙인다.
+ */
 export const OMNIS_ORIGIN =
-  process.env.NEXT_PUBLIC_OMNIS_URL ?? "https://omnis-hadd.vercel.app"
+  process.env.NEXT_PUBLIC_OMNIS_URL ?? "https://haddscience.vercel.app/omnis"
 
 /** next.config.ts 에 basePath 는 없고 관리 화면은 /admin 아래다. */
 const BASE_PATH = "/admin"
@@ -38,6 +43,8 @@ const BASE_PATH = "/admin"
 export function appId(): string {
   if (typeof window === "undefined") return "website-admin"
   switch (window.location.origin) {
+    case "https://haddscience.vercel.app":
+      return "website-admin-vercel"
     case "https://haddscience.github.io":
       return "website-admin"
     case "https://haddscience.com":
@@ -69,7 +76,7 @@ export interface OmnisSession {
 
 export function startSignIn(returnPath: string = `${BASE_PATH}/`): void {
   if (typeof window === "undefined") return
-  const url = new URL("/sso/authorize", OMNIS_ORIGIN)
+  const url = new URL(`${OMNIS_ORIGIN}/sso/authorize`)
   url.searchParams.set("app", appId())
   url.searchParams.set("next", returnPath)
   window.location.assign(url.toString())
