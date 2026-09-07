@@ -26,6 +26,7 @@ import type {
   CardDeck,
   CardImage,
   CardImageRatio,
+  Lang,
   Post,
   PostBlock,
   PostLocale,
@@ -35,6 +36,8 @@ import { prepareImage } from "@/lib/admin-image"
 import {
   emptyLocale,
   savePost,
+  translateForDeck,
+  translationTargets,
   type PendingUpload,
 } from "@/lib/admin-posts"
 import {
@@ -69,13 +72,29 @@ import { cn } from "@/lib/utils"
  * 자유 캔버스를 주면 브랜드가 흐트러지고 편집기 자체가 큰 제품이 된다.
  *
  * 저장은 덱을 브라우저에서 1080×1080 으로 구워 이미지 블록으로 게시하고, 원본 덱은
- * `post.deck` 에 함께 남겨 다시 열어 고칠 수 있게 한다. 영문 기사는 같은 이미지를 쓴다.
+ * `post.deck` 에 함께 남겨 다시 열어 고칠 수 있게 한다.
+ *
+ * 영문 카드는 사람이 만들지 않는다 — 관리 화면에서는 한 언어만 쓴다는 원칙이 카드뉴스에도
+ * 같다. 원문을 구운 뒤 번역 API 로 영문 덱을 받아 한 번 더 굽고, 그 이미지를 `content.en`
+ * 에 넣는다. 저장하는 덱은 원문 하나뿐이다 — 원문을 고치면 영문은 다시 번역되므로 영문
+ * 덱을 남겨 두면 낡은 사본이 하나 더 생길 뿐이다.
  */
 
 type Upload = { bytes: Uint8Array; previewUrl: string }
-type Progress = { kind: "png" | "save"; done: number; total: number }
+/** `translate` 는 영문 덱을 굽는 동안. `total === 0` 이면 아직 번역 API 를 기다리는 중이다. */
+type Progress = { kind: "png" | "save" | "translate"; done: number; total: number }
+/** 굽는 무대에 올릴 덱. `id` 는 덱이 바뀔 때 무대를 통째로 다시 세우기 위한 것. */
+type Stage = { id: number; deck: CardDeck }
 
 const PREVIEW_MAX = 540
+
+function progressLabel(p: Progress): string {
+  if (p.kind === "translate" && p.total === 0) return "영문 만드는 중"
+  if (p.done < p.total) {
+    return `${p.kind === "translate" ? "영문 카드 " : ""}렌더 중 ${p.done + 1}/${p.total}`
+  }
+  return p.kind === "png" ? "묶는 중" : "저장 중"
+}
 
 export function DeckEditor({
   cfg,
@@ -96,6 +115,7 @@ export function DeckEditor({
   const [deck, setDeck] = React.useState<CardDeck>(initial.deck ?? newDeck())
   const [selected, setSelected] = React.useState(0)
   const [progress, setProgress] = React.useState<Progress | null>(null)
+  const [stage, setStage] = React.useState<Stage | null>(null)
   const [uploads, setUploads] = React.useState<Map<string, Upload>>(new Map())
 
   const objectUrls = React.useRef<string[]>([])
@@ -200,27 +220,34 @@ export function DeckEditor({
 
   /* ------------------------------------------------------------ 렌더 */
 
-  const stageNodes = React.useRef<(HTMLDivElement | null)[]>([])
-  const stageReady = React.useRef<(() => void) | null>(null)
-  const onStageReady = React.useCallback(() => {
-    stageReady.current?.()
+  const stageSeq = React.useRef(0)
+  const stageReady = React.useRef<((nodes: HTMLDivElement[]) => void) | null>(null)
+  const onStageReady = React.useCallback((nodes: HTMLDivElement[]) => {
+    stageReady.current?.(nodes)
     stageReady.current = null
   }, [])
 
   /**
-   * 덱 전체를 화면 밖에 원본 크기로 그려 한 장씩 캔버스로 굽는다.
+   * 덱 하나를 화면 밖에 원본 크기로 그려 한 장씩 캔버스로 굽는다.
    * 미리보기는 축소된 상태라 그대로 찍을 수 없어 따로 무대를 세운다.
+   *
+   * 굽는 덱을 인자로 받는 이유는 저장할 때 원문과 번역본을 잇달아 굽기 때문이다.
+   * 무대는 `id` 를 key 로 삼아 통째로 다시 세운다 — 카드 수가 같으면 React 가 DOM 을
+   * 재사용해 새 덱의 노드를 못 받는다.
    */
-  async function renderAll(kind: Progress["kind"]): Promise<HTMLCanvasElement[]> {
-    const total = deck.cards.length
-    stageNodes.current = []
+  async function renderAll(
+    target: CardDeck,
+    kind: Progress["kind"]
+  ): Promise<HTMLCanvasElement[]> {
+    const total = target.cards.length
     setProgress({ kind, done: 0, total })
-    await new Promise<void>((resolve) => {
+    const nodes = await new Promise<HTMLDivElement[]>((resolve) => {
       stageReady.current = resolve
+      setStage({ id: ++stageSeq.current, deck: target })
     })
     const out: HTMLCanvasElement[] = []
     for (let i = 0; i < total; i++) {
-      const node = stageNodes.current[i]
+      const node = nodes[i]
       if (!node) throw new Error(`${i + 1}번 카드를 그리지 못했습니다`)
       out.push(await rasterizeCard(node))
       setProgress({ kind, done: i + 1, total })
@@ -228,10 +255,26 @@ export function DeckEditor({
     return out
   }
 
+  /** 구운 캔버스를 업로드 목록과 이미지 블록으로 바꾼다. `lang` 은 원문이면 비운다. */
+  async function bake(
+    canvases: HTMLCanvasElement[],
+    target: CardDeck,
+    lang?: Lang
+  ): Promise<{ outputs: PendingUpload[]; blocks: PostBlock[] }> {
+    const outputs: PendingUpload[] = []
+    const blocks: PostBlock[] = []
+    for (let i = 0; i < canvases.length; i++) {
+      const src = cardOutputSrc(post.id, i + 1, lang)
+      outputs.push({ src, bytes: await canvasToBytes(canvases[i], "image/webp", 0.9) })
+      blocks.push({ type: "image", src, alt: cardText(target.cards[i], target) })
+    }
+    return { outputs, blocks }
+  }
+
   async function downloadPng() {
     if (progress) return
     try {
-      const canvases = await renderAll("png")
+      const canvases = await renderAll(deck, "png")
       const files = await Promise.all(
         canvases.map(async (c, i) => ({
           name: `${post.id}-${String(i + 1).padStart(2, "0")}.png`,
@@ -246,6 +289,7 @@ export function DeckEditor({
       })
     } finally {
       setProgress(null)
+      setStage(null)
     }
   }
 
@@ -261,15 +305,36 @@ export function DeckEditor({
     }
 
     try {
-      const canvases = await renderAll("save")
-
-      const outputs: PendingUpload[] = []
-      const blocks: PostBlock[] = []
-      for (let i = 0; i < canvases.length; i++) {
-        const src = cardOutputSrc(post.id, i + 1)
-        outputs.push({ src, bytes: await canvasToBytes(canvases[i], "image/webp", 0.9) })
-        blocks.push({ type: "image", src, alt: cardText(deck.cards[i], deck) })
+      const canvases = await renderAll(deck, "save")
+      const source = await bake(canvases, deck)
+      const outputs: PendingUpload[] = [...source.outputs]
+      const content: Post["content"] = {
+        ...post.content,
+        [lang]: { ...locale, blocks: source.blocks },
       }
+
+      /* 영문 카드. 번역이 실패해도 원문 저장은 막지 않는다 — 사람이 쓴 글을 잃는 것이
+         번역이 하루 늦는 것보다 훨씬 비싸다. 다시 저장하면 다시 시도한다. */
+      let translationFailed = false
+      for (const to of translationTargets(lang)) {
+        try {
+          setProgress({ kind: "translate", done: 0, total: 0 })
+          const t = await translateForDeck(cfg, { from: lang, to, locale, deck })
+          const enCanvases = await renderAll(t.deck, "translate")
+          const en = await bake(enCanvases, t.deck, to)
+          outputs.push(...en.outputs)
+          content[to] = {
+            title: t.locale.title,
+            summary: t.locale.summary,
+            blocks: en.blocks,
+            // 서버가 준 원문 해시를 그대로 둔다. 저장할 때 같은 원문을 다시 번역하지 않는다.
+            ...(t.locale.translatedFrom ? { translatedFrom: t.locale.translatedFrom } : {}),
+          }
+        } catch {
+          translationFailed = true
+        }
+      }
+      setProgress({ kind: "save", done: canvases.length, total: canvases.length })
 
       // 대표 이미지: 직접 고른 것이 있으면 그것, 없으면 첫 카드.
       const pickedThumb = uploads.get(thumbSrc)
@@ -286,15 +351,13 @@ export function DeckEditor({
 
       // 다시 저장하면 카드 이미지는 새 이름으로 다시 올라간다. 옛 카드 파일은 NAS 에 남는데,
       // 그 정리는 Omnis 쪽 정리 작업의 몫이다 — 여기서는 어떤 파일이 있는지 알 수 없다.
-      const next: Post = {
-        ...post,
-        thumbnail: thumbSrc,
-        deck,
-        content: { ...post.content, [lang]: { ...locale, blocks } },
-      }
+      // `deck` 은 원문만 저장한다. 번역 덱은 원문에서 언제든 다시 만들 수 있다.
+      const next: Post = { ...post, thumbnail: thumbSrc, deck, content }
       const order = isNew ? [post.id, ...initialOrder] : initialOrder
       const result = await savePost(cfg, { post: next, uploads: [...sources, ...outputs] })
-      if (result.translationFailures.length) {
+      if (translationFailed) {
+        toast.warning("영문 카드는 만들지 못했습니다 — 다시 저장하면 다시 시도합니다")
+      } else if (result.translationFailures.length) {
         toast.warning("저장했지만 제목·요약 번역은 실패했습니다", {
           description: `${result.translationFailures.join(" · ")} — 다시 저장하면 다시 시도합니다.`,
         })
@@ -310,6 +373,7 @@ export function DeckEditor({
       })
     } finally {
       setProgress(null)
+      setStage(null)
     }
   }
 
@@ -334,11 +398,7 @@ export function DeckEditor({
         {progress ? (
           <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
             <Loader2 className="size-4 animate-spin" />
-            {progress.done < progress.total
-              ? `렌더 중 ${progress.done + 1}/${progress.total}`
-              : progress.kind === "save"
-                ? "저장 중"
-                : "묶는 중"}
+            {progressLabel(progress)}
           </span>
         ) : null}
         <Button variant="outline" size="sm" onClick={() => void downloadPng()} disabled={busy}>
@@ -354,6 +414,10 @@ export function DeckEditor({
           저장하고 반영
         </Button>
       </div>
+
+      <p className="-mt-3 text-xs text-muted-foreground">
+        영문은 저장할 때 자동으로 만들어집니다 — 한국어만 채우시면 됩니다.
+      </p>
 
       {/* 메타 */}
       <section className="grid gap-4 rounded-lg border border-border bg-card p-6 sm:grid-cols-[200px_1fr]">
@@ -492,11 +556,11 @@ export function DeckEditor({
         ) : null}
       </div>
 
-      {progress ? (
+      {stage ? (
         <ExportStage
-          deck={deck}
+          key={stage.id}
+          deck={stage.deck}
           resolveSrc={resolveSrc}
-          nodes={stageNodes}
           onReady={onStageReady}
         />
       ) : null}
@@ -1135,21 +1199,23 @@ function Preview({
 /**
  * 내보내기 무대. 화면 밖에 덱 전체를 원본 크기로 그린다.
  * display:none 이나 visibility:hidden 은 레이아웃·이미지 로딩이 멈춰 찍을 수 없다.
+ *
+ * 그려진 노드는 `onReady` 로 올려 보낸다 — 부모가 ref 를 들고 있으면 덱이 바뀔 때
+ * 어느 덱의 노드인지 헷갈린다. 무대는 덱마다 key 로 새로 세운다.
  */
 function ExportStage({
   deck,
   resolveSrc,
-  nodes,
   onReady,
 }: {
   deck: CardDeck
   resolveSrc: (src: string) => string
-  nodes: React.MutableRefObject<(HTMLDivElement | null)[]>
-  onReady: () => void
+  onReady: (nodes: HTMLDivElement[]) => void
 }) {
+  const nodes = React.useRef<(HTMLDivElement | null)[]>([])
   React.useEffect(() => {
-    onReady()
-  }, [onReady])
+    onReady(nodes.current.filter((n): n is HTMLDivElement => n !== null))
+  }, [onReady, deck])
   return (
     <div aria-hidden style={{ position: "fixed", left: -20000, top: 0 }}>
       {deck.cards.map((c, i) => (

@@ -168,9 +168,16 @@ export function deckImageSrcs(deck: CardDeck): string[] {
   return out
 }
 
-/** 렌더 결과 파일 경로. 언어 공통이라 `card-NN` 으로 두고 일반 업로드(`ko-NN`)와 구분한다. */
-export function cardOutputSrc(postId: string, index: number): string {
-  return `/news/${postId}/card-${String(index).padStart(2, "0")}.webp`
+/**
+ * 렌더 결과 파일 경로. 일반 업로드(`ko-NN`)와 구분하려고 `card-NN` 으로 둔다.
+ *
+ * 카드 안에 글자가 박히므로 언어마다 다른 파일이 나온다. 원문은 접두 없이(`card-01`),
+ * 번역은 언어를 끼워(`card-en-01`) 서로 다른 임시 경로가 되게 한다 — 저장할 때 이 경로를
+ * 표로 삼아 실제 URL 로 바꾸므로 겹치면 한쪽이 다른 쪽 사진을 가리킨다.
+ */
+export function cardOutputSrc(postId: string, index: number, lang?: string): string {
+  const n = String(index).padStart(2, "0")
+  return `/news/${postId}/card-${lang ? `${lang}-` : ""}${n}.webp`
 }
 
 /** 편집기에서 고른 원본 사진의 경로. */

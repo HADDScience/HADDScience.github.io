@@ -76,3 +76,110 @@ $ pnpm typecheck && pnpm lint
 > eslint
 (출력 없음 — 오류 0)
 ```
+
+## 2. 편집기 자동 영문 카드
+
+`components/admin/deck-editor.tsx` · `lib/admin-posts.ts` · `lib/cardnews.ts`.
+
+저장 흐름: 원문 덱을 굽는다 → `POST /translate` → 돌아온 영문 덱을 **한 번 더 굽는다** →
+영문 카드 webp 를 업로드 목록에 넣고 `content.en` 을 그 이미지 블록으로 채운다.
+`post.deck` 에는 원문 덱만 저장한다.
+
+- 무대(`ExportStage`)가 덱을 인자로 받게 고쳤다. 카드 수가 같으면 React 가 DOM 을
+  재사용해 두 번째 덱의 노드를 못 잡으므로 무대를 `id` key 로 통째로 다시 세운다.
+- 카드 파일 경로는 `cardOutputSrc(postId, index, lang?)` 로 언어를 끼운다
+  (`card-01.webp` / `card-en-01.webp`). 겹치면 저장할 때의 경로→URL 치환이 어긋난다.
+- 응답 locale 의 `translatedFrom` 은 그대로 두고 `manual` 은 넣지 않는다.
+
+### Playwright — Omnis 를 목킹한 저장 흐름
+
+`page.route("https://haddscience.vercel.app/omnis/**")` 로 `/api/sso/verify` 200 ·
+`GET /posts` `[]` · `POST /media` → `{url}` · `POST /translate` → headline/body 를
+`"EN: " + 원문` 으로 바꾼 덱 · `PUT /posts/<id>` → 본문 기록. localStorage 에
+`hadd.sso.session.website-admin-dev` 세션을 심고 `/admin/` → 새 카드뉴스 → 제목 입력 →
+카드 2 에 제목·본문 → 저장.
+
+```
+$ node scratchpad/agentB/deck-editor.mjs
+로그인 후 화면: true
+상단 안내 문구 보임: true
+토스트: ["저장했습니다\n사이트에 곧 반영됩니다."]
+
+업로드 7 건
+  #1 24668 bytes · image/webp · x-post-id=20260907-1819
+  #2 24972 bytes · image/webp · x-post-id=20260907-1819
+  #3 13644 bytes · image/webp · x-post-id=20260907-1819
+  #4 24668 bytes · image/webp · x-post-id=20260907-1819
+  #5 25684 bytes · image/webp · x-post-id=20260907-1819
+  #6 13644 bytes · image/webp · x-post-id=20260907-1819
+  #7 13838 bytes · image/webp · x-post-id=20260907-1819
+
+PUT 본문 요약
+  content 언어: [ 'ko', 'en' ]
+  [ko] title="부산대 콜로퀴엄 참가" blocks=3 translatedFrom=undefined manual=undefined
+      1. image src=/omnis/api/website/media/20260907-1819/m1.webp alt="카드뉴스. haddscience 알아보기. @haddscience"
+      2. image src=/omnis/api/website/media/20260907-1819/m2.webp alt="chapter 01. 🎤 연구실을 찾아갔습니다. 허채정 대표가 부산대학교 나노과학기술대학 콜로퀴엄에서 발표했습니다."
+      3. image src=/omnis/api/website/media/20260907-1819/m3.webp alt="대표 한마디 💬. 허채정 HADD Science 대표"
+  [en] title="EN title" blocks=3 translatedFrom="abcd1234abcd1234" manual=undefined
+      1. image src=/omnis/api/website/media/20260907-1819/m4.webp alt="카드뉴스. haddscience 알아보기. @haddscience"
+      2. image src=/omnis/api/website/media/20260907-1819/m5.webp alt="chapter 01. EN: 🎤 연구실을 찾아갔습니다. EN: 허채정 대표가 부산대학교 나노과학기술대학 콜로퀴엄에서 발표했습니다."
+      3. image src=/omnis/api/website/media/20260907-1819/m6.webp alt="대표 한마디 💬. 허채정 HADD Science 대표"
+  deck.cards[1].headline: "🎤 연구실을 찾아갔습니다"
+  deck.cards[1].body: "허채정 대표가 부산대학교 나노과학기술대학 콜로퀴엄에서 발표했습니다."
+  thumbnail: /omnis/api/website/media/20260907-1819/m7.webp
+```
+
+- 업로드 7 건 = ko 카드 3 + en 카드 3 + 썸네일 1.
+- `content.en.blocks` 3개 전부 image, 2번 alt 에 `"EN: "`, `translatedFrom` 은 서버가 준
+  `"abcd1234abcd1234"` 그대로, `manual` 없음.
+- `content.ko.blocks` 3개, `deck` 은 원문(한국어)이다.
+- en #1·#3 의 바이트 수가 ko 와 같은 것은 목이 headline/body 만 바꾸기 때문이다(표지·한마디는 원문 그대로).
+  실제로 글이 바뀐 #5 만 크기가 다르다(24972 → 25684) — 영문 덱을 다시 구웠다는 증거다.
+
+### 번역 API 가 502 일 때
+
+```
+$ node scratchpad/agentB/deck-editor.mjs --translate-502
+로그인 후 화면: true
+상단 안내 문구 보임: true
+토스트: ["영문 카드는 만들지 못했습니다 — 다시 저장하면 다시 시도합니다"]
+
+업로드 4 건
+  #1 24668 bytes · image/webp · x-post-id=20260907-1819
+  #2 24972 bytes · image/webp · x-post-id=20260907-1819
+  #3 13644 bytes · image/webp · x-post-id=20260907-1819
+  #4 13838 bytes · image/webp · x-post-id=20260907-1819
+
+PUT 본문 요약
+  content 언어: [ 'ko' ]
+  [ko] title="부산대 콜로퀴엄 참가" blocks=3 translatedFrom=undefined manual=undefined
+  deck.cards[1].headline: "🎤 연구실을 찾아갔습니다"
+  thumbnail: /omnis/api/website/media/20260907-1819/m4.webp
+```
+
+원문은 그대로 저장되고 경고 토스트만 뜬다.
+
+화면 캡처: `scratchpad/agentB/editor-before-save-ok.png` · `editor-after-save-ok.png` ·
+`editor-before-save-502.png` · `editor-after-save-502.png`.
+
+## 3. 품질 게이트
+
+```
+$ pnpm typecheck && pnpm lint && pnpm build
+> tsc --noEmit
+> eslint
+(typecheck · lint 출력 없음 — 오류 0)
+
+...
+├ ○ /admin
+├ ○ /admin/lint
+├ ƒ /api/revalidate
+├ ○ /robots.txt
+└ ○ /sitemap.xml                      1m      1y
+```
+
+## 남은 것
+
+- 옛 카드뉴스 10건 · 82장을 덱 JSON 으로 옮기는 일(계획서 3번째 줄)은 이 작업 밖이다.
+- 번역 API(`POST /api/website/translate`)의 실제 동작은 Omnis 쪽 구현에 달려 있다.
+  여기서 확인한 것은 목킹한 응답에 대한 편집기의 동작뿐이다.

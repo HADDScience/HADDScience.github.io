@@ -1,6 +1,7 @@
+import { AVAILABLE_LANGS } from "@/content"
 import { api } from "@/lib/admin-api"
 import type { ApiConfig } from "@/lib/admin-config"
-import type { Lang, Post, PostLocale } from "@/content/types"
+import type { CardDeck, Lang, Post, PostLocale } from "@/content/types"
 
 /**
  * 관리자 페이지의 기사 저장소 계층 — Omnis API 위에 얹힌다.
@@ -76,6 +77,42 @@ export function newPost(id: string, date: string, sourceLang: Lang): Post {
     externalHref: null,
     content: { [sourceLang]: emptyLocale() },
   }
+}
+
+/* --------------------------------------------------------------- 번역 */
+
+/** 원문 말고 콘텐츠가 준비된 언어들. 지금은 하나뿐이지만 늘어나도 그대로 돈다. */
+export function translationTargets(sourceLang: Lang): Lang[] {
+  return AVAILABLE_LANGS.filter((l) => l !== sourceLang)
+}
+
+export interface DeckTranslation {
+  locale: PostLocale
+  deck: CardDeck
+}
+
+/**
+ * 카드뉴스 한 건을 다른 언어로 번역한다. 제목·요약과 덱의 글자를 함께 넘겨야
+ * 카드 안의 문장과 목록 제목이 같은 어조로 나온다.
+ *
+ * `blocks` 는 빈 배열로 보낸다 — 본문은 카드 이미지라 번역할 글이 없고, 돌아온 덱을
+ * 브라우저가 다시 구워 만든 이미지 블록이 그 자리를 채운다.
+ * 응답의 `translatedFrom` 은 그대로 저장한다. 서버가 저장할 때 같은 원문을 다시
+ * 번역하지 않게 하는 표식이다.
+ */
+export async function translateForDeck(
+  cfg: ApiConfig,
+  opts: { from: Lang; to: Lang; locale: PostLocale; deck: CardDeck }
+): Promise<DeckTranslation> {
+  return api<DeckTranslation>(cfg, "/translate", {
+    method: "POST",
+    body: JSON.stringify({
+      from: opts.from,
+      to: opts.to,
+      locale: { title: opts.locale.title, summary: opts.locale.summary, blocks: [] },
+      deck: opts.deck,
+    }),
+  })
 }
 
 /* --------------------------------------------------------------- 저장 */
