@@ -10,6 +10,7 @@ const eslintConfig = defineConfig([
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
+    "public/hub/**", // 빌드 때 받아 넣는 허브 산출물
     "build/**",
     "next-env.d.ts",
   ]),

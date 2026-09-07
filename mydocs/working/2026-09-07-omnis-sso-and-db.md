@@ -66,6 +66,14 @@ typecheck 0 · lint 0
 /omnis/sso/authorize?app=website-admin-vercel → 307 /omnis/login (등록됨)
 ```
 
+## 추가 (저녁) — 사진 플레이스홀더
+
+사진을 아직 안 넣은 카드도 레이아웃이 보이게 미리보기에 점선 자리를 그린다. 결과물에 찍히면 안 되므로
+빈 자리(`is-empty`)는 기본 CSS 가 숨기고, 편집기의 `CardPreview` 만 `placeholders` 로 켠다.
+standard · image-top · split · overlay · quote 다섯 레이아웃에서 비율 라벨("사진 4:3")과 함께 보이는 것을
+스크린샷으로 확인했다. 굽는 무대는 이 클래스가 없어 CSS 상 숨겨진다 — PNG 를 직접 열어 확인하지는 못했다
+(브라우저 도구가 끊겼다).
+
 ## 확인하지 못한 것
 
 실제 HADD 계정으로 `/admin` 로그인 → 기사 저장 → 사이트 반영. AI 에게 계정이 없다.

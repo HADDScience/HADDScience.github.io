@@ -59,7 +59,16 @@ function Rich({
 
 type Resolve = ((src: string) => string) | undefined
 
-/** 고정 종횡비 박스 안의 사진. 비율이 달라도 카드 안 위치·영역이 일정하다. */
+/** 비율 문자열("4/3")을 사람이 읽는 라벨("4:3")로. 플레이스홀더에 찍힌다. */
+const ratioLabel = (ratio: string) => ratio.replace("/", ":")
+
+/**
+ * 고정 종횡비 박스 안의 사진. 비율이 달라도 카드 안 위치·영역이 일정하다.
+ *
+ * 사진이 없으면 빈 상자(`is-empty`)를 그린다. 기본 CSS 는 이 상자를 숨기므로 결과물(PNG · 저장)에는
+ * 나오지 않고, 편집기 미리보기(`cn-placeholders`)에서만 점선 자리로 보인다 — 사진을 아직 안 넣었을 때도
+ * 레이아웃이 어떻게 생겼는지 알 수 있게.
+ */
 function ImgBox({
   image,
   ratio,
@@ -71,7 +80,15 @@ function ImgBox({
   resolveSrc: Resolve
   className?: string
 }) {
-  if (!image?.src) return null
+  if (!image?.src) {
+    return (
+      <div
+        className={className ? `imgbox is-empty ${className}` : "imgbox is-empty"}
+        style={{ aspectRatio: ratio }}
+        data-label={`사진 ${ratioLabel(ratio)}`}
+      />
+    )
+  }
   return (
     <div
       className={className ? `imgbox ${className}` : "imgbox"}
@@ -144,16 +161,14 @@ function Quote({
               <Rich className="attrib" text={card.attrib} />
             </>
           ) : null}
-          {card.image?.src ? (
-            <>
-              <div className="gap-m" />
-              <ImgBox
-                image={card.image}
-                ratio={card.image.ratio ?? defaultRatio(card)}
-                resolveSrc={resolveSrc}
-              />
-            </>
-          ) : null}
+          <div className={card.image?.src ? "slot" : "slot is-empty"}>
+            <div className="gap-m" />
+            <ImgBox
+              image={card.image}
+              ratio={card.image?.ratio ?? defaultRatio(card)}
+              resolveSrc={resolveSrc}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -187,16 +202,14 @@ function Standard({
               <Rich className="subtitle" text={card.subtitle} />
             </>
           ) : null}
-          {card.image?.src ? (
-            <>
-              <div className="gap-m" />
-              <ImgBox
-                image={card.image}
-                ratio={card.image.ratio ?? defaultRatio(card)}
-                resolveSrc={resolveSrc}
-              />
-            </>
-          ) : null}
+          <div className={card.image?.src ? "slot" : "slot is-empty"}>
+            <div className="gap-m" />
+            <ImgBox
+              image={card.image}
+              ratio={card.image?.ratio ?? defaultRatio(card)}
+              resolveSrc={resolveSrc}
+            />
+          </div>
           {/* 상단 정렬 고정, 아래 여백 유동 */}
           <div className="grow" />
           <Body text={card.body} />
@@ -223,15 +236,13 @@ function ImageTop({
   return (
     <div className="frame">
       <div className="card">
-        {card.image?.src ? (
-          <div className="hero">
-            <ImgBox
-              image={card.image}
-              ratio={card.image.ratio ?? defaultRatio(card)}
-              resolveSrc={resolveSrc}
-            />
-          </div>
-        ) : null}
+        <div className={card.image?.src ? "hero" : "hero is-empty"}>
+          <ImgBox
+            image={card.image}
+            ratio={card.image?.ratio ?? defaultRatio(card)}
+            resolveSrc={resolveSrc}
+          />
+        </div>
         <div className="pad col grow" style={{ justifyContent: "center" }}>
           {card.badge ? (
             <>
@@ -286,7 +297,12 @@ function Split({
                 style={{ objectPosition: card.image.pos ?? "center" }}
               />
             </div>
-          ) : null}
+          ) : (
+            <div
+              className={contain ? "split-media contain is-empty" : "split-media is-empty"}
+              data-label="세로 사진"
+            />
+          )}
           <div className="split-body">
             {card.badge ? (
               <>
@@ -339,7 +355,9 @@ function Overlay({
               draggable={false}
               style={{ objectPosition: card.image.pos ?? "center" }}
             />
-          ) : null}
+          ) : (
+            <div className="overlay-empty is-empty" data-label="사진 전체" />
+          )}
           <div className="overlay-shade" />
           <div className="overlay-text">
             {card.badge ? <Rich className="badge" text={card.badge} /> : null}
@@ -524,12 +542,14 @@ export interface CardFaceProps {
   resolveSrc?: (src: string) => string
   /** 래스터화할 때 잡을 루트(1080×1080). */
   ref?: React.Ref<HTMLDivElement>
+  /** 사진이 없는 자리를 점선 상자로 보여준다. 편집기 미리보기용 — 굽는 무대에서는 끈다. */
+  placeholders?: boolean
 }
 
 /** 실제 크기(1080×1080)의 카드. 미리보기는 `CardPreview` 로 줄여서 쓴다. */
-export function CardFace({ card, deck, resolveSrc, ref }: CardFaceProps) {
+export function CardFace({ card, deck, resolveSrc, ref, placeholders }: CardFaceProps) {
   return (
-    <div className="cn-root" ref={ref}>
+    <div className={placeholders ? "cn-root cn-placeholders" : "cn-root"} ref={ref}>
       {card.type === "cover" ? (
         <Cover card={card} deck={deck} />
       ) : card.type === "quote" ? (
@@ -548,6 +568,8 @@ export interface CardPreviewProps {
   /** 화면에서 차지할 한 변의 길이(px). */
   width: number
   className?: string
+  /** 사진이 없는 자리를 점선 상자로. 편집기에서는 켠다. */
+  placeholders?: boolean
 }
 
 /**
@@ -560,6 +582,7 @@ export function CardPreview({
   resolveSrc,
   width,
   className,
+  placeholders,
 }: CardPreviewProps) {
   const scale = width / CARD_SIZE
   return (
@@ -575,7 +598,7 @@ export function CardPreview({
           transformOrigin: "top left",
         }}
       >
-        <CardFace card={card} deck={deck} resolveSrc={resolveSrc} />
+        <CardFace card={card} deck={deck} resolveSrc={resolveSrc} placeholders={placeholders} />
       </div>
     </div>
   )

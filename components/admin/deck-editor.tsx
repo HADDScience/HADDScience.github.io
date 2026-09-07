@@ -543,7 +543,7 @@ function CardList({
               className="grid grid-cols-[56px_1fr] items-center gap-2 text-left"
             >
               <span className="overflow-hidden rounded-[8px] bg-muted">
-                <CardPreview card={c} deck={deck} resolveSrc={resolveSrc} width={56} />
+                <CardPreview card={c} deck={deck} resolveSrc={resolveSrc} width={56} placeholders />
               </span>
               <span className="min-w-0">
                 <span className="block truncate text-sm font-semibold">{cardTitle(c)}</span>
@@ -1109,7 +1109,7 @@ function Preview({
       </p>
       <div ref={box} className="grid gap-3">
         <div className="overflow-hidden rounded-lg border border-border">
-          <CardPreview card={card} deck={deck} resolveSrc={resolveSrc} width={width} />
+          <CardPreview card={card} deck={deck} resolveSrc={resolveSrc} width={width} placeholders />
         </div>
         {overflow ? (
           <p

@@ -439,3 +439,30 @@
   margin-top: 16px;
   word-break: keep-all;
 }
+
+/* 사진 플레이스홀더 — 편집기 미리보기에서만.
+   결과물에 찍히면 안 되므로 기본은 숨기고, 루트에 cn-placeholders 가 있을 때만 점선 자리로 그린다.
+   overlay 는 자리 자체가 카드 전체라 상자가 아니라 배경만 칠한다. */
+.cn-root .is-empty { display: none; }
+/* slot 은 사진이 있을 때 레이아웃에 아무 영향도 주지 않는 껍데기다(display:contents).
+   사진이 없으면 통째로 숨겨져 결과물이 예전과 같고, 미리보기에서만 다시 펼친다. */
+.cn-root .slot { display: contents; }
+.cn-root.cn-placeholders .slot.is-empty { display: contents; }
+.cn-root.cn-placeholders .hero.is-empty { display: block; }
+.cn-root.cn-placeholders .imgbox.is-empty,
+.cn-root.cn-placeholders .split-media.is-empty {
+  display: flex; align-items: center; justify-content: center;
+  background: #EFF7FC;
+  border: 6px dashed #9CC9F0;
+  color: #0C4DA2; font-weight: 700; font-size: 32px; letter-spacing: .02em;
+}
+.cn-root.cn-placeholders .imgbox.is-empty::after,
+.cn-root.cn-placeholders .split-media.is-empty::after,
+.cn-root.cn-placeholders .overlay-empty::after { content: attr(data-label); }
+.cn-root.cn-placeholders .split-media.is-empty { border-radius: 0; }
+.cn-root.cn-placeholders .overlay-empty {
+  display: flex; align-items: flex-start; justify-content: center;
+  position: absolute; inset: 0; padding-top: 72px;
+  background: repeating-linear-gradient(135deg, #DCEBF7 0 24px, #EFF7FC 24px 48px);
+  color: #0C4DA2; font-weight: 700; font-size: 32px;
+}
