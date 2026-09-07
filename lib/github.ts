@@ -1,23 +1,27 @@
 /**
- * 브라우저에서 직접 쓰는 GitHub REST 클라이언트.
+ * 브라우저에서 쓰는 GitHub REST 클라이언트 — Omnis 프록시를 거친다.
  *
  * 왜 서버가 없나 — 이 사이트는 `output: "export"` 정적 사이트다. 관리자 페이지도
- * 같은 정적 번들 안에 들어가므로 백엔드를 둘 수 없다. GitHub REST API 는 CORS 를
- * 허용하므로 브라우저가 직접 커밋할 수 있다.
+ * 같은 정적 번들 안에 들어가므로 백엔드를 둘 수 없다.
  *
- * 왜 OAuth 가 아니라 PAT 인가 — OAuth 웹 플로우는 client_secret 을 쥔 토큰 교환
- * 서버가 있어야 한다(Decap CMS 가 별도 도메인에 프록시를 두는 이유). 사내 3~5명이
- * 쓰는 도구를 위해 서버를 하나 더 운영하는 것보다, 이 저장소에만 권한을 준
- * fine-grained PAT 을 각자 발급해 쓰는 편이 운영 부담이 적다.
- * 토큰은 그 사람의 브라우저 localStorage 에만 있고 어디로도 전송되지 않는다.
+ * 왜 프록시인가 — 처음에는 사람마다 fine-grained PAT 을 발급해 api.github.com 을
+ * 직접 불렀다. 지금은 로그인이 Omnis 자체계정(SSO)이고, GitHub 토큰은 Omnis 서버
+ * 환경변수 하나로 모았다. 브라우저는 SSO 세션 토큰만 들고 Omnis 의
+ * `/api/website/github/<GitHub 경로>` 를 부르고, Omnis 가 세션을 확인한 뒤 서버
+ * 토큰으로 GitHub 에 대신 요청한다. 커밋 작성자는 프록시가 세션 사용자로 덮어쓴다.
+ *
+ * 경로·응답 형식은 GitHub API 와 같다. 이 파일의 나머지는 프록시 이전과 같다.
  */
 
-const API = "https://api.github.com"
+import { appId, OMNIS_ORIGIN } from "@/lib/omnis-auth"
+
+const API = `${OMNIS_ORIGIN}/api/website/github`
 
 export interface GhConfig {
   owner: string
   repo: string
   branch: string
+  /** Omnis SSO 세션 토큰. GitHub 토큰이 아니다. */
   token: string
 }
 
@@ -41,7 +45,7 @@ async function gh<T>(
     headers: {
       Accept: "application/vnd.github+json",
       Authorization: `Bearer ${cfg.token}`,
-      "X-GitHub-Api-Version": "2022-11-28",
+      "X-Sso-App": appId(),
       ...(init?.body ? { "Content-Type": "application/json" } : {}),
       ...init?.headers,
     },
@@ -57,33 +61,6 @@ async function gh<T>(
     throw new GhError(detail, res.status)
   }
   return (await res.json()) as T
-}
-
-/* ---------------------------------------------------------------- 인증 */
-
-export interface GhIdentity {
-  login: string
-  name: string | null
-  avatarUrl: string
-  /** 저장소에 푸시 권한이 있는가. 없으면 읽기만 가능하다. */
-  canWrite: boolean
-}
-
-export async function verify(cfg: GhConfig): Promise<GhIdentity> {
-  const user = await gh<{ login: string; name: string | null; avatar_url: string }>(
-    cfg,
-    "/user"
-  )
-  const repo = await gh<{ permissions?: { push?: boolean } }>(
-    cfg,
-    `/repos/${cfg.owner}/${cfg.repo}`
-  )
-  return {
-    login: user.login,
-    name: user.name,
-    avatarUrl: user.avatar_url,
-    canWrite: Boolean(repo.permissions?.push),
-  }
 }
 
 /* ---------------------------------------------------------------- 읽기 */

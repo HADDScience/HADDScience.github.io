@@ -294,7 +294,7 @@ git add -A && git commit && git push   # main 푸시 → GitHub Pages 자동 배
 | --- | --- |
 | **git 이 데이터베이스** | 누가 언제 무엇을 고쳤는지가 커밋 히스토리에 그대로 남고, 되돌리기가 `revert` 다. 별도 DB·백업 체계를 운영하지 않아도 된다. |
 | **Decap CMS 를 쓰지 않음** | OAuth 웹 플로우에 `client_secret` 을 쥔 토큰 교환 서버가 필요해 별도 도메인에 프록시를 하나 더 띄워야 한다. 게다가 UI 테마가 로고 교체 수준이라 디자인시스템을 입힐 수 없다. |
-| **PAT 로그인** | 위와 같은 이유로 서버가 없다. 사람마다 이 저장소에만 권한을 준 fine-grained PAT 을 발급해 쓴다 — 커밋 작성자가 실명으로 남고, 퇴사자는 그 토큰만 회수하면 된다. 토큰은 그 브라우저 localStorage 에만 있다. |
+| **Omnis SSO + GitHub 프록시** | 처음엔 사람마다 fine-grained PAT 을 발급해 브라우저가 api.github.com 을 직접 불렀다. 지금은 Hub · ip-platform 과 같은 Omnis SSO 로 로그인하고(`lib/omnis-auth.ts`), GitHub 호출은 Omnis 의 `/api/website/github` 프록시가 서버 토큰(`WEBSITE_GITHUB_TOKEN`)으로 대신한다. 커밋 `author` 는 프록시가 세션 사용자로 덮어쓰므로 실명은 그대로 남고, 퇴사 처리는 Omnis 계정 비활성화 하나로 끝난다. 정본은 Omnis 저장소 `mydocs/tech/auth-architecture.md`. |
 | **리치 에디터를 쓰지 않음** | Tiptap · BlockNote 는 자체 테마 체계가 있어 우리 토큰·라디우스·버튼 규격을 그대로 입히기 어렵고, 결과물이 HTML 문자열이라 언어별 번역·이미지 분리가 까다로워진다. 블록이 네 종류뿐이라 직접 만드는 편이 작고 정확하다. |
 | **미리보기 = 실제 컴포넌트** | 편집기 오른쪽 미리보기가 기사 페이지와 같은 `components/ds/post-body.tsx` 를 쓴다. 두 벌로 나뉘면 반드시 어긋난다. |
 | **커밋 하나로 묶음** | contents API 를 파일마다 PUT 하면 중간에 실패했을 때 JSON 만 올라가고 사진은 빠진 상태가 남는다. Git Data API 로 트리를 한 번에 만들어 전부 반영되거나 전부 안 되게 한다. |

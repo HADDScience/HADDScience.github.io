@@ -37,9 +37,9 @@ import { cn } from "@/lib/utils"
 /**
  * 콘텐츠 관리 화면.
  *
- * 정적 사이트라 서버가 없다. 이 페이지는 브라우저에서 GitHub API 로 직접 읽고
- * 커밋하며, 커밋이 올라가면 Pages 워크플로가 사이트를 다시 빌드한다.
- * 즉 "저장" 은 곧 커밋이고, 되돌리기는 git revert 다.
+ * 정적 사이트라 서버가 없다. 이 페이지는 브라우저에서 Omnis 의 GitHub 프록시를 거쳐
+ * 저장소를 읽고 커밋하며, 커밋이 올라가면 Pages 워크플로가 사이트를 다시 빌드한다.
+ * 즉 "저장" 은 곧 커밋이고, 되돌리기는 git revert 다. 로그인은 Omnis 자체계정(SSO).
  */
 export default function AdminPage() {
   const { state, signIn, signOut } = useAdminSession()
@@ -53,13 +53,13 @@ export default function AdminPage() {
   }
 
   if (state.status === "anonymous") {
-    return <SignIn onSubmit={signIn} busy={false} error={state.error} />
+    return <SignIn onSubmit={signIn} error={state.error} />
   }
 
   return (
     <Workspace
       cfg={state.cfg}
-      who={state.identity.name ?? state.identity.login}
+      who={state.user.name}
       onSignOut={signOut}
     />
   )

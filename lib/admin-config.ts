@@ -16,9 +16,7 @@ export const REPO_BRANCH = process.env.NEXT_PUBLIC_GITHUB_BRANCH ?? "main"
 export const NEWS_DIR = "content/data/news"
 export const NEWS_MEDIA_DIR = "public/news"
 
+/** `token` 은 Omnis SSO 세션 토큰이다. GitHub 토큰은 Omnis 서버에만 있다. */
 export function ghConfig(token: string): GhConfig {
   return { owner: REPO_OWNER, repo: REPO_NAME, branch: REPO_BRANCH, token }
 }
-
-/** 토큰 발급 화면으로 바로 보내는 링크. 필요한 권한을 미리 채워 둔다. */
-export const TOKEN_URL = `https://github.com/settings/personal-access-tokens/new`
