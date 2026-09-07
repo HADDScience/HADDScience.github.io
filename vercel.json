@@ -1,25 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "buildCommand": "bash scripts/build-hub.sh && pnpm build",
-  "rewrites": [
-    { "source": "/omnis", "destination": "https://omnis-hadd.vercel.app/omnis" },
-    { "source": "/omnis/:path*", "destination": "https://omnis-hadd.vercel.app/omnis/:path*" },
-    {
-      "source": "/.well-known/oauth-authorization-server/omnis/api/ip-mcp",
-      "destination": "https://omnis-hadd.vercel.app/omnis/api/ip-mcp/.well-known/oauth-authorization-server"
-    },
-    {
-      "source": "/.well-known/oauth-protected-resource/omnis/api/ip-mcp",
-      "destination": "https://omnis-hadd.vercel.app/omnis/api/ip-mcp/.well-known/oauth-protected-resource"
-    },
-    {
-      "source": "/.well-known/oauth-authorization-server",
-      "destination": "https://omnis-hadd.vercel.app/omnis/api/ip-mcp/.well-known/oauth-authorization-server"
-    },
-    {
-      "source": "/.well-known/oauth-protected-resource",
-      "destination": "https://omnis-hadd.vercel.app/omnis/api/ip-mcp/.well-known/oauth-protected-resource"
-    }
-  ]
+  "buildCommand": "bash scripts/build-hub.sh && pnpm build"
 }

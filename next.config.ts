@@ -20,14 +20,33 @@ const nextConfig: NextConfig = {
   },
 
   /**
-   * 로컬 개발에서만 /omnis/* 를 Omnis 로 넘긴다. 사진 경로가 `/omnis/api/website/media/…`
-   * 상대 경로라서다. 배포에서는 vercel.json 의 rewrite 가 같은 일을 한다.
+   * /omnis/* 를 Omnis 로 넘긴다. 사이트·관리 화면·사진 경로가 전부 같은 도메인의
+   * /omnis 를 보기 때문이다. vercel.json 의 rewrite 는 Next 가 라우트를 다 본 뒤에야
+   * 적용되는데 `[lang]` 이 /omnis 를 먼저 받아 404 를 냈다. 그래서 beforeFiles 로 둔다.
+   * MCP 디스커버리(.well-known)는 규격상 호스트 루트에 있어야 해서 여기서 Omnis 로 넘긴다.
    */
   async rewrites() {
-    if (process.env.NODE_ENV === "production") return []
-    const omnis = process.env.OMNIS_DEV_ORIGIN ?? "http://localhost:3000"
-    return [{ source: "/omnis/:path*", destination: `${omnis}/:path*` }]
+    const omnis =
+      process.env.OMNIS_UPSTREAM ??
+      (process.env.NODE_ENV === "production"
+        ? "https://omnis-hadd.vercel.app/omnis"
+        : "http://localhost:3000")
+    const mcp = `${omnis}/api/ip-mcp/.well-known`
+    return {
+      beforeFiles: [
+        { source: "/omnis", destination: omnis },
+        { source: "/omnis/:path*", destination: `${omnis}/:path*` },
+        { source: "/.well-known/oauth-authorization-server/omnis/api/ip-mcp", destination: `${mcp}/oauth-authorization-server` },
+        { source: "/.well-known/oauth-protected-resource/omnis/api/ip-mcp", destination: `${mcp}/oauth-protected-resource` },
+        { source: "/.well-known/oauth-authorization-server", destination: `${mcp}/oauth-authorization-server` },
+        { source: "/.well-known/oauth-protected-resource", destination: `${mcp}/oauth-protected-resource` },
+      ],
+    }
   },
+
+  // /omnis/api/… 같은 API 경로에 끝 슬래시 리다이렉트(308)가 걸리지 않게 한다.
+  // 페이지 주소는 여전히 /ko/ 처럼 슬래시로 만든다(아래 trailingSlash).
+  skipTrailingSlashRedirect: true,
 
   // /ko/ 처럼 디렉터리로 해석되는 경로를 out/ko/index.html 로 만들어 준다.
   // 정적 호스팅(GitHub Pages, Web Station) 기본 동작과 맞다.
