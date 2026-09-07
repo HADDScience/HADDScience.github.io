@@ -58,6 +58,7 @@ import {
   rasterizeCard,
   resizeCanvas,
 } from "@/lib/cardnews-export"
+import { lintCard, type LayoutIssue } from "@/lib/cardnews-lint"
 import { cn } from "@/lib/utils"
 
 /**
@@ -1069,7 +1070,7 @@ function Preview({
 }) {
   const box = React.useRef<HTMLDivElement>(null)
   const [width, setWidth] = React.useState(PREVIEW_MAX)
-  const [overflow, setOverflow] = React.useState(false)
+  const [issues, setIssues] = React.useState<LayoutIssue[]>([])
 
   React.useEffect(() => {
     const el = box.current
@@ -1081,15 +1082,15 @@ function Preview({
     return () => ro.disconnect()
   }, [])
 
-  /* 내용이 카드 밖으로 흘러넘치면 결과물에서 잘린다. 여기서 미리 알려준다.
-     .card 는 overflow:hidden 이라 scrollHeight 가 실제 내용 높이를 말해 준다. */
+  /* 내용이 카드 밖으로 흘러넘치거나, 마지막 줄에 글자 한두 개만 떨어지면 결과물이 못나다.
+     실제로 그려진 줄을 읽어야 알 수 있으므로 렌더 뒤에 검사한다(lib/cardnews-lint.ts). */
   React.useEffect(() => {
     const el = box.current
     if (!el) return
     let raf = 0
     const check = () => {
-      const inner = el.querySelector<HTMLElement>(".cn-root .card")
-      setOverflow(inner ? inner.scrollHeight > inner.clientHeight + 1 : false)
+      const root = el.querySelector<HTMLElement>(".cn-root")
+      setIssues(root ? lintCard(root) : [])
     }
     raf = requestAnimationFrame(check)
     const ro = new ResizeObserver(check)
@@ -1111,15 +1112,21 @@ function Preview({
         <div className="overflow-hidden rounded-lg border border-border">
           <CardPreview card={card} deck={deck} resolveSrc={resolveSrc} width={width} placeholders />
         </div>
-        {overflow ? (
+        {issues.map((issue, i) => (
           <p
+            key={i}
             role="alert"
-            className="flex items-start gap-2 rounded-lg bg-destructive/8 p-3 text-sm text-destructive"
+            className={cn(
+              "flex items-start gap-2 rounded-lg p-3 text-sm",
+              issue.kind === "overflow"
+                ? "bg-destructive/8 text-destructive"
+                : "bg-brand-orange-500/10 text-brand-orange-600"
+            )}
           >
             <AlertTriangle className="mt-0.5 size-4 shrink-0" />
-            내용이 카드를 넘칩니다 — 문장을 줄이거나 사진 비율을 낮추세요.
+            {issue.message}
           </p>
-        ) : null}
+        ))}
       </div>
     </div>
   )

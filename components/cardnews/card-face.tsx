@@ -57,6 +57,54 @@ function Rich({
   )
 }
 
+/** 칸별 안내문. 미리보기에서 비어 있는 칸에 회색으로 찍힌다. */
+const HINT: Record<string, string> = {
+  badge: "chapter 01",
+  headline: "제목을 입력하세요",
+  big: "큰 문장을 입력하세요",
+  subtitle: "부제 (선택)",
+  body: "본문을 입력하세요",
+  footnote: "각주 (선택)",
+  quote: "“인용문을 입력하세요”",
+  attrib: "이름 · 직함",
+  "cover-title": "카드뉴스",
+  "stat-label": "지표 이름",
+  "list-title": "항목 제목",
+}
+
+/**
+ * 텍스트 자리. 비어 있으면 결과물에서는 통째로 사라지고(`is-empty`), 편집기 미리보기에서만
+ * 같은 서체·크기의 회색 안내문이 그 자리에 보인다 — 사진 자리와 같은 방식이다.
+ * `before` · `after` 는 텍스트에 붙는 간격 div. 텍스트가 없으면 간격도 함께 사라진다.
+ */
+function Slot({
+  className,
+  text,
+  hint,
+  before,
+  after,
+}: {
+  className: string
+  text: string | undefined
+  hint?: string
+  before?: React.ReactNode
+  after?: React.ReactNode
+}) {
+  const empty = !text
+  const label = hint ?? HINT[className.split(" ")[0]] ?? ""
+  return (
+    <div className={empty ? "slot is-empty" : "slot"}>
+      {before}
+      {empty ? (
+        <div className={`${className} placeholder`} data-label={label} />
+      ) : (
+        <Rich className={className} text={text} />
+      )}
+      {after}
+    </div>
+  )
+}
+
 type Resolve = ((src: string) => string) | undefined
 
 /** 비율 문자열("4/3")을 사람이 읽는 라벨("4:3")로. 플레이스홀더에 찍힌다. */
@@ -105,11 +153,6 @@ function ImgBox({
   )
 }
 
-function Body({ text }: { text: string | undefined }) {
-  if (!text) return null
-  return <Rich className="body" text={text} />
-}
-
 /* ---------------------------------------------------------------- 카드 */
 
 function Cover({ card, deck }: { card: Extract<Card, { type: "cover" }>; deck: CardDeck }) {
@@ -120,7 +163,7 @@ function Cover({ card, deck }: { card: Extract<Card, { type: "cover" }>; deck: C
           <div className="grow" />
           {/* eslint-disable-next-line @next/next/no-img-element -- 래스터화 대상이라 최적화 불가 */}
           <img className="cover-logo" src={LOGO_SRC} alt="" draggable={false} />
-          <Rich className="cover-title" text={card.title} />
+          <Slot className="cover-title" text={card.title} />
           <div style={{ margin: "24px 0 8px" }}>
             <span className="cta">
               <span dangerouslySetInnerHTML={{ __html: richText(card.cta) }} />
@@ -148,19 +191,9 @@ function Quote({
     <div className="frame">
       <div className="card">
         <div className="pad col" style={{ height: "100%", justifyContent: "center" }}>
-          {card.badge ? (
-            <>
-              <Rich className="badge" text={card.badge} />
-              <div className="gap-m" />
-            </>
-          ) : null}
-          {card.quote ? <Rich className="quote" text={card.quote} /> : null}
-          {card.attrib ? (
-            <>
-              <div className="gap-s" />
-              <Rich className="attrib" text={card.attrib} />
-            </>
-          ) : null}
+          <Slot className="badge" text={card.badge} after={<div className="gap-m" />} />
+          <Slot className="quote" text={card.quote} />
+          <Slot className="attrib" text={card.attrib} before={<div className="gap-s" />} />
           <div className={card.image?.src ? "slot" : "slot is-empty"}>
             <div className="gap-m" />
             <ImgBox
@@ -189,19 +222,9 @@ function Standard({
     <div className="frame">
       <div className="card">
         <div className="pad col" style={{ height: "100%", justifyContent: "center" }}>
-          {card.badge ? (
-            <>
-              <Rich className="badge" text={card.badge} />
-              <div className="gap-m" />
-            </>
-          ) : null}
-          {card.headline ? <Rich className={hclass} text={card.headline} /> : null}
-          {card.subtitle ? (
-            <>
-              <div className="gap-s" />
-              <Rich className="subtitle" text={card.subtitle} />
-            </>
-          ) : null}
+          <Slot className="badge" text={card.badge} after={<div className="gap-m" />} />
+          <Slot className={hclass} text={card.headline} />
+          <Slot className="subtitle" text={card.subtitle} before={<div className="gap-s" />} />
           <div className={card.image?.src ? "slot" : "slot is-empty"}>
             <div className="gap-m" />
             <ImgBox
@@ -212,13 +235,8 @@ function Standard({
           </div>
           {/* 상단 정렬 고정, 아래 여백 유동 */}
           <div className="grow" />
-          <Body text={card.body} />
-          {card.footnote ? (
-            <>
-              <div className="gap-s" />
-              <Rich className="footnote" text={card.footnote} />
-            </>
-          ) : null}
+          <Slot className="body" text={card.body} />
+          <Slot className="footnote" text={card.footnote} before={<div className="gap-s" />} />
           <div className="grow" />
         </div>
       </div>
@@ -244,31 +262,11 @@ function ImageTop({
           />
         </div>
         <div className="pad col grow" style={{ justifyContent: "center" }}>
-          {card.badge ? (
-            <>
-              <Rich className="badge" text={card.badge} />
-              <div className="gap-m" />
-            </>
-          ) : null}
-          {card.headline ? <Rich className="headline" text={card.headline} /> : null}
-          {card.subtitle ? (
-            <>
-              <div className="gap-s" />
-              <Rich className="subtitle" text={card.subtitle} />
-            </>
-          ) : null}
-          {card.body ? (
-            <>
-              <div className="gap-m" />
-              <Body text={card.body} />
-            </>
-          ) : null}
-          {card.footnote ? (
-            <>
-              <div className="gap-s" />
-              <Rich className="footnote" text={card.footnote} />
-            </>
-          ) : null}
+          <Slot className="badge" text={card.badge} after={<div className="gap-m" />} />
+          <Slot className="headline" text={card.headline} />
+          <Slot className="subtitle" text={card.subtitle} before={<div className="gap-s" />} />
+          <Slot className="body" text={card.body} before={<div className="gap-m" />} />
+          <Slot className="footnote" text={card.footnote} before={<div className="gap-s" />} />
         </div>
       </div>
     </div>
@@ -304,31 +302,11 @@ function Split({
             />
           )}
           <div className="split-body">
-            {card.badge ? (
-              <>
-                <Rich className="badge" text={card.badge} />
-                <div className="gap-m" />
-              </>
-            ) : null}
-            {card.headline ? <Rich className="headline" text={card.headline} /> : null}
-            {card.subtitle ? (
-              <>
-                <div className="gap-s" />
-                <Rich className="subtitle" text={card.subtitle} />
-              </>
-            ) : null}
-            {card.body ? (
-              <>
-                <div className="gap-m" />
-                <Body text={card.body} />
-              </>
-            ) : null}
-            {card.footnote ? (
-              <>
-                <div className="gap-m" />
-                <Rich className="footnote" text={card.footnote} />
-              </>
-            ) : null}
+            <Slot className="badge" text={card.badge} after={<div className="gap-m" />} />
+            <Slot className="headline" text={card.headline} />
+            <Slot className="subtitle" text={card.subtitle} before={<div className="gap-s" />} />
+            <Slot className="body" text={card.body} before={<div className="gap-m" />} />
+            <Slot className="footnote" text={card.footnote} before={<div className="gap-m" />} />
           </div>
         </div>
       </div>
@@ -360,20 +338,10 @@ function Overlay({
           )}
           <div className="overlay-shade" />
           <div className="overlay-text">
-            {card.badge ? <Rich className="badge" text={card.badge} /> : null}
-            {card.headline ? <Rich className="headline" text={card.headline} /> : null}
-            {card.body ? (
-              <>
-                <div className="gap-s" />
-                <Body text={card.body} />
-              </>
-            ) : null}
-            {card.footnote ? (
-              <>
-                <div className="gap-s" />
-                <Rich className="footnote" text={card.footnote} />
-              </>
-            ) : null}
+            <Slot className="badge" text={card.badge} />
+            <Slot className="headline" text={card.headline} />
+            <Slot className="body" text={card.body} before={<div className="gap-s" />} />
+            <Slot className="footnote" text={card.footnote} before={<div className="gap-s" />} />
           </div>
         </div>
       </div>
@@ -386,25 +354,10 @@ function TextOnly({ card }: { card: Extract<Chapter, { layout: "text" }> }) {
     <div className="frame">
       <div className="card">
         <div className="pad col" style={{ height: "100%", justifyContent: "center" }}>
-          {card.badge ? (
-            <>
-              <Rich className="badge" text={card.badge} />
-              <div className="gap-l" />
-            </>
-          ) : null}
-          {card.headline ? <Rich className="big" text={card.headline} /> : null}
-          {card.body ? (
-            <>
-              <div className="gap-m" />
-              <Body text={card.body} />
-            </>
-          ) : null}
-          {card.footnote ? (
-            <>
-              <div className="gap-l" />
-              <Rich className="footnote" text={card.footnote} />
-            </>
-          ) : null}
+          <Slot className="badge" text={card.badge} after={<div className="gap-l" />} />
+          <Slot className="big" text={card.headline} />
+          <Slot className="body" text={card.body} before={<div className="gap-m" />} />
+          <Slot className="footnote" text={card.footnote} before={<div className="gap-l" />} />
         </div>
       </div>
     </div>
@@ -417,24 +370,14 @@ function Stat({ card }: { card: Extract<Chapter, { layout: "stat" }> }) {
     <div className="frame">
       <div className="card">
         <div className="pad col" style={{ height: "100%", justifyContent: "center" }}>
-          {card.badge ? (
-            <>
-              <Rich className="badge" text={card.badge} />
-              <div className="gap-l" />
-            </>
-          ) : null}
-          {card.headline ? (
-            <>
-              <Rich className="headline" text={card.headline} />
-              <div className="gap-l" />
-            </>
-          ) : null}
+          <Slot className="badge" text={card.badge} after={<div className="gap-l" />} />
+          <Slot className="headline" text={card.headline} after={<div className="gap-l" />} />
           {stats.length > 1 ? (
             <div className="stat-row">
               {stats.map((s, i) => (
                 <div className="stat-item" key={i}>
                   <div className="stat-value">
-                    <span dangerouslySetInnerHTML={{ __html: richText(s.value) }} />
+                    <span className={s.value ? undefined : "placeholder"} data-label="00" dangerouslySetInnerHTML={{ __html: richText(s.value) }} />
                     {s.unit ? (
                       <span
                         className="stat-unit"
@@ -442,14 +385,14 @@ function Stat({ card }: { card: Extract<Chapter, { layout: "stat" }> }) {
                       />
                     ) : null}
                   </div>
-                  <Rich className="stat-label" text={s.label} />
+                  <Slot className="stat-label" text={s.label} />
                 </div>
               ))}
             </div>
           ) : stats.length === 1 ? (
             <>
               <div className="stat-value">
-                <span dangerouslySetInnerHTML={{ __html: richText(stats[0].value) }} />
+                <span className={stats[0].value ? undefined : "placeholder"} data-label="00" dangerouslySetInnerHTML={{ __html: richText(stats[0].value) }} />
                 {stats[0].unit ? (
                   <span
                     className="stat-unit"
@@ -457,15 +400,10 @@ function Stat({ card }: { card: Extract<Chapter, { layout: "stat" }> }) {
                   />
                 ) : null}
               </div>
-              {stats[0].label ? <Rich className="stat-label" text={stats[0].label} /> : null}
+              <Slot className="stat-label" text={stats[0].label} />
             </>
           ) : null}
-          {card.body ? (
-            <>
-              <div className="gap-l" />
-              <Body text={card.body} />
-            </>
-          ) : null}
+          <Slot className="body" text={card.body} before={<div className="gap-l" />} />
         </div>
       </div>
     </div>
@@ -477,18 +415,8 @@ function List({ card }: { card: Extract<Chapter, { layout: "list" }> }) {
     <div className="frame">
       <div className="card">
         <div className="pad col" style={{ height: "100%", justifyContent: "center" }}>
-          {card.badge ? (
-            <>
-              <Rich className="badge" text={card.badge} />
-              <div className="gap-m" />
-            </>
-          ) : null}
-          {card.headline ? (
-            <>
-              <Rich className="headline sm" text={card.headline} />
-              <div className="gap-m" />
-            </>
-          ) : null}
+          <Slot className="badge" text={card.badge} after={<div className="gap-m" />} />
+          <Slot className="headline sm" text={card.headline} after={<div className="gap-m" />} />
           <div className="list">
             {card.items.map((it, i) => {
               const mark =
@@ -501,7 +429,7 @@ function List({ card }: { card: Extract<Chapter, { layout: "list" }> }) {
                 <div className="list-item" key={i}>
                   <Rich className="list-mark" text={mark} />
                   <div className="list-body">
-                    <Rich className="list-title" text={it.title} />
+                    <Slot className="list-title" text={it.title} />
                     {it.desc ? <Rich className="list-desc" text={it.desc} /> : null}
                   </div>
                 </div>

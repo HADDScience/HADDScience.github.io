@@ -466,3 +466,10 @@
   background: repeating-linear-gradient(135deg, #DCEBF7 0 24px, #EFF7FC 24px 48px);
   color: #0C4DA2; font-weight: 700; font-size: 32px;
 }
+
+/* 텍스트 플레이스홀더 — 같은 서체·크기의 회색 안내문. 사진 자리와 같이 미리보기에서만. */
+.cn-root.cn-placeholders .placeholder::after { content: attr(data-label); }
+.cn-root.cn-placeholders .placeholder { color: #9AA7B5; }
+.cn-root.cn-placeholders .badge.placeholder { background: #C7D5E3; color: #fff; }
+.cn-root.cn-placeholders .overlay-text .placeholder { color: rgba(255,255,255,.6); }
+.cn-root.cn-placeholders .stat-value .placeholder { color: #F7C58A; }
