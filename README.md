@@ -315,6 +315,44 @@ ANTHROPIC_API_KEY=… node scripts/translate-posts.mjs            # 바뀐 것�
 ANTHROPIC_API_KEY=… node scripts/translate-posts.mjs --force    # 전부 다시
 ```
 
+### 카드뉴스 편집기
+
+`/admin` 의 **새 카드뉴스**. 인스타용 정사각 카드뉴스를 폼으로 만들어 사이트 기사로
+게시하고 1080×1080 PNG 로도 내려받는다. 자유 캔버스가 아니라 **레이아웃 고정 템플릿**이다 —
+사용자는 카드 종류를 고르고 칸을 채울 뿐, 위치·색·서체는 손대지 못한다.
+
+| 파일 | 역할 |
+| --- | --- |
+| `content/types.ts` `CardDeck` · `Card` | 덱 모델. 표지 · chapter 7 레이아웃(standard · image-top · split · overlay · text · stat · list) · 인용 |
+| `lib/cardnews.ts` | 카드 종류 목록, 기본값(`newCard`), alt 문장(`cardText`), 파일 경로 규칙 |
+| `components/cardnews/card.css` · `card-face.tsx` | 1080×1080 카드 한 장. 미리보기와 래스터화가 같은 DOM 을 쓴다 |
+| `lib/cardnews-export.ts` | html-to-image 로 캔버스 굽기, webp/png 변환, fflate zip |
+| `components/admin/deck-editor.tsx` | 편집 화면. 카드 목록 · 폼 · 미리보기 · 넘침 경고 · 저장/내보내기 |
+
+**디자인 원본은 스킬 `~/.claude/skills/hadd-cardnews/scripts/build_cardnews.py`** 다.
+`card.css` 는 그 `base_css()` 를, `card-face.tsx` 는 `render_*` 함수를 1:1 옮긴 것이다.
+둘이 어긋나면 스크립트가 정답이고, 토큰(색 · 8px 격자 · 타이포 스케일)도 거기서 바꾼다.
+
+저장하면 한 커밋에 이렇게 들어간다.
+
+```
+content/data/news/<id>.json     deck 필드에 덱 원본 + blocks 에 카드 이미지 블록(alt = 카드 텍스트)
+public/news/<id>/src-NN.webp    편집기에서 고른 원본 사진 (1600px 이내, 재편집용)
+public/news/<id>/card-NN.webp   구운 카드 (1080, 언어 공통)
+public/news/<id>/thumb.webp     첫 카드 640px. 직접 고른 대표 이미지가 있으면 그것
+```
+
+- **왜 브라우저에서 굽나.** 정적 사이트라 서버도 헤드리스 Chrome 도 둘 곳이 없다. 대신 미리보기
+  DOM 을 그대로 찍으니 미리보기와 결과물이 갈리지 않는다. html-to-image 는 SVG foreignObject
+  를 거치므로 **Chrome 권장** — Safari 는 폰트·이미지 임베드가 불안정하다.
+- **재편집.** `post.deck` 이 있는 글은 목록에서 열면 글 편집기가 아니라 덱 편집기가 뜬다.
+  다시 저장하면 카드를 전부 다시 굽고, 장수가 줄어 남는 `card-NN` 과 덱이 더 이상
+  참조하지 않는 `src-NN` 은 같은 커밋에서 지운다(`savePost` 의 `removals`).
+- **영문판.** 카드는 그림이라 번역되지 않는다. 번역 스크립트가 이미지 블록의 `src` 를 원문에서
+  복사하므로 영문 기사도 같은 카드를 보여준다. alt 만 번역된다.
+- **이모지.** 카드 안 이모지는 굽는 사람의 OS 이모지 폰트로 그려진다(macOS 는 Apple 이모지).
+  스킬 스크립트(Linux Chrome)와 그 부분만 다르다.
+
 ## 콘텐츠 출처
 
 2026-08-07 에 haddscience.com 을 브라우저로 크롤링해 옮겼다. 카피는 원문 그대로다.
@@ -330,7 +368,8 @@ ANTHROPIC_API_KEY=… node scripts/translate-posts.mjs --force    # 전부 다�
 | --- | --- |
 | **뉴스 38건의 본문** | 상위 10건은 카드뉴스를 이관해 사이트 안에 상세 페이지가 있다. 나머지 38건은 `href` 가 아직 아임웹 원문을 가리킨다. **이 상태로는 아임웹을 해지할 수 없다.** `scripts/fetch-news-media.mjs` 의 `CARD_SETS` 에 남은 글의 이미지 목록을 추가하고 `pnpm media:news` 를 다시 돌리면 된다. |
 | **카드뉴스 접근성** | 이관한 10건은 본문이 여전히 이미지뿐이라 스크린리더·검색엔진이 읽지 못한다. `/admin` 에서 글마다 요약과 본문 문단을 채우면 해결된다 — 기사 모델이 이미 텍스트 블록을 받는다. |
-| **영문 뉴스 본문** | 텍스트는 CI 가 자동 번역한다. 다만 이관한 10건은 본문이 이미지뿐이라 번역할 텍스트가 없다 — 영문 카드뉴스를 만들어 `/admin` 의 English 탭에서 이미지 블록만 교체하거나, 본문을 텍스트로 다시 쓰는 편이 낫다. |
+| **영문 뉴스 본문** | 텍스트는 CI 가 자동 번역한다. 다만 이관한 10건과 카드뉴스 편집기로 만든 글은 본문이 이미지뿐이라 번역할 텍스트가 없다 — `/admin` 의 English 탭에서 이미지 블록만 영문 카드로 교체하거나, 본문을 텍스트로 다시 쓰는 편이 낫다. |
+| **카드뉴스 영문 자동 생성** | 덱은 텍스트라 번역할 수 있지만, 굽는 단계가 브라우저에만 있어 CI 가 영문 카드를 만들지 못한다. 필요해지면 Actions 에 Playwright 를 두고 `card-face` 를 헤드리스로 찍는 경로를 추가한다. |
 | **영문 감수** | 현행 영문 사이트에 원문이 있는 부분(About · Team · Location · Product 헤드라인)은 그대로 썼고, 없는 부분(히어로 · 폼 · 뉴스 제목 · FAQ)만 번역했다. 대외 공개 전 원어민 감수 권장. |
 | **문의 폼 백엔드** | 지금은 `mailto:` 로 메일 클라이언트를 연다. 서버 수신함이 정해지면 `components/forms/contact-form.tsx` 의 `handleSubmit` 만 교체하면 된다. |
 | **약관 · 개인정보처리방침** | 법적 효력이 있는 문서라 임의로 작성하지 않았다. 공개 전에 현행 원문을 옮겨야 한다. 문의 폼이 개인정보를 수집하므로 필수. **위치 페이지의 Google 지도 임베드는 제3자 쿠키를 심으므로 처리방침에 함께 명시해야 한다.** |

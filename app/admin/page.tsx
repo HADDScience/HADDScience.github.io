@@ -4,6 +4,7 @@ import {
   ExternalLink,
   FileText,
   ImageOff,
+  LayoutGrid,
   Loader2,
   LogOut,
   Plus,
@@ -14,6 +15,7 @@ import {
 import * as React from "react"
 import { toast } from "sonner"
 
+import { DeckEditor } from "@/components/admin/deck-editor"
 import { PostEditor } from "@/components/admin/post-editor"
 import { SignIn } from "@/components/admin/sign-in"
 import { Button } from "@/components/ui/button"
@@ -65,7 +67,9 @@ export default function AdminPage() {
 
 /* ------------------------------------------------------------ 작업 화면 */
 
-type View = { mode: "list" } | { mode: "edit"; post: Post; isNew: boolean }
+type View =
+  | { mode: "list" }
+  | { mode: "edit"; kind: "post" | "deck"; post: Post; isNew: boolean }
 
 function Workspace({
   cfg,
@@ -99,10 +103,11 @@ function Workspace({
     void Promise.resolve().then(refresh)
   }, [refresh])
 
-  function startNew() {
+  function startNew(kind: "post" | "deck") {
     const now = new Date()
     setView({
       mode: "edit",
+      kind,
       post: newPost(newPostId(now), formatDate(now), "ko"),
       isNew: true,
     })
@@ -124,9 +129,12 @@ function Workspace({
   }
 
   if (view.mode === "edit" && index) {
+    // 카드뉴스로 만든 글은 이미지가 아니라 원본 덱을 연다. 글 편집기로 열면
+    // 이미지 블록만 보여 고칠 수가 없다.
+    const Editor = view.kind === "deck" ? DeckEditor : PostEditor
     return (
       <main className="mx-auto max-w-6xl px-6 pb-24">
-        <PostEditor
+        <Editor
           cfg={cfg}
           post={view.post}
           order={index.order}
@@ -192,7 +200,10 @@ function Workspace({
           <RefreshCw className={cn("size-4", refreshing && "animate-spin")} />
           새로고침
         </Button>
-        <Button onClick={startNew}>
+        <Button variant="outline" onClick={() => startNew("deck")}>
+          <LayoutGrid className="size-4" />새 카드뉴스
+        </Button>
+        <Button onClick={() => startNew("post")}>
           <Plus className="size-4" />새 기사
         </Button>
       </div>
@@ -238,7 +249,14 @@ function Workspace({
 
                 <button
                   type="button"
-                  onClick={() => setView({ mode: "edit", post, isNew: false })}
+                  onClick={() =>
+                    setView({
+                      mode: "edit",
+                      kind: post.deck ? "deck" : "post",
+                      post,
+                      isNew: false,
+                    })
+                  }
                   className="min-w-0 flex-1 text-left"
                 >
                   <p className="truncate font-semibold hover:text-primary">
@@ -248,6 +266,12 @@ function Workspace({
                     <span>{post.date}</span>
                     <span aria-hidden>·</span>
                     <span>{translated.join(" / ").toUpperCase() || "본문 없음"}</span>
+                    {post.deck ? (
+                      <>
+                        <span aria-hidden>·</span>
+                        <span>카드뉴스 {post.deck.cards.length}장</span>
+                      </>
+                    ) : null}
                     {!hasBody && post.externalHref ? (
                       <>
                         <span aria-hidden>·</span>

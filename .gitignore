@@ -34,3 +34,7 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 도구 상태 (Playwright MCP, oh-my-claudecode)
+/.playwright-mcp/
+/.omc/

@@ -148,6 +148,11 @@ export interface SaveOptions {
   /** 목록 순서. 새 기사면 맨 앞에 넣은 배열을 넘긴다. */
   order: string[]
   uploads: PendingUpload[]
+  /**
+   * 같은 커밋에서 지울 저장소 경로. 카드뉴스를 다시 저장할 때 장수가 줄면 남는
+   * `card-NN.webp` 를 여기로 정리한다 — 따로 커밋하면 중간 상태가 남는다.
+   */
+  removals?: string[]
   message: string
 }
 
@@ -165,6 +170,7 @@ export async function savePost(cfg: GhConfig, opts: SaveOptions) {
       path: u.path,
       base64: encodeBase64(u.bytes),
     })),
+    ...(opts.removals ?? []).map((path) => ({ path, remove: true as const })),
   ]
   return commitFiles(cfg, opts.message, changes)
 }

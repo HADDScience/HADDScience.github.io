@@ -101,7 +101,128 @@ export interface Post {
   /** 본문을 아직 옮기지 않은 글은 아임웹 원문으로 보낸다. 옮기면 null 로 바꾼다. */
   externalHref: string | null
   content: Partial<Record<Lang, PostLocale>>
+  /**
+   * 카드뉴스 편집기로 만든 글이면 그 원본 덱. 본문 이미지 블록은 이 덱을 브라우저에서
+   * 렌더한 결과물이고, 다시 편집할 때는 이미지가 아니라 이 덱을 연다.
+   * 일반 글에는 없다.
+   */
+  deck?: CardDeck
 }
+
+/* ------------------------------------------------------------ 카드뉴스 */
+
+/**
+ * 카드뉴스 덱. 스킬 `hadd-cardnews` 의 deck.json 과 같은 모양이다 — 그쪽 렌더 스크립트
+ * (`scripts/build_cardnews.py`)가 디자인의 원본이고, 웹 편집기는 그것을 브라우저에서
+ * 그대로 그린다. 둘이 어긋나면 스크립트 쪽이 정답이다.
+ *
+ * 텍스트 안의 `<b>강조</b>` 만 마크업으로 살려 둔다(파란 볼드). 다른 마크업은 없다.
+ */
+export interface CardDeck {
+  /** 표지 하단 핸들. `@haddscience` */
+  handle: string
+  cards: Card[]
+}
+
+/** 사진 박스의 종횡비. 정사각 캔버스 안에서 이 셋 밖의 비율은 쓰지 않는다. */
+export type CardImageRatio = "16/9" | "16/10" | "4/3" | "1/1" | "3/4"
+
+export interface CardImage {
+  /** 사이트 경로. `/news/<id>/src-01.webp` */
+  src: string
+  /** 종횡비 박스. 레이아웃마다 기본값이 다르다. */
+  ratio?: CardImageRatio
+  /** 초점. CSS object-position 값. `center` · `top` · `50% 30%` */
+  pos?: string
+}
+
+export type CardStat = { value: string; unit?: string; label: string }
+export type CardListItem = { title: string; desc?: string; emoji?: string }
+
+export type Card =
+  | {
+      type: "cover"
+      title: string
+      cta: string
+      /** 비우면 덱의 handle 을 쓴다. */
+      handle?: string
+    }
+  | {
+      type: "quote"
+      badge: string
+      quote: string
+      attrib: string
+      image?: CardImage
+    }
+  | {
+      type: "chapter"
+      layout: "standard"
+      badge: string
+      headline: string
+      headlineSize?: "sm" | "lg"
+      subtitle?: string
+      image?: CardImage
+      body: string
+      footnote?: string
+    }
+  | {
+      type: "chapter"
+      layout: "image-top"
+      badge: string
+      headline: string
+      subtitle?: string
+      image?: CardImage
+      body: string
+      footnote?: string
+    }
+  | {
+      type: "chapter"
+      layout: "split"
+      badge: string
+      headline: string
+      subtitle?: string
+      image?: CardImage
+      /** 상장·공문처럼 잘리면 안 되는 이미지는 contain. 기본 cover. */
+      imageFit?: "cover" | "contain"
+      body: string
+      footnote?: string
+    }
+  | {
+      type: "chapter"
+      layout: "overlay"
+      badge: string
+      headline: string
+      image?: CardImage
+      body: string
+      footnote?: string
+    }
+  | {
+      type: "chapter"
+      layout: "text"
+      badge: string
+      headline: string
+      body: string
+      footnote?: string
+    }
+  | {
+      type: "chapter"
+      layout: "stat"
+      badge: string
+      headline: string
+      /** 1~3개. 하나면 크게, 여럿이면 나란히. */
+      stats: CardStat[]
+      body?: string
+    }
+  | {
+      type: "chapter"
+      layout: "list"
+      badge: string
+      headline: string
+      marker: "number" | "bullet" | "emoji"
+      items: CardListItem[]
+    }
+
+export type ChapterLayout = Extract<Card, { type: "chapter" }>["layout"]
 
 /** 목록에서 쓰는 표시용 모델. Post 에서 언어 하나를 골라 만든다. */
 export interface NewsItem {
