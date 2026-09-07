@@ -1,0 +1,117 @@
+{
+  "id": "171780067",
+  "title": "🧬 하드사이언스 X 코아스템켐온, '오가노이드 플랫폼' 공동개발 맞손!",
+  "cards": [
+    {
+      "source": "01.webp",
+      "sourceText": "카드뉴스",
+      "photo": null,
+      "card": { "type": "cover", "title": "카드뉴스", "cta": "haddscience 알아보기" }
+    },
+    {
+      "source": "02.webp",
+      "sourceText": "chapter 01\n🤝 코아스템켐온 × HADD Science 협약\n동물실험을 대체할 진짜 해답,\n오가노이드 플랫폼이 온다 🚀\n👇 아래에서 협약 소식 확인하기",
+      "photo": [283, 338, 514, 385],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 01",
+        "headline": "🤝 코아스템켐온 × HADD Science 협약",
+        "image": { "src": "@photo" },
+        "body": "동물실험을 대체할 진짜 해답,\n오가노이드 플랫폼이 온다 🚀",
+        "footnote": "👇 아래에서 협약 소식 확인하기"
+      }
+    },
+    {
+      "source": "03.webp",
+      "sourceText": "chapter 02\nK-스타트업이 던진 카드, 동물대체시험 시장 정조준 🌍\n비임상 CRO 코아스템켐온과 HADD Science가!\n\n6월 4일 ‘미래 오가노이드 플랫폼 구축’을 위한\n공동연구개발 협약을 체결했습니다.",
+      "photo": [191, 320, 698, 392],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 02",
+        "headline": "K-스타트업이 던진 카드, 동물대체시험 시장 정조준 🌍",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "비임상 CRO 코아스템켐온과 HADD Science가!\n\n6월 4일 ‘미래 오가노이드 플랫폼 구축’을 위한\n공동연구개발 협약을 체결했습니다."
+      }
+    },
+    {
+      "source": "04.webp",
+      "sourceText": "chapter 03\n각자의 강점을 더하다 🤝\n안전성 & 애드젤 🧫\n코아스템켐온은 세포 안전성 중심 배양·평가 인프라를!\nHADD Science는 핵산 기반 3D 오가노이드 배양기술\n‘애드젤(ADD Gel)’을 제공합니다.",
+      "photo": [122, 358, 419, 364],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 03",
+        "headline": "각자의 강점을 더하다 🤝\n안전성 & 애드젤 🧫",
+        "image": { "src": "@photo", "ratio": "1/1" },
+        "body": "코아스템켐온은 세포 안전성 중심 배양·평가 인프라를!\nHADD Science는 핵산 기반 3D 오가노이드 배양기술\n‘애드젤(ADD Gel)’을 제공합니다."
+      }
+    },
+    {
+      "source": "05.webp",
+      "sourceText": "chapter 04\n이번 협약의 진짜 무게,\n‘시장 타이밍’에 있다 🔬\n동물대체시험법(NAMs) 시장이 빠르게 열리고 있습니다!\n\nFDA는 일부 1상에서 동물시험을 대체할 NAMs를 공식 도입했고,\nEU도 동물대체시험 의무화를 단계적으로 강화하고 있습니다.🎉\n이제 ‘인체와 닮은’ 평가 모델이 신약 개발의 속도와 비용을 좌우합니다!",
+      "photo": [327, 388, 449, 275],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 04",
+        "headline": "이번 협약의 진짜 무게,\n‘시장 타이밍’에 있다 🔬",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "동물대체시험법(NAMs) 시장이 빠르게 열리고 있습니다!\n\nFDA는 일부 1상에서 동물시험을 대체할 NAMs를 공식 도입했고,\nEU도 동물대체시험 의무화를 단계적으로 강화하고 있습니다.🎉",
+        "footnote": "이제 ‘인체와 닮은’ 평가 모델이 신약 개발의 속도와 비용을 좌우합니다!"
+      }
+    },
+    {
+      "source": "06.webp",
+      "sourceText": "chapter 05\n뇌·심장·간 오가노이드, 신약 평가의 미래 💻🧬\n\" 다양한 장기 오가노이드를 대량 배양해,\n신약 효능·독성 평가와 질환 모델 평가 서비스를\n상용화하는 그림을 함께 그립니다.🧬",
+      "photo": [193, 396, 694, 275],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 05",
+        "headline": "뇌·심장·간 오가노이드, 신약 평가의 미래 💻🧬",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "\" 다양한 장기 오가노이드를 대량 배양해,\n신약 효능·독성 평가와 질환 모델 평가 서비스를\n상용화하는 그림을 함께 그립니다.🧬"
+      }
+    },
+    {
+      "source": "07.webp",
+      "sourceText": "chapter 06\nK - 바이오 모범 사례 ✨\nGBSA 경기바이오센터 랩스테이션에서 시작된 협력,\n한국이 글로벌 동물대체시험 플랫폼 시장의 경쟁자로 들어서는\n첫 사례입니다.🧬",
+      "photo": [232, 482, 616, 194],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 06",
+        "headline": "K - 바이오 모범 사례 ✨",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "GBSA 경기바이오센터 랩스테이션에서 시작된 협력,\n한국이 글로벌 동물대체시험 플랫폼 시장의 경쟁자로 들어서는\n첫 사례입니다.🧬"
+      }
+    },
+    {
+      "source": "08.webp",
+      "sourceText": "대표 한마디 💬\n“오픈이노베이션으로 플랫폼 기술을 더 빠르게 확장”\n허채정 HADD Science 대표 · 송시환 코아스템켐온 대표",
+      "photo": [134, 395, 812, 541],
+      "card": {
+        "type": "quote",
+        "badge": "대표 한마디 💬",
+        "quote": "“오픈이노베이션으로 플랫폼 기술을 더 빠르게 확장”",
+        "attrib": "허채정 HADD Science 대표 · 송시환 코아스템켐온 대표",
+        "image": { "src": "@photo", "ratio": "16/10" }
+      }
+    },
+    {
+      "source": "09.webp",
+      "sourceText": "기사 원문\n기사 원문 보기 →\n※페이지 클릭 시 기사 원문으로 이동합니다.",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "기사 원문",
+        "headline": "기사 원문 보기 →",
+        "body": "",
+        "footnote": "※페이지 클릭 시 기사 원문으로 이동합니다."
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "id": "172288167",
+  "title": "[BIO USA] 하드사이언스, 세계 최대 바이오 무대에 서다 🌍",
+  "cards": [
+    {
+      "source": "01.webp",
+      "sourceText": "카드뉴스",
+      "photo": null,
+      "card": { "type": "cover", "title": "카드뉴스", "cta": "haddscience 알아보기" }
+    },
+    {
+      "source": "02.webp",
+      "sourceText": "intro\n세계 최대 바이오 무대,\nBIO에 서다 🌍\n글로벌 바이오 기업·투자자가 모이는\n세계 최대 바이오 컨벤션 BIO.\n하드사이언스가 그 현장에 함께했습니다.\n👇 현장 이야기 시작",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "intro",
+        "headline": "세계 최대 바이오 무대,\nBIO에 서다 🌍",
+        "body": "글로벌 바이오 기업·투자자가 모이는\n세계 최대 바이오 컨벤션 BIO.\n하드사이언스가 그 현장에 함께했습니다.",
+        "footnote": "👇 현장 이야기 시작"
+      }
+    },
+    {
+      "source": "03.webp",
+      "sourceText": "chapter 01\nBIO International Convention 🎪\n‘DRIVEN BY PURPOSE’를 주제로 열린\n세계 최대 규모의 글로벌 바이오 컨벤션.\n전 세계 기업·투자자·연구자가 한자리에 모입니다.",
+      "photo": [178, 288, 668, 435],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 01",
+        "headline": "BIO International Convention 🎪",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "‘DRIVEN BY PURPOSE’를 주제로 열린\n세계 최대 규모의 글로벌 바이오 컨벤션.\n전 세계 기업·투자자·연구자가 한자리에 모입니다."
+      }
+    },
+    {
+      "source": "04.webp",
+      "sourceText": "chapter 02\n하드사이언스, 글로벌 전시장에 🇰🇷\nKOREA 파빌리온에서 하드사이언스의\n3차원 배양·오가노이드 기술을 세계에 알렸습니다.",
+      "photo": [71, 88, 881, 497],
+      "card": {
+        "type": "chapter",
+        "layout": "image-top",
+        "badge": "chapter 02",
+        "headline": "하드사이언스, 글로벌 전시장에 🇰🇷",
+        "image": { "src": "@photo", "ratio": "16/9" },
+        "body": "KOREA 파빌리온에서 하드사이언스의\n3차원 배양·오가노이드 기술을 세계에 알렸습니다."
+      }
+    },
+    {
+      "source": "05.webp",
+      "sourceText": "chapter 03\n4일간의 여정 📅\n1 전시·부스 파트너링\n글로벌 파트너와의 1:1 미팅\n2 Korea Night @BIO\n한국 바이오가 함께한 네트워킹의 밤\n3 현지 법률 자문\nWilson Sonsini 미국 진출 미팅\n4 i-Corps 네트워킹\n현지 기업·투자자와의 교류",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "list",
+        "badge": "chapter 03",
+        "headline": "4일간의 여정 📅",
+        "marker": "number",
+        "items": [
+          { "title": "전시·부스 파트너링", "desc": "글로벌 파트너와의 1:1 미팅" },
+          { "title": "Korea Night @BIO", "desc": "한국 바이오가 함께한 네트워킹의 밤" },
+          { "title": "현지 법률 자문", "desc": "Wilson Sonsini 미국 진출 미팅" },
+          { "title": "i-Corps 네트워킹", "desc": "현지 기업·투자자와의 교류" }
+        ]
+      }
+    },
+    {
+      "source": "06.webp",
+      "sourceText": "chapter 04\n글로벌 파트너링 미팅 🤝\nKOREA 미팅존에서 해외 파트너들과\n기술이전·협력 방안을 논의했습니다.",
+      "photo": [134, 297, 756, 466],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 04",
+        "headline": "글로벌 파트너링 미팅 🤝",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "KOREA 미팅존에서 해외 파트너들과\n기술이전·협력 방안을 논의했습니다."
+      }
+    },
+    {
+      "source": "07.webp",
+      "sourceText": "chapter 05\nKorea Night @BIO 2026 🌃\n한국 바이오 기업이 함께한 네트워킹의 밤,\n글로벌 파트너들과 교류를 넓혔습니다.",
+      "photo": [71, 62, 881, 890],
+      "card": {
+        "type": "chapter",
+        "layout": "overlay",
+        "badge": "chapter 05",
+        "headline": "Korea Night @BIO 2026 🌃",
+        "image": { "src": "@photo", "ratio": "1/1" },
+        "body": "한국 바이오 기업이 함께한 네트워킹의 밤,\n글로벌 파트너들과 교류를 넓혔습니다."
+      }
+    },
+    {
+      "source": "08.webp",
+      "sourceText": "chapter 06\n글로벌 진출, 법률 파트너십 ⚖️\n미국 진출 전략을 위해 현지 법무법인\nWilson Sonsini와 자문 미팅을 진행했습니다.",
+      "photo": [143, 298, 747, 470],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 06",
+        "headline": "글로벌 진출, 법률 파트너십 ⚖️",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "미국 진출 전략을 위해 현지 법무법인\nWilson Sonsini와 자문 미팅을 진행했습니다."
+      }
+    },
+    {
+      "source": "09.webp",
+      "sourceText": "대표 한마디 💬\n“세계 최대 무대에서\n하드사이언스의 기술을 검증하다”\n허채정 HADD Science 대표",
+      "photo": [180, 391, 664, 508],
+      "card": {
+        "type": "quote",
+        "badge": "대표 한마디 💬",
+        "quote": "“세계 최대 무대에서\n하드사이언스의 기술을 검증하다”",
+        "attrib": "허채정 HADD Science 대표",
+        "image": { "src": "@photo", "ratio": "4/3" }
+      }
+    }
+  ]
+}

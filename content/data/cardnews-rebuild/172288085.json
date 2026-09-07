@@ -1,0 +1,156 @@
+{
+  "id": "172288085",
+  "title": "🔥 ‘Innovation in Women's Health’ 무대 위, 하드사이언스 글로벌 혁신가들과 어깨를 나란히 하다",
+  "cards": [
+    {
+      "source": "01.webp",
+      "sourceText": "카드뉴스",
+      "photo": null,
+      "card": {
+        "type": "cover",
+        "title": "카드뉴스",
+        "cta": "haddscience 알아보기"
+      }
+    },
+    {
+      "source": "02.webp",
+      "sourceText": "intro\n여성 건강 혁신,\n그 중심에 서다 💜\n샌디에이고에서 열린\nGlobal Innovation in Women's Health Showcase.\n하드사이언스가 그 현장에 함께했습니다.\n👇 현장 이야기 시작",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "intro",
+        "headline": "여성 건강 혁신,\n그 중심에 서다 💜",
+        "body": "샌디에이고에서 열린\nGlobal Innovation in Women's Health Showcase.\n하드사이언스가 그 현장에 함께했습니다.",
+        "footnote": "👇 현장 이야기 시작"
+      }
+    },
+    {
+      "source": "03.webp",
+      "sourceText": "chapter 01\nAquillius Women's Health란? 💜\n샌디에이고 바이오텍 밸리의\n인큐베이팅 허브 Aquillius가 주최하는\n여성 건강 혁신 쇼케이스입니다.\n검증된 전문가·투자자와 여성 건강 스타트업을 잇는\n글로벌 파트너링 무대로 열립니다.",
+      "photo": [
+        296,
+        288,
+        426,
+        335
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 01",
+        "headline": "Aquillius Women's Health란? 💜",
+        "image": {
+          "src": "@photo"
+        },
+        "body": "샌디에이고 바이오텍 밸리의\n인큐베이팅 허브 Aquillius가 주최하는\n여성 건강 혁신 쇼케이스입니다.\n검증된 전문가·투자자와 여성 건강 스타트업을 잇는\n글로벌 파트너링 무대로 열립니다."
+      }
+    },
+    {
+      "source": "04.webp",
+      "sourceText": "chapter 02\n🌉 샌디에이고, 여성 건강의 무대\nAquillius가 주최한 여성 건강 혁신 쇼케이스.\n전 세계 헬스케어 혁신가들이 한자리에 모였습니다.\n2026. 06. 21 · San Diego",
+      "photo": [
+        238,
+        305,
+        549,
+        408
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 02",
+        "headline": "🌉 샌디에이고, 여성 건강의 무대",
+        "image": {
+          "src": "@photo"
+        },
+        "body": "Aquillius가 주최한 여성 건강 혁신 쇼케이스.\n전 세계 헬스케어 혁신가들이 한자리에 모였습니다.",
+        "footnote": "2026. 06. 21 · San Diego"
+      }
+    },
+    {
+      "source": "05.webp",
+      "sourceText": "chapter 03\n하드사이언스, 현장에 서다 🎤\n‘Innovation in Women's Health’ 무대 위,\n하드사이언스가 글로벌 혁신가들과 어깨를 나란히 했습니다.",
+      "photo": [
+        71,
+        60,
+        881,
+        525
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "image-top",
+        "badge": "chapter 03",
+        "headline": "하드사이언스, 현장에 서다 🎤",
+        "image": {
+          "src": "@photo"
+        },
+        "body": "‘Innovation in Women's Health’ 무대 위,\n하드사이언스가 글로벌 혁신가들과 어깨를 나란히 했습니다."
+      }
+    },
+    {
+      "source": "06.webp",
+      "sourceText": "chapter 04\n이날의 하이라이트 ✨\n1 기조연설\nTina John, 여성 건강 혁신의 비전을 제시\n2 창업자 피칭\n10팀의 여성 건강 스타트업 무대에 오르다\n3 라운드테이블 & 네트워킹\n현지 투자자·전문가와의 깊이 있는 교류",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "list",
+        "badge": "chapter 04",
+        "headline": "이날의 하이라이트 ✨",
+        "marker": "number",
+        "items": [
+          {
+            "title": "기조연설",
+            "desc": "Tina John, 여성 건강 혁신의 비전을 제시"
+          },
+          {
+            "title": "창업자 피칭",
+            "desc": "10팀의 여성 건강 스타트업 무대에 오르다"
+          },
+          {
+            "title": "라운드테이블 & 네트워킹",
+            "desc": "현지 투자자·전문가와의 깊이 있는 교류"
+          }
+        ]
+      }
+    },
+    {
+      "source": "07.webp",
+      "sourceText": "chapter 05\n검증된 매칭, 네트워킹 🤝\n라운드테이블과 네트워킹으로 이어진 현장.\n전문가·투자자와 하드사이언스의 기술을 나눴습니다.",
+      "photo": [
+        71,
+        62,
+        881,
+        890
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "overlay",
+        "badge": "chapter 05",
+        "headline": "검증된 매칭, 네트워킹 🤝",
+        "image": {
+          "src": "@photo",
+          "ratio": "1/1"
+        },
+        "body": "라운드테이블과 네트워킹으로 이어진 현장.\n전문가·투자자와 하드사이언스의 기술을 나눴습니다."
+      }
+    },
+    {
+      "source": "08.webp",
+      "sourceText": "대표 한마디 💬\n“여성 건강 혁신의 글로벌 무대에서\n하드사이언스의 가능성을 확인하다”\n허채정 HADD Science 대표",
+      "photo": [
+        262,
+        392,
+        500,
+        505
+      ],
+      "card": {
+        "type": "quote",
+        "badge": "대표 한마디 💬",
+        "quote": "“여성 건강 혁신의 글로벌 무대에서\n하드사이언스의 가능성을 확인하다”",
+        "attrib": "허채정 HADD Science 대표",
+        "image": {
+          "src": "@photo"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "id": "171402558",
+  "title": "[최우수상] 하드사이언스 정우창, AI 챗봇 'Omnis'로 스타트업 업무 혁신을 증명하다! 🤖",
+  "cards": [
+    {
+      "source": "01.webp",
+      "sourceText": "Omnis: 업무 대화가\n곧 문서가 된다\nAI 기반 업무 가시성 확보 및 문서화 병목 해소 프로젝트\nHADD SCIENCE | 정우창 사원\n2026년 지역산업맞춤형인력양성사업 우수사례",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "",
+        "headline": "Omnis: 업무 대화가\n곧 문서가 된다",
+        "body": "AI 기반 업무 가시성 확보 및 문서화 병목 해소 프로젝트",
+        "footnote": "HADD SCIENCE | 정우창 사원\n2026년 지역산업맞춤형인력양성사업 우수사례"
+      }
+    },
+    {
+      "source": "02.webp",
+      "sourceText": "PART 01\n추진 배경 및 현황",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "PART 01",
+        "headline": "추진 배경 및 현황",
+        "body": ""
+      }
+    },
+    {
+      "source": "03.webp",
+      "sourceText": "R&D 스타트업의 ‘주요 통증’\n문서화 병목 현상\n연구원이 실험 본업보다 보고서 정리에 더 많은 시간 소모. 업무 1건당 평균 35분의 정리 시간 발생으로 후속 의사결정 지연.\n업무 가시성 부재\n의사결정권자가 \"누가 무엇을 어디까지 하는지\" 실시간 파악 불가. 주간 회의의 절반이 진행 상황 질문에 소비됨.",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "list",
+        "badge": "",
+        "headline": "R&D 스타트업의 ‘주요 통증’",
+        "marker": "bullet",
+        "items": [
+          {
+            "title": "문서화 병목 현상",
+            "desc": "연구원이 실험 본업보다 보고서 정리에 더 많은 시간 소모. 업무 1건당 평균 35분의 정리 시간 발생으로 후속 의사결정 지연."
+          },
+          {
+            "title": "업무 가시성 부재",
+            "desc": "의사결정권자가 \"누가 무엇을 어디까지 하는지\" 실시간 파악 불가. 주간 회의의 절반이 진행 상황 질문에 소비됨."
+          }
+        ]
+      }
+    },
+    {
+      "source": "04.webp",
+      "sourceText": "SMART 목표 설정\n핵심 지표 (KPI) / 기존 (Before) / 목표 (Target) / 기대 효과\n업무 1건당 문서화 시간 / 35분 / 5분 이내 / -85.7% 시간 절감\n의사결정권자 현황 인지 지연 / 평균 2일 / 실시간 (<5분) / 의사결정 속도 극대화\n동일 정보 재질의 빈도 / 주 10회 / 주 1회 이하 / 커뮤니케이션 피로도 감소\n월간 업무 누락 건수 / 월 2.5건 / 0건 / 업무 완결성 확보",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "list",
+        "badge": "",
+        "headline": "SMART 목표 설정",
+        "marker": "bullet",
+        "items": [
+          {
+            "title": "업무 1건당 문서화 시간",
+            "desc": "기존 (Before): 35분\n목표 (Target): 5분 이내\n기대 효과: -85.7% 시간 절감"
+          },
+          {
+            "title": "의사결정권자 현황 인지 지연",
+            "desc": "기존 (Before): 평균 2일\n목표 (Target): 실시간 (<5분)\n기대 효과: 의사결정 속도 극대화"
+          },
+          {
+            "title": "동일 정보 재질의 빈도",
+            "desc": "기존 (Before): 주 10회\n목표 (Target): 주 1회 이하\n기대 효과: 커뮤니케이션 피로도 감소"
+          },
+          {
+            "title": "월간 업무 누락 건수",
+            "desc": "기존 (Before): 월 2.5건\n목표 (Target): 0건\n기대 효과: 업무 완결성 확보"
+          }
+        ]
+      }
+    },
+    {
+      "source": "05.webp",
+      "sourceText": "PART 02\n핵심 기술 및 프로세스",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "PART 02",
+        "headline": "핵심 기술 및 프로세스",
+        "body": ""
+      }
+    },
+    {
+      "source": "06.webp",
+      "sourceText": "학습한 것이 곧 기능이 됩니다\nPrompt & Function\n프롬프트 엔지니어링을 통해 업무 대화를 정형 데이터로 분해. Function Calling으로 DB 자동 기록.\nRAG 지식증강\n옴니스 사내 지식 베이스 구축. 검색 증강 생성(RAG)을 통해 사내 정보를 자연어로 질의 및 응답.\nMulti-turn Context\n멀티턴 대화 관리를 통해 복잡한 업무 맥락을 유지하며 Chat Dock 스레드 형태로 업무 이력 관리.",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "list",
+        "badge": "",
+        "headline": "학습한 것이 곧 기능이 됩니다",
+        "marker": "bullet",
+        "items": [
+          {
+            "title": "Prompt & Function",
+            "desc": "프롬프트 엔지니어링을 통해 업무 대화를 정형 데이터로 분해. Function Calling으로 DB 자동 기록."
+          },
+          {
+            "title": "RAG 지식증강",
+            "desc": "옴니스 사내 지식 베이스 구축. 검색 증강 생성(RAG)을 통해 사내 정보를 자연어로 질의 및 응답."
+          },
+          {
+            "title": "Multi-turn Context",
+            "desc": "멀티턴 대화 관리를 통해 복잡한 업무 맥락을 유지하며 Chat Dock 스레드 형태로 업무 이력 관리."
+          }
+        ]
+      }
+    },
+    {
+      "source": "07.webp",
+      "sourceText": "20일의 압축 실행\n훈련 2일 + 적용 18일\n경기도경제과학진흥원 'AI 활용 노코드 데이터 분석'\n과정 수료 후 즉시 실무에 투입.\n설계(3일) ➡️ 개발(5일) ➡️ 파일럿(5일) ➡️ 운영(5일)\n의 초고속 사이클을 통해 R&D 스타트업에 최적화된\n시스템 구축 완료.",
+      "photo": [540, 0, 540, 608],
+      "card": {
+        "type": "chapter",
+        "layout": "split",
+        "badge": "",
+        "headline": "20일의 압축 실행",
+        "subtitle": "훈련 2일 + 적용 18일",
+        "image": { "src": "@photo", "ratio": "1/1" },
+        "body": "경기도경제과학진흥원 'AI 활용 노코드 데이터 분석'\n과정 수료 후 즉시 실무에 투입.\n\n설계(3일) ➡️ 개발(5일) ➡️ 파일럿(5일) ➡️ 운영(5일)\n의 초고속 사이클을 통해 R&D 스타트업에 최적화된\n시스템 구축 완료."
+      }
+    },
+    {
+      "source": "08.webp",
+      "sourceText": "채팅 한 줄이 곧 업무 흐름\n01 채팅 입력: 일상적인 업무 대화 한 줄로 보고 및 지시 시작.\n02 AI 분해: 인물, 이메일, 마감일 등 핵심 정보 자동 추출.\n03 자동 등록: 옴니스 업무 DB 및 캔버스에 즉시 반영.\n04 실시간 가시성: 전 직원이 통합 대시보드를 통해 현황 공유.",
+      "photo": [566, 141, 446, 404],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "",
+        "headline": "채팅 한 줄이 곧 업무 흐름",
+        "image": { "src": "@photo", "ratio": "1/1" },
+        "body": "01 채팅 입력: 일상적인 업무 대화 한 줄로 보고 및 지시 시작.\n02 AI 분해: 인물, 이메일, 마감일 등 핵심 정보 자동 추출.\n\n03 자동 등록: 옴니스 업무 DB 및 캔버스에 즉시 반영.\n\n04 실시간 가시성: 전 직원이 통합 대시보드를 통해 현황 공유."
+      }
+    },
+    {
+      "source": "09.webp",
+      "sourceText": "PART 03\n성과 및 기대 효과",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "PART 03",
+        "headline": "성과 및 기대 효과",
+        "body": ""
+      }
+    },
+    {
+      "source": "10.webp",
+      "sourceText": "주요 KPI 개선 성과 (Before vs After)\n업무 문서화 시간 (분)\nBefore: 35분\nAfter: 5분\n현황 인지 지연 (시간)\nBefore: 48시간 (2일)\nAft\n5분\n주간 보고 작성 (분)\nBefore: 220분\nAfter: 30분\n※ 사내 카카오톡 1개월 1,342건 텍스트 분석 및 실제 운영 평균치 기반",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "",
+        "headline": "주요 KPI 개선 성과 (Before vs After)",
+        "body": "업무 문서화 시간 (분)\nBefore: 35분\nAfter: 5분\n\n현황 인지 지연 (시간)\nBefore: 48시간 (2일)\nAfter: 5분\n\n주간 보고 작성 (분)\nBefore: 220분\nAfter: 30분",
+        "footnote": "※ 사내 카카오톡 1개월 1,342건 텍스트 분석 및 실제 운영 평균치 기반"
+      }
+    },
+    {
+      "source": "11.webp",
+      "sourceText": "경제적 가치 및 신뢰성\n480시간\n연간 업무 절감 시간 (60인일)\n1,200만원\n연간 사무 노동 비용 절감 효과\n사내 데이터 기반의 강력한 검증\n데모 데이터가 아닌 실제 사내 카카오톡 대화 1,342건으로 검증되었습니다. 인물 및 민감 정보는 익명화 처리를 통해\n보안성을 확보한 상태에서 시스템을 시연하였습니다.",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "stat",
+        "badge": "",
+        "headline": "경제적 가치 및 신뢰성",
+        "stats": [
+          { "value": "480", "unit": "시간", "label": "연간 업무 절감 시간 (60인일)" },
+          { "value": "1,200", "unit": "만원", "label": "연간 사무 노동 비용 절감 효과" }
+        ],
+        "body": "사내 데이터 기반의 강력한 검증\n데모 데이터가 아닌 실제 사내 카카오톡 대화 1,342건으로 검증되었습니다. 인물 및 민감 정보는 익명화 처리를 통해\n보안성을 확보한 상태에서 시스템을 시연하였습니다."
+      }
+    },
+    {
+      "source": "12.webp",
+      "sourceText": "SaaS 확장 및 전국 확산\n한 사람의 정보가, 모두의 정보가 됩니다.\nScalability\n모듈식 구조로 설계되어 경기지역 바이오/소재 스타트업을 위한 SaaS 모델 검증 예정.\nVision\nBest of CHAMP+ 전국 단위 확산 및 중소기업 AI 도입의 표준 모델 제시.\nContact: 정우창 (woochang4862@gmail.com) | HADD SCIENCE",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "",
+        "headline": "SaaS 확장 및 전국 확산",
+        "subtitle": "한 사람의 정보가, 모두의 정보가 됩니다.",
+        "body": "Scalability\n모듈식 구조로 설계되어 경기지역 바이오/소재 스타트업을 위한 SaaS 모델 검증 예정.\n\nVision\nBest of CHAMP+ 전국 단위 확산 및 중소기업 AI 도입의 표준 모델 제시.",
+        "footnote": "Contact: 정우창 (woochang4862@gmail.com) | HADD SCIENCE"
+      }
+    },
+    {
+      "source": "13.webp",
+      "sourceText": "2026년 지역산업맞춤형인력양성사업\n업무 적용 우수사례 공모전\n수상자 발표 🏆\n최우수상\n하드사이언스\n정우창\nAI 노코드 활용 학습으로 만든 채팅 기반\n업무관리 시스템 「OMNIS」:\n문서화 병목과 의사결정 가시성 부재를\n동시에 해소한 30일의 기록\n우수상\n(주)한솔오리온텍\n김지백\n전자회로 이해 교육 이수를 통한\n선박 분야 제품 개발 역량 향상 사례\n장려상\n주식회사 윈트\n김종택\n지역산업맞춤형인력양성사업 교육을 통해\n향상된 개인 역량 강화 및 기업 성과 창출 사례\n수상하신 모든 분들께 진심으로 축하드립니다!\n수상자에게는 향후 일정 및 시상 관련 사항을 개별 안내드릴 예정입니다.\n이번 공모전에 관심을 가지고 참여해 주신 모든 분들께 깊이 감사드립니다.",
+      "photo": [0, 0, 1080, 1350],
+      "card": {
+        "type": "chapter",
+        "layout": "split",
+        "badge": "2026년 지역산업맞춤형인력양성사업\n업무 적용 우수사례 공모전",
+        "headline": "수상자 발표 🏆",
+        "image": { "src": "@photo", "ratio": "3/4" },
+        "imageFit": "contain",
+        "body": "최우수상\n하드사이언스 정우창\nAI 노코드 활용 학습으로 만든 채팅 기반 업무관리 시스템 「OMNIS」:\n문서화 병목과 의사결정 가시성 부재를 동시에 해소한 30일의 기록\n\n우수상\n(주)한솔오리온텍 김지백\n전자회로 이해 교육 이수를 통한 선박 분야 제품 개발 역량 향상 사례\n\n장려상\n주식회사 윈트 김종택\n지역산업맞춤형인력양성사업 교육을 통해 향상된 개인 역량 강화 및 기업 성과 창출 사례",
+        "footnote": "수상하신 모든 분들께 진심으로 축하드립니다!\n수상자에게는 향후 일정 및 시상 관련 사항을 개별 안내드릴 예정입니다.\n이번 공모전에 관심을 가지고 참여해 주신 모든 분들께 깊이 감사드립니다."
+      }
+    }
+  ]
+}

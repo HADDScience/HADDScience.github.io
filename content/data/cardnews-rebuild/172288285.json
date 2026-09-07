@@ -1,0 +1,106 @@
+{
+  "id": "172288285",
+  "title": "포럼 무대에 오른 하드사이언스, 3차원 배양·오가노이드 기술로 협력 모색 👀",
+  "cards": [
+    {
+      "source": "01.webp",
+      "sourceText": "카드뉴스",
+      "photo": null,
+      "card": { "type": "cover", "title": "카드뉴스", "cta": "haddscience 알아보기" }
+    },
+    {
+      "source": "02.webp",
+      "sourceText": "intro\n바이오 파트너링의 장,\n인터비즈 포럼 💼\n국내외 바이오헬스 기업·투자자를 잇는\n2026 인터비즈 바이오 파트너링 & 투자포럼.\n하드사이언스가 참가했습니다.\n👇 현장 이야기 시작",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "intro",
+        "headline": "바이오 파트너링의 장,\n인터비즈 포럼 💼",
+        "body": "국내외 바이오헬스 기업·투자자를 잇는\n2026 인터비즈 바이오 파트너링 & 투자포럼.\n하드사이언스가 참가했습니다.",
+        "footnote": "👇 현장 이야기 시작"
+      }
+    },
+    {
+      "source": "03.webp",
+      "sourceText": "chapter 01\n인터비즈 포럼이란? 🌐\n국내외 바이오헬스 기업·투자·기술이전을 잇는 파트너링 & 투자포럼.\n2026년 7월 1~3일, 파트너링·세미나·컨설팅으로 열렸습니다.",
+      "photo": [178, 318, 667, 445],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 01",
+        "headline": "인터비즈 포럼이란? 🌐",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "국내외 바이오헬스 기업·투자·기술이전을 잇는 파트너링 & 투자포럼.\n2026년 7월 1~3일, 파트너링·세미나·컨설팅으로 열렸습니다."
+      }
+    },
+    {
+      "source": "04.webp",
+      "sourceText": "chapter 02\n하드사이언스, 파트너링 무대에 🎤\n포럼 무대에 오른 하드사이언스,\n3차원 배양·오가노이드 기술로 협력을 모색했습니다.",
+      "photo": [71, 62, 881, 560],
+      "card": {
+        "type": "chapter",
+        "layout": "image-top",
+        "badge": "chapter 02",
+        "headline": "하드사이언스, 파트너링 무대에 🎤",
+        "image": { "src": "@photo" },
+        "body": "포럼 무대에 오른 하드사이언스,\n3차원 배양·오가노이드 기술로 협력을 모색했습니다."
+      }
+    },
+    {
+      "source": "05.webp",
+      "sourceText": "chapter 03\n포럼 하이라이트 ✨\n1 1:1 파트너링 & 투자\n국내외 기업 간 기술이전·협력 미팅\n2 글로벌 세미나\nAI 기반 오가노이드·동물대체시험 전략\n3 전문 컨설팅\n특허·규제·투자 등 8개 분야\n4 포스터 전시\n제안기술·아이템 소개",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "list",
+        "badge": "chapter 03",
+        "headline": "포럼 하이라이트 ✨",
+        "marker": "number",
+        "items": [
+          { "title": "1:1 파트너링 & 투자", "desc": "국내외 기업 간 기술이전·협력 미팅" },
+          { "title": "글로벌 세미나", "desc": "AI 기반 오가노이드·동물대체시험 전략" },
+          { "title": "전문 컨설팅", "desc": "특허·규제·투자 등 8개 분야" },
+          { "title": "포스터 전시", "desc": "제안기술·아이템 소개" }
+        ]
+      }
+    },
+    {
+      "source": "06.webp",
+      "sourceText": "chapter 04\n1:1 파트너링 미팅 🤝\n수요·공급 기업이 마주 앉아\n기술이전과 협력 방안을 깊이 있게 논의했습니다.",
+      "photo": [136, 292, 752, 473],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 04",
+        "headline": "1:1 파트너링 미팅 🤝",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "수요·공급 기업이 마주 앉아\n기술이전과 협력 방안을 깊이 있게 논의했습니다."
+      }
+    },
+    {
+      "source": "07.webp",
+      "sourceText": "chapter 05\n동물실험을 대체할\n오가노이드 기술 🔬\n이번 포럼 세미나의 핵심 주제는\n‘AI 기반 오가노이드 등 동물대체시험’.\n하드사이언스의 3차원 배양 플랫폼이\n글로벌 파트너십의 열쇠로 주목받았습니다.",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "chapter 05",
+        "headline": "동물실험을 대체할\n오가노이드 기술 🔬",
+        "body": "이번 포럼 세미나의 핵심 주제는\n‘AI 기반 오가노이드 등 동물대체시험’.\n하드사이언스의 3차원 배양 플랫폼이\n글로벌 파트너십의 열쇠로 주목받았습니다."
+      }
+    },
+    {
+      "source": "08.webp",
+      "sourceText": "대표 한마디 💬\n“파트너링으로 여는 하드사이언스의 다음 무대”\n허채정 HADD Science 대표",
+      "photo": [133, 333, 758, 585],
+      "card": {
+        "type": "quote",
+        "badge": "대표 한마디 💬",
+        "quote": "“파트너링으로 여는 하드사이언스의 다음 무대”",
+        "attrib": "허채정 HADD Science 대표",
+        "image": { "src": "@photo", "ratio": "4/3" }
+      }
+    }
+  ]
+}

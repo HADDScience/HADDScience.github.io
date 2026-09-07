@@ -1,0 +1,77 @@
+{
+  "id": "172090251",
+  "title": "🧬 KASBP 2026 Spring Symposium",
+  "cards": [
+    {
+      "source": "01.webp",
+      "sourceText": "카드뉴스",
+      "photo": null,
+      "card": { "type": "cover", "title": "카드뉴스", "cta": "haddscience 알아보기" }
+    },
+    {
+      "source": "02.webp",
+      "sourceText": "chapter 01\n🧬 KASBP 2026 Spring Symposium\n👇 심포지엄 현장 확인하기",
+      "photo": [346, 349, 388, 520],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 01",
+        "headline": "🧬 KASBP 2026 Spring Symposium",
+        "image": { "src": "@photo", "ratio": "3/4" },
+        "body": "👇 심포지엄 현장 확인하기"
+      }
+    },
+    {
+      "source": "03.webp",
+      "sourceText": "chapter 02\nKASBP, 신약개발 첨단기술을 말하다 🔬\n6월 19~20일 미국 샌디에이고 Sheraton Mission Valley.\n한인 바이오제약 전문가 협회(KASBP)가 신약 개발을 위한\n첨단기술을 주제로 봄 심포지엄을 열었습니다.",
+      "photo": [191, 344, 698, 392],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 02",
+        "headline": "KASBP, 신약개발 첨단기술을 말하다 🔬",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "6월 19~20일 미국 샌디에이고 Sheraton Mission Valley.\n한인 바이오제약 전문가 협회(KASBP)가 신약 개발을 위한\n첨단기술을 주제로 봄 심포지엄을 열었습니다."
+      }
+    },
+    {
+      "source": "04.webp",
+      "sourceText": "chapter 03\n첨단 플랫폼 기술의 최전선 💡\nGC녹십자·유한양행·삼양바이오팜·메디톡스 등\n국내외 바이오 리더들이 한자리에 모였습니다.\n신약 발견 및 개발을 위한 첨단기술을 주제로 이야기를 나누었습니다.",
+      "photo": [144, 337, 792, 406],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 03",
+        "headline": "첨단 플랫폼 기술의 최전선 💡",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "GC녹십자·유한양행·삼양바이오팜·메디톡스 등\n국내외 바이오 리더들이 한자리에 모였습니다.\n신약 발견 및 개발을 위한 첨단기술을 주제로 이야기를 나누었습니다."
+      }
+    },
+    {
+      "source": "05.webp",
+      "sourceText": "chapter 04\n사람으로 이어지는 K-바이오 네트워크 🤝\n하드사이언스도 이 자리에 함께했습니다.\nFDA CMC·GMP 전문가와 잇는 ‘글로벌 제약바이오 전문 네트워크’로,\n미국 진출의 발판을 넓혔습니다.\n샌디에이고 바이오 생태계 한복판에서",
+      "photo": [195, 338, 690, 388],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "chapter 04",
+        "headline": "사람으로 이어지는 K-바이오 네트워크 🤝",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "하드사이언스도 이 자리에 함께했습니다.\nFDA CMC·GMP 전문가와 잇는 ‘글로벌 제약바이오 전문 네트워크’로,\n미국 진출의 발판을 넓혔습니다.",
+        "footnote": "샌디에이고 바이오 생태계 한복판에서"
+      }
+    },
+    {
+      "source": "06.webp",
+      "sourceText": "대표 한마디 💬\n“글로벌 시장은 네트워크에서 시작됩니다”\n허채정 HADD Science 대표",
+      "photo": [315, 367, 450, 601],
+      "card": {
+        "type": "quote",
+        "badge": "대표 한마디 💬",
+        "quote": "“글로벌 시장은 네트워크에서 시작됩니다”",
+        "attrib": "허채정 HADD Science 대표",
+        "image": { "src": "@photo", "ratio": "3/4" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "id": "171397323",
+  "title": "2026 바이오아이코어사업 선정 🚀",
+  "cards": [
+    {
+      "source": "01.webp",
+      "sourceText": "2026 Bio-iCorps 글로벌 멤버 선정 🌍\nHADD Science\nGlobal Leap\n바이오 기술로 세계 시장을 연결하다 🧬✨",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "2026 Bio-iCorps 글로벌 멤버 선정 🌍",
+        "headline": "HADD Science\nGlobal Leap",
+        "body": "바이오 기술로 세계 시장을 연결하다 🧬✨"
+      }
+    },
+    {
+      "source": "02.webp",
+      "sourceText": "바이오 생태계의 협력 🤝\n대전대 산학협력단과\n공식 협약을 체결했습니다.\n과학기술정보통신부 주관 사업을 통해 하드사이언스의 원천 기술력을 인정받았습니다. 📝\n✅주관: 대전대 바이오아이코어사업단\n✅대상: 하드사이언스 창업팀",
+      "photo": [520, 225, 500, 330],
+      "card": {
+        "type": "chapter",
+        "layout": "standard",
+        "badge": "",
+        "headline": "바이오 생태계의 협력 🤝",
+        "subtitle": "대전대 산학협력단과\n공식 협약을 체결했습니다.",
+        "image": { "src": "@photo", "ratio": "16/10" },
+        "body": "과학기술정보통신부 주관 사업을 통해 하드사이언스의 원천 기술력을 인정받았습니다. 📝\n\n✅주관: 대전대 바이오아이코어사업단\n✅대상: 하드사이언스 창업팀"
+      }
+    },
+    {
+      "source": "03.webp",
+      "sourceText": "우리가 꿈꾸는 혁신 🧫\n오가노이드 대량 배양\n고품질 생체 재료를 위한 표준화된 대량 배양 기술을 구축합니다.\nAI 기반 디자인\n인공지능을 활용해 최적화된 스캐폴드 설계 플랫폼을 제작합니다.\n생체 재료 플랫폼\n차세대 재생 의료의 핵심이 될 통합 플랫폼을 완성합니다.",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "list",
+        "badge": "",
+        "headline": "우리가 꿈꾸는 혁신 🧫",
+        "marker": "emoji",
+        "items": [
+          {
+            "emoji": "🔬",
+            "title": "오가노이드 대량 배양",
+            "desc": "고품질 생체 재료를 위한 표준화된 대량 배양 기술을 구축합니다."
+          },
+          {
+            "emoji": "🤖",
+            "title": "AI 기반 디자인",
+            "desc": "인공지능을 활용해 최적화된 스캐폴드 설계 플랫폼을 제작합니다."
+          },
+          {
+            "emoji": "🦾",
+            "title": "생체 재료 플랫폼",
+            "desc": "차세대 재생 의료의 핵심이 될 통합 플랫폼을 완성합니다."
+          }
+        ]
+      }
+    },
+    {
+      "source": "04.webp",
+      "sourceText": "Global Immersion Program 🇺🇸\nI-Corps 기반 현장 중심 고객 발굴(Customer Discovery) 및 실증 로드맵\n01\nBiotech Frontier 교육 (2개월)\n글로벌 비즈니스 모델 고도화 및 미국 현지 고객 발굴(Customer Discovery) 방법론 체득\n02\n미국 현지 시장 검증 (3주)\n보스턴, 샌디에이고 등 바이오 허브 거점 방문 및 현지 생태계 전문가 밀착 멘토링\n03\nBIO USA 전략적 파트너링\n글로벌 주요 제약사 대상 1:1 파트너링 미팅 및 기술 도입(Licensing) 타당성 검토\n04\n글로벌 IR 피칭 & Deal Sourcing\n미국 현지 바이오 전문 벤처캐피탈(VC) 대상 투자 유치 피칭 및 비즈니스 모델 검증",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "list",
+        "badge": "",
+        "headline": "Global Immersion Program 🇺🇸\nI-Corps 기반 현장 중심 고객 발굴(Customer Discovery) 및 실증 로드맵",
+        "marker": "number",
+        "items": [
+          {
+            "title": "Biotech Frontier 교육 (2개월)",
+            "desc": "글로벌 비즈니스 모델 고도화 및 미국 현지 고객 발굴(Customer Discovery) 방법론 체득"
+          },
+          {
+            "title": "미국 현지 시장 검증 (3주)",
+            "desc": "보스턴, 샌디에이고 등 바이오 허브 거점 방문 및 현지 생태계 전문가 밀착 멘토링"
+          },
+          {
+            "title": "BIO USA 전략적 파트너링",
+            "desc": "글로벌 주요 제약사 대상 1:1 파트너링 미팅 및 기술 도입(Licensing) 타당성 검토"
+          },
+          {
+            "title": "글로벌 IR 피칭 & Deal Sourcing",
+            "desc": "미국 현지 바이오 전문 벤처캐피탈(VC) 대상 투자 유치 피칭 및 비즈니스 모델 검증"
+          }
+        ]
+      }
+    },
+    {
+      "source": "05.webp",
+      "sourceText": "권리와 성장 ⚖️\n성과의 귀속\n연구를 통해 취득하는 지식재산권과 제작된 연구기자재 및 시작품은 모두 하드사이언스(을)의 소유가 됩니다.\n역량 강화\n국내외 필수 교육 이수를 통해 예비창업팀의 비즈니스 역량을 극대화하며, 투명한 연구비 관리로 신뢰를 쌓습니다.",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "list",
+        "badge": "",
+        "headline": "권리와 성장 ⚖️",
+        "marker": "emoji",
+        "items": [
+          {
+            "emoji": "🛡️",
+            "title": "성과의 귀속",
+            "desc": "연구를 통해 취득하는 지식재산권과 제작된 연구기자재 및 시작품은 모두 하드사이언스(을)의 소유가 됩니다."
+          },
+          {
+            "emoji": "🎓",
+            "title": "역량 강화",
+            "desc": "국내외 필수 교육 이수를 통해 예비창업팀의 비즈니스 역량을 극대화하며, 투명한 연구비 관리로 신뢰를 쌓습니다."
+          }
+        ]
+      }
+    },
+    {
+      "source": "06.webp",
+      "sourceText": "🚀\n2026, Leap Forward\n하드사이언스의 혁신이 곧 현실이 됩니다.\nHADD SCIENCE\n경기도 화성시 봉담읍 와우안길 17, 505호",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "🚀",
+        "headline": "2026, Leap Forward",
+        "body": "하드사이언스의 혁신이 곧 현실이 됩니다.",
+        "footnote": "HADD SCIENCE\n경기도 화성시 봉담읍 와우안길 17, 505호"
+      }
+    },
+    {
+      "source": "07.webp",
+      "sourceText": "‘HADD Science New Frontier’✨ 🤝 ‘Bioicorps’ 2026 선정\nR&D to REGENERATION\n2026 메디바이오 실증시험 돌입\nLEAP Forward",
+      "photo": [0, 95, 1024, 387],
+      "card": {
+        "type": "chapter",
+        "layout": "image-top",
+        "badge": "",
+        "headline": "‘HADD Science New Frontier’✨ 🤝 ‘Bioicorps’ 2026 선정",
+        "image": { "src": "@photo" },
+        "body": "R&D to REGENERATION\n2026 메디바이오 실증시험 돌입\nLEAP Forward"
+      }
+    }
+  ]
+}
