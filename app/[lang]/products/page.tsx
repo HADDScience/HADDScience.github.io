@@ -12,7 +12,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  const c = getContent(lang)
+  const c = await getContent(lang)
   return { title: "ADDGEL", description: c.products[0].heading }
 }
 
@@ -26,7 +26,7 @@ export default async function ProductsPage({
   return (
     <ProductFamilyPage
       lang={lang}
-      content={getContent(lang)}
+      content={await getContent(lang)}
       familyId="addgel"
     />
   )

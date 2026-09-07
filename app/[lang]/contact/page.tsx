@@ -14,7 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: getContent(lang).contact.pageTitle }
+  return { title: (await getContent(lang)).contact.pageTitle }
 }
 
 export default async function ContactPage({
@@ -25,7 +25,7 @@ export default async function ContactPage({
   const { lang } = await params
   if (!isLang(lang)) notFound()
 
-  const c = getContent(lang)
+  const c = await getContent(lang)
 
   return (
     <>

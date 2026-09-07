@@ -12,15 +12,14 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { AVAILABLE_LANGS } from "@/content"
 import type { Lang, Post, PostBlock, PostLocale } from "@/content/types"
+import type { ApiConfig } from "@/lib/admin-config"
 import {
   emptyLocale,
   mediaSrc,
   savePost,
-  toRepoPath,
   type PendingUpload,
 } from "@/lib/admin-posts"
 import { prepareImage } from "@/lib/admin-image"
-import type { GhConfig } from "@/lib/github"
 import { cn } from "@/lib/utils"
 
 const LANG_LABEL: Record<Lang, string> = { ko: "한국어", en: "English" }
@@ -40,7 +39,7 @@ export function PostEditor({
   onDone,
   onCancel,
 }: {
-  cfg: GhConfig
+  cfg: ApiConfig
   post: Post
   order: string[]
   isNew: boolean
@@ -135,25 +134,20 @@ export function PostEditor({
     setSaving(true)
     const order = isNew ? [post.id, ...initialOrder] : initialOrder
     const pending: PendingUpload[] = [...uploads.entries()].map(
-      ([src, u]) => ({ path: toRepoPath(src), bytes: u.bytes })
+      ([src, u]) => ({ src, bytes: u.bytes })
     )
     try {
-      const commit = await savePost(cfg, {
-        post,
-        order,
-        uploads: pending,
-        message: `${isNew ? "기사 작성" : "기사 수정"}: ${source.title}`,
-      })
-      toast.success("저장했습니다", {
-        description: "몇 분 뒤 사이트에 반영됩니다.",
-        action: {
-          label: "커밋 보기",
-          onClick: () => window.open(commit.url, "_blank", "noopener"),
-        },
-      })
+      const result = await savePost(cfg, { post, uploads: pending })
+      if (result.translationFailures.length) {
+        toast.warning("저장했지만 자동 번역은 실패했습니다", {
+          description: `${result.translationFailures.join(" · ")} — 다시 저장하면 다시 시도합니다.`,
+        })
+      } else {
+        toast.success("저장했습니다", { description: "사이트에 곧 반영됩니다." })
+      }
       for (const u of uploads.values()) URL.revokeObjectURL(u.previewUrl)
       setUploads(new Map())
-      onDone(post, order)
+      onDone(result.post, order)
     } catch (err) {
       toast.error("저장하지 못했습니다", {
         description:

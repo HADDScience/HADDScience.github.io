@@ -7,26 +7,32 @@
 
 ```bash
 pnpm dev        # http://localhost:3000 → /ko 로 리다이렉트
-pnpm build      # 정적 export → out/  (+ postbuild)
-pnpm preview    # out/ 을 http://localhost:4100 에서 서빙 (배포와 동일한 조건)
+pnpm build      # next build (서버 렌더 + ISR)
 pnpm lint
+pnpm hub        # 허브를 받아 public/hub 에 넣는다 (Vercel 빌드가 자동으로 돌린다)
 pnpm media:news # 아임웹에 남은 뉴스 미디어 재수집 (보통 다시 돌릴 일 없다)
 ```
 
-`output: "export"` 라서 `next start` 는 동작하지 않는다. 배포 결과를 확인할 때는
-반드시 `pnpm preview` 로 정적 파일을 직접 서빙해 볼 것 — `pnpm dev` 에는 서버가 있어서
-정적 배포에서 깨지는 것(루트 리다이렉트, 이미지 최적화 부재)이 드러나지 않는다.
+기사는 Omnis 의 API 에서 온다. 로컬에서 Omnis 를 같이 띄우면 `.env.local` 에
+`OMNIS_API_BASE=http://localhost:3000/api/website` · `OMNIS_DEV_ORIGIN=http://localhost:3000`
+을 두고 사이트는 다른 포트(`pnpm dev -p 3123`)로 띄운다. 없으면 배포된 Omnis 를 읽는다.
 
 ## 배포
 
-`out/` 하나를 두 곳에 올린다. 컨펌 화면과 실서비스 화면이 구조적으로 같다.
+Vercel 프로젝트 `haddscience` 하나다 (`main` 푸시 → 자동 배포). 한 도메인
+`haddscience.vercel.app` 아래에 `/`(이 사이트) · `/admin` · `/hub`(빌드 때 받아 넣는 정적
+허브) · `/omnis`(Omnis 로 rewrite) 가 산다 — `vercel.json`.
 
-| 대상 | 용도 | 방법 |
-| --- | --- | --- |
-| `haddscience.github.io` | 대표님 컨펌용 | `main` 푸시 → GitHub Actions |
-| `haddscience.com` | 실서비스 | Synology Web Station + `pnpm deploy` |
+| 환경변수 | 뜻 |
+| --- | --- |
+| `DEPLOY_TARGET=pages` | 컨펌용. robots · `<meta robots>` 로 색인을 막는다. DNS 를 붙이면 뺀다 |
+| `SITE_URL` | sitemap · robots 의 절대 주소 (기본 `https://haddscience.com`) |
+| `OMNIS_API_BASE` | 기사를 읽는 Omnis API (기본 `https://omnis-hadd.vercel.app/omnis/api/website`) |
+| `REVALIDATE_SECRET` | Omnis 가 저장 뒤 `/api/revalidate/` 를 부를 때 쓰는 비밀. Omnis 의 `WEBSITE_REVALIDATE_SECRET` 과 같은 값 |
 
-설정 절차와 주의사항은 [`deploy/README.md`](deploy/README.md) 에 있다.
+2026-09-07 까지는 정적 export 를 GitHub Pages(컨펌)와 Synology(실서비스)에 올렸다. 기사가
+Omnis 의 DB 로 가면서 서버 렌더가 필요해져 그 둘은 끝났다. 실도메인 `haddscience.com` 은
+DNS 를 이 Vercel 프로젝트로 옮겨 붙인다.
 
 ## 스택
 
@@ -43,8 +49,7 @@ pnpm media:news # 아임웹에 남은 뉴스 미디어 재수집 (보통 다시 
 ## 구조
 
 ```
-proxy.ts                dev 전용. 언어 접두사 없는 요청을 /ko · /en 으로 보낸다.
-                        정적 배포에는 서버가 없어 동작하지 않는다 (postbuild 가 대신함).
+proxy.ts                언어 접두사 없는 요청을 /ko · /en 으로 보낸다. /admin · /api · /omnis · /hub 는 제외.
 app/
   [lang]/               루트 레이아웃. <html lang> 이 로케일을 따라간다.
     page.tsx            홈
@@ -62,26 +67,25 @@ components/
 content/
   types.ts              SiteContent 인터페이스 — 언어별 딕셔너리의 계약
   ko.ts / en.ts         카피
-  news.ko.ts            뉴스 48건 (날짜 · 썸네일 · 카드뉴스 · 정렬의 단일 출처)
-  news.en.ts            영문 제목만 매핑. 나머지는 news.ko.ts 재사용
+  server.ts             서버 전용 로더. 기사는 Omnis API 에서 60초 캐시로 읽는다
   index.ts              언어 해석 · localePath
+app/api/revalidate/     Omnis 가 기사를 저장하면 부른다. 기사 캐시를 즉시 비운다
+app/robots.ts · sitemap.ts
 scripts/
-  fetch-news-media.mjs  아임웹 CDN → public/news/ 로 미디어 이관 + webp 리사이즈
-  postbuild.mjs         out/ 에 .nojekyll 과 루트 index.html 생성 후 검증
-  deploy-synology.sh    out/ → Synology Web Station rsync
+  build-hub.sh          허브 저장소를 받아 public/hub 에 넣는다 (Vercel 빌드)
+  fetch-news-media.mjs  아임웹 CDN → 미디어 이관 (이식 전 기록용)
 ```
 
-### 정적 export 에서 지켜야 할 것
+### 렌더 방식
 
-`output: "export"` 라서 서버 기능을 쓸 수 없다. 다음 세 가지를 깨뜨리지 말 것.
+뉴스 페이지는 서버에서 렌더하고 ISR 로 캐시한다. `content/server.ts` 가 Omnis 의
+`/api/website/posts` 를 `revalidate: 60` · 태그 `posts` 로 읽고, Omnis 가 저장·삭제 뒤
+`/api/revalidate/` 를 불러 그 태그를 비운다. 그래서 관리 화면에서 저장하면 곧바로 반영된다.
 
-- **`searchParams` 금지.** 빌드가 실패한다. 목록 페이지네이션은 `?page=2` 대신
-  `/news/page/2` 정적 라우트로 만들었다.
-- **`_next/` 를 위한 `.nojekyll`.** GitHub Pages 의 Jekyll 이 `_` 폴더를 지운다.
-- **루트 `/` 는 페이지가 아니라 `postbuild.mjs` 가 만든 리다이렉트 문서다.**
-
-`next/image` 최적화도 없다(`unoptimized: true`). 이미지는 커밋 전에 sharp 로 미리
-리사이즈해 둔다 — 제품 이미지는 수동, 뉴스 미디어는 `pnpm media:news` 가 처리한다.
+기사 사진은 `/omnis/api/website/media/<id>/<name>` 상대 경로다. 배포에서는 `vercel.json` 이,
+로컬에서는 `next.config.ts` 의 dev 전용 rewrite 가 `/omnis/*` 를 Omnis 로 넘긴다.
+`next/image` 최적화는 켜지 않는다 — 사진은 올릴 때 이미 1600px webp 로 줄여 두고, 최적화기가
+다시 받아 오면 NAS 왕복이 한 번 더 생긴다.
 
 컴포넌트에 문자열을 하드코딩하지 않는다. 라벨 · aria-label · 배지처럼 화면에 보이는 모든
 문자열은 `SiteContent` 의 `ui` · `legal` 섹션에 넣고 prop 으로 내려준다.
@@ -216,47 +220,17 @@ iframe 하나당 Maps JS 를 통째로 받으므로 **카드마다 지도를 깔
 
 ## 미디어 호스팅 방식 (결정)
 
-**이미지는 레포에 커밋해 사이트와 함께 배포한다.** 별도 이미지 서버·오브젝트 스토리지를
-두지 않는다 (2026-08-12 결정).
+**기사와 사진은 Omnis 에 있다** (2026-09-07 결정). 기사는 Neon 의 `WebsitePost`, 사진은
+Synology NAS 의 `website/<id>/…` 이고, 둘 다 Omnis 의 `/api/website/*` 로 읽고 쓴다.
+정본은 Omnis 저장소의 `mydocs/plans/2026-09-07-website-posts-db.md`.
 
-이유는 규모가 그걸 요구하지 않기 때문이다. 실측:
+이전(2026-08-12 ~ 09-07)에는 이미지를 저장소에 커밋해 사이트와 함께 정적 배포했다("git 이
+DB"). 관리 화면이 Omnis SSO 로 옮겨 가면서 브라우저가 GitHub 토큰을 들 수 없게 됐고,
+서버가 대신 커밋하게 하느니 DB 에 두는 편이 단순했다. 그 시절 기사 JSON(`content/data/news/`)과
+사진(`public/news/`)은 이식이 검증될 때까지 남겨 두고, 그 뒤 지운다.
 
-| 항목 | 현재 |
-| --- | --- |
-| 배포 산출물 `out/` | 18MB |
-| 커밋된 파일 총량 | 9.5MB |
-| `public/news/` (썸네일 48 + 카드뉴스 82) | 5.6MB / 130개 |
-| 카드뉴스 있는 글 1건당 | 약 500KB (카드 8장 + 썸네일) |
-
-GitHub Pages 한계는 **사이트 1GB · 월 대역폭 100GB** 다. 지금 18MB 이므로 남은 여유가
-980MB, 글 1건당 500KB 기준으로 **약 1,900건**을 더 올릴 수 있다. 현재 발행 속도(2년에
-48건)로는 수십 년 분량이다. 대역폭도 첫 방문 2MB 로 잡으면 월 5만 첫 방문까지 버틴다.
-
-얻는 것: 인프라가 없고, 이미지가 코드와 원자적으로 같이 배포·롤백되며, 컨펌용
-GitHub Pages 와 실서비스 Synology 가 **완전히 같은 산출물**을 쓴다. 미디어 서버를
-분리하면 컨펌용 사이트가 NAS 가동에 종속돼 이 성질이 깨진다.
-
-**대신 뉴스 발행에 커밋이 필요하다.** 이게 이 선택의 유일한 실질 비용이다. 발행 빈도가
-월 2~4건이고 담당자가 직접 커밋할 수 있어 감당 가능하다고 판단했다. 담당자가 웹에서
-글을 쓰는 흐름이 필요해지면 그때는 이미지 서버가 아니라 **헤드리스 CMS** 를 봐야 한다
-(이미지 분리만으로는 발행 문제가 풀리지 않는다).
-
-### 뉴스 새로 올리기
-
-```bash
-# 1) 카드뉴스 이미지를 public/news/<id>/ 에 01.webp, 02.webp … 순서로 넣는다
-#    (1080px 폭, webp. 정적 배포라 빌드 시 최적화가 없으므로 미리 줄여서 넣을 것)
-# 2) 썸네일을 public/news/thumb/<id>.webp 로 넣는다 (800px 폭)
-# 3) content/news.ko.ts 배열 맨 앞에 항목을 추가한다
-#      { id, date, title, image, href: `/news/<id>`, cards: [...] }
-#    href 를 `/news/<id>` 로 두면 사이트 안에 상세 페이지가 자동 생성된다.
-# 4) 영문 제목은 content/news.en.ts 의 titles 맵에 같은 id 로 추가한다
-pnpm build && pnpm preview   # out/ 을 4100 에서 확인
-git add -A && git commit && git push   # main 푸시 → GitHub Pages 자동 배포
-```
-
-`id` 는 아임웹 게시글 번호를 그대로 쓰고 있다. 새 글은 아무 고유값이나 쓰면 되지만
-`news.ko.ts` 와 `news.en.ts`, 그리고 `public/news/<id>/` 폴더명이 반드시 일치해야 한다.
+NAS 가 꺼지면 사진이 안 나오는 문제는 Omnis 쪽 미디어 경로가 `immutable` 1년 캐시를 주어
+Vercel 엣지가 막는다 — 사진 이름이 업로드마다 고유해서 가능하다.
 
 ## 콘텐츠 관리 (`/admin`)
 
@@ -265,14 +239,16 @@ git add -A && git commit && git push   # main 푸시 → GitHub Pages 자동 배
 
 ### 데이터 모델
 
-기사 한 건이 파일 한 개다. `content/data/news/<id>.json` 안에 **모든 언어**가 들어간다.
+기사 한 건이 Omnis 의 `WebsitePost` 한 행이다. `content` 안에 **모든 언어**가 들어간다.
+아래는 API 가 주고받는 모양이고, `content/types.ts` 의 `Post` 와 같다. Zod 정본은 Omnis 의
+`lib/schemas/website.ts` — 필드를 바꾸면 둘을 같이 고친다.
 
 ```jsonc
 {
   "id": "20260827-1030",
   "date": "2026.08.27",
   "sourceLang": "ko",          // 사람이 직접 쓴 언어. 나머지는 여기서 번역된다
-  "thumbnail": "/news/…/thumb.webp",
+  "thumbnail": "/omnis/api/website/media/…/….webp",
   "externalHref": null,        // 아임웹 등 외부에 원문이 있으면 그 주소
   "content": {
     "ko": { "title": "…", "summary": "…", "blocks": [ … ] },
@@ -285,35 +261,25 @@ git add -A && git commit && git push   # main 푸시 → GitHub Pages 자동 배
 **텍스트는 자동 번역 대상이고 이미지는 언어별로 따로 넣는다.** 카드뉴스처럼 그림 안에
 글자가 박혀 있으면 한국어판 이미지를 영문 기사에 그대로 쓸 수 없기 때문이다.
 
-목록 순서는 `content/data/news/order.json` 이 정한다. 파일명 정렬로는 최신순을
-복원할 수 없어서다.
+목록 순서는 `position` 이다. 새 글은 0 으로 들어가고 나머지가 한 칸씩 밀린다.
 
 ### 왜 이런 구조인가
 
 | 결정 | 이유 |
 | --- | --- |
-| **git 이 데이터베이스** | 누가 언제 무엇을 고쳤는지가 커밋 히스토리에 그대로 남고, 되돌리기가 `revert` 다. 별도 DB·백업 체계를 운영하지 않아도 된다. |
+| **Omnis 가 데이터베이스** | 관리 화면이 Omnis SSO 로 로그인하므로 저장소도 그쪽(Neon · NAS)이 맡는다. 예전의 "git 이 DB" 는 사람마다 GitHub 토큰이 필요했다. |
 | **Decap CMS 를 쓰지 않음** | OAuth 웹 플로우에 `client_secret` 을 쥔 토큰 교환 서버가 필요해 별도 도메인에 프록시를 하나 더 띄워야 한다. 게다가 UI 테마가 로고 교체 수준이라 디자인시스템을 입힐 수 없다. |
-| **Omnis SSO + GitHub 프록시** | 처음엔 사람마다 fine-grained PAT 을 발급해 브라우저가 api.github.com 을 직접 불렀다. 지금은 Hub · ip-platform 과 같은 Omnis SSO 로 로그인하고(`lib/omnis-auth.ts`), GitHub 호출은 Omnis 의 `/omnis/api/website/github` 프록시가 서버 토큰(`WEBSITE_GITHUB_TOKEN`)으로 대신한다. 커밋 `author` 는 프록시가 세션 사용자로 덮어쓰므로 실명은 그대로 남고, 퇴사 처리는 Omnis 계정 비활성화 하나로 끝난다. 정본은 Omnis 저장소 `mydocs/tech/auth-architecture.md`. |
+| **Omnis SSO** | Hub · ip-platform 과 같은 로그인(`lib/omnis-auth.ts`). 세션 토큰을 Bearer 로 Omnis API 에 보낸다. 퇴사 처리는 Omnis 계정 비활성화 하나로 끝난다. |
 | **리치 에디터를 쓰지 않음** | Tiptap · BlockNote 는 자체 테마 체계가 있어 우리 토큰·라디우스·버튼 규격을 그대로 입히기 어렵고, 결과물이 HTML 문자열이라 언어별 번역·이미지 분리가 까다로워진다. 블록이 네 종류뿐이라 직접 만드는 편이 작고 정확하다. |
 | **미리보기 = 실제 컴포넌트** | 편집기 오른쪽 미리보기가 기사 페이지와 같은 `components/ds/post-body.tsx` 를 쓴다. 두 벌로 나뉘면 반드시 어긋난다. |
-| **커밋 하나로 묶음** | contents API 를 파일마다 PUT 하면 중간에 실패했을 때 JSON 만 올라가고 사진은 빠진 상태가 남는다. Git Data API 로 트리를 한 번에 만들어 전부 반영되거나 전부 안 되게 한다. |
+| **사진 먼저, 글은 마지막에** | 저장은 사진을 하나씩 올린 뒤 돌아온 URL 로 기사 JSON 의 임시 경로를 바꿔 넣고 마지막에 PUT 한다(`lib/admin-posts.ts`). 사진이 하나라도 실패하면 기사는 저장하지 않는다. |
 
 ### 자동 번역
 
-`scripts/translate-posts.mjs` 가 GitHub Actions 안에서 돈다(`deploy-pages.yml`).
-관리자 페이지는 브라우저에서 도는 정적 화면이라 API 키를 둘 곳이 없어서다.
-
-- 키는 저장소 시크릿 **`ANTHROPIC_API_KEY`**. 없으면 번역만 건너뛰고 배포는 정상 진행된다.
-- 번역본의 `translatedFrom` 이 지금 원문의 해시와 다를 때만 다시 번역한다.
-- 관리자가 직접 손본 번역(`manual: true`)은 덮어쓰지 않는다.
-- `GITHUB_TOKEN` 으로 미는 커밋은 워크플로를 다시 트리거하지 않으므로 루프가 생기지 않는다.
-  대신 같은 실행 안에서 번역 → 커밋 → 빌드로 이어진다.
-
-```bash
-ANTHROPIC_API_KEY=… node scripts/translate-posts.mjs            # 바뀐 것만
-ANTHROPIC_API_KEY=… node scripts/translate-posts.mjs --force    # 전부 다시
-```
+Omnis 가 저장 시점에 Gemini 로 돌린다(`lib/website-translate.ts`). 규칙은 예전 Actions
+스크립트와 같다 — 번역본의 `translatedFrom` 이 원문 해시와 다를 때만, `manual: true` 는
+건드리지 않고, 블록 수·타입·이미지 경로는 원문에서 그대로. 실패해도 원문은 저장되고
+관리 화면에 경고가 뜬다. 다시 저장하면 다시 시도한다.
 
 ### 카드뉴스 편집기
 
@@ -333,21 +299,19 @@ ANTHROPIC_API_KEY=… node scripts/translate-posts.mjs --force    # 전부 다�
 `card.css` 는 그 `base_css()` 를, `card-face.tsx` 는 `render_*` 함수를 1:1 옮긴 것이다.
 둘이 어긋나면 스크립트가 정답이고, 토큰(색 · 8px 격자 · 타이포 스케일)도 거기서 바꾼다.
 
-저장하면 한 커밋에 이렇게 들어간다.
+저장하면 Omnis 에 이렇게 들어간다.
 
 ```
-content/data/news/<id>.json     deck 필드에 덱 원본 + blocks 에 카드 이미지 블록(alt = 카드 텍스트)
-public/news/<id>/src-NN.webp    편집기에서 고른 원본 사진 (1600px 이내, 재편집용)
-public/news/<id>/card-NN.webp   구운 카드 (1080, 언어 공통)
-public/news/<id>/thumb.webp     첫 카드 640px. 직접 고른 대표 이미지가 있으면 그것
+WebsitePost.deck                 덱 원본. content.ko.blocks 는 카드 이미지 블록(alt = 카드 텍스트)
+NAS website/<id>/<무작위>.webp   원본 사진(1600px 이내, 재편집용) · 구운 카드(1080) · 썸네일(640)
 ```
 
 - **왜 브라우저에서 굽나.** 정적 사이트라 서버도 헤드리스 Chrome 도 둘 곳이 없다. 대신 미리보기
   DOM 을 그대로 찍으니 미리보기와 결과물이 갈리지 않는다. html-to-image 는 SVG foreignObject
   를 거치므로 **Chrome 권장** — Safari 는 폰트·이미지 임베드가 불안정하다.
 - **재편집.** `post.deck` 이 있는 글은 목록에서 열면 글 편집기가 아니라 덱 편집기가 뜬다.
-  다시 저장하면 카드를 전부 다시 굽고, 장수가 줄어 남는 `card-NN` 과 덱이 더 이상
-  참조하지 않는 `src-NN` 은 같은 커밋에서 지운다(`savePost` 의 `removals`).
+  다시 저장하면 카드를 전부 새 이름으로 다시 굽는다. 옛 카드 파일은 NAS 에 남는데 그
+  정리는 Omnis 쪽 몫이다(아직 없음 — "남은 작업").
 - **영문판.** 카드는 그림이라 번역되지 않는다. 번역 스크립트가 이미지 블록의 `src` 를 원문에서
   복사하므로 영문 기사도 같은 카드를 보여준다. alt 만 번역된다.
 - **이모지.** 카드 안 이모지는 굽는 사람의 OS 이모지 폰트로 그려진다(macOS 는 Apple 이모지).
@@ -366,9 +330,11 @@ public/news/<id>/thumb.webp     첫 카드 640px. 직접 고른 대표 이미지
 
 | 항목 | 내용 |
 | --- | --- |
-| **뉴스 38건의 본문** | 상위 10건은 카드뉴스를 이관해 사이트 안에 상세 페이지가 있다. 나머지 38건은 `href` 가 아직 아임웹 원문을 가리킨다. **이 상태로는 아임웹을 해지할 수 없다.** `scripts/fetch-news-media.mjs` 의 `CARD_SETS` 에 남은 글의 이미지 목록을 추가하고 `pnpm media:news` 를 다시 돌리면 된다. |
+| **뉴스 38건의 본문** | 상위 10건은 카드뉴스를 이관해 사이트 안에 상세 페이지가 있다. 나머지 38건은 `href` 가 아직 아임웹 원문을 가리킨다. **이 상태로는 아임웹을 해지할 수 없다.** 이제는 `/admin` 에서 카드뉴스 편집기로 다시 만들거나 이미지를 올리면 된다. |
 | **카드뉴스 접근성** | 이관한 10건은 본문이 여전히 이미지뿐이라 스크린리더·검색엔진이 읽지 못한다. `/admin` 에서 글마다 요약과 본문 문단을 채우면 해결된다 — 기사 모델이 이미 텍스트 블록을 받는다. |
 | **영문 뉴스 본문** | 텍스트는 CI 가 자동 번역한다. 다만 이관한 10건과 카드뉴스 편집기로 만든 글은 본문이 이미지뿐이라 번역할 텍스트가 없다 — `/admin` 의 English 탭에서 이미지 블록만 영문 카드로 교체하거나, 본문을 텍스트로 다시 쓰는 편이 낫다. |
+| **옛 기사 파일 삭제** | `content/data/news/` 와 `public/news/` 는 Omnis 이식(49건 · 사진 132장)이 프로덕션에서 검증되면 지운다. 사이트는 더 이상 읽지 않는다. |
+| **NAS 고아 사진 정리** | 카드뉴스를 다시 저장하면 옛 카드 파일이 NAS 에 남고, 저장하지 않은 새 글의 사진도 남는다. Omnis 에 "기사가 참조하지 않는 WebsiteMedia 삭제" 작업이 필요하다. |
 | **카드뉴스 영문 자동 생성** | 덱은 텍스트라 번역할 수 있지만, 굽는 단계가 브라우저에만 있어 CI 가 영문 카드를 만들지 못한다. 필요해지면 Actions 에 Playwright 를 두고 `card-face` 를 헤드리스로 찍는 경로를 추가한다. |
 | **영문 감수** | 현행 영문 사이트에 원문이 있는 부분(About · Team · Location · Product 헤드라인)은 그대로 썼고, 없는 부분(히어로 · 폼 · 뉴스 제목 · FAQ)만 번역했다. 대외 공개 전 원어민 감수 권장. |
 | **문의 폼 백엔드** | 지금은 `mailto:` 로 메일 클라이언트를 연다. 서버 수신함이 정해지면 `components/forms/contact-form.tsx` 의 `handleSubmit` 만 교체하면 된다. |

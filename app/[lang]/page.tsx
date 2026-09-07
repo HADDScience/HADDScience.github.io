@@ -30,7 +30,7 @@ export default async function HomePage({
   const { lang } = await params
   if (!isLang(lang)) notFound()
 
-  const c = getContent(lang)
+  const c = await getContent(lang)
   const path = (href: string) => localePath(lang, href)
   // 첫 슬라이드는 ScrollStage 의 히어로 패널이 쓰고, 나머지는 아래 제품 밴드가 쓴다.
   const [, ...restSlides] = c.home.heroSlides

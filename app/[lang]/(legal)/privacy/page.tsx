@@ -13,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: getContent(lang).footer.privacy }
+  return { title: (await getContent(lang)).footer.privacy }
 }
 
 export default async function PrivacyPage({
@@ -23,7 +23,7 @@ export default async function PrivacyPage({
 }) {
   const { lang } = await params
   if (!isLang(lang)) notFound()
-  const c = getContent(lang)
+  const c = await getContent(lang)
 
   return (
     <>

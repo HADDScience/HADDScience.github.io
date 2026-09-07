@@ -12,7 +12,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: getContent(lang).news.pageTitle }
+  return { title: (await getContent(lang)).news.pageTitle }
 }
 
 export default async function NewsPage({
@@ -22,5 +22,5 @@ export default async function NewsPage({
 }) {
   const { lang } = await params
   if (!isLang(lang)) notFound()
-  return <NewsListPage lang={lang} content={getContent(lang)} page={1} />
+  return <NewsListPage lang={lang} content={await getContent(lang)} page={1} />
 }

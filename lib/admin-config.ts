@@ -1,22 +1,19 @@
-import type { GhConfig } from "@/lib/github"
+import { OMNIS_ORIGIN } from "@/lib/omnis-auth"
 
 /**
- * 관리자 페이지가 커밋할 저장소.
+ * 관리자 페이지가 부르는 Omnis API.
  *
- * 실도메인(Synology)에 올릴 때도 커밋 대상은 GitHub 저장소 그대로다 — 콘텐츠의
- * 단일 출처가 git 이고, 배포는 그 결과물을 옮기는 일이기 때문이다.
+ * 기사와 사진은 Omnis(Neon · NAS)에 있다. 이 사이트는 정적 번들이라 비밀을 들 수 없고,
+ * 로그인도 Omnis SSO 이므로 저장소도 그쪽이 맡는 것이 자연스럽다. 예전의 "git 이 DB"
+ * 방식(GitHub 커밋)은 사람마다 토큰이 필요해 걷어냈다.
  */
-const SLUG = process.env.NEXT_PUBLIC_GITHUB_REPO ?? "HADDScience/HADDScience.github.io"
-const [OWNER, REPO] = SLUG.split("/")
+export const API_BASE = `${OMNIS_ORIGIN}/api/website`
 
-export const REPO_OWNER = OWNER
-export const REPO_NAME = REPO
-export const REPO_BRANCH = process.env.NEXT_PUBLIC_GITHUB_BRANCH ?? "main"
+/** 요청마다 붙는 세션. token 은 Omnis SSO 세션 토큰이다. */
+export interface ApiConfig {
+  token: string
+}
 
-export const NEWS_DIR = "content/data/news"
-export const NEWS_MEDIA_DIR = "public/news"
-
-/** `token` 은 Omnis SSO 세션 토큰이다. GitHub 토큰은 Omnis 서버에만 있다. */
-export function ghConfig(token: string): GhConfig {
-  return { owner: REPO_OWNER, repo: REPO_NAME, branch: REPO_BRANCH, token }
+export function apiConfig(token: string): ApiConfig {
+  return { token }
 }

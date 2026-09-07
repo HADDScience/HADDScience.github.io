@@ -1,89 +1,43 @@
-import {
-  NEWS_DIR,
-  NEWS_MEDIA_DIR,
-} from "@/lib/admin-config"
-import {
-  commitFiles,
-  encodeBase64,
-  listDir,
-  readBlob,
-  type FileChange,
-  type GhConfig,
-} from "@/lib/github"
+import { api } from "@/lib/admin-api"
+import type { ApiConfig } from "@/lib/admin-config"
 import type { Lang, Post, PostLocale } from "@/content/types"
 
 /**
- * 관리자 페이지의 기사 저장소 계층.
+ * 관리자 페이지의 기사 저장소 계층 — Omnis API 위에 얹힌다.
  *
- * git 이 데이터베이스다. 기사 하나가 파일 하나이므로 "누가 언제 무엇을 고쳤는지" 는
- * 커밋 히스토리가 그대로 답한다. 되돌리기도 revert 로 끝난다.
+ * 편집기는 사진을 고를 때 `/news/<id>/…` 모양의 임시 경로를 만들어 미리보기(blob:)와
+ * 짝지어 둔다. 저장할 때 그 사진들을 먼저 올리고, 돌아온 실제 URL 로 기사 JSON 안의
+ * 임시 경로를 바꿔 넣은 뒤 기사를 PUT 한다. 편집기 화면은 이 치환을 모른다.
  */
 
-const CACHE_PREFIX = "hadd-admin-blob:"
+interface PostDto extends Omit<Post, "thumbnail"> {
+  position: number
+  thumbnail: string | null
+  updatedAt: string
+}
 
-function cacheGet(sha: string): string | null {
-  try {
-    return sessionStorage.getItem(CACHE_PREFIX + sha)
-  } catch {
-    return null
+function fromDto(dto: PostDto): Post {
+  return {
+    id: dto.id,
+    date: dto.date,
+    sourceLang: dto.sourceLang,
+    thumbnail: dto.thumbnail ?? "",
+    externalHref: dto.externalHref,
+    content: dto.content,
+    ...(dto.deck ? { deck: dto.deck } : {}),
   }
-}
-
-function cacheSet(sha: string, text: string) {
-  try {
-    sessionStorage.setItem(CACHE_PREFIX + sha, text)
-  } catch {
-    // 용량이 차면 캐시 없이 동작한다. 기능에는 영향이 없다.
-  }
-}
-
-async function readCached(cfg: GhConfig, sha: string): Promise<string> {
-  const hit = cacheGet(sha)
-  if (hit !== null) return hit
-  const text = await readBlob(cfg, sha)
-  cacheSet(sha, text)
-  return text
-}
-
-/** 동시 요청 수를 묶어 실행한다. 48개를 한꺼번에 던지면 브라우저가 큐에 쌓아 둔다. */
-async function mapLimit<T, R>(
-  items: T[],
-  limit: number,
-  fn: (item: T) => Promise<R>
-): Promise<R[]> {
-  const out: R[] = new Array(items.length)
-  let cursor = 0
-  const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
-    while (cursor < items.length) {
-      const i = cursor++
-      out[i] = await fn(items[i])
-    }
-  })
-  await Promise.all(workers)
-  return out
 }
 
 export interface PostIndex {
-  /** 최신순. order.json 그대로다. */
+  /** 최신순. */
   order: string[]
   posts: Post[]
 }
 
-export async function loadPosts(cfg: GhConfig): Promise<PostIndex> {
-  const entries = await listDir(cfg, NEWS_DIR)
-  const byName = new Map(entries.map((e) => [e.name, e]))
-
-  const orderEntry = byName.get("order.json")
-  if (!orderEntry) throw new Error(`${NEWS_DIR}/order.json 을 찾지 못했습니다`)
-  const order = JSON.parse(await readCached(cfg, orderEntry.sha)) as string[]
-
-  const posts = await mapLimit(order, 8, async (id) => {
-    const entry = byName.get(`${id}.json`)
-    if (!entry) throw new Error(`${id}.json 이 없습니다`)
-    return JSON.parse(await readCached(cfg, entry.sha)) as Post
-  })
-
-  return { order, posts }
+export async function loadPosts(cfg: ApiConfig): Promise<PostIndex> {
+  const dtos = await api<PostDto[]>(cfg, "/posts")
+  const posts = dtos.map(fromDto)
+  return { order: posts.map((p) => p.id), posts }
 }
 
 /* ------------------------------------------------------------- 새 기사 */
@@ -93,10 +47,8 @@ export function emptyLocale(): PostLocale {
 }
 
 /**
- * 새 기사 id.
- *
- * 기존 기사는 아임웹이 매긴 숫자 id 라 그 체계를 이어갈 수 없다. 날짜 기반으로
- * 만들어 파일 목록만 봐도 언제 쓴 글인지 알 수 있게 한다.
+ * 새 기사 id. 아임웹 시절 기사는 숫자 id 라 그 체계를 이어갈 수 없다. 날짜 기반으로
+ * 만들어 목록만 봐도 언제 쓴 글인지 알 수 있게 한다.
  */
 export function newPostId(now: Date): string {
   const p = (n: number, w = 2) => String(n).padStart(w, "0")
@@ -128,69 +80,74 @@ export function newPost(id: string, date: string, sourceLang: Lang): Post {
 
 /* --------------------------------------------------------------- 저장 */
 
+/** 아직 올리지 않은 사진. `src` 는 편집기가 만든 임시 경로(`/news/<id>/…`). */
 export interface PendingUpload {
-  /** 저장소 기준 경로. `public/` 을 포함한다. */
-  path: string
+  src: string
   bytes: Uint8Array
-}
-
-/** 사이트에서 참조하는 경로(`/news/...`)를 저장소 경로(`public/news/...`)로. */
-export function toRepoPath(src: string): string {
-  return `${NEWS_MEDIA_DIR}${src.replace(/^\/news/, "")}`
+  contentType?: string
 }
 
 export function mediaSrc(postId: string, lang: Lang, index: number, ext = "webp") {
   return `/news/${postId}/${lang}-${String(index).padStart(2, "0")}.${ext}`
 }
 
+async function uploadMedia(cfg: ApiConfig, postId: string, u: PendingUpload): Promise<string> {
+  const { url } = await api<{ url: string }>(cfg, "/media", {
+    method: "POST",
+    raw: u.bytes as unknown as BodyInit,
+    headers: {
+      "Content-Type": u.contentType ?? "image/webp",
+      "X-Post-Id": postId,
+    },
+  })
+  return url
+}
+
+/** JSON 안의 문자열을 표에 따라 바꾼다. 임시 사진 경로를 실제 URL 로. */
+function replaceStrings<T>(value: T, map: Map<string, string>): T {
+  if (typeof value === "string") return (map.get(value) ?? value) as T
+  if (Array.isArray(value)) return value.map((v) => replaceStrings(v, map)) as T
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, replaceStrings(v, map)])
+    ) as T
+  }
+  return value
+}
+
 export interface SaveOptions {
   post: Post
-  /** 목록 순서. 새 기사면 맨 앞에 넣은 배열을 넘긴다. */
-  order: string[]
   uploads: PendingUpload[]
-  /**
-   * 같은 커밋에서 지울 저장소 경로. 카드뉴스를 다시 저장할 때 장수가 줄면 남는
-   * `card-NN.webp` 를 여기로 정리한다 — 따로 커밋하면 중간 상태가 남는다.
-   */
-  removals?: string[]
-  message: string
 }
 
-export async function savePost(cfg: GhConfig, opts: SaveOptions) {
-  const changes: FileChange[] = [
-    {
-      path: `${NEWS_DIR}/${opts.post.id}.json`,
-      text: JSON.stringify(opts.post, null, 2) + "\n",
-    },
-    {
-      path: `${NEWS_DIR}/order.json`,
-      text: JSON.stringify(opts.order, null, 2) + "\n",
-    },
-    ...opts.uploads.map((u) => ({
-      path: u.path,
-      base64: encodeBase64(u.bytes),
-    })),
-    ...(opts.removals ?? []).map((path) => ({ path, remove: true as const })),
-  ]
-  return commitFiles(cfg, opts.message, changes)
+export interface SaveResult {
+  post: Post
+  /** 자동 번역이 실패한 언어. 원문은 저장됐다. */
+  translationFailures: string[]
 }
 
-export async function deletePost(
-  cfg: GhConfig,
-  postId: string,
-  order: string[]
-) {
-  // 이미지는 기사와 함께 지운다. 남겨 두면 무엇이 쓰이는지 알 수 없는 파일이 쌓인다.
-  const media = await listDir(cfg, `${NEWS_MEDIA_DIR}/${postId}`)
-  const changes: FileChange[] = [
-    { path: `${NEWS_DIR}/${postId}.json`, remove: true },
-    ...media
-      .filter((e) => e.type === "file")
-      .map((e) => ({ path: e.path, remove: true as const })),
-    {
-      path: `${NEWS_DIR}/order.json`,
-      text: JSON.stringify(order.filter((id) => id !== postId), null, 2) + "\n",
-    },
-  ]
-  return commitFiles(cfg, `기사 삭제: ${postId}`, changes)
+export async function savePost(cfg: ApiConfig, opts: SaveOptions): Promise<SaveResult> {
+  // 사진을 먼저 올린다. 하나라도 실패하면 기사는 저장하지 않는다 — 깨진 사진 경로가 남지 않게.
+  const urlOf = new Map<string, string>()
+  for (const u of opts.uploads) urlOf.set(u.src, await uploadMedia(cfg, opts.post.id, u))
+
+  const post = replaceStrings(opts.post, urlOf)
+  const body = {
+    date: post.date,
+    sourceLang: post.sourceLang,
+    thumbnail: post.thumbnail || null,
+    externalHref: post.externalHref,
+    content: post.content,
+    deck: post.deck ?? null,
+  }
+  const result = await api<{ post: PostDto; translationFailures: string[] }>(
+    cfg,
+    `/posts/${post.id}`,
+    { method: "PUT", body: JSON.stringify(body) }
+  )
+  return { post: fromDto(result.post), translationFailures: result.translationFailures }
+}
+
+export async function deletePost(cfg: ApiConfig, postId: string): Promise<void> {
+  await api(cfg, `/posts/${postId}`, { method: "DELETE" })
 }

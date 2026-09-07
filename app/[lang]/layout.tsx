@@ -8,6 +8,7 @@ import { NavBar } from "@/components/nav/nav-bar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AVAILABLE_LANGS, isLang } from "@/content"
 import { getContent } from "@/content/server"
+import { IS_REVIEW_BUILD } from "@/lib/site-env"
 import { cn } from "@/lib/utils"
 
 
@@ -22,13 +23,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  const content = getContent(lang)
+  const content = await getContent(lang)
   return {
     title: {
       default: content.meta.title,
       template: `%s | ${content.company.nameEn}`,
     },
     description: content.meta.description,
+    // 컨펌용 배포는 robots.txt 를 무시하는 크롤러까지 막기 위해 메타로도 한 번 더 막는다.
+    ...(IS_REVIEW_BUILD ? { robots: { index: false, follow: false } } : {}),
     alternates: {
       languages: Object.fromEntries(AVAILABLE_LANGS.map((l) => [l, `/${l}`])),
     },
@@ -50,7 +53,7 @@ export default async function LangLayout({
   const { lang } = await params
   if (!isLang(lang) || !AVAILABLE_LANGS.includes(lang)) notFound()
 
-  const content = getContent(lang)
+  const content = await getContent(lang)
 
   return (
     <html

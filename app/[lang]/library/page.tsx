@@ -14,7 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: getContent(lang).library.pageTitle }
+  return { title: (await getContent(lang)).library.pageTitle }
 }
 
 export default async function LibraryPage({
@@ -25,7 +25,7 @@ export default async function LibraryPage({
   const { lang } = await params
   if (!isLang(lang)) notFound()
 
-  const c = getContent(lang)
+  const c = await getContent(lang)
   const l = c.library
 
   return (

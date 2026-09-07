@@ -3,7 +3,8 @@ import { NextResponse, type NextRequest } from "next/server"
 import { AVAILABLE_LANGS, DEFAULT_LANG } from "@/content"
 
 /**
- * 언어 접두사가 없는 요청을 로케일 경로로 보낸다.
+ * 언어 접두사가 없는 요청을 로케일 경로로 보낸다. 서버 렌더로 바뀌면서(2026-09-07)
+ * 배포에서도 실제로 동작한다 — 예전 정적 export 시절에는 dev 전용이었다.
  * `/about` → `/ko/about`. Accept-Language 에 영어가 우선이면 `/en/...`.
  */
 export function proxy(request: NextRequest) {
@@ -38,6 +39,7 @@ function preferredLang(request: NextRequest) {
 
 export const config = {
   // _next 내부 자산, public 파일, 파일 확장자가 있는 요청은 건드리지 않는다.
-  // /admin 은 언어 라우팅 밖에 있는 관리 화면이라 함께 제외한다.
-  matcher: ["/((?!_next|admin|.*\\..*).*)"],
+  // 언어 라우팅 밖에 있는 것도 제외한다: /admin(관리 화면) · /api(재검증) ·
+  // /omnis(Omnis 로 rewrite) · /hub(허브 정적 파일) · /.well-known(MCP 디스커버리).
+  matcher: ["/((?!_next|admin|api|omnis|hub|\\.well-known|.*\\..*).*)"],
 }

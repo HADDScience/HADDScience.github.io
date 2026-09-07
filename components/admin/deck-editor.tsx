@@ -30,12 +30,11 @@ import type {
   PostBlock,
   PostLocale,
 } from "@/content/types"
-import { NEWS_MEDIA_DIR } from "@/lib/admin-config"
+import type { ApiConfig } from "@/lib/admin-config"
 import { prepareImage } from "@/lib/admin-image"
 import {
   emptyLocale,
   savePost,
-  toRepoPath,
   type PendingUpload,
 } from "@/lib/admin-posts"
 import {
@@ -59,8 +58,6 @@ import {
   rasterizeCard,
   resizeCanvas,
 } from "@/lib/cardnews-export"
-import type { GhConfig } from "@/lib/github"
-import { listDir } from "@/lib/github"
 import { cn } from "@/lib/utils"
 
 /**
@@ -87,7 +84,7 @@ export function DeckEditor({
   onDone,
   onCancel,
 }: {
-  cfg: GhConfig
+  cfg: ApiConfig
   post: Post
   order: string[]
   isNew: boolean
@@ -267,14 +264,9 @@ export function DeckEditor({
 
       const outputs: PendingUpload[] = []
       const blocks: PostBlock[] = []
-      const outputSrcs = new Set<string>()
       for (let i = 0; i < canvases.length; i++) {
         const src = cardOutputSrc(post.id, i + 1)
-        outputSrcs.add(src)
-        outputs.push({
-          path: toRepoPath(src),
-          bytes: await canvasToBytes(canvases[i], "image/webp", 0.9),
-        })
+        outputs.push({ src, bytes: await canvasToBytes(canvases[i], "image/webp", 0.9) })
         blocks.push({ type: "image", src, alt: cardText(deck.cards[i], deck) })
       }
 
@@ -283,26 +275,16 @@ export function DeckEditor({
       const thumbBytes = pickedThumb
         ? pickedThumb.bytes
         : await canvasToBytes(resizeCanvas(canvases[0], 640), "image/webp", 0.85)
-      outputs.push({ path: toRepoPath(thumbSrc), bytes: thumbBytes })
+      outputs.push({ src: thumbSrc, bytes: thumbBytes })
 
       // 덱이 실제로 참조하는 원본 사진만 올린다. 골랐다가 지운 사진은 버린다.
       const used = new Set(deckImageSrcs(deck))
       const sources: PendingUpload[] = [...uploads.entries()]
         .filter(([src]) => used.has(src))
-        .map(([src, u]) => ({ path: toRepoPath(src), bytes: u.bytes }))
+        .map(([src, u]) => ({ src, bytes: u.bytes }))
 
-      // 다시 저장할 때 장수가 줄었거나 사진을 바꿨으면 남는 파일을 같은 커밋에서 지운다.
-      const removals: string[] = []
-      if (!isNew) {
-        const existing = await listDir(cfg, `${NEWS_MEDIA_DIR}/${post.id}`)
-        for (const e of existing) {
-          if (e.type !== "file") continue
-          const site = `/news/${post.id}/${e.name}`
-          if (/^card-\d+\.webp$/.test(e.name) && !outputSrcs.has(site)) removals.push(e.path)
-          if (/^src-\d+\.webp$/.test(e.name) && !used.has(site)) removals.push(e.path)
-        }
-      }
-
+      // 다시 저장하면 카드 이미지는 새 이름으로 다시 올라간다. 옛 카드 파일은 NAS 에 남는데,
+      // 그 정리는 Omnis 쪽 정리 작업의 몫이다 — 여기서는 어떤 파일이 있는지 알 수 없다.
       const next: Post = {
         ...post,
         thumbnail: thumbSrc,
@@ -310,23 +292,17 @@ export function DeckEditor({
         content: { ...post.content, [lang]: { ...locale, blocks } },
       }
       const order = isNew ? [post.id, ...initialOrder] : initialOrder
-      const commit = await savePost(cfg, {
-        post: next,
-        order,
-        uploads: [...sources, ...outputs],
-        removals,
-        message: `${isNew ? "카드뉴스 작성" : "카드뉴스 수정"}: ${locale.title}`,
-      })
-      toast.success("저장했습니다", {
-        description: "몇 분 뒤 사이트에 반영됩니다.",
-        action: {
-          label: "커밋 보기",
-          onClick: () => window.open(commit.url, "_blank", "noopener"),
-        },
-      })
+      const result = await savePost(cfg, { post: next, uploads: [...sources, ...outputs] })
+      if (result.translationFailures.length) {
+        toast.warning("저장했지만 제목·요약 번역은 실패했습니다", {
+          description: `${result.translationFailures.join(" · ")} — 다시 저장하면 다시 시도합니다.`,
+        })
+      } else {
+        toast.success("저장했습니다", { description: "사이트에 곧 반영됩니다." })
+      }
       for (const u of uploads.values()) URL.revokeObjectURL(u.previewUrl)
       setUploads(new Map())
-      onDone(next, order)
+      onDone(result.post, order)
     } catch (err) {
       toast.error("저장하지 못했습니다", {
         description: err instanceof Error ? err.message : "잠시 뒤 다시 시도해 주세요",

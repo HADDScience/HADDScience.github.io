@@ -16,10 +16,11 @@ import {
   listPosts,
 } from "@/content/server"
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   const params: { lang: string; id: string }[] = []
+  const posts = await listPosts()
   for (const lang of AVAILABLE_LANGS) {
-    for (const post of listPosts()) {
+    for (const post of posts) {
       // 본문 블록이 있는 글만 사이트 안에 페이지를 갖는다. 나머지는 목록 카드가
       // 아임웹 원문으로 직접 보낸다.
       if (hasArticle(post, lang)) params.push({ lang, id: post.id })
@@ -35,7 +36,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang, id } = await params
   if (!isLang(lang)) return {}
-  const post = getPost(id)
+  const post = await getPost(id)
   if (!post) return {}
   const locale = getPostLocale(post, lang)
   if (!locale) return {}
@@ -59,14 +60,14 @@ export default async function NewsDetailPage({
   const { lang, id } = await params
   if (!isLang(lang)) notFound()
 
-  const content = getContent(lang)
-  const post = getPost(id)
+  const content = await getContent(lang)
+  const post = await getPost(id)
   if (!post) notFound()
 
   const locale = getPostLocale(post, lang)
   if (!locale?.blocks.length) notFound()
 
-  const { prev, next } = getArticleNeighbors(post.id, lang)
+  const { prev, next } = await getArticleNeighbors(post.id, lang)
   const path = (href: string) => localePath(lang, href)
 
   return (

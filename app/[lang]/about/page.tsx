@@ -21,7 +21,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: getContent(lang).about.pageTitle }
+  return { title: (await getContent(lang)).about.pageTitle }
 }
 
 export default async function AboutPage({
@@ -32,7 +32,7 @@ export default async function AboutPage({
   const { lang } = await params
   if (!isLang(lang)) notFound()
 
-  const c = getContent(lang)
+  const c = await getContent(lang)
   const a = c.about
   const path = (href: string) => localePath(lang, href)
   const subnav = c.nav[0].children ?? []

@@ -2,8 +2,7 @@
 
 import * as React from "react"
 
-import { ghConfig } from "@/lib/admin-config"
-import type { GhConfig } from "@/lib/github"
+import { apiConfig, type ApiConfig } from "@/lib/admin-config"
 import {
   clearStoredSession,
   OmnisAuthError,
@@ -20,7 +19,7 @@ import {
 export type SessionState =
   | { status: "loading" }
   | { status: "anonymous"; error?: string }
-  | { status: "ready"; cfg: GhConfig; user: OmnisUser }
+  | { status: "ready"; cfg: ApiConfig; user: OmnisUser }
 
 /**
  * 관리자 세션. 계정의 주인은 Omnis 자체계정이다 — 흐름은 `lib/omnis-auth.ts` 참고.
@@ -34,7 +33,7 @@ export function useAdminSession() {
   const [state, setState] = React.useState<SessionState>({ status: "loading" })
 
   const ready = (session: OmnisSession, user: OmnisUser = session.user) =>
-    setState({ status: "ready", cfg: ghConfig(session.token), user })
+    setState({ status: "ready", cfg: apiConfig(session.token), user })
 
   const signIn = React.useCallback(() => {
     startSignIn()
@@ -90,7 +89,7 @@ export function useAdminSession() {
         })
         return
       }
-      // 판단 불가(네트워크)면 저장된 만료 시각을 믿고 들여보낸다. 프록시가 어차피
+      // 판단 불가(네트워크)면 저장된 만료 시각을 믿고 들여보낸다. API 가 어차피
       // 요청마다 다시 검사하므로 죽은 세션으로는 아무것도 저장할 수 없다.
       const user = outcome.kind === "ok" ? outcome.user : saved.user
       if (outcome.kind === "ok") storeSession({ ...saved, user })

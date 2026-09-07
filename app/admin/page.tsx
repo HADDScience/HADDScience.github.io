@@ -22,7 +22,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useAdminSession } from "@/hooks/use-admin-session"
 import type { Post } from "@/content/types"
-import { REPO_NAME, REPO_OWNER } from "@/lib/admin-config"
 import {
   deletePost,
   formatDate,
@@ -31,15 +30,15 @@ import {
   newPostId,
   type PostIndex,
 } from "@/lib/admin-posts"
-import type { GhConfig } from "@/lib/github"
+import type { ApiConfig } from "@/lib/admin-config"
+import { OMNIS_ORIGIN } from "@/lib/omnis-auth"
 import { cn } from "@/lib/utils"
 
 /**
  * 콘텐츠 관리 화면.
  *
- * 정적 사이트라 서버가 없다. 이 페이지는 브라우저에서 Omnis 의 GitHub 프록시를 거쳐
- * 저장소를 읽고 커밋하며, 커밋이 올라가면 Pages 워크플로가 사이트를 다시 빌드한다.
- * 즉 "저장" 은 곧 커밋이고, 되돌리기는 git revert 다. 로그인은 Omnis 자체계정(SSO).
+ * 정적 화면이다. 로그인은 Omnis 자체계정(SSO), 기사와 사진은 Omnis 의 API 로 읽고 쓴다.
+ * 저장하면 Omnis 가 사이트 캐시를 비워 곧바로 반영된다.
  */
 export default function AdminPage() {
   const { state, signIn, signOut } = useAdminSession()
@@ -76,7 +75,7 @@ function Workspace({
   who,
   onSignOut,
 }: {
-  cfg: GhConfig
+  cfg: ApiConfig
   who: string
   onSignOut: () => void
 }) {
@@ -116,9 +115,9 @@ function Workspace({
   async function remove(post: Post) {
     if (!index) return
     const title = post.content[post.sourceLang]?.title ?? post.id
-    if (!confirm(`"${title}" 기사를 삭제할까요?\n사진도 함께 지워집니다.`)) return
+    if (!confirm(`"${title}" 기사를 삭제할까요?\n사진도 함께 지워지고 되돌릴 수 없습니다.`)) return
     try {
-      await deletePost(cfg, post.id, index.order)
+      await deletePost(cfg, post.id)
       toast.success("삭제했습니다")
       await refresh()
     } catch (err) {
@@ -168,12 +167,12 @@ function Workspace({
           <h1 className="text-2xl font-bold tracking-[-0.02em]">콘텐츠 관리</h1>
         </div>
         <a
-          href={`https://github.com/${REPO_OWNER}/${REPO_NAME}/commits`}
+          href={`${OMNIS_ORIGIN}/settings`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary"
         >
-          변경 이력 <ExternalLink className="size-3" />
+          계정 설정 <ExternalLink className="size-3" />
         </a>
         <span className="text-sm text-muted-foreground">{who}</span>
         <Button variant="ghost" size="sm" onClick={onSignOut}>
