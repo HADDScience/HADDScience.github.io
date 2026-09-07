@@ -6,47 +6,85 @@
       "source": "01.webp",
       "sourceText": "카드뉴스",
       "photo": null,
-      "card": { "type": "cover", "title": "카드뉴스", "cta": "haddscience 알아보기" }
+      "card": {
+        "type": "cover",
+        "title": "카드뉴스",
+        "cta": "haddscience 알아보기"
+      }
     },
     {
       "source": "02.webp",
       "sourceText": "chapter 01\n🧬 첨단바이오 기업 '하드사이언스',\n코스메슈티컬·재생의료 동시 출사표!\n👉연구용 세포 배양 소재를 넘어, 상처 치료와 피부 재생을 위한\n인체 적용 실증에 나선 하드사이언스의 새로운 도전을 소개합니다.\n2026 메디바이오 핵심소재 실증시험 본격 돌입!",
       "photo": null,
-      "card": {
-        "type": "chapter",
-        "layout": "text",
-        "badge": "chapter 01",
-        "headline": "🧬 첨단바이오 기업 '하드사이언스',\n코스메슈티컬·재생의료 동시 출사표!",
-        "body": "👉연구용 세포 배양 소재를 넘어, 상처 치료와 피부 재생을 위한\n인체 적용 실증에 나선 하드사이언스의 새로운 도전을 소개합니다.",
-        "footnote": "2026 메디바이오 핵심소재 실증시험 본격 돌입!"
-      }
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "🧬 첨단바이오 기업 '하드사이언스',\n코스메슈티컬·재생의료 동시 출사표!",
+          "body": ""
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "",
+          "body": "👉연구용 세포 배양 소재를 넘어, 상처 치료와 피부 재생을 위한\n인체 적용 실증에 나선 하드사이언스의 새로운 도전을 소개합니다.",
+          "footnote": "2026 메디바이오 핵심소재 실증시험 본격 돌입!"
+        }
+      ]
     },
     {
       "source": "03.webp",
       "sourceText": "chapter 02\n상처 치유를 넘어 '신경 재생'까지 🌍\n핵심 기술은 자연유래 DNA(폴리핵산) 기반 소재를 활용하여 세포의\n'전기적 방향성 이동(Electrotaxis)'을 유도하는 것입니다. 화상·창상\n환자의 상처 치유 속도를 높이는 동시에 피부 표층의 감각 및 자율 신경\n섬유의 재생까지 촉진합니다.",
-      "photo": [0, 424, 1080, 228],
+      "photo": [
+        0,
+        424,
+        1080,
+        228
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 02",
         "headline": "상처 치유를 넘어 '신경 재생'까지 🌍",
-        "image": { "src": "@photo", "ratio": "16/10" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/10"
+        },
         "body": "핵심 기술은 자연유래 DNA(폴리핵산) 기반 소재를 활용하여 세포의\n'전기적 방향성 이동(Electrotaxis)'을 유도하는 것입니다. 화상·창상\n환자의 상처 치유 속도를 높이는 동시에 피부 표층의 감각 및 자율 신경\n섬유의 재생까지 촉진합니다."
       }
     },
     {
       "source": "04.webp",
       "sourceText": "chapter 03\n주력 제품 '애드젤(ADDGEL)' 및 차세대\n상처치료제 '뉴로힐' 실증 🧫\nOperetta CLS High-Content Analysis System\nThe PhenoCycler-Fusion 2.0 Solution (formerly CODEX)\n경기도경제과학진흥원과 협력하여 자사의 주력 포트폴리오인\n애드젤(ADDGEL)과 뉴로힐의 효능을 검증합니다. 첨단 이미징 분석\n장비를 통해 신경세포 바이오 마커(Tuj1, PGP9.5 등)의 발현을\n신속하게 분석하며, 향후 당뇨병성 족부궤양 및 항암제 유도\n말초신경병증(CIPN) 치료까지 적응증을 확장할 계획입니다.",
-      "photo": [22, 428, 1036, 294],
-      "card": {
-        "type": "chapter",
-        "layout": "standard",
-        "badge": "chapter 03",
-        "headline": "주력 제품 '애드젤(ADDGEL)' 및 차세대\n상처치료제 '뉴로힐' 실증 🧫",
-        "subtitle": "Operetta CLS High-Content Analysis System\nThe PhenoCycler-Fusion 2.0 Solution (formerly CODEX)",
-        "image": { "src": "@photo", "ratio": "16/10" },
-        "body": "경기도경제과학진흥원과 협력하여 자사의 주력 포트폴리오인\n애드젤(ADDGEL)과 뉴로힐의 효능을 검증합니다. 첨단 이미징 분석\n장비를 통해 신경세포 바이오 마커(Tuj1, PGP9.5 등)의 발현을\n신속하게 분석하며, 향후 당뇨병성 족부궤양 및 항암제 유도\n말초신경병증(CIPN) 치료까지 적응증을 확장할 계획입니다."
-      }
+      "photo": [
+        22,
+        428,
+        1036,
+        294
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "주력 제품 '애드젤(ADDGEL)' 및 차세대\n상처치료제 '뉴로힐' 실증 🧫",
+          "subtitle": "Operetta CLS High-Content Analysis System\nThe PhenoCycler-Fusion 2.0 Solution (formerly CODEX)",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": ""
+        },
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "",
+          "body": "경기도경제과학진흥원과 협력하여 자사의 주력 포트폴리오인\n애드젤(ADDGEL)과 뉴로힐의 효능을 검증합니다. 첨단 이미징 분석\n장비를 통해 신경세포 바이오 마커(Tuj1, PGP9.5 등)의 발현을\n신속하게 분석하며, 향후 당뇨병성 족부궤양 및 항암제 유도\n말초신경병증(CIPN) 치료까지 적응증을 확장할 계획입니다."
+        }
+      ]
     },
     {
       "source": "05.webp",
@@ -76,26 +114,57 @@
       "source": "07.webp",
       "sourceText": "chapter 06\nK-Bio의 경쟁력, 글로벌 수출로\n증명합니다 ✨\n이번 실증시험을 통해 확보된 데이터는 고가의 수입 더마코스메틱 제품을\n대체하는 근거가 될 것입니다. 더 나아가 의료기기(2등급 창상피복재) 승인\n및 글로벌 인허가(미국 MoCRA, 유럽 CPNP, CE/FDA) 규제에 선제적으로\n대응하여 하드사이언스의 해외 진출을 가속화하겠습니다.🧬",
       "photo": null,
-      "card": {
-        "type": "chapter",
-        "layout": "text",
-        "badge": "chapter 06",
-        "headline": "K-Bio의 경쟁력, 글로벌 수출로\n증명합니다 ✨",
-        "body": "이번 실증시험을 통해 확보된 데이터는 고가의 수입 더마코스메틱 제품을\n대체하는 근거가 될 것입니다. 더 나아가 의료기기(2등급 창상피복재) 승인\n및 글로벌 인허가(미국 MoCRA, 유럽 CPNP, CE/FDA) 규제에 선제적으로\n대응하여 하드사이언스의 해외 진출을 가속화하겠습니다.🧬"
-      }
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "K-Bio의 경쟁력, 글로벌 수출로\n증명합니다 ✨",
+          "body": ""
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "",
+          "body": "이번 실증시험을 통해 확보된 데이터는 고가의 수입 더마코스메틱 제품을\n대체하는 근거가 될 것입니다. 더 나아가 의료기기(2등급 창상피복재) 승인\n및 글로벌 인허가(미국 MoCRA, 유럽 CPNP, CE/FDA) 규제에 선제적으로\n대응하여 하드사이언스의 해외 진출을 가속화하겠습니다.🧬"
+        }
+      ]
     },
     {
       "source": "08.webp",
       "sourceText": "Research\nR&D\nRegenerative\nMedicine\nR&D to REGENERATION\n2026 메디바이오 실증시험 돌입",
-      "photo": [0, 0, 1024, 559],
+      "photo": [
+        0,
+        0,
+        1024,
+        559
+      ],
       "card": {
         "type": "chapter",
-        "layout": "overlay",
-        "badge": "",
+        "layout": "image-top",
+        "badge": "chapter 07",
         "headline": "R&D to REGENERATION",
-        "image": { "src": "@photo", "ratio": "16/10" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        },
         "body": "2026 메디바이오 실증시험 돌입"
-      }
+      },
+      "omit": [
+        {
+          "line": "Research",
+          "why": "AI 일러스트 안에 그려진 라벨 — 사진에 그대로 남아 카드에서도 보인다"
+        },
+        {
+          "line": "Regenerative",
+          "why": "AI 일러스트 안에 그려진 라벨 — 사진에 그대로 남아 카드에서도 보인다"
+        },
+        {
+          "line": "Medicine",
+          "why": "AI 일러스트 안에 그려진 라벨 — 사진에 그대로 남아 카드에서도 보인다"
+        }
+      ]
     }
   ]
 }

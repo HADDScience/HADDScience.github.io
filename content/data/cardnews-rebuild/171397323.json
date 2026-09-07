@@ -17,14 +17,22 @@
     {
       "source": "02.webp",
       "sourceText": "바이오 생태계의 협력 🤝\n대전대 산학협력단과\n공식 협약을 체결했습니다.\n과학기술정보통신부 주관 사업을 통해 하드사이언스의 원천 기술력을 인정받았습니다. 📝\n✅주관: 대전대 바이오아이코어사업단\n✅대상: 하드사이언스 창업팀",
-      "photo": [520, 225, 500, 330],
+      "photo": [
+        520,
+        225,
+        500,
+        330
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
-        "badge": "",
+        "badge": "chapter 01",
         "headline": "바이오 생태계의 협력 🤝",
         "subtitle": "대전대 산학협력단과\n공식 협약을 체결했습니다.",
-        "image": { "src": "@photo", "ratio": "16/10" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/10"
+        },
         "body": "과학기술정보통신부 주관 사업을 통해 하드사이언스의 원천 기술력을 인정받았습니다. 📝\n\n✅주관: 대전대 바이오아이코어사업단\n✅대상: 하드사이언스 창업팀"
       }
     },
@@ -35,7 +43,7 @@
       "card": {
         "type": "chapter",
         "layout": "list",
-        "badge": "",
+        "badge": "chapter 02",
         "headline": "우리가 꿈꾸는 혁신 🧫",
         "marker": "emoji",
         "items": [
@@ -61,31 +69,64 @@
       "source": "04.webp",
       "sourceText": "Global Immersion Program 🇺🇸\nI-Corps 기반 현장 중심 고객 발굴(Customer Discovery) 및 실증 로드맵\n01\nBiotech Frontier 교육 (2개월)\n글로벌 비즈니스 모델 고도화 및 미국 현지 고객 발굴(Customer Discovery) 방법론 체득\n02\n미국 현지 시장 검증 (3주)\n보스턴, 샌디에이고 등 바이오 허브 거점 방문 및 현지 생태계 전문가 밀착 멘토링\n03\nBIO USA 전략적 파트너링\n글로벌 주요 제약사 대상 1:1 파트너링 미팅 및 기술 도입(Licensing) 타당성 검토\n04\n글로벌 IR 피칭 & Deal Sourcing\n미국 현지 바이오 전문 벤처캐피탈(VC) 대상 투자 유치 피칭 및 비즈니스 모델 검증",
       "photo": null,
-      "card": {
-        "type": "chapter",
-        "layout": "list",
-        "badge": "",
-        "headline": "Global Immersion Program 🇺🇸\nI-Corps 기반 현장 중심 고객 발굴(Customer Discovery) 및 실증 로드맵",
-        "marker": "number",
-        "items": [
-          {
-            "title": "Biotech Frontier 교육 (2개월)",
-            "desc": "글로벌 비즈니스 모델 고도화 및 미국 현지 고객 발굴(Customer Discovery) 방법론 체득"
-          },
-          {
-            "title": "미국 현지 시장 검증 (3주)",
-            "desc": "보스턴, 샌디에이고 등 바이오 허브 거점 방문 및 현지 생태계 전문가 밀착 멘토링"
-          },
-          {
-            "title": "BIO USA 전략적 파트너링",
-            "desc": "글로벌 주요 제약사 대상 1:1 파트너링 미팅 및 기술 도입(Licensing) 타당성 검토"
-          },
-          {
-            "title": "글로벌 IR 피칭 & Deal Sourcing",
-            "desc": "미국 현지 바이오 전문 벤처캐피탈(VC) 대상 투자 유치 피칭 및 비즈니스 모델 검증"
-          }
-        ]
-      }
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "chapter 03",
+          "headline": "Global Immersion Program 🇺🇸",
+          "marker": "emoji",
+          "items": [
+            {
+              "title": "Biotech Frontier 교육 (2개월)",
+              "desc": "글로벌 비즈니스 모델 고도화 및 미국 현지 고객 발굴(Customer Discovery) 방법론 체득",
+              "emoji": "01"
+            },
+            {
+              "title": "미국 현지 시장 검증 (3주)",
+              "desc": "보스턴, 샌디에이고 등 바이오 허브 거점 방문 및 현지 생태계 전문가 밀착 멘토링",
+              "emoji": "02"
+            }
+          ]
+        },
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "chapter 03",
+          "headline": "I-Corps 기반 현장 중심 고객 발굴(Customer Discovery) 및 실증 로드맵",
+          "marker": "emoji",
+          "items": [
+            {
+              "title": "BIO USA 전략적 파트너링",
+              "desc": "글로벌 주요 제약사 대상 1:1 파트너링 미팅 및 기술 도입(Licensing) 타당성 검토",
+              "emoji": "03"
+            },
+            {
+              "title": "글로벌 IR 피칭 & Deal Sourcing",
+              "desc": "미국 현지 바이오 전문 벤처캐피탈(VC) 대상 투자 유치 피칭 및 비즈니스 모델 검증",
+              "emoji": "04"
+            }
+          ]
+        }
+      ],
+      "omit": [
+        {
+          "line": "01",
+          "why": "차례 번호는 목록 마커(list-mark)로 01·02·03·04 그대로 찍힌다 — 글자 칸이 아니라 대조에서 빠진다"
+        },
+        {
+          "line": "02",
+          "why": "차례 번호는 목록 마커(list-mark)로 01·02·03·04 그대로 찍힌다 — 글자 칸이 아니라 대조에서 빠진다"
+        },
+        {
+          "line": "03",
+          "why": "차례 번호는 목록 마커(list-mark)로 01·02·03·04 그대로 찍힌다 — 글자 칸이 아니라 대조에서 빠진다"
+        },
+        {
+          "line": "04",
+          "why": "차례 번호는 목록 마커(list-mark)로 01·02·03·04 그대로 찍힌다 — 글자 칸이 아니라 대조에서 빠진다"
+        }
+      ]
     },
     {
       "source": "05.webp",
@@ -94,7 +135,7 @@
       "card": {
         "type": "chapter",
         "layout": "list",
-        "badge": "",
+        "badge": "chapter 04",
         "headline": "권리와 성장 ⚖️",
         "marker": "emoji",
         "items": [
@@ -127,13 +168,20 @@
     {
       "source": "07.webp",
       "sourceText": "‘HADD Science New Frontier’✨ 🤝 ‘Bioicorps’ 2026 선정\nR&D to REGENERATION\n2026 메디바이오 실증시험 돌입\nLEAP Forward",
-      "photo": [0, 95, 1024, 387],
+      "photo": [
+        0,
+        95,
+        1024,
+        387
+      ],
       "card": {
         "type": "chapter",
         "layout": "image-top",
-        "badge": "",
+        "badge": "chapter 05",
         "headline": "‘HADD Science New Frontier’✨ 🤝 ‘Bioicorps’ 2026 선정",
-        "image": { "src": "@photo" },
+        "image": {
+          "src": "@photo"
+        },
         "body": "R&D to REGENERATION\n2026 메디바이오 실증시험 돌입\nLEAP Forward"
       }
     }
