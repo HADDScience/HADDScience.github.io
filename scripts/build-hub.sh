@@ -6,7 +6,8 @@
 # 단순하고, GitHub Pages 에서 org 사이트 아래 /hub 로 두던 모양과 같다.
 #
 # 허브의 NEXT_PUBLIC_* 는 빌드 시 번들에 박힌다. 비밀은 없다 — 발급자 주소와 앱 id 뿐이다.
-# 허브가 어느 Omnis 로 로그인을 보낼지는 HUB_OMNIS_URL 로 바꾼다 (기본: 지금 옴니스 주소).
+# 허브가 어느 Omnis 로 로그인을 보낼지는 HUB_OMNIS_URL 로, 앱 id 는 HUB_SSO_APP_ID 로 바꾼다.
+# (기본: 같은 도메인의 /omnis · id hub-vercel — Omnis 의 lib/sso.ts 에 그 오리진으로 등록돼 있다)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -20,8 +21,8 @@ git clone --quiet --depth 1 --branch "$REF" https://github.com/HADDScience/hub.g
 cd "$WORK/hub"
 corepack enable >/dev/null 2>&1 || true
 pnpm install --frozen-lockfile --silent
-NEXT_PUBLIC_OMNIS_URL="${HUB_OMNIS_URL:-https://omnis-hadd.vercel.app}" \
-NEXT_PUBLIC_SSO_APP_ID=hub \
+NEXT_PUBLIC_OMNIS_URL="${HUB_OMNIS_URL:-https://haddscience.vercel.app/omnis}" \
+NEXT_PUBLIC_SSO_APP_ID="${HUB_SSO_APP_ID:-hub-vercel}" \
 NEXT_PUBLIC_BASE_PATH=/hub \
   pnpm build
 
