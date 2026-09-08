@@ -1,0 +1,98 @@
+{
+  "id": "170366975",
+  "style": "blue-grid-2026",
+  "cards": [
+    {
+      "n": 1, "file": "01.jpg", "kind": "cover", "fits": true,
+      "text": { "headline": "HADD\nSCIENCE\n카드뉴스", "body": "haddscience 알아보기", "footnote": "@haddscience" },
+      "photos": 0, "note": "로고 + 제목 + 버튼(haddscience 알아보기) + 핸들(@haddscience)"
+    },
+    {
+      "n": 2, "file": "02.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 01",
+        "headline": "하드 사이언스,\n순창 '마이크로바이옴' 현장 습격 사건! 🏃‍♂️♂️",
+        "body": "하드 사이언스가 다녀왔습니다!\n순창의 <b>149억 원짜리</b> 초대장 ✉️",
+        "footnote": "마이크로바이옴 지식산업센터 입주 설명회 <b>리얼 후기!</b>"
+      },
+      "photos": 0, "note": "'149억 원짜리'는 빨간 밑줄 강조, '리얼 후기'는 굵게 강조되어 있음. <b> 로 근사"
+    },
+    {
+      "n": 3, "file": "03.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 02",
+        "headline": "\"자리 있나요?\" 기업들로 북적이는 순창 🏢",
+        "body": "발효미생물산업진흥원 1층이\n전국 바이오 기업들로 <b>꽉 찼어요!</b>\n\n하드 사이언스를 포함해 총 25개사가 참석한 뜨거운 열기 🔥\n순창군수님까지 직접 오셔서 산업 육성 의지를\n팍팍 보여주셨습니다."
+      },
+      "photos": 1, "photoDesc": "실내 강당, '순창군 마이크로바이옴 공공임대형 지식산업센터 입주설명회' 현수막 아래 다수 참석자 단체 사진(주먹 포즈), 가로", "note": "'꽉 찼어요!' 굵게 강조"
+    },
+    {
+      "n": 4, "file": "04.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 03",
+        "headline": "연구에만 집중할 수 있는 완벽한 환경 🧪",
+        "body": "공공임대 방식: 초기 투자비 부담 없이 안정적으로 연구 가능!\n풀 패키지 시설: 연구실, 생산 라인, 사무실이 한 건물에 다 모여요.\n\n하드 사이언스가 꿈꾸는 기술 구현을 위한 최적의 베이스캠프 📍"
+      },
+      "photos": 1, "photoDesc": "마이크로바이옴 공공임대형 지식산업센터 건물 외관 조감도(파란색 통유리 신축 건물), 새들이 날아가는 하늘, 가로", "note": ""
+    },
+    {
+      "n": 5, "file": "05.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 04",
+        "headline": "\"순창이 깔아준 판,\n하드 사이언스가 접수할 지도?\" 😎",
+        "body": "단순한 사무실이 아니라 <b>시제품 제작</b>부터 <b>사업화</b>까지 뚫린 고속도로!\n\n하드 사이언스의 아이디어를 실물로 바꿀 <b>최강</b>의 하드웨어 확인 🛠️\n\n이 정도 인프라면 하드 사이언스의 성장 속도는 이제 광속 모드! 🚀"
+      },
+      "photos": 0, "note": "'시제품 제작', '사업화', '최강' 굵게 강조. 사진 없음"
+    },
+    {
+      "n": 6, "file": "06.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 05",
+        "headline": "하드 사이언스와 순창의 기분 좋은 동행 🌈",
+        "body": "2027년 개소할 센터는 지역 바이오 산업의 핵심 거점이 됩니다.\n하드 사이언스의 기술력이 순창의 인프라를 만나면?\n<b>양질의 일자리</b>와 <b>혁신적인 제품</b>으로 보답하겠습니다! 🚀"
+      },
+      "photos": 0, "note": "'양질의 일자리', '혁신적인 제품' 굵게 강조. 사진 없음"
+    },
+    {
+      "n": 7, "file": "07.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 06",
+        "headline": "하드 사이언스의 새로운 도전,\n순창에서 꽃피울 수 있을까요? 🌸",
+        "body": "하드 사이언스(Haddscience) | 순창군 발효미생물산업진흥원",
+        "footnote": "#하드사이언스 #순창군 #마이크로바이옴 #입주설명회\n#바이오혁신 #미래성장"
+      },
+      "photos": 0, "note": "본문 텍스트는 필기체 폰트로 강조 표기됨(폰트는 고정이라 근사 불가, 텍스트만 옮김). 사진 없음"
+    },
+    {
+      "n": 8, "file": "08.jpg", "kind": "link", "fits": false,
+      "text": {
+        "badge": "기사 정보",
+        "headline": "신아일보",
+        "footnote": "※페이지 클릭시 행사 사이트로 넘어갑니다."
+      },
+      "photos": 0, "photoDesc": "신아일보 로고, 손가락 클릭 아이콘", "note": "언론사 로고 + 클릭 안내, URL 텍스트는 없음"
+    },
+    {
+      "n": 9, "file": "09.jpg", "kind": "link", "fits": false,
+      "text": {
+        "badge": "기사 정보",
+        "headline": "뉴시스",
+        "footnote": "※페이지 클릭시 행사 사이트로 넘어갑니다."
+      },
+      "photos": 0, "photoDesc": "뉴시스(NEWSIS) 로고, 손가락 클릭 아이콘", "note": "언론사 로고 + 클릭 안내, URL 텍스트는 없음"
+    },
+    {
+      "n": 10, "file": "10.jpg", "kind": "raw-photo", "fits": false,
+      "photos": 1, "photoDesc": "'순창군 마이크로바이옴 공공임대형 지식산업센터 입주설명회' 현수막 아래 다수 참석자 단체 사진(03.jpg와 같은 촬영 세트, 다른 프레이밍), 카드 프레임 없음, 가로", "note": "카드 프레임 없는 원본 사진"
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "fits": 7,
+    "notFit": [
+      { "n": 8, "kind": "link", "why": "URL 없는 언론사 로고+클릭 안내형 카드" },
+      { "n": 9, "kind": "link", "why": "URL 없는 언론사 로고+클릭 안내형 카드" },
+      { "n": 10, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진" }
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "168549942",
+  "style": "other",
+  "cards": [
+    {
+      "n": 1, "file": "01.jpg", "kind": "cover", "fits": true,
+      "text": {
+        "badge": "HADD Card News",
+        "headline": "HADD SCIENCE\n카드뉴스",
+        "subtitle": "바쁜 당신을 위한 하드사이언스 요약 카드뉴스",
+        "footnote": "자세히보기 (버튼)"
+      },
+      "photos": 0, "photoDesc": "", "note": "HADD SCIENCE 로고 + '카드뉴스' 제목 + 부제 + '자세히보기' 버튼"
+    },
+    {
+      "n": 2, "file": "02.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "Chapter 01",
+        "headline": "🤝 하드사이언스 X MJ프론티어\n전략적 업무협약(MOU) 체결!",
+        "body": "\"'뉴로젤(Neurogel)' 사업의\n성공적인 시장 진출을 위해\n두 기업이 손을 잡았습니다. ✨\""
+      },
+      "photos": 0, "photoDesc": "악수하는 손 라인아트 아이콘(장식용 일러스트, 실제 사진 아님)", "note": "가운데 손 아이콘은 사진이 아닌 장식 일러스트 — 사진 없이 배지+제목+본문으로 재현 가능"
+    },
+    {
+      "n": 3, "file": "03.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "Chapter 02",
+        "headline": "🚀 '뉴로젤' 사업,\n날개를 달다!",
+        "body": "혁신적 생체소재 기업 (주)하드사이언스와 바이오 컨설팅 전문 MJ프론티어가 '뉴로젤 사업 시판 컨설팅'을 위한 MOU를 체결했습니다. ✍️"
+      },
+      "photos": 1, "photoDesc": "실내, TV 화면(MOU 로고) 앞에서 두 여성이 악수, 테이블 위 서류 여러 장 놓임, 세로형(인물 사진)", "note": ""
+    },
+    {
+      "n": 4, "file": "04.jpg", "kind": "list", "fits": false,
+      "text": {
+        "badge": "Chapter 03",
+        "headline": "📈 포괄적인 컨설팅 지원",
+        "items": ["시장조사 및 분석 📊", "제품 개발 및 마케팅 전략 수립", "인허가 및 규제 대응 전략 📋"],
+        "body": "\"양사는 이번 협약을 통해 '뉴로젤' 사업의\n성공적인 시장 안착을\n위해 다음과 같은 업무를 긴밀히\n협력합니다\""
+      },
+      "photos": 0, "photoDesc": "", "note": "항목 3개 나열 후 인용문(본문)이 추가로 이어짐 — list 레이아웃 스펙에는 항목 뒤 별도 본문/각주 슬롯이 없어 인용문 손실 위험. list 로 항목만 넣고 인용문은 생략하거나 각주로 편입하는 대안 가능"
+    },
+    {
+      "n": 5, "file": "05.jpg", "kind": "other", "fits": false,
+      "text": {
+        "headline": "전문가 두 집단의\n강력한 시너지 기대!",
+        "badge": "Chapter 04",
+        "body": "하드사이언스:\n\"이번 협력은 '뉴로젤'이 세포 치료제\n시장에 진입하는 중요한 전환점이\n될 것입니다.\"\n\nMJ프론티어:\n\"하드사이언스의 혁신 기술이\n시장을 선도할 수 있도록 최선을\n다해 지원하겠습니다.\""
+      },
+      "photos": 0, "photoDesc": "전구 라인아트 아이콘(장식용 일러스트)", "note": "두 기관(하드사이언스/MJ프론티어)의 인용문이 좌우로 나란히 배치됨. quote 레이아웃은 인용문 1개+이름 1개만 지원해 2개 병렬 배치는 불가 — 9가지 안에 해당 없음"
+    },
+    {
+      "n": 6, "file": "06.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "Chapter 05",
+        "headline": "🌐 글로벌 바이오 시장을\n항해!",
+        "body": "이번 MOU를 시작으로 regenerative medicine 시장을 진출하고,\n글로벌 바이오 생태계에서 입지를 더욱 공고히 하겠습니다!",
+        "footnote": "#하드사이언스 #MJ프론티어 #MOU #업무협약 #뉴로젤 #Neurogel\n#바이오컨설팅 #생체소재 #혁신기술"
+      },
+      "photos": 0, "photoDesc": "청록색 세계지도 일러스트, 아시아/유럽/아메리카 등에 빨간 점(도시 표시) 다수, 가로형 그래픽(사진 아님)", "note": "세계지도는 일러스트 그래픽이라 사진 없이도 재현 가능(또는 그래픽을 photo 자리에 넣어도 됨)"
+    },
+    {
+      "n": 7, "file": "07.png", "kind": "raw-photo", "fits": false,
+      "text": {},
+      "photos": 1, "photoDesc": "실내 로비, TV 화면(MOU 로고) 앞에서 두 여성이 악수하는 전체 장면, 세로형, 배경에 기둥과 바닥 타일이 보임 — 카드 프레임/텍스트 없는 원본 사진", "note": "카드 프레임이 없는 원본 사진 그대로임"
+    }
+  ],
+  "summary": {
+    "total": 7, "fits": 4,
+    "notFit": [
+      { "n": 4, "kind": "list", "why": "항목 뒤 인용문이 추가로 있어 list 스펙(항목만)으로는 손실 위험" },
+      { "n": 5, "kind": "other", "why": "두 기관의 인용문이 좌우로 나란히 배치되어 9가지 어디에도 해당 없음" },
+      { "n": 7, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진" }
+    ]
+  }
+}

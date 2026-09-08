@@ -1,0 +1,213 @@
+{
+  "id": "169639982",
+  "style": "blue-grid-2026",
+  "cards": [
+    {
+      "n": 1,
+      "file": "01.jpg",
+      "kind": "cover",
+      "fits": true,
+      "text": {
+        "headline": "카드뉴스",
+        "body": "haddscience 알아보기",
+        "footnote": "@haddscience"
+      },
+      "photos": 0,
+      "note": "HADD SCIENCE 로고, 카드뉴스 표지"
+    },
+    {
+      "n": 2,
+      "file": "02.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 01",
+        "headline": "AI가 일상이 된 세상,\n기술의 한계는 사라졌습니다 🔭",
+        "body": "\"전 세계가 주목한 최대 IT 전시회 'CES 2026'의\n핵심 이슈를 정리하고, 하드사이언스가 회사 차원에서\n현장을 누비며 포착한 미래 기술 트렌드를 전해드립니다.\""
+      },
+      "photos": 1,
+      "photoDesc": "CES 2026 라스베가스 컨벤션센터 외관, CES 로고 대형 배너, 다수 인파와 경찰차, 가로",
+      "note": ""
+    },
+    {
+      "n": 3,
+      "file": "03.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 02",
+        "headline": "역대 최대 규모, 전 세계가 주목한 기술의 향연 ✨",
+        "body": "\"지난 1월 9일 막을 내린 CES 2026은 150개국 4,000여 개\n기업이 참가해 성황을 이뤘습니다. 인공지능(AI), 모빌리티,\n그리고 디지털 헬스케어가 인류의 삶을 어떻게 혁신하는지\n증명하는 자리였습니다.\""
+      },
+      "photos": 1,
+      "photoDesc": "전시장 내부, 대형 스크린과 자동차(GWM) 전시, 취재진과 관람객 다수, 가로",
+      "note": ""
+    },
+    {
+      "n": 4,
+      "file": "04.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 03",
+        "headline": "개인 맞춤형 의료, 데이터 관리의 새 지평을 열다",
+        "body": "\"글로벌 기업 '밀리포어(Millipore)'는 이번 전시에서 AI를 활용한\n개인 의료 데이터의 정보 처리 및 의료 정보 토탈 관리\n시스템 구축 현황을 공개하며, 데이터 사이언스가 이끄는 헬스케어의\n미래를 보여주었습니다.\""
+      },
+      "photos": 1,
+      "photoDesc": "보라색 'THE NEXT BIG THING' 전시부스, 반도체 웨이퍼 이미지와 디지털 스크린, 좌석에 앉은 관람객, 가로",
+      "note": "제목 아래 작은 DNA 이모지 장식이 있음"
+    },
+    {
+      "n": 5,
+      "file": "05.jpg",
+      "kind": "photo-grid",
+      "fits": false,
+      "text": {
+        "badge": "chapter 04",
+        "headline": "내 몸의 신호를 실시간으로 읽다,\n애보트(Abbott) 🩺",
+        "body": "\"이미 당뇨 모니터링 시장에서 가장 유명한\n'애보트'는 '링고(Lingo)'와 같은 혁신 기기를 통해 실시간 신체\n바이오 데이터를 모니터링하는 퍼스널 기기 개발에\n박차를 가하고 있음을 확실히 각인시켰습니다.\""
+      },
+      "photos": 2,
+      "photoDesc": "왼쪽: Abbott CES Awards 전시부스에서 대화하는 여성 2인, 세로. 오른쪽: 팔뚝에 부착된 Lingo 연속혈당측정 패치와 스마트폰 화면 클로즈업, 세로",
+      "note": "사진 2장이 나란히 배치되어 9종 레이아웃(사진 최대 1장)에 맞지 않음"
+    },
+    {
+      "n": 6,
+      "file": "06.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 05",
+        "headline": "CES를 휩쓴 'K-스타트업', 혁신의 중심에 서다 🇰🇷",
+        "body": "\"올해 유레카 파크(Eureka Park)는 한국 스타트업들의\n독무대였습니다. 역대 최대 규모로 꾸려진\n'K-스타트업 통합관'은 AI, 로봇, 헬스케어 분야에서\n혁신상을 휩쓸며 전 세계 투자자와 관람객들의\n발길을 사로잡았습니다.\""
+      },
+      "photos": 1,
+      "photoDesc": "K-STARTUP 통합관 앞 대규모 단체사진, 수십 명이 주먹을 든 포즈, 'CES K-STARTUP Venetian Expo Hall G, Eureka Park January 6-9, 2026' 배너, 가로",
+      "note": ""
+    },
+    {
+      "n": 7,
+      "file": "07.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 06",
+        "headline": "하드사이언스 전사적 참관,\n글로벌 트렌드와 호흡하다 👁️",
+        "body": "\"이번 CES에는 하드사이언스가 회사 차원에서 함께 참관하여\n글로벌 기술의 최전선을 확인했습니다. 밀리포어, 애보트, 그리고\nK-스타트업들이 보여준 '데이터 기반 헬스케어'의 흐름은\n우리가 추구해 온 방향성과 정확히 일치했습니다.\""
+      },
+      "photos": 1,
+      "photoDesc": "라스베가스 컨벤션센터 외부, 'CES Shuttle Buses / West Hall' 안내판, 다수 인파, 흐린 하늘, 가로",
+      "note": ""
+    },
+    {
+      "n": 8,
+      "file": "08.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 07",
+        "headline": "더 정교해질 하드사이언스의\n솔루션을 기대하세요 🚀",
+        "body": "\"하드사이언스는 현장에서 얻은 인사이트를 바탕으로 R&D에\n속도를 더하겠습니다. 자체 개발 중인 딥러닝 예측 모델을\n고도화하고, 세계적 트렌드에 발맞춘 차세대 헬스케어\n솔루션을 선보일 것입니다.\""
+      },
+      "photos": 0,
+      "note": "본문 위에 HADD SCIENCE 로고 이미지가 있으나 사진이 아닌 브랜드 로고라 photos에 포함하지 않음"
+    },
+    {
+      "n": 9,
+      "file": "09.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 08",
+        "headline": "기술로 여는 더 나은 미래,\n하드사이언스가 함께합니다 🤝",
+        "body": "\"급변하는 기술 트렌드 속에서도 하드사이언스는 흔들리지 않는 데이터 전문성으로 해답을 찾겠습니다. 여러분의 비즈니스를 혁신할\n든든한 파트너, 하드사이언스가 함께 하겠습니다.\""
+      },
+      "photos": 0,
+      "note": "본문 위에 HADD SCIENCE 로고 이미지가 있으나 사진이 아닌 브랜드 로고라 photos에 포함하지 않음"
+    },
+    {
+      "n": 10,
+      "file": "10.jpg",
+      "kind": "photo",
+      "fits": false,
+      "text": {
+        "badge": "행사 사진"
+      },
+      "photos": 1,
+      "photoDesc": "전시장 내부, SEGWAY 부스와 오토바이형 모빌리티 제품, 다수 관람객, 가로",
+      "note": "standard 레이아웃에 제목·본문 없이 배지+사진만 두는 방식으로 근사 가능"
+    },
+    {
+      "n": 11,
+      "file": "11.jpg",
+      "kind": "photo",
+      "fits": false,
+      "text": {
+        "badge": "행사 사진"
+      },
+      "photos": 1,
+      "photoDesc": "'West Hall' 입구 대형 게이트, 줄지어 선 다수 관람객, 가로",
+      "note": "standard 레이아웃에 제목·본문 없이 배지+사진만 두는 방식으로 근사 가능"
+    },
+    {
+      "n": 12,
+      "file": "12.jpg",
+      "kind": "photo",
+      "fits": false,
+      "text": {
+        "badge": "행사 사진"
+      },
+      "photos": 1,
+      "photoDesc": "컨벤션센터 내부 통로, 노란 가방을 든 다수 관람객, 창밖으로 컨벤션센터 외관 보임, 가로",
+      "note": "standard 레이아웃에 제목·본문 없이 배지+사진만 두는 방식으로 근사 가능"
+    },
+    {
+      "n": 13,
+      "file": "13.jpg",
+      "kind": "photo-grid",
+      "fits": false,
+      "text": {
+        "badge": "행사 사진"
+      },
+      "photos": 4,
+      "photoDesc": "2x2 그리드: ①BrainU 부스에서 관람객 다수 ②'Space X Context-Aware Healthcare & Security' 디스플레이 3분할 화면 ③'Healthcare & Bio'/ACT/JNL 부스 관람 ④SKIN REX 부스, 'Relief U' 스크린과 뷰티 디바이스",
+      "note": "사진 4장이 한 컷에 있어 9종 레이아웃(사진 최대 1장)에 맞지 않음"
+    },
+    {
+      "n": 14,
+      "file": "14.jpg",
+      "kind": "link",
+      "fits": false,
+      "text": {
+        "badge": "행사 정보",
+        "body": "Powered by The Consumer Technology Association®\n※페이지 클릭시 행사 사이트로 넘어가집니다.",
+        "url": "https://www.ces.tech"
+      },
+      "photos": 0,
+      "note": "CES 로고 + 클릭 안내 + URL 조합, 언론사 로고형 link 카드와 동일 패턴"
+    },
+    {
+      "n": 15,
+      "file": "15.jpg",
+      "kind": "raw-photo",
+      "fits": false,
+      "text": {},
+      "photos": 1,
+      "photoDesc": "카드2(02.jpg)에 쓰인 라스베가스 컨벤션센터 외관 사진의 원본 고화질본, 카드 프레임 없음",
+      "note": "카드2 사진의 원본 소스"
+    }
+  ],
+  "summary": {
+    "total": 15,
+    "fits": 8,
+    "notFit": [
+      { "n": 5, "kind": "photo-grid", "why": "한 카드에 사진 2장" },
+      { "n": 10, "kind": "photo", "why": "배지+사진만 있고 본문 없음" },
+      { "n": 11, "kind": "photo", "why": "배지+사진만 있고 본문 없음" },
+      { "n": 12, "kind": "photo", "why": "배지+사진만 있고 본문 없음" },
+      { "n": 13, "kind": "photo-grid", "why": "한 카드에 사진 4장" },
+      { "n": 14, "kind": "link", "why": "행사 로고+클릭 안내+URL 카드" },
+      { "n": 15, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진" }
+    ]
+  }
+}

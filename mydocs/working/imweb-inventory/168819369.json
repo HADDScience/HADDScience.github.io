@@ -1,0 +1,79 @@
+{
+  "id": "168819369",
+  "style": "white-band-2025",
+  "cards": [
+    {
+      "n": 1, "file": "01.jpg", "kind": "cover", "fits": true,
+      "text": { "badge": "HADD'S NEWS", "headline": "카드뉴스", "subtitle": "바쁜 당신을 위한 하드사이언스 요약 카드뉴스", "body": "시작하기" },
+      "photos": 0, "note": "로고+배지(HADD'S NEWS)+제목+부제+버튼, 핸들(@haddscience) 없음"
+    },
+    {
+      "n": 2, "file": "02.jpg", "kind": "standard", "fits": true,
+      "text": { "badge": "chapter 1", "headline": "(주)하드사이언스,\n✨대상✨ 수상! 2025 창업인큐베이팅 경진대회 중소벤처기업부 장관상 🏆", "body": "5개월의 치열한 대장정, 마침내 빛나는 결실을 맺다! 🌟" },
+      "photos": 1, "photoDesc": "상장 스캔본(세로형, 대상, 하드사이언스 대표 허채정, 2025년 11월 25일, 중소벤처기업부장관 직인)", "note": "상장은 세로형이라 사진 박스 폭을 좁혀야 함"
+    },
+    {
+      "n": 3, "file": "03.jpg", "kind": "standard", "fits": true,
+      "text": { "badge": "chapter 2", "headline": "영예의 대상 🥇 그리고 허채정 대표", "body": "🎖 수 상 : 중소벤처기업부 장관상 (대상) 쾌거!\n🔥 경 쟁 : 성장사업화 분과 (최종 2개 기업 선정의 바늘구멍 통과!)\n🏛 추 천 : 수원대학교 창업보육센터(BI)의 든든한 지원" },
+      "photos": 1, "photoDesc": "파란 배경 시상 스크린('대상 중소벤처기업부 장관상', 하드사이언스·지엘이앤씨㈜ 등 수상팀 명단) 앞에서 남녀 2인이 상장 들고 포즈, 가로형", "note": ""
+    },
+    {
+      "n": 4, "file": "04.jpg", "kind": "photo-grid", "fits": false,
+      "text": { "badge": "chapter 3", "headline": "🎤 우수 기업 IR 피칭, 청중을 사로잡다!", "body": "대상 수상 기업 자격으로 선 무대!\n🎗 허채정 대표는 5분간의 임팩트 있는 발표로 하드사이언스만의 [핵심 기술/비전]을 선보이며 투자자와 관계자들의 뜨거운 주목을 받았습니다. 👏👏" },
+      "photos": 2, "photoDesc": "왼쪽: 전시 테이블 위 하드사이언스 제품 박스/포스터('대상 수상기업', 뉴로힐). 오른쪽: 같은 전시 부스 앞에 선 남녀 2인, 둘 다 세로형", "note": "사진 2장이 나란히 배치되어 사진 1장 제한에 걸림"
+    },
+    {
+      "n": 5, "file": "05.jpg", "kind": "standard", "fits": true,
+      "text": { "badge": "chapter 4", "headline": "기술력 입증 완료! 🚀\n더 큰 도약을 향해!", "body": "\"수원대 BI의 지원과 철저한 준비 덕분에 값진 결과를 얻었습니다.\n앞으로 글로벌 바이오시장을 향해 더욱 힘차게 달려가겠습니다!\"\n\n하드사이언스의 눈부신 성장을 함께 응원해주세요! 💖" },
+      "photos": 1, "photoDesc": "'2025 지역창업인프라 통합성과보고회' 배경 앞에서 4명(남1 여3, 꽃다발·상장 든 모습)이 포즈, 가로형", "note": ""
+    },
+    {
+      "n": 6, "file": "06.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "✨행사 사진✨" },
+      "photos": 1, "photoDesc": "여성 1명이 클로즈업으로 상장과 꽃다발을 들고 있고 옆에서 다른 사람이 휴대폰으로 촬영 중, 세로형, 뒤 배너에 '2025 창업인큐베이팅 경진대회 사업화(성장)분과'", "note": "standard 에 제목·본문 없이 배지+사진만으로 가능"
+    },
+    {
+      "n": 7, "file": "07.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "✨행사 사진✨" },
+      "photos": 1, "photoDesc": "여성 1명이 '2025 지역창업인프라 통합성과보고회'(2025.11.25-26, 인천 인스파이어 리조트) 세로 배너 옆에 서서 음료를 든 모습, 세로형", "note": "standard 에 배지+사진만으로 가능"
+    },
+    {
+      "n": 8, "file": "08.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "✨행사 사진✨" },
+      "photos": 1, "photoDesc": "무대 대형 스크린 클로즈업, '2025 지역창업인프라 통합 성과보고회' 문구와 INFRA 그래픽, 사람 없음, 가로형", "note": "standard 에 배지+사진만으로 가능"
+    },
+    {
+      "n": 9, "file": "09.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "✨행사 사진✨" },
+      "photos": 1, "photoDesc": "'2025 지역 창업인프라 통합 성과보고회' 배경 앞에서 6~7명이 상장('대상', '무수상' 등)과 꽃다발을 들고 단체로 포즈, 가로형", "note": "standard 에 배지+사진만으로 가능"
+    },
+    {
+      "n": 10, "file": "10.jpg", "kind": "link", "fits": false,
+      "text": { "badge": "기사 원문", "body": "※페이지 클릭시 기사로 넘어갑니다.", "url": "https://www.donga.com/news/It/article/all/20251128/132864828/1" },
+      "photos": 0, "photoDesc": "동아일보 로고 + 클릭 커서 아이콘", "note": ""
+    },
+    {
+      "n": 11, "file": "11.jpg", "kind": "link", "fits": false,
+      "text": { "badge": "기사 원문", "body": "※페이지 클릭시 기사로 넘어갑니다.", "url": "https://www.veritas-a.com/news/articleView.html?idxno=585366#google_vignette" },
+      "photos": 0, "photoDesc": "VERITAS(알파) 언론사 로고 + 클릭 커서 아이콘", "note": ""
+    },
+    {
+      "n": 12, "file": "12.jpg", "kind": "raw-photo", "fits": false,
+      "text": {},
+      "photos": 1, "photoDesc": "'2025 지역 창업인프라 통합 성과보고회' 대형 무대 배경 앞 단체사진(8명, 상장/꽃다발 다수), 카드 프레임 없이 풀블리드, 매우 넓은 가로형(파노라마)", "note": "카드 프레임이 없는 원본 사진 그대로"
+    }
+  ],
+  "summary": {
+    "total": 12, "fits": 4,
+    "notFit": [
+      { "n": 4, "kind": "photo-grid", "why": "사진 2장이 나란히" },
+      { "n": 6, "kind": "photo", "why": "배지+사진만" },
+      { "n": 7, "kind": "photo", "why": "배지+사진만" },
+      { "n": 8, "kind": "photo", "why": "배지+사진만" },
+      { "n": 9, "kind": "photo", "why": "배지+사진만" },
+      { "n": 10, "kind": "link", "why": "언론사 로고+클릭 안내+URL" },
+      { "n": 11, "kind": "link", "why": "언론사 로고+클릭 안내+URL" },
+      { "n": 12, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진" }
+    ]
+  }
+}

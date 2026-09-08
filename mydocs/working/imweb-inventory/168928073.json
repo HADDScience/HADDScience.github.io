@@ -1,0 +1,66 @@
+{
+  "id": "168928073",
+  "style": "blue-grid-2026",
+  "cards": [
+    {
+      "n": 1, "file": "01.jpg", "kind": "cover", "fits": true,
+      "text": { "headline": "카드뉴스", "body": "haddscience 알아보기", "footnote": "@haddscience" },
+      "photos": 0, "note": "로고(HADD SCIENCE)+제목+버튼+핸들"
+    },
+    {
+      "n": 2, "file": "02.jpg", "kind": "standard", "fits": true,
+      "text": { "badge": "chapter 01", "headline": "🏆하드사이언스,\n경기지방중소벤처기업청장 표창 수상", "body": "2025 경기지역창업보육센터 협의회 만남의 장 & 동계워크숍" },
+      "photos": 1, "photoDesc": "무대 위 시상식 배너 앞 단체사진(7명), 가로형. 배너 문구 '2025년 경기지역창업보육센터협의회 만남의장 및 동계워크숍' / '경기지방중소벤처기업청장표창'", "note": ""
+    },
+    {
+      "n": 3, "file": "03.jpg", "kind": "standard", "fits": true,
+      "text": { "badge": "chapter 02", "headline": "📅12월 1일, 노보텔 앰배서더 수원\n'2025 경기지역창업보육센터 협의회 만남의 장'", "body": "경기 지역의 우수한 창업 기업과 관계자들이 모여 한 해의 성과를 나누고 서로를 격려하는 뜻깊은 자리가 마련되었습니다." },
+      "photos": 1, "photoDesc": "무대 앞 대규모 단체사진(약 80명), 가로형, 배경에 동일 배너와 '경기도지사 표창 수상자' 팻말", "note": ""
+    },
+    {
+      "n": 4, "file": "04.jpg", "kind": "standard", "fits": true,
+      "text": { "badge": "chapter 03", "headline": "🏆 경기지방중소벤처기업청장 표창", "body": "이 자리에서 하드사이언스는 기술 혁신과 지역 창업 생태계 활성화에 기여한 공로를 인정받아 경기지방중소벤처기업청장 표창(창업 활성화 유공자 부문)을 수상하는 영예를 안았습니다." },
+      "photos": 1, "photoDesc": "표창장 스캔본(세로형 상장, 하드사이언스 대표 허채정, 2025년 12월 1일, 경기지방중소벤처기업청 직인)", "note": "상장은 세로형이라 사진 박스 폭을 50~65%로 좁혀야 여백 없이 들어감"
+    },
+    {
+      "n": 5, "file": "05.jpg", "kind": "text", "fits": true,
+      "text": { "badge": "chapter 04", "headline": "딥테크(Deep-tech) 기업으로서의 도약🚀", "body": "이번 수상은 하드사이언스가 추구해 온 첨단 바이오 기술의 혁신성과 미래 성장 잠재력을 공식적으로 인정받았다는 점에서 더욱 의미가 깊습니다." },
+      "photos": 0, "note": "원본에는 빨간 막대그래프+화살표 장식 일러스트가 있음(사진 아님, 아이콘). text 로 배지+제목+본문만 재현 가능하고 일러스트는 생략됨"
+    },
+    {
+      "n": 6, "file": "06.jpg", "kind": "other", "fits": false,
+      "text": { "badge": "chapter 05", "headline": "🤝함께 만든 성과입니다!", "body": "기업의 성장을 위해 묵묵히 지원해 주신 수원대학교 창업보육센터\n노은정 매니저님도 이날 함께 표창을 수상했습니다.🎉\n\n든든한 지원과 협력이 있었기에 가능한 결과였습니다." },
+      "photos": 0, "photoDesc": "HADD SCIENCE 로고 X USW 수원대학교 창업지원단 로고, 두 로고가 'X' 로 나란히 배치, 가로형",
+      "note": "로고 2개를 나란히 놓는 자리가 9개 레이아웃에 없음(사진 1장 제한). 두 로고를 미리 합성한 이미지 1장으로 만들면 standard 사진 자리에 근사 가능"
+    },
+    {
+      "n": 7, "file": "07.jpg", "kind": "standard", "fits": true,
+      "text": { "badge": "chapter 06", "headline": "멈추지 않고 나아가겠습니다 🏃‍♂️", "body": "보내주신 관심과 격려에 깊이 감사드립니다.\n이번 수상을 원동력 삼아 인류의 건강한 삶에 기여하는\n바이오 딥테크 선도 기업이 되겠습니다." },
+      "photos": 1, "photoDesc": "HADD SCIENCE 로고, 가로형", "note": "사진 자리에 로고 이미지 1장을 넣는 방식으로 재현"
+    },
+    {
+      "n": 8, "file": "08.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "행사 사진" },
+      "photos": 1, "photoDesc": "여성 3명이 무대 위에서 꽃다발과 표창장을 들고 포즈, 세로형, 배경에 '경기지방중소벤처기업청장표창' 배너", "note": "standard 에 제목 없이 배지+사진만, 본문 없이 가능"
+    },
+    {
+      "n": 9, "file": "09.jpg", "kind": "link", "fits": false,
+      "text": { "badge": "기사 원문", "body": "※페이지 클릭시 기사로 넘어갑니다.", "url": "https://www.veritas-a.com/news/articleView.html?idxno=586733" },
+      "photos": 0, "photoDesc": "VERITAS(알파) 언론사 로고 + 클릭 커서 아이콘", "note": ""
+    },
+    {
+      "n": 10, "file": "10.jpg", "kind": "raw-photo", "fits": false,
+      "text": {},
+      "photos": 1, "photoDesc": "무대 위 대규모 단체사진(약 80명, 주먹 포즈), 가로형, 카드 프레임 없이 풀블리드. 배경 스크린에 '2025년 경기지역창업보육센터협의회 만남의장 및 동계워크숍', 하단에 노보텔 앰배서더 수원 안내판", "note": "카드 프레임이 없는 원본 사진 그대로"
+    }
+  ],
+  "summary": {
+    "total": 10, "fits": 6,
+    "notFit": [
+      { "n": 6, "kind": "other", "why": "로고 2개가 나란히 배치되어 사진 1장 제한에 걸림" },
+      { "n": 8, "kind": "photo", "why": "배지+사진만, 본문 없음" },
+      { "n": 9, "kind": "link", "why": "언론사 로고+클릭 안내+URL" },
+      { "n": 10, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진" }
+    ]
+  }
+}

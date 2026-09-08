@@ -1,0 +1,99 @@
+{
+  "id": "168283066",
+  "style": "other",
+  "cards": [
+    {
+      "n": 1, "file": "01.jpg", "kind": "cover", "fits": true,
+      "text": {
+        "badge": "HADD'S NEWS",
+        "headline": "HADD SCIENCE\n카드 뉴스",
+        "subtitle": "하드사이언스, '2025 경기 스타트업 서밋\n(G-SUMMIT)' 참가",
+        "footnote": "# G_summit  # ADD_GEL  # 오가노이드"
+      },
+      "photos": 0, "photoDesc": "", "note": "노트/집게(paperclip) 카드 프레임 스타일"
+    },
+    {
+      "n": 2, "file": "02.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "00",
+        "headline": "G_SUMMIT",
+        "body": "경기도 화성시에 위치한 바이오 기술 스타트업 하드사이언스\n(HaddScience) 가\n10월 1~2일, 수원컨벤션센터에서 열린 G-SUMMIT 2025에 참가\n했습니다.\n국내외 투자기관과 글로벌 전문가들이 모인 자리에서 큰 주목을\n받았습니다."
+      },
+      "photos": 1, "photoDesc": "컨벤션홀 무대, 대형 스크린에 'Venture 3.0' G-SUMMIT 로고 표시, 관객석 일부 보임, 가로형", "note": ""
+    },
+    {
+      "n": 3, "file": "03.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "01",
+        "headline": "🌟 글로벌 무대에서 빛난\nK-바이오",
+        "body": "국내외 200여 개 투자기관과 100여 명의 글로벌 전문가가\n총출동한 서밋에서, 하드사이언스는 부스 운영과 허채정\n대표님의 IR 피칭을 통해 혁신 기술 'ADDGEL'을 성공적으\n로 선보이며 바이오 업계의 이목을 집중시켰습니다."
+      },
+      "photos": 0, "photoDesc": "말풍선 형태의 따옴표 아이콘(장식용, 사진 아님)", "note": ""
+    },
+    {
+      "n": 4, "file": "04.jpg", "kind": "photo", "fits": false,
+      "text": {
+        "badge": "사진",
+        "headline": "부스"
+      },
+      "photos": 1, "photoDesc": "부스 전시장, 직원 6명이 분홍색 'G-StarAudition FINALIST' 팻말이 붙은 테이블 앞에 나란히 서 있음, 뒤로 HADD SCIENCE 배너와 화면, 가로형 단체사진", "note": "배지+제목+사진만 있고 본문 없음 — standard 로 제목만 두고 본문 비워 근사 가능"
+    },
+    {
+      "n": 5, "file": "05.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "03",
+        "headline": "🔬 신약 개발의 오랜 숙제",
+        "body": "현재 연구자들은 세포 배양 시 고가의 수입산 '매트리젤'에\n100% 의존하고 있으며, 이 매트리젤이 암세포에서 유래\n한 물질이라 실제 임상 적용에는 엄격한 한계가 존재했습\n니다."
+      },
+      "photos": 0, "photoDesc": "물음표 3개 아이콘(장식용 일러스트)", "note": ""
+    },
+    {
+      "n": 6, "file": "06.jpg", "kind": "split", "fits": true,
+      "text": {
+        "headline": "피칭"
+      },
+      "photos": 1, "photoDesc": "무대 위 발표자(여성 1명, 검정 정장) 마이크 들고 발표 중, 옆 대형 스크린에 HADD SCIENCE 로고와 'Vivo Gel 비보젤' 제품 슬라이드, 세로형", "note": "원본은 제목이 왼쪽·사진이 오른쪽으로 split 스펙(왼쪽 사진·오른쪽 제목)과 좌우가 반전되어 있음 — 내용 자체는 손실 없이 재현 가능"
+    },
+    {
+      "n": 7, "file": "07.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "04",
+        "headline": "✨ 하드사이언스\n'ADDGEL'의 혁신!",
+        "body": "허채정 대표는 발표를 통해 'ADDGEL'이 매트리젤의 임상\n적용 한계, 높은 수입 의존성, 그리고 과도한 비용 문제까\n지 모두 해결하는 혁신적인 국산 대체 물질임을 강조했습\n니다."
+      },
+      "photos": 0, "photoDesc": "빨간 느낌표(!) 아이콘(장식용 일러스트)", "note": ""
+    },
+    {
+      "n": 8, "file": "08.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "05",
+        "headline": "🚀 'ADDGEL'이 연구자들\n에게 사랑받는 이유",
+        "subtitle": "연구 효율과 기술 보호, 'ADDGEL'로 한 번에!",
+        "body": "ADDGEL'은 줄기세포 배양액에 추가 시 바로 젤 형태로\n변하는 원스텝 젤화를 통해 편리함을 제공하며, 뇌\n오가노이드와 같은 3D 세포를 장기간 안정적으로\n배양하는 데 탁월한 효율성을 보여줍니다. 또한, 연구자들\n이 기존의 고유한 배양 레시피를 보호하면서 사용할 수\n있다는 점도 큰 장점으로 꼽힙니다."
+      },
+      "photos": 0, "photoDesc": "", "note": ""
+    },
+    {
+      "n": 9, "file": "09.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "headline": "🌟 하드사이언스,\nK-바이오의 미래를\n그리다!",
+        "subtitle": "글로벌 바이오 시장을 향한 힘찬 도약!",
+        "body": "'2025 경기 스타트업 서밋'에서의 성공적인 참여를 발판\n삼아, 하드사이언스의 'ADDGEL'이 국내를 넘어 전 세계\n바이오 연구의 새로운 표준을 제시하며 글로벌 유니콘으\n로 성장할 것을 기대합니다.",
+        "footnote": "@haddscience"
+      },
+      "photos": 0, "photoDesc": "", "note": "마무리 카드, 배지 없음"
+    },
+    {
+      "n": 10, "file": "10.png", "kind": "raw-photo", "fits": false,
+      "text": {},
+      "photos": 1, "photoDesc": "06번과 같은 발표 장면의 원본 사진(카드 프레임 없음), 발표자(여성) 스크린 앞에서 발표, 'Vivo Gel 비보젤' 슬라이드가 더 크게 보임, 세로형", "note": "카드 프레임이 없는 원본 사진"
+    }
+  ],
+  "summary": {
+    "total": 10, "fits": 8,
+    "notFit": [
+      { "n": 4, "kind": "photo", "why": "배지+제목+사진만, 본문 없음 — standard 로 근사 가능" },
+      { "n": 10, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진" }
+    ]
+  }
+}

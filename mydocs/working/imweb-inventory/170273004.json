@@ -1,0 +1,128 @@
+{
+  "id": "170273004",
+  "style": "blue-grid-2026",
+  "cards": [
+    {
+      "n": 1,
+      "file": "01.jpg",
+      "kind": "cover",
+      "fits": true,
+      "text": {
+        "headline": "카드뉴스",
+        "body": "haddscience 알아보기",
+        "footnote": "@haddscience"
+      },
+      "photos": 0,
+      "note": "HADD SCIENCE 로고, 카드뉴스 표지, 손가락 커서 아이콘이 버튼 위에 있음"
+    },
+    {
+      "n": 2,
+      "file": "02.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 01",
+        "headline": "화성시 바이오 판도를 바꾸는 하이패스!\n하드사이언스 X RISE",
+        "body": "화성시 바이오의 미래, 하드사이언스가 그립니다! 🚀\n지·산·학 협력의 에이스, 하드사이언스의 RISE 대활약상 🔬"
+      },
+      "photos": 0,
+      "note": "제목 두번째 줄 아래 빨간 밑줄 강조(장식)"
+    },
+    {
+      "n": 3,
+      "file": "03.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 02",
+        "headline": "🔥 2026. 01. 29, 수원대 미래혁신관이\n뜨거웠던 이유!",
+        "body": "화성시, 수원대학교, 그리고 하드사이언스가 뭉쳤다!\n지역 혁신을 위한 컨트롤 타워 '화성지산학위원회' 전격 출범.\n하드사이언스는 바이오 분야 기업 대표로 당당히 이름을 올렸습니다. 🏆"
+      },
+      "photos": 1,
+      "photoDesc": "정장 입은 다수 인원(약 20여명)이 나란히 선 단체 기념사진, '화성시산RISE사업단 화성지산학위원회 발대식' 현수막, 실내, 가로",
+      "note": ""
+    },
+    {
+      "n": 4,
+      "file": "04.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 03",
+        "headline": "💡 잠깐! RISE(라이즈) 사업이 뭔가요?",
+        "body": "Regional Innovation System & Education\n지자체(화성시)가 주도하고, 대학(수원대)이 인재를 키우며, 기업(하드사이언스)이 혁신하는 삼위일체 프로젝트!\n\n인재가 지역에 남고, 기업이 성장하는 '살기 좋은 화성'을 만드는 마법의 주문입니다. ✨"
+      },
+      "photos": 0,
+      "note": ""
+    },
+    {
+      "n": 5,
+      "file": "05.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 04",
+        "headline": "🧬 하드사이언스의 필살기: 애드젤(ADDGEL)",
+        "body": "3D 세포배양으로 동물실험의 한계를 넘다!\n\n장기 세포를 3차원으로 구현해 정밀한 데이터를 도출하는 독보적 기술력.\n\n화성시 바이오 클러스터의 '기술 엔진' 역할을 수행합니다."
+      },
+      "photos": 0,
+      "note": ""
+    },
+    {
+      "n": 6,
+      "file": "06.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 05",
+        "headline": "🏠 화성시 '직·주·락(Job, Living, Enjoy)'의 완성",
+        "body": "Job: 하드사이언스가 만드는 양질의 바이오 일자리.\nLiving: 지역 인재가 정착하고 싶은 혁신적인 연구 환경.\n\n하드사이언스는 화성시를 대한민국 대표 바이오 도시로 만드는 든든한 기둥입니다."
+      },
+      "photos": 0,
+      "note": "제목에 Enjoy(락)까지 언급하지만 본문엔 Job·Living 두 줄만 있고 Enjoy 항목 설명은 없음(원본 그대로)"
+    },
+    {
+      "n": 7,
+      "file": "07.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 06",
+        "headline": "⛰️ 우리 모두의 성장을 돕는 '기술 셰르파'",
+        "body": "지역 내 소공인과 중소 바이오 기업의 기술적 어려움 해결.\n\n애드젤 활용법과 최적화 프로토콜을 공유하며 함께 성장합니다.\n\n화성을 넘어 글로벌 표준이 되는 그날까지! 🌍"
+      },
+      "photos": 0,
+      "note": ""
+    },
+    {
+      "n": 8,
+      "file": "08.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 07",
+        "headline": "HADD SCIENCE 🧪",
+        "body": "지역과 함께 성장하고 기술로 세상을 바꿉니다.\n지금 하드사이언스의 혁신에 동참하세요! 👋"
+      },
+      "photos": 0,
+      "note": "제목 자리에 로고 텍스트만 있는 마무리(클로징) 카드"
+    },
+    {
+      "n": 9,
+      "file": "09.png",
+      "kind": "raw-photo",
+      "fits": false,
+      "text": {},
+      "photos": 1,
+      "photoDesc": "카드3과 동일한 단체 기념사진의 원본 파일(고화질), 카드 프레임 없이 사진만",
+      "note": "카드3(03.jpg)에 이미 쓰인 사진의 원본. 프레임/배지/텍스트 없는 순수 사진이라 9종 레이아웃 대상이 아님"
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "fits": 8,
+    "notFit": [
+      { "n": 9, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진 파일, 3번 카드 사진의 소스" }
+    ]
+  }
+}

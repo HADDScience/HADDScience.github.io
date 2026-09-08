@@ -1,0 +1,86 @@
+{
+  "id": "170335521",
+  "style": "blue-grid-2026",
+  "cards": [
+    {
+      "n": 1, "file": "01.jpg", "kind": "cover", "fits": true,
+      "text": { "headline": "HADD\nSCIENCE\n카드뉴스", "body": "haddscience 알아보기", "footnote": "@haddscience" },
+      "photos": 0, "note": "로고 + 제목 + 버튼(haddscience 알아보기) + 핸들(@haddscience)"
+    },
+    {
+      "n": 2, "file": "02.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 01",
+        "headline": "애드젤(ADDGEL), 이제 세계 지도를 펼치다!\n🌍 하드사이언스 X 수원대 RISE\n'글로벌 수출 아카데미' 생생 리포트 ✈️",
+        "body": "📅 2026. 02. 23 ~ 27 (3일간의 실전 기록)\n장소: 수원대학교 미래혁신관\n주제: \"강의로 끝나지 않는다! 기업 맞춤형 수출 실행 프로그램\"\n하드사이언스가 글로벌 바이오 시장 공략을 위해 참가했습니다."
+      },
+      "photos": 0, "note": "헤드라인 아래 빨간 형광펜 밑줄 장식이 있으나 텍스트는 없음(장식선). 사진 없음"
+    },
+    {
+      "n": 3, "file": "03.jpg", "kind": "list", "fits": true,
+      "text": {
+        "badge": "chapter 02",
+        "headline": "🤝 수출 전문가 강승원 대표와의\n1:1 맞춤형 전략",
+        "items": [
+          { "title": "Mission", "desc": "애드젤의 해외 진출을 위한 의료기기 인증(ISO/CE 등) 로드맵 수립 🔬" },
+          { "desc": "단순 이론이 아닌, 하드사이언스 제품에 딱 맞춘 실질적인 수출 계획을 수립했습니다." }
+        ]
+      },
+      "photos": 0, "note": "불릿 2개 항목, 사진 없음"
+    },
+    {
+      "n": 4, "file": "04.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 03",
+        "headline": "🌟 글로벌 시장을 향한 진지한 발걸음",
+        "body": "해외 전시회 전략부터 상품 기획까지, 현장의 목소리를 하나하나 놓치지 않는 열정!\n하드사이언스는 실무진의 적극적인 참여를 통해 글로벌 비즈니스의 초석을 다졌습니다. ✍️",
+        "footnote": "(사진 속 좌측 두 번째 실무자의 진지한 참여 모습 📷)"
+      },
+      "photos": 1, "photoDesc": "'글로벌 진출 전략 포럼 & 1:1 수출 멘토링 수출아카데미 프로그램' 현수막 아래 다수 참석자 단체 사진(주먹 포즈), 가로", "note": ""
+    },
+    {
+      "n": 5, "file": "05.jpg", "kind": "list", "fits": true,
+      "text": {
+        "badge": "chapter 04",
+        "headline": "📝 글로벌 무대로 나가는 '3가지 필살기'",
+        "items": [
+          { "title": "전시회 공략", "desc": "전 세계 연구자들의 시선을 사로잡는 부스운영법" },
+          { "title": "상품 기획", "desc": "현지 시장의 니즈를 관통하는 제품 가치 제안" },
+          { "title": "수출 프로세스", "desc": "복잡한 통관 및 인증 절차의 체계적 이해" }
+        ]
+      },
+      "photos": 0, "note": "항목 3개(제목:설명), 사진 없음"
+    },
+    {
+      "n": 6, "file": "06.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 05",
+        "headline": "HADD SCIENCE 🧪 세계를 향한 도약,\n이제 시작입니다.",
+        "body": "수원대 RISE 사업단과 함께 만든 글로벌 비전, 애드젤이 세계 시장의 표준이 되는 그날까지 멈추지 않겠습니다! 👏"
+      },
+      "photos": 0, "note": "사진 없음"
+    },
+    {
+      "n": 7, "file": "07.jpg", "kind": "link", "fits": false,
+      "text": {
+        "badge": "행사 정보",
+        "headline": "브릿지경제",
+        "footnote": "※페이지 클릭시 행사 사이트로 넘어갑니다.",
+        "url": "https://www.viva100.com/article/20260223500830"
+      },
+      "photos": 0, "photoDesc": "브릿지경제 로고, 손가락 클릭 아이콘", "note": "언론사 로고+클릭 안내+URL 모두 갖춘 전형적인 link 카드"
+    },
+    {
+      "n": 8, "file": "08.png", "kind": "raw-photo", "fits": false,
+      "photos": 1, "photoDesc": "'글로벌 진출 전략 포럼 & 1:1 수출 멘토링 수출아카데미 프로그램' 현수막 아래 다수 참석자 단체 사진(04.jpg와 같은 촬영 세트, 카드 프레임 없음), 가로", "note": "카드 프레임 없는 원본 사진"
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "fits": 6,
+    "notFit": [
+      { "n": 7, "kind": "link", "why": "언론사 로고+클릭안내+URL 카드, 9종 레이아웃에 없음" },
+      { "n": 8, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진" }
+    ]
+  }
+}

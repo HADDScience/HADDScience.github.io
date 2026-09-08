@@ -1,23 +1,36 @@
 {
   "id": "172090069",
   "title": "🏆 정우창 사원, 경과원 현업적용 우수사례 공모전 최우수상 수상",
+  "thumbnail": "04.webp",
   "cards": [
     {
       "source": "01.webp",
       "sourceText": "카드뉴스",
       "photo": null,
-      "card": { "type": "cover", "title": "카드뉴스", "cta": "haddscience 알아보기" }
+      "card": {
+        "type": "cover",
+        "title": "카드뉴스",
+        "cta": "haddscience 알아보기"
+      }
     },
     {
       "source": "02.webp",
       "sourceText": "chapter 01\n🏆 정우창 사원, 경과원 현업적용 우수사례 공모전\n최우수상 수상\n👇 최우수상 수상 소식 확인하기",
-      "photo": [204, 262, 696, 416],
+      "photo": [
+        204,
+        262,
+        696,
+        416
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 01",
         "headline": "🏆 정우창 사원, 경과원 현업적용 우수사례 공모전\n최우수상 수상",
-        "image": { "src": "@photo", "ratio": "16/10" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/10"
+        },
         "body": "",
         "footnote": "👇 최우수상 수상 소식 확인하기"
       }
@@ -25,39 +38,63 @@
     {
       "source": "03.webp",
       "sourceText": "chapter 02\n현장의 문제를 푼 직원이 상을 받다 ✨\n경기도경제과학진흥원이 6월 17일\n‘현업적용 우수사례 공모전’ 시상식을 열었습니다.\n교육이 실제 업무 개선으로 이어진 30건 중,\n하드사이언스 정우창 사원이 최우수상을 받았습니다.",
-      "photo": [190, 332, 710, 398],
+      "photo": [
+        190,
+        332,
+        710,
+        398
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 02",
         "headline": "현장의 문제를 푼 직원이 상을 받다 ✨",
-        "image": { "src": "@photo", "ratio": "16/9" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        },
         "body": "경기도경제과학진흥원이 6월 17일\n‘현업적용 우수사례 공모전’ 시상식을 열었습니다.\n교육이 실제 업무 개선으로 이어진 30건 중,\n하드사이언스 정우창 사원이 최우수상을 받았습니다."
       }
     },
     {
       "source": "04.webp",
       "sourceText": "chapter 03\n하드사이언스 AX 의 첫 발걸음 🤖\n‘AI 활용 노코드 데이터 분석’ 교육에서 배운 것을\n업무 현장에 그대로 적용했습니다.\n채팅 한 줄이 곧 업무 데이터가 되는 시스템을 직접 설계했습니다.",
-      "photo": [144, 322, 792, 448],
+      "photo": [
+        144,
+        322,
+        792,
+        448
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 03",
         "headline": "하드사이언스 AX 의 첫 발걸음 🤖",
-        "image": { "src": "@photo", "ratio": "16/9" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        },
         "body": "‘AI 활용 노코드 데이터 분석’ 교육에서 배운 것을\n업무 현장에 그대로 적용했습니다.\n채팅 한 줄이 곧 업무 데이터가 되는 시스템을 직접 설계했습니다."
       }
     },
     {
       "source": "05.webp",
       "sourceText": "chapter 04\n채팅이 곧 업무가 되다, ‘Omnis’ 💬\n채팅 입력 → AI 분해 → 업무 DB 자동 등록 → 시각화·챗봇.\n‘의사결정 지연’ 문제를 해결하고 업무 효율을 끌어올렸습니다.\n흩어진 대화 속 의사결정을 한곳에 모으다",
-      "photo": [178, 332, 727, 416],
+      "photo": [
+        178,
+        332,
+        727,
+        416
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 04",
         "headline": "채팅이 곧 업무가 되다, ‘Omnis’ 💬",
-        "image": { "src": "@photo", "ratio": "16/9" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        },
         "body": "채팅 입력 → AI 분해 → 업무 DB 자동 등록 → 시각화·챗봇.\n‘의사결정 지연’ 문제를 해결하고 업무 효율을 끌어올렸습니다.",
         "footnote": "흩어진 대화 속 의사결정을 한곳에 모으다"
       }
@@ -65,26 +102,41 @@
     {
       "source": "06.webp",
       "sourceText": "chapter 05\n교육의 가치는 ‘현장의 변화’에 있다 🌱\n현창하 경과원 상임이사는 “AI 교육을 통해 실제 사내에\nAX 를 도입한 훌륭한 사례”라고 강조했습니다.",
-      "photo": [244, 348, 592, 465],
+      "photo": [
+        244,
+        348,
+        592,
+        465
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 05",
         "headline": "교육의 가치는 ‘현장의 변화’에 있다 🌱",
-        "image": { "src": "@photo" },
+        "image": {
+          "src": "@photo"
+        },
         "body": "현창하 경과원 상임이사는 “AI 교육을 통해 실제 사내에\nAX 를 도입한 훌륭한 사례”라고 강조했습니다."
       }
     },
     {
       "source": "07.webp",
       "sourceText": "수상자 한마디 💬\n“AI 로 업무 시 발생한 문제를 해결하고자 했습니다”\n하드사이언스 정우창 사원 · 최우수상",
-      "photo": [133, 440, 814, 463],
+      "photo": [
+        133,
+        440,
+        814,
+        463
+      ],
       "card": {
         "type": "quote",
         "badge": "수상자 한마디 💬",
         "quote": "“AI 로 업무 시 발생한 문제를 해결하고자 했습니다”",
         "attrib": "하드사이언스 정우창 사원 · 최우수상",
-        "image": { "src": "@photo", "ratio": "16/9" }
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        }
       }
     }
   ]

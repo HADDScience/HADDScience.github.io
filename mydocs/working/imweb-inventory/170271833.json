@@ -1,0 +1,173 @@
+{
+  "id": "170271833",
+  "style": "blue-grid-2026",
+  "cards": [
+    {
+      "n": 1,
+      "file": "01.jpg",
+      "kind": "cover",
+      "fits": true,
+      "text": {
+        "headline": "카드뉴스",
+        "body": "haddscience 알아보기",
+        "footnote": "@haddscience"
+      },
+      "photos": 0,
+      "note": "HADD SCIENCE 로고, 카드뉴스 표지"
+    },
+    {
+      "n": 2,
+      "file": "02.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 01",
+        "headline": "동물실험의 미래,\n하드사이언스가 제시하는\n'세포배양의 새로운 기준'",
+        "body": "연구의 한계를 넘는 혁신 동물실험 학회에서\n'하드사이언스'를 만나보세요! 🔬\n\n하드사이언스가 제안하는 전임상 연구의 디지털 전환"
+      },
+      "photos": 0,
+      "note": "제목 마지막 줄 아래 빨간 밑줄 강조(장식)"
+    },
+    {
+      "n": 3,
+      "file": "03.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 02",
+        "headline": "🧬 왜 우리는 여전히 동물실험에 의존할까요?",
+        "body": "2D 세포배양으로는 실제 장기의 복잡한 반응을 확인하기\n어렵기 때문입니다."
+      },
+      "photos": 1,
+      "photoDesc": "세로형 포스터/브로슈어 표지, ORIENT BIO 'The Beginning and End of Oranoid, Xenograft, and MPS', 하단에 cellArtgen·MICROFIT·HADD SCIENCE·gradiant bioconvergence 로고 나열",
+      "note": "사진이 세로(포스터형)라 표준 레이아웃의 고정비율 사진박스에 넣으려면 폭을 좁혀 contain 처리 필요"
+    },
+    {
+      "n": 4,
+      "file": "04.jpg",
+      "kind": "other",
+      "fits": false,
+      "text": {
+        "badge": "chapter 03",
+        "headline": "🔥 학회 현장 설문조사 결과:\n\"가장 관심 가는 기술 1위\"",
+        "body": "부스 방문 연구자들이 직접 선택한 HADD SCIENCE\n3D 세포배양을 통한 동물실험의 실질적 대체 가능성.\n현장의 뜨거운 관심이 하드사이언스의 기술력을 입증했습니다."
+      },
+      "photos": 1,
+      "photoDesc": "파이차트 인포그래픽 '2026 실험동물학회 관심 샘플 수요조사'. 카드 표기 A/B/C/D(비율 19.5/6.1/26.8/18.3%)에 원본(12.png) 기준 실명은 A=Gradiant bioconvergence, B=MEPS GEN, C=Regenix, D=Microfit이며, 하드사이언스의 ADDGEL & LiVEGEL이 29.3%로 강조(오렌지색) 표시됨. 좌측에 '높은 생체안정성/조작 편의성/합리적인 비용/국산화' 화살표 텍스트, 출처: ㈜오리엔트바이오",
+      "note": "9종 레이아웃에 파이차트 그래픽을 담을 자리가 없음. stat 레이아웃으로 근사 시 수치는 텍스트로 옮길 수 있으나 차트 이미지 자체는 손실됨"
+    },
+    {
+      "n": 5,
+      "file": "05.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 04",
+        "headline": "🧪 ADDGEL: 3D 세포배양의 문을 열다",
+        "body": "연구자가 쓰는 배양액을 즉시 젤화하여 입체적인\n세포 성장을 지원합니다.\n세포가 생체 내 장기 조직처럼 활동할 수 있는 최적의 환경을 만듭니다."
+      },
+      "photos": 1,
+      "photoDesc": "학회 부스 앞에 선 마스크 착용 남성 1인, ORIENT BIO 부스 배경(Organoid Biomaterials 배너), 가로",
+      "note": ""
+    },
+    {
+      "n": 6,
+      "file": "06.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 05",
+        "headline": "📊 장기 세포가 동물실험을 대신하는 방법",
+        "body": "ADDGEL로 구현된 3D 장기 모델은 동물 모델보다\n더 인체에 가까운 반응을 보입니다.\n이를 통해 독성 평가 및 효능 시험에서 동물실험의 비중을\n획기적으로 낮출 수 있습니다."
+      },
+      "photos": 0,
+      "note": ""
+    },
+    {
+      "n": 7,
+      "file": "07.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 06",
+        "headline": "🏆 더 정밀하게, 더 윤리적으로",
+        "body": "오염은 줄이고 회수율은 높여 데이터의\n신뢰도를 확보했습니다.\n하드사이언스의 기술력은 실험동물의 희생을\n줄이고 연구의 품질을 높입니다.",
+        "footnote": "◀ HADD 부스"
+      },
+      "photos": 1,
+      "photoDesc": "학회 전시부스 진열대(마우스 이미지 배경, ORIENT BIO 로고), 각종 제품 패널 나열, 가로",
+      "note": "사진 오른쪽 밖에 '◀ HADD 부스' 라벨 텍스트가 카드에 별도로 얹혀 있음(footnote로 옮김)"
+    },
+    {
+      "n": 8,
+      "file": "08.jpg",
+      "kind": "standard",
+      "fits": true,
+      "text": {
+        "badge": "chapter 07",
+        "headline": "HADD SCIENCE 🧪 동물실험 대체 기술의 리더",
+        "body": "학회장에서 애드젤과 함께하는\n새로운 전임상 연구를 확인하세요. 👋"
+      },
+      "photos": 1,
+      "photoDesc": "학회장 통로에 많은 인파, ORIENT 부스 앞, 가로",
+      "note": ""
+    },
+    {
+      "n": 9,
+      "file": "09.jpg",
+      "kind": "photo",
+      "fits": false,
+      "text": {
+        "badge": "현장 사진"
+      },
+      "photos": 1,
+      "photoDesc": "부스 앞에서 대화하는 남녀 직원과 방문객 2인, ORIENT BIO 배경(마우스 이미지), 가로",
+      "note": "standard 레이아웃에 제목·본문 없이 배지+사진만 두는 방식으로 근사 가능"
+    },
+    {
+      "n": 10,
+      "file": "10.jpg",
+      "kind": "photo-grid",
+      "fits": false,
+      "text": {
+        "badge": "현장 사진"
+      },
+      "photos": 4,
+      "photoDesc": "가로로 나란히 선 배너 4개: 'Organoid Biomaterials'(ORIENT·cellArtgen), 'Organoid Organ-on-a-chip'(ORIENT·MICROFIT), 'Organoid Live imaging'(ORIENT·HADD SCIENCE), 'Organoid GrowthFactor'(ORIENT·gradiant), 실외 설경 배경",
+      "note": "사진 4장이 한 컷에 있어 9종 레이아웃(사진 최대 1장)에 맞지 않음"
+    },
+    {
+      "n": 11,
+      "file": "11.jpg",
+      "kind": "photo",
+      "fits": false,
+      "text": {
+        "badge": "현장 사진"
+      },
+      "photos": 1,
+      "photoDesc": "포토월/백드롭 전신 촬영대, '2026 한국실험동물학회 동계심포지엄' 문구와 다수 후원사 로고, 빨간 카펫, 실내, 가로",
+      "note": "standard 레이아웃에 제목·본문 없이 배지+사진만 두는 방식으로 근사 가능"
+    },
+    {
+      "n": 12,
+      "file": "12.png",
+      "kind": "raw-photo",
+      "fits": false,
+      "text": {},
+      "photos": 1,
+      "photoDesc": "카드4(04.jpg) 파이차트의 원본 고화질 이미지, 카드 프레임 없이 그래픽만. 범례 실명(Regenix 26.8/MEPS GEN 6.1/Gradiant bioconvergence 19.5/Microfit 18.3/ADDGEL&LiVEGEL 29.3) 확인 가능",
+      "note": "카드4에 축약(A/B/C/D)되어 쓰인 차트의 원본"
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "fits": 7,
+    "notFit": [
+      { "n": 4, "kind": "other", "why": "파이차트 그래픽 카드, 9종 레이아웃에 없음" },
+      { "n": 9, "kind": "photo", "why": "배지+사진만 있고 본문 없음" },
+      { "n": 10, "kind": "photo-grid", "why": "한 카드에 배너 사진 4장" },
+      { "n": 11, "kind": "photo", "why": "배지+사진만 있고 본문 없음" },
+      { "n": 12, "kind": "raw-photo", "why": "카드 프레임 없는 차트 원본 이미지" }
+    ]
+  }
+}

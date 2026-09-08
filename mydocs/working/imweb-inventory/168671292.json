@@ -1,0 +1,72 @@
+{
+  "id": "168671292",
+  "style": "blue-grid-2026",
+  "cards": [
+    {
+      "n": 1, "file": "01.jpg", "kind": "cover", "fits": true,
+      "text": { "headline": "카드뉴스", "body": "haddscience 알아보기", "footnote": "@haddscience" },
+      "photos": 0, "note": "로고(HADD SCIENCE)+제목+버튼+핸들"
+    },
+    {
+      "n": 2, "file": "02.jpg", "kind": "text", "fits": true,
+      "text": { "badge": "chapter 01", "headline": "🎉2025 화성특례시\nStartup Coming Day 성료!", "body": "화성특례시는 11월 18일(화), 관 학 보육기업의 협력\n강화를 위한 '2025 화성특례시\nStartup Coming Day'를 성황리에 마쳤습니다. 📅\n\n화성산업진흥원(HIPA) 주최/주관으로 수원대학교,\n협성대학교가 공동 참여했으며, 수원대 창업보육센터\n소속 6개 기업이 참여해 활발한 교류를 펼쳤습니다.\n🚀 목표는 지역 창업 생태계의 질적 성장입니다." },
+      "photos": 0, "note": "본문이 옅은 파란 박스 2개로 나뉘어 표시됨. 우하단에 클릭 커서 아이콘 장식"
+    },
+    {
+      "n": 3, "file": "03.jpg", "kind": "standard", "fits": true,
+      "text": { "badge": "chapter 02", "headline": "💡하드사이언스 등 혁신 기업,\n기술력 뽐내!", "body": "참여 기업들은 혁신적인 제품과 기술을 담은 제품 소개\n판넬을 전시하며 잠재 파트너들의 이목을 집중시켰습니다.\n특히 하드사이언스 기업은 뛰어난 기술력과 비전을\n제시했습니다. 🔬" },
+      "photos": 1, "photoDesc": "검정 배경 제품소개 패널: '수원대 창업보육센터 / HADD SCIENCE / 하드사이언스 대표자 허채정', ADD GEL 제품과 박스, 아이템 소개·대표자의 말·대표 메일 텍스트 포함, 가로형", "note": ""
+    },
+    {
+      "n": 4, "file": "04.jpg", "kind": "standard", "fits": true,
+      "text": { "badge": "chapter 03", "headline": "💰오른경영컨설팅 이동호 대표,\n정부지원사업 노하우 공유!", "body": "오른경영컨설팅 이동호 대표의 정부지원사업 특강이\n이어졌습니다. 특강을 통해 기업들은 복잡한 정부 지원 제도를\n이해하고, 각 기업에 맞는 사업 확보 전략 등 실질적인 노하우를\n습득할 수 있었습니다. 이는 창업 초기 기업들의\n성장 동력 확보에 큰 도움을 주었습니다. 👍" },
+      "photos": 1, "photoDesc": "스크린 투사 슬라이드 '정부지원사업 특강 - 오른경영컨설팅 이동호 대표', 세로형(스크린 클로즈업)", "note": ""
+    },
+    {
+      "n": 5, "file": "05.jpg", "kind": "text", "fits": true,
+      "text": { "badge": "chapter 04", "headline": "💬기업 간 자율 네트워킹 활발...\n화성 창업 허브 도약 다짐 🌟", "body": "특강 이후에는 모두가 기대했던 자율 네트워킹 시간이\n마련되었습니다. 기업 대표들은 자유로운 분위기 속에서\n아이디어와 경험을 공유하며 공동 사업 모색 등\n구체적인 협력 방안을 논의했습니다. 🤝\n\n화성시 관계자는 \"이번 행사가 화성 혁신 기업들의\n도약과 관·학·산 상생 협력 체계를 공고히 하는\n발판이 될 것\"이라며, \"앞으로도 창업 허브로서의\n역할을 다하겠다\"고 밝혔습니다. 📈" },
+      "photos": 0, "note": "본문이 옅은 파란 박스 2개로 나뉘어 표시됨. 우하단에 클릭 커서 아이콘 장식"
+    },
+    {
+      "n": 6, "file": "06.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "행사 사진" },
+      "photos": 1, "photoDesc": "프로젝터 스크린 클로즈업, '화성특례시 관·학 보육기업 연합 네트워킹 - 2025 화성특례시 STARTUP COMING DAY' 타이틀 슬라이드, 사람 없음, 세로형", "note": "standard 에 배지+사진만으로 가능"
+    },
+    {
+      "n": 7, "file": "07.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "행사 사진" },
+      "photos": 1, "photoDesc": "남성 2인이 마주보고 있고 뒤 스크린에 '유망 창업기업인 시상 - 협성대 창업보육센터 정도철 센터장 / 수원대 창업보육센터 김성민 센터장', 가로형", "note": "standard 에 배지+사진만으로 가능"
+    },
+    {
+      "n": 8, "file": "08.jpg", "kind": "photo-grid", "fits": false,
+      "text": { "badge": "행사 사진" },
+      "photos": 2, "photoDesc": "왼쪽: 세로 배너 '2025 화성특례시 STARTUP COMING DAY, 행사장 중소기업지원센터 라운지' 안내판, 세로형. 오른쪽: 목에 건 투명 명찰 케이스 '2025 화성특례시 STARTUP COMING DAY / 하드사이언스 노혜린 과장' 클로즈업, 세로형", "note": "사진 2장이 나란히 배치"
+    },
+    {
+      "n": 9, "file": "09.jpg", "kind": "link", "fits": false,
+      "text": { "badge": "기사 원문", "body": "※페이지 클릭시 기사로 넘어갑니다.", "url": "https://www.hsbiz.or.kr/bbs/BBSMSTR_000000000059/view.do;jsessionid=7CF57C82AC76BC0277432BA167966CDE?nttId=B000000001619Di2yG8" },
+      "photos": 0, "photoDesc": "HIPA 화성산업진흥원 로고 + 클릭 커서 아이콘", "note": ""
+    },
+    {
+      "n": 10, "file": "10.jpg", "kind": "link", "fits": false,
+      "text": { "badge": "기사 원문", "body": "※페이지 클릭시 기사로 넘어갑니다.", "url": "https://www.kyosu.net/news/articleView.html?idxno=149802" },
+      "photos": 0, "photoDesc": "교수신문 로고(나무 아이콘) + 클릭 커서 아이콘", "note": ""
+    },
+    {
+      "n": 11, "file": "11.jpg", "kind": "raw-photo", "fits": false,
+      "text": {},
+      "photos": 1, "photoDesc": "프로젝터 스크린 클로즈업 사진, '화성특례시 관·학 보육기업 연합 네트워킹 - 2025 화성특례시 STARTUP COMING DAY, 일시: 2025.11.18(화) 14:00-17:00, 장소: 화성동탄2 인큐베이팅센터, 주최 및 주관: HIPA 화성산업진흥원·수원대학교·협성대학교' 타이틀 슬라이드(06.jpg와 동일 장면의 고해상도 원본), 카드 프레임 없음, 가로형", "note": "카드 프레임 없는 원본 사진 그대로"
+    }
+  ],
+  "summary": {
+    "total": 11, "fits": 5,
+    "notFit": [
+      { "n": 6, "kind": "photo", "why": "배지+사진만" },
+      { "n": 7, "kind": "photo", "why": "배지+사진만" },
+      { "n": 8, "kind": "photo-grid", "why": "사진 2장이 나란히" },
+      { "n": 9, "kind": "link", "why": "언론사 로고+클릭 안내+URL" },
+      { "n": 10, "kind": "link", "why": "언론사 로고+클릭 안내+URL" },
+      { "n": 11, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진" }
+    ]
+  }
+}

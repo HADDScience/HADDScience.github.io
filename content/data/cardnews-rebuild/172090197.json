@@ -1,23 +1,35 @@
 {
   "id": "172090197",
   "title": "🎤 Aquillius ‘Symbiosyx’ 피칭, 샌디에이고 바이오 허브에 하드사이언스가 찾아가다",
+  "thumbnail": "07.webp",
   "cards": [
     {
       "source": "01.webp",
       "sourceText": "카드뉴스",
       "photo": null,
-      "card": { "type": "cover", "title": "카드뉴스", "cta": "haddscience 알아보기" }
+      "card": {
+        "type": "cover",
+        "title": "카드뉴스",
+        "cta": "haddscience 알아보기"
+      }
     },
     {
       "source": "02.webp",
       "sourceText": "chapter 01\n🎤 Aquillius ‘Symbiosyx’ 피칭\n샌디에이고 바이오 허브에 하드사이언스가 찾아가다\n👇 미국 서부 현장 확인하기",
-      "photo": [252, 336, 576, 436],
+      "photo": [
+        252,
+        336,
+        576,
+        436
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 01",
         "headline": "🎤 Aquillius ‘Symbiosyx’ 피칭",
-        "image": { "src": "@photo" },
+        "image": {
+          "src": "@photo"
+        },
         "body": "샌디에이고 바이오 허브에 하드사이언스가 찾아가다",
         "footnote": "👇 미국 서부 현장 확인하기"
       }
@@ -25,39 +37,63 @@
     {
       "source": "03.webp",
       "sourceText": "chapter 02\n서부 바이오텍 밸리, 그 중심으로 🌉\n세계적 바이오텍 밸리 샌디에이고,\n그 중심의 인큐베이팅 허브 Aquillius.\n검증된 전문가와 스타트업을 잇는 ‘Symbiosyx’ 무대에\n하드사이언스가 직접 올랐습니다.",
-      "photo": [192, 318, 696, 394],
+      "photo": [
+        192,
+        318,
+        696,
+        394
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 02",
         "headline": "서부 바이오텍 밸리, 그 중심으로 🌉",
-        "image": { "src": "@photo", "ratio": "16/9" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        },
         "body": "세계적 바이오텍 밸리 샌디에이고,\n그 중심의 인큐베이팅 허브 Aquillius.\n검증된 전문가와 스타트업을 잇는 ‘Symbiosyx’ 무대에\n하드사이언스가 직접 올랐습니다."
       }
     },
     {
       "source": "04.webp",
       "sourceText": "chapter 03\nADDGel & LiVEGel, 미국 서부에 서다 🧫\n허채정 대표가 직접 회사를 피칭했습니다.\n핵산 기반 3D 배양 소재 ‘ADDGel’과 ‘LiVEGel’을\n미국 서부 바이오 현장에 소개했습니다.",
-      "photo": [196, 325, 692, 392],
+      "photo": [
+        196,
+        325,
+        692,
+        392
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 03",
         "headline": "ADDGel & LiVEGel, 미국 서부에 서다 🧫",
-        "image": { "src": "@photo", "ratio": "16/9" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        },
         "body": "허채정 대표가 직접 회사를 피칭했습니다.\n\n핵산 기반 3D 배양 소재 ‘ADDGel’과 ‘LiVEGel’을\n미국 서부 바이오 현장에 소개했습니다."
       }
     },
     {
       "source": "05.webp",
       "sourceText": "chapter 04\n3차원 줄기세포·오가노이드 플랫폼 🔬\n하드사이언스는 3차원 줄기세포·오가노이드 배양 플랫폼으로\n신약 평가의 미래를 제시합니다.\n현지 첨단 연구 인프라 속에서 기술의 경쟁력을 확인했습니다.\n동물실험을 대체할 ‘인체 닮은’ 평가 모델",
-      "photo": [230, 347, 621, 379],
+      "photo": [
+        230,
+        347,
+        621,
+        379
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 04",
         "headline": "3차원 줄기세포·오가노이드 플랫폼 🔬",
-        "image": { "src": "@photo", "ratio": "16/10" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/10"
+        },
         "body": "하드사이언스는 3차원 줄기세포·오가노이드 배양 플랫폼으로\n신약 평가의 미래를 제시합니다.\n현지 첨단 연구 인프라 속에서 기술의 경쟁력을 확인했습니다.",
         "footnote": "동물실험을 대체할 ‘인체 닮은’ 평가 모델"
       }
@@ -65,26 +101,42 @@
     {
       "source": "06.webp",
       "sourceText": "chapter 05\n글로벌 리더 그룹 속으로 🚀\n피칭 후 이어진 네트워킹.\n현지 투자자·전문가와의 검증된 매칭을 통해, 하드사이언스는\n3차원 배양 플랫폼 개발 리더 그룹 안으로 나아갑니다.",
-      "photo": [170, 330, 742, 420],
+      "photo": [
+        170,
+        330,
+        742,
+        420
+      ],
       "card": {
         "type": "chapter",
         "layout": "standard",
         "badge": "chapter 05",
         "headline": "글로벌 리더 그룹 속으로 🚀",
-        "image": { "src": "@photo", "ratio": "16/9" },
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        },
         "body": "피칭 후 이어진 네트워킹.\n현지 투자자·전문가와의 검증된 매칭을 통해, 하드사이언스는\n3차원 배양 플랫폼 개발 리더 그룹 안으로 나아갑니다."
       }
     },
     {
       "source": "07.webp",
       "sourceText": "대표 한마디 💬\n“미국 서부에 하드사이언스의 플랫폼을 알리다”\n허채정 HADD Science 대표",
-      "photo": [135, 394, 810, 544],
+      "photo": [
+        135,
+        394,
+        810,
+        544
+      ],
       "card": {
         "type": "quote",
         "badge": "대표 한마디 💬",
         "quote": "“미국 서부에 하드사이언스의 플랫폼을 알리다”",
         "attrib": "허채정 HADD Science 대표",
-        "image": { "src": "@photo", "ratio": "16/10" }
+        "image": {
+          "src": "@photo",
+          "ratio": "16/10"
+        }
       }
     }
   ]

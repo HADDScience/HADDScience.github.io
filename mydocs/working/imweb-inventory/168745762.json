@@ -1,0 +1,69 @@
+{
+  "id": "168745762",
+  "style": "other",
+  "cards": [
+    {
+      "n": 1, "file": "01.png", "kind": "cover", "fits": true,
+      "text": { "headline": "카드뉴스", "body": "Hadd Science 알아보기" },
+      "photos": 0, "note": "카드마다 좌상단 'Date. 2025.11.19' + 우상단 'HADD SCIENCE' 고정 헤더가 반복됨(9가지 레이아웃엔 없는 요소, 전 카드 공통 배경 요소로 처리 필요). 하단은 파란 리본에 반원 노치가 있는 티켓형 디자인"
+    },
+    {
+      "n": 2, "file": "02.png", "kind": "standard", "fits": true,
+      "text": { "badge": "Chapter1", "headline": "2025 화성특례시 Makers Festa 현장!", "body": "11월 19일(수), 화성 푸르미르 호텔에서\n지역 딥테크·제조 스타트업의 성장과 교류를 위한\n2025 화성특례시 Makers Festa가 진행되었습니다.\n\n수원대학교, WOW메이커스, 화성산업진흥원(HIPA)이 함께한 이번 행사는\n시제품 제작지원사업의 성과 발표와 네트워킹으로 현장 분위기가 뜨거웠습니다. 🚀" },
+      "photos": 1, "photoDesc": "행사장 내부, 스크린에 '수원대학교 X 화성산업진흥원 2025년 화성특례시 MAKERS FESTA' 배너, 원형 테이블과 좌석 세팅, 사람 없음, 가로형", "note": ""
+    },
+    {
+      "n": 3, "file": "03.png", "kind": "other", "fits": false,
+      "text": { "badge": "Chapter 2", "headline": "하드사이언스, 딥테크\n시제품 공개!", "items": [
+        { "n": 1, "text": "하드사이언스는\n화성시 딥테크 시제품 제작지원 사업을 통해 개발한\n바이오 딥테크 기반 시제품을 전시했습니다. 🔬" },
+        { "n": 2, "text": "부스 라운딩에서 화성특례시 관계자 및 참여\n기업들이 하드사이언스 시제품에 큰 관심을\n보였으며, 기술력과 회사 비전을 깊게\n공유하는 시간이 이어졌습니다." }
+      ] },
+      "photos": 2, "photoDesc": "항목1: 하드사이언스 부스 전시 테이블(포스터+제품), 가로형. 항목2: 부스 라운딩 중인 관계자들 다수, 가로형", "note": "번호 매김 항목 2개, 각 항목에 사진이 1장씩 딸려있음(총 2장). list 는 '항목별 사진 없음' 조건에 어긋나고, standard 는 사진 1장 제한이라 둘 다 안 맞음"
+    },
+    {
+      "n": 4, "file": "04.png", "kind": "text", "fits": true,
+      "text": { "badge": "Chapter 3", "headline": "기관 관계자 라운딩 & 현장 피드백", "body": "시제품 전시 부스에서는\n기술 배경, 개발 과정, 실제 적용 가능성 등에 대해\n다양한 관심이 이어졌습니다.\n\n특히 바이오 × AI 딥테크 기업이라는\n하드사이언스의 정체성을 확실하게 알릴 수 있는\n중요한 자리였습니다. 💬" },
+      "photos": 0, "note": ""
+    },
+    {
+      "n": 5, "file": "05.png", "kind": "standard", "fits": true,
+      "text": { "badge": "Chapter 4", "headline": "기업 간 네트워킹 활발... 협력 논의도 활발", "body": "행사 종료 후 이어진 네트워킹 시간에는\n참여 기업들이 자유롭게 교류하며\n공동 프로젝트, 기술 협력 등 다양한 협업 가능성을\n자연스럽게 논의했습니다. 🌟\n\n이번 Makers Festa는\n화성 지역 기반 딥테크 기업 간의 협력 생태계를\n한층 강화한 의미 있는 자리였습니다. 📈" },
+      "photos": 1, "photoDesc": "행사장 내 여러 참가기업 포스터 스탠드와 모니터 전시, 사람 없음, 세로형", "note": ""
+    },
+    {
+      "n": 6, "file": "06.png", "kind": "text", "fits": true,
+      "text": { "headline": "하드사이언스는 앞으로도\nAI × Bio 딥테크 기술을 기반으로\n더 정확하고 효율적인 연구 환경을 만드는\n혁신을 앞으로도 이어가겠습니다.", "badge": "Chapter 5" },
+      "photos": 0, "note": "배지+큰 문장 하나만 있고 별도 본문/각주 없음"
+    },
+    {
+      "n": 7, "file": "07.png", "kind": "photo-grid", "fits": false,
+      "text": { "headline": "행사 사진" },
+      "photos": 2, "photoDesc": "위: 무대 앞 대규모 단체사진(약 50명, 배경에 '수원대학교 X 화성산업진흥원 2025년 화성특례시 MAKERS FESTA' 배너), 가로형. 아래: 같은 배너 아래 포스터 전시 부스를 둘러보는 참관객들, 가로형", "note": "사진 2장이 세로로 나란히 배치"
+    },
+    {
+      "n": 8, "file": "08.png", "kind": "photo-grid", "fits": false,
+      "text": { "headline": "행사 사진" },
+      "photos": 2, "photoDesc": "왼쪽: 투명 네임택 '수원대학교 X 화성산업진흥원 2025 화성특례시 MAKERS FESTA / 하드사이언스 노혜린 과장', 세로형. 오른쪽: 행사 안내 배너 스탠드('2025년 화성특례시 MAKERS FESTA, 행사장 1F 그랜드볼룸'), 세로형", "note": "사진 2장이 나란히 배치"
+    },
+    {
+      "n": 9, "file": "09.png", "kind": "link", "fits": false,
+      "text": { "body": "수원대학교 WoW!메이커스\n2025년 화성특례시 MAKERS FESTA 성황리 종료", "url": "https://www.kyosu.net/news/articleView.html?idxno=150171" },
+      "photos": 0, "photoDesc": "교수신문 로고(나무 아이콘)+클릭 커서 아이콘, 다른 게시글의 '기사 원문' 카드와 달리 배지·안내문구 없이 작은 링크 미리보기 형태(원본 526x171px, 1080 정사각 카드 아님)", "note": "9가지 레이아웃 중 link 에 가장 가깝지만 원본 자체가 정사각 카드가 아니라 작은 썸네일이라 fits=false"
+    },
+    {
+      "n": 10, "file": "10.png", "kind": "raw-photo", "fits": false,
+      "text": {},
+      "photos": 1, "photoDesc": "무대 위 단체사진(약 50명), 배경 배너 '수원대학교 X 화성산업진흥원 2025년 화성특례시 MAKERS FESTA', 가로형, 카드 프레임 없음(원본 686x382px, 1080 정사각 카드 아님)", "note": "카드 프레임 없는 작은 원본 사진"
+    }
+  ],
+  "summary": {
+    "total": 10, "fits": 5,
+    "notFit": [
+      { "n": 3, "kind": "other", "why": "항목 2개 각각에 사진이 딸려 있음(list=항목별 사진 없음, standard=사진 1장 제한)" },
+      { "n": 7, "kind": "photo-grid", "why": "사진 2장이 세로로 나란히" },
+      { "n": 8, "kind": "photo-grid", "why": "사진 2장이 나란히" },
+      { "n": 9, "kind": "link", "why": "정사각 카드가 아닌 작은 링크 미리보기 썸네일" },
+      { "n": 10, "kind": "raw-photo", "why": "카드 프레임 없는 작은 원본 사진" }
+    ]
+  }
+}

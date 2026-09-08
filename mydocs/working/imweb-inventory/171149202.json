@@ -1,0 +1,127 @@
+{
+  "id": "171149202",
+  "style": "blue-grid-2026",
+  "cards": [
+    {
+      "n": 1, "file": "01.jpg", "kind": "cover", "fits": true,
+      "text": { "headline": "HADD\nSCIENCE\n카드뉴스", "body": "haddscience 알아보기", "footnote": "@haddscience" },
+      "photos": 0, "note": "로고 + 제목 + 버튼(haddscience 알아보기) + 핸들(@haddscience)"
+    },
+    {
+      "n": 2, "file": "02.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 01",
+        "headline": "🧬 BIO KOREA 2026 x 하드사이언스",
+        "body": "동물실험 대체를 위한 가장 확실한 해답, 3D 세포 배양 플랫폼의 미래를 엽니다. 🚀",
+        "footnote": "👉 옆으로 넘겨서 현장 소식 확인하기"
+      },
+      "photos": 1, "photoDesc": "BIO KOREA 2026 COEX Hall C 입구 외관, April 28(Tue)~30(Thu) 현수막, 가로", "note": ""
+    },
+    {
+      "n": 3, "file": "03.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 02",
+        "headline": "역대 최대 규모, 글로벌 바이오 융합의 장 🌍",
+        "body": "전 세계 59개국, 770여 개 기업 총출동!\n\n하드사이언스가 대한민국 바이오 산업의 중심, COEX 현장에 섰습니다."
+      },
+      "photos": 1, "photoDesc": "BIO KOREA 2026 International Convention 현수막 아래 다수 내빈 테이프 커팅식, 레드카펫, 가로", "note": ""
+    },
+    {
+      "n": 4, "file": "04.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 03",
+        "headline": "오가노이드 연구의 새로운 표준:\n애드젤 & 라이브젤 🧫",
+        "body": "기존 2D 배양의 한계를 완벽히 극복하다!\n오염을 최소화하고 효율을 극대화하여, 인체와 가장 유사한 3차원 세포 배양 환경을 제공합니다."
+      },
+      "photos": 1, "photoDesc": "부스 내 ADDGEL 배너 앞에 몰려 선 관람객 다수 뒷모습, 가로", "note": ""
+    },
+    {
+      "n": 5, "file": "05.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 04",
+        "headline": "완벽한 대체를 위해,\n전임상 변수까지 통제하다 🔬",
+        "body": "궁극적인 동물실험 완전 대체를 향한 여정!\n\n현재 플랫폼 검증을 위한 필수 전임상 단계에서는 '상처보호캡' 등을 도입해 동물의 행동 변수와 오염까지 철저히 원천 차단하고 있습니다.🎉",
+        "footnote": "하드사이언스가 만들어가는 바이오 혁신, 이제 시작입니다!"
+      },
+      "photos": 0, "note": "사진 없음"
+    },
+    {
+      "n": 6, "file": "06.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 05",
+        "headline": "HADD 바이오에 AI를 더하다 💻🧬",
+        "body": "\" 애드젤로 배양한 오가노이드, 끝이 아닙니다.\n의료 빅데이터 분석과 AI 기술을 융합하여 뇌질환 진단과 세포치료제 개발의 속도를 혁신적으로 단축합니다.🧬"
+      },
+      "photos": 0, "note": "사진 없음. 배지가 05.jpg와 동일하게 'chapter 05'로 표기됨(원본 그대로)"
+    },
+    {
+      "n": 7, "file": "07.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 05",
+        "headline": "연구실을 넘어, 생명의 내일로 ✨",
+        "body": "타협 없는 혁신으로 패러다임을 바꾸는 기업,\n(주)하드사이언스 차세대 바이오 생태계, 그 중심에 서겠습니다.\n🧬"
+      },
+      "photos": 0, "note": "사진 없음. 06.jpg와 배지 번호 중복('chapter 05', 원본 그대로)"
+    },
+    {
+      "n": 8, "file": "08.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "굿즈 호응",
+        "headline": "🎁 \"준비된 물량 전량 소진!\"\n문전성시를 이룬 하드사이언스 부스"
+      },
+      "photos": 1, "photoDesc": "손으로 ADDGEL·HADD SCIENCE 로고가 인쇄된 명함/카드 여러 장을 들고 있는 모습, 배경은 나무와 건물, 세로", "note": "본문 없음"
+    },
+    {
+      "n": 9, "file": "09.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "행사 사진" },
+      "photos": 1, "photoDesc": "BIO KOREA 2026 전북특별자치도 부스, 파란 조끼 입은 남성 2명이 스크린 앞에 서 있음, 세로", "note": "standard 에 본문 없이 가능"
+    },
+    {
+      "n": 10, "file": "10.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "행사 사진" },
+      "photos": 1, "photoDesc": "전시장 통로, NL Netherlands 부스와 COSMETICS & BEAUTY EXPO 배너, 여러 관람객, 가로", "note": "standard 에 본문 없이 가능"
+    },
+    {
+      "n": 11, "file": "11.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "행사 사진" },
+      "photos": 1, "photoDesc": "부스 테이블에서 서류에 서명/기입하는 사람들 클로즈업, 세로", "note": "standard 에 본문 없이 가능"
+    },
+    {
+      "n": 12, "file": "12.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "행사 사진" },
+      "photos": 1, "photoDesc": "하드사이언스(I22) 부스 전경, HIPA 화성산업진흥원·화성특례시 로고 현수막, ADD GEL 배너, 세로", "note": "standard 에 본문 없이 가능"
+    },
+    {
+      "n": 13, "file": "13.jpg", "kind": "photo", "fits": false,
+      "text": { "badge": "행사 사진" },
+      "photos": 1, "photoDesc": "하드사이언스 부스에서 관람객 여러 명과 상담하는 모습, 통로 전체 조망, 가로", "note": "standard 에 본문 없이 가능"
+    },
+    {
+      "n": 14, "file": "14.jpg", "kind": "link", "fits": false,
+      "text": {
+        "badge": "행사 정보",
+        "headline": "BIO KOREA 2026\nINTERNATIONAL CONVENTION",
+        "footnote": "※페이지 클릭시 행사 사이트로 넘어갑니다."
+      },
+      "photos": 0, "photoDesc": "BIO KOREA 2026 로고(보라/회색 점 그래픽), 손가락 클릭 아이콘", "note": "URL 텍스트 없이 클릭 안내만 있어 link 원형과 다름; standard 에 로고를 사진처럼 넣고 각주로 안내문구 배치하면 근사 가능"
+    },
+    {
+      "n": 15, "file": "15.png", "kind": "raw-photo", "fits": false,
+      "photos": 1, "photoDesc": "BIO KOREA 2026 International Convention 현수막 아래 다수 내빈 테이프 커팅식(03.jpg와 동일 장면), 카드 프레임 없는 원본 사진, 가로",
+      "note": "카드 프레임 없는 원본 사진"
+    }
+  ],
+  "summary": {
+    "total": 15,
+    "fits": 8,
+    "notFit": [
+      { "n": 9, "kind": "photo", "why": "배지+사진만, 제목/본문 없음" },
+      { "n": 10, "kind": "photo", "why": "배지+사진만, 제목/본문 없음" },
+      { "n": 11, "kind": "photo", "why": "배지+사진만, 제목/본문 없음" },
+      { "n": 12, "kind": "photo", "why": "배지+사진만, 제목/본문 없음" },
+      { "n": 13, "kind": "photo", "why": "배지+사진만, 제목/본문 없음" },
+      { "n": 14, "kind": "link", "why": "URL 없는 클릭 안내형 카드, 9종 레이아웃과 정확히 일치하지 않음" },
+      { "n": 15, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진" }
+    ]
+  }
+}

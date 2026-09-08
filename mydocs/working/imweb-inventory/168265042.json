@@ -1,0 +1,64 @@
+{
+  "id": "168265042",
+  "style": "other",
+  "cards": [
+    {
+      "n": 1, "file": "01.jpg", "kind": "cover", "fits": true,
+      "text": {
+        "badge": "HADD'S NEWS",
+        "headline": "HADD SCIENCE\n카드뉴스",
+        "subtitle": "바쁜 당신을 위한 하드사이언스 요약 카드뉴스",
+        "footnote": "시작하기 (버튼)"
+      },
+      "photos": 0, "photoDesc": "", "note": ""
+    },
+    {
+      "n": 2, "file": "02.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 1",
+        "headline": "🚀 하드사이언스, 부산대 강단에 서다!",
+        "subtitle": "\"물리와 바이오 융합기술이 만드는 세상\"\n(주)하드사이언스 허채정 대표 특별 강연 성료",
+        "body": "🧠 강연 핵심 주제는?\n\n\"물리와 바이오 융합기술이 만드는 세상\" (Beyond Limits: The\nBio-Physical Challenge Begins) AI와 딥테크(Deep-tech)가\n바꿀 바이오의 미래상을 제시했습니다.\n\n🔬 어떤 기술을 다뤘나요?\n\n\"3D Cellular Modeling & Neurological Diagnosis\" (3D 세포\n모델링 및 신경학적 진단) 뇌신경 질환과 같은 난제 해결을 위한\n물리학과 생명공학의 융합 기술을 심도 있게 소개했습니다."
+      },
+      "photos": 0, "photoDesc": "", "note": ""
+    },
+    {
+      "n": 3, "file": "03.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 2",
+        "headline": "\"물리와 바이오 융합기술\n이 만드는 세상\"",
+        "footnote": "\"3D Cellular Modeling & Neurological Diagnosis\""
+      },
+      "photos": 1, "photoDesc": "대학 강의실, 발표자(남성 1명, 뒷모습)가 손을 들고 설명 중, 학생 다수 앉아 청강, 앞쪽에 노트북 화면에 발표 제목 슬라이드 보임, 가로형", "note": ""
+    },
+    {
+      "n": 4, "file": "04.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 3",
+        "headline": "🧑‍🦰👩🧑‍🦱♂️ 뜨거웠던 현장!",
+        "body": "강연장은 바이오 딥테크 분야에 대한 학생들의 뜨거운 학구열로\n가득 찼습니다. 전공 지식부터 미래 진로까지! 날카로운 Q&A가 이\n어졌습니다."
+      },
+      "photos": 1, "photoDesc": "대학 강의실, 여성 발표자가 마이크 들고 대형 스크린(Organotypic 3D Model 그림) 앞에서 강연, 학생들 뒷모습 다수, 벽에 부산대 문장 로고, 가로형", "note": ""
+    },
+    {
+      "n": 5, "file": "05.jpg", "kind": "standard", "fits": true,
+      "text": {
+        "badge": "chapter 4",
+        "headline": "✨ 하드사이언스의 비전",
+        "body": "\"미래 인재들과의 동행, 혁신을 향한 약속\"\n\n\"산업 현장의 혁신과 학계의 열정이 만난 의미 있는 자\n리였습니다.\" 미래 인재들과 지속적으로 소통하며 대한\n민국 바이오 산업 발전에 기여하겠습니다!"
+      },
+      "photos": 0, "photoDesc": "", "note": "본문이 연한 회색 박스 안에 배치됨"
+    },
+    {
+      "n": 6, "file": "06.png", "kind": "raw-photo", "fits": false,
+      "text": {},
+      "photos": 1, "photoDesc": "03번과 같은 강의실 장면의 원본 사진(카드 프레임 없음), 발표자 뒷모습과 청중, 앞쪽 노트북 화면에 발표 제목 슬라이드, 가로형", "note": "카드 프레임이 없는 원본 사진"
+    }
+  ],
+  "summary": {
+    "total": 6, "fits": 5,
+    "notFit": [
+      { "n": 6, "kind": "raw-photo", "why": "카드 프레임 없는 원본 사진" }
+    ]
+  }
+}

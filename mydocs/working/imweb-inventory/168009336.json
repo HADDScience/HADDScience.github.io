@@ -1,0 +1,146 @@
+{
+  "id": "168009336",
+  "style": "poster",
+  "cards": [
+    {
+      "n": 1,
+      "file": "01.jpg",
+      "kind": "poster",
+      "fits": false,
+      "text": {
+        "headline": "\"하드사이언스,\n수원시와 7,050억 규모\n바이오 투자 협약 참여\"",
+        "body": "단락 수원시는 최근 경제자유구역 내 첨단바이오 산업 활성화를 위해 하드사이언스를 비롯한 9개 기업과 투자 의향서를 체결했다. 이뉴스투데이 이번 협약은 지역 내 바이오 생태계 구축과 고부가가치 산업 기반 마련을 목표로, 행정과 기업 간 상호 협력의 틀을 다지는 뜻깊은 성사였다.\n\n하드사이언스는 이번 투자 협약에서 지역 내 연구·생산 및 기술 개발 역량을 강화하겠다는 계획을 밝혔다. 특히 첨단바이오 분야에서의 혁신 기술 확보와 지역 기반 연구 인프라와의 유기적 연계를 모색할 전망이다. 이를 통해 해당 사업지구가 바이오 허브로 자리매김하길 기대하고 있다.\n\n수원시는 이번 기업 유치가 지역 일자리 창출과 기술 생태계 확장의 계기가 될 것으로 보고 있다. 또한 이번 협약을 시작으로 향후 후속 투자 유치 및 연구 지원 정책을 통해 기업과 지역 간 상생 모델을 구축하겠다는 의지를 내비쳤다."
+      },
+      "photos": 1,
+      "photoDesc": "수원컨벤션센터 실내, '경제자유구역 투자의향서 서명식 개최'·G_BiVA 현수막 앞에 정장 차림 남녀 10명이 나란히 서서 각자 협약서를 펼쳐 들고 있음, 하단에 HADD SCIENCE·수원특례시 로고, 가로",
+      "note": "cover(제목) + standard(사진+단락1) + standard(단락2) + standard(단락3) 로 3~4장 분할 가능"
+    },
+    {
+      "n": 2,
+      "file": "02.jpg",
+      "kind": "link",
+      "fits": false,
+      "text": {
+        "headline": "중부일보"
+      },
+      "photos": 0,
+      "photoDesc": "",
+      "note": "언론사 로고 버튼 + 손가락 클릭 아이콘. 클릭 안내 문구·URL 없음"
+    },
+    {
+      "n": 3,
+      "file": "03.jpg",
+      "kind": "link",
+      "fits": false,
+      "text": {
+        "headline": "글로벌이코노믹"
+      },
+      "photos": 0,
+      "photoDesc": "",
+      "note": "언론사 로고 버튼 + 손가락 클릭 아이콘. 클릭 안내 문구·URL 없음. '글로벌' 뒤에 지구본 아이콘 장식 있음"
+    },
+    {
+      "n": 4,
+      "file": "04.jpg",
+      "kind": "link",
+      "fits": false,
+      "text": {
+        "headline": "데일리안"
+      },
+      "photos": 0,
+      "photoDesc": "",
+      "note": "언론사 로고 버튼 + 손가락 클릭 아이콘. 클릭 안내 문구·URL 없음"
+    },
+    {
+      "n": 5,
+      "file": "05.jpg",
+      "kind": "link",
+      "fits": false,
+      "text": {
+        "headline": "대한민국 민영통신사 SEGYE NEWS TONGSIN\n세계뉴스통신"
+      },
+      "photos": 0,
+      "photoDesc": "",
+      "note": "언론사 로고 버튼 + 손가락 클릭 아이콘. 클릭 안내 문구·URL 없음"
+    },
+    {
+      "n": 6,
+      "file": "06.jpg",
+      "kind": "link",
+      "fits": false,
+      "text": {
+        "headline": "이데일리"
+      },
+      "photos": 0,
+      "photoDesc": "",
+      "note": "언론사 로고 버튼 + 손가락 클릭 아이콘. 클릭 안내 문구·URL 없음"
+    },
+    {
+      "n": 7,
+      "file": "07.jpg",
+      "kind": "link",
+      "fits": false,
+      "text": {
+        "headline": "대한투데이\nDAEHAN TODAY.COM COMMUNICATION"
+      },
+      "photos": 0,
+      "photoDesc": "",
+      "note": "언론사 로고 버튼 + 손가락 클릭 아이콘. 클릭 안내 문구·URL 없음"
+    },
+    {
+      "n": 8,
+      "file": "08.png",
+      "kind": "raw-photo",
+      "fits": false,
+      "photos": 1,
+      "photoDesc": "동일 서명식 사진(01.jpg와 같은 장면), 카드 프레임 없는 원본 고화질 사진, 가로",
+      "note": "카드 프레임 없는 원본 사진"
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "fits": 0,
+    "notFit": [
+      {
+        "n": 1,
+        "kind": "poster",
+        "why": "기사형 포스터 1장"
+      },
+      {
+        "n": 2,
+        "kind": "link",
+        "why": "언론사 로고+클릭 아이콘, URL 없음"
+      },
+      {
+        "n": 3,
+        "kind": "link",
+        "why": "언론사 로고+클릭 아이콘, URL 없음"
+      },
+      {
+        "n": 4,
+        "kind": "link",
+        "why": "언론사 로고+클릭 아이콘, URL 없음"
+      },
+      {
+        "n": 5,
+        "kind": "link",
+        "why": "언론사 로고+클릭 아이콘, URL 없음"
+      },
+      {
+        "n": 6,
+        "kind": "link",
+        "why": "언론사 로고+클릭 아이콘, URL 없음"
+      },
+      {
+        "n": 7,
+        "kind": "link",
+        "why": "언론사 로고+클릭 아이콘, URL 없음"
+      },
+      {
+        "n": 8,
+        "kind": "raw-photo",
+        "why": "카드 프레임 없는 원본 사진"
+      }
+    ]
+  }
+}
