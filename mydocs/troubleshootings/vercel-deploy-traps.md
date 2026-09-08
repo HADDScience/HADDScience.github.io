@@ -23,6 +23,9 @@ Framework Preset = Other 였다. `output: "export"` 를 빼고 그 두 줄만 �
 `Invalid distDirRoot: ".next". distDirRoot should not navigate out of the projectPath` 로 죽었다.
 정적 export 시절엔 프레임워크가 Other 라 그 주입이 없었다. **대응:** 허브 빌드를 `env -i PATH HOME NEXT_PUBLIC_*` 로 돌린다.
 
+(2026-09-08 이후로는 걸릴 일이 없다. 허브가 자기 Vercel 프로젝트 `hadd-hub` 로 옮겨가면서
+`scripts/build-hub.sh` 를 지웠다 — 이 사이트는 `/hub/*` 를 그 프로젝트로 rewrite 만 한다.)
+
 ## Next 가 앞에 서면 vercel.json 의 rewrite 가 [lang] 에 진다
 
 `/omnis/*` 를 Omnis 로 넘기는 rewrite 를 `vercel.json` 에 뒀는데, Next 가 라우트를 먼저 보고 `[lang]` 이

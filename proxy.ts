@@ -40,6 +40,6 @@ function preferredLang(request: NextRequest) {
 export const config = {
   // _next 내부 자산, public 파일, 파일 확장자가 있는 요청은 건드리지 않는다.
   // 언어 라우팅 밖에 있는 것도 제외한다: /admin(관리 화면) · /api(재검증) ·
-  // /omnis(Omnis 로 rewrite) · /hub(허브 정적 파일) · /.well-known(MCP 디스커버리).
+  // /omnis(Omnis 로 rewrite) · /hub(허브 프로젝트로 rewrite) · /.well-known(MCP 디스커버리).
   matcher: ["/((?!_next|admin|api|omnis|hub|\\.well-known|.*\\..*).*)"],
 }

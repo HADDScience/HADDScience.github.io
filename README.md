@@ -9,7 +9,6 @@
 pnpm dev        # http://localhost:3000 → /ko 로 리다이렉트
 pnpm build      # next build (서버 렌더 + ISR)
 pnpm lint
-pnpm hub        # 허브를 받아 public/hub 에 넣는다 (Vercel 빌드가 자동으로 돌린다)
 pnpm media:news # 아임웹에 남은 뉴스 미디어 재수집 (보통 다시 돌릴 일 없다)
 ```
 
@@ -20,8 +19,8 @@ pnpm media:news # 아임웹에 남은 뉴스 미디어 재수집 (보통 다시 
 ## 배포
 
 Vercel 프로젝트 `haddscience` 하나다 (`main` 푸시 → 자동 배포). 한 도메인
-`haddscience.vercel.app` 아래에 `/`(이 사이트) · `/admin` · `/hub`(빌드 때 받아 넣는 정적
-허브) · `/omnis`(Omnis 로 rewrite) 가 산다 — `vercel.json`.
+`haddscience.vercel.app` 아래에 `/`(이 사이트) · `/admin` · `/hub`(허브 프로젝트
+`hadd-hub` 로 rewrite) · `/omnis`(Omnis 로 rewrite) 가 산다 — `next.config.ts`.
 
 | 환경변수 | 뜻 |
 | --- | --- |
@@ -72,7 +71,6 @@ content/
 app/api/revalidate/     Omnis 가 기사를 저장하면 부른다. 기사 캐시를 즉시 비운다
 app/robots.ts · sitemap.ts
 scripts/
-  build-hub.sh          허브 저장소를 받아 public/hub 에 넣는다 (Vercel 빌드)
   fetch-news-media.mjs  아임웹 CDN → 미디어 이관 (이식 전 기록용)
 ```
 

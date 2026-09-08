@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
   },
 
   /**
-   * /omnis/* 를 Omnis 로 넘긴다. 사이트·관리 화면·사진 경로가 전부 같은 도메인의
+   * /omnis/* 는 Omnis 로, /hub/* 는 허브(Vercel 프로젝트 hadd-hub)로 넘긴다. 사이트·관리 화면·사진 경로가 전부 같은 도메인의
    * /omnis 를 보기 때문이다. vercel.json 의 rewrite 는 Next 가 라우트를 다 본 뒤에야
    * 적용되는데 `[lang]` 이 /omnis 를 먼저 받아 404 를 냈다. 그래서 beforeFiles 로 둔다.
    * MCP 디스커버리(.well-known)는 규격상 호스트 루트에 있어야 해서 여기서 Omnis 로 넘긴다.
@@ -32,10 +32,21 @@ const nextConfig: NextConfig = {
         ? "https://omnis-hadd.vercel.app/omnis"
         : "http://localhost:3000")
     const mcp = `${omnis}/api/ip-mcp/.well-known`
+
+    // 허브는 예전엔 빌드 때 받아 public/hub 에 복사해 넣는 사본이었다. 그래서 허브를
+    // 고쳐도 이 사이트를 다시 배포하기 전엔 아무것도 안 바뀌었다. 이제 허브는 자기
+    // Vercel 프로젝트(hadd-hub)에서 자기 저장소의 main 을 보고 배포되고, 여기서는
+    // 주소만 빌려준다. rewrite 여야 한다 — redirect 로 바꾸면 오리진이 hadd-hub 로
+    // 드러나면서 Omnis 의 hub-vercel 등록(origin haddscience.vercel.app)과 어긋나
+    // 로그인이 막히고, /hub/?next= 로 넘어오는 툴들도 같이 끊긴다.
+    const hub = process.env.HUB_UPSTREAM ?? "https://hadd-hub.vercel.app/hub"
+
     return {
       beforeFiles: [
         { source: "/omnis", destination: omnis },
         { source: "/omnis/:path*", destination: `${omnis}/:path*` },
+        { source: "/hub", destination: hub },
+        { source: "/hub/:path*", destination: `${hub}/:path*` },
         { source: "/.well-known/oauth-authorization-server/omnis/api/ip-mcp", destination: `${mcp}/oauth-authorization-server` },
         { source: "/.well-known/oauth-protected-resource/omnis/api/ip-mcp", destination: `${mcp}/oauth-protected-resource` },
         { source: "/.well-known/oauth-authorization-server", destination: `${mcp}/oauth-authorization-server` },

@@ -9,8 +9,7 @@
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
-    "media:news": "node scripts/fetch-news-media.mjs",
-    "hub": "bash scripts/build-hub.sh"
+    "media:news": "node scripts/fetch-news-media.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
