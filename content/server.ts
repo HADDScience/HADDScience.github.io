@@ -81,7 +81,8 @@ function toNewsItem(post: Post, lang: Lang): NewsItem {
     id: post.id,
     date: post.date,
     title: locale?.title ?? post.id,
-    image: post.thumbnail,
+    // 언어 전용 썸네일이 있으면 그것(영문 카드뉴스의 첫 장), 없으면 공통.
+    image: locale?.thumbnail || post.thumbnail,
     summary: locale?.summary || undefined,
     hasArticle: article,
     // 본문이 있으면 사이트 안으로, 없으면 아임웹 원문으로 보낸다.

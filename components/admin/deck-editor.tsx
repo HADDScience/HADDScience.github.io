@@ -323,10 +323,17 @@ export function DeckEditor({
           const enCanvases = await renderAll(t.deck, "translate")
           const en = await bake(enCanvases, t.deck, to)
           outputs.push(...en.outputs)
+          // 영문 목록 카드에는 영문 첫 장을 쓴다. 표지에 글자가 박혀 있어서다.
+          const enThumbSrc = `/news/${post.id}/thumb-${to}.webp`
+          outputs.push({
+            src: enThumbSrc,
+            bytes: await canvasToBytes(resizeCanvas(enCanvases[0], 640), "image/webp", 0.85),
+          })
           content[to] = {
             title: t.locale.title,
             summary: t.locale.summary,
             blocks: en.blocks,
+            thumbnail: enThumbSrc,
             // 서버가 준 원문 해시를 그대로 둔다. 저장할 때 같은 원문을 다시 번역하지 않는다.
             ...(t.locale.translatedFrom ? { translatedFrom: t.locale.translatedFrom } : {}),
           }

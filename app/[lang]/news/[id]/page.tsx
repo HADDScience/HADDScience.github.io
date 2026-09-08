@@ -47,7 +47,7 @@ export async function generateMetadata({
       type: "article",
       title: locale.title,
       description: locale.summary || undefined,
-      images: [post.thumbnail],
+      images: [locale.thumbnail || post.thumbnail],
     },
   }
 }

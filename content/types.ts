@@ -75,6 +75,11 @@ export interface PostLocale {
   summary: string
   blocks: PostBlock[]
   /**
+   * 이 언어 전용 썸네일. 카드뉴스처럼 그림 안에 글자가 있으면 언어마다 다르다.
+   * 없으면 `Post.thumbnail`(언어 공통)을 쓴다.
+   */
+  thumbnail?: string
+  /**
    * 이 번역이 만들어진 원문의 해시. 원문이 바뀌면 값이 달라지고, CI 의 번역 스크립트가
    * 그 차이를 보고 다시 번역한다. 원문 로케일에는 없다.
    */
