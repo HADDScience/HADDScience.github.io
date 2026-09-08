@@ -118,16 +118,17 @@
   color: #11151a;
   font-weight: 800;
   line-height: 1.2;
-  font-size: 64px;
+  /* 옛 카드뉴스(2025.11~2026.05)의 제목은 1080 기준 글자 높이 46~50px ≈ 52px. 64 는 너무 컸다(2026-09-08). */
+  font-size: 52px;
   letter-spacing: -0.02em;
   word-break: keep-all;
   text-wrap: balance;
 }
 .cn-root .headline.sm {
-  font-size: 52px;
+  font-size: 44px;
 }
 .cn-root .headline.lg {
-  font-size: 76px;
+  font-size: 64px;
 }
 .cn-root .subtitle {
   color: #0c4da2;
@@ -323,11 +324,11 @@
   text-align: left;
 }
 .cn-root .split-body .headline {
-  font-size: 52px;
+  font-size: 44px;
 }
 /* 문서용(contain)은 이미지 칸이 넓어 글 칸이 좁아진다. 제목을 한 단 줄인다. */
 .cn-root .split-media.contain + .split-body .headline {
-  font-size: 44px;
+  font-size: 40px;
 }
 .cn-root .split-body .body {
   font-size: 26px;
