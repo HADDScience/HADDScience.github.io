@@ -139,6 +139,11 @@ export interface CardImage {
   ratio?: CardImageRatio
   /** 초점. CSS object-position 값. `center` · `top` · `50% 30%` */
   pos?: string
+  /**
+   * 상자 폭(카드 안쪽 폭 대비 %). 기본 100. 글이 길어 넘치면 사진을 작게 넣는다 —
+   * 옛 카드뉴스가 그렇게 풀었다. 잘라내는 것보다 낫다.
+   */
+  width?: 100 | 80 | 65 | 50
 }
 
 export type CardStat = { value: string; unit?: string; label: string }

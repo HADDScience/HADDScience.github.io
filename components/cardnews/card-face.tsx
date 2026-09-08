@@ -140,7 +140,7 @@ function ImgBox({
   return (
     <div
       className={className ? `imgbox ${className}` : "imgbox"}
-      style={{ aspectRatio: ratio }}
+      style={{ aspectRatio: ratio, ...(image.width && image.width < 100 ? { width: `${image.width}%` } : {}) }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element -- 래스터화 대상이라 최적화 불가 */}
       <img

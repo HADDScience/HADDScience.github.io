@@ -43,6 +43,7 @@ import {
 import {
   CARD_KINDS,
   RATIO_OPTIONS,
+  WIDTH_OPTIONS,
   cardKind,
   cardOutputSrc,
   cardSourceSrc,
@@ -1087,6 +1088,21 @@ function ImageField({
                   label: r.value === fallbackRatio ? `${r.label} · 기본` : r.label,
                 }))}
               />
+            </div>
+          ) : null}
+          {showRatio ? (
+            <div className="grid gap-1.5">
+              <Label htmlFor={`${inputId}-width`}>크기</Label>
+              <NativeSelect
+                id={`${inputId}-width`}
+                value={String(image?.width ?? 100)}
+                onChange={(v) => {
+                  const width = Number(v) as 100 | 80 | 65 | 50
+                  onChange({ ...(image ?? { src: "" }), width: width === 100 ? undefined : width })
+                }}
+                options={WIDTH_OPTIONS.map((w) => ({ value: String(w.value), label: w.label }))}
+              />
+              <p className="text-xs text-muted-foreground">글이 길어 넘치면 사진을 작게.</p>
             </div>
           ) : null}
           <div className="grid gap-1.5">

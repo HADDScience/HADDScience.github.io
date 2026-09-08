@@ -31,6 +31,13 @@ export const CARD_KINDS: {
   { kind: "quote", label: "한마디", hint: "인용 + 이름. 마지막 장" },
 ]
 
+export const WIDTH_OPTIONS: { value: 100 | 80 | 65 | 50; label: string }[] = [
+  { value: 100, label: "꽉 채움 (기본)" },
+  { value: 80, label: "80%" },
+  { value: 65, label: "65%" },
+  { value: 50, label: "50%" },
+]
+
 export const RATIO_OPTIONS: { value: CardImageRatio; label: string }[] = [
   { value: "16/9", label: "16:9 넓게" },
   { value: "16/10", label: "16:10" },

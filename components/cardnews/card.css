@@ -175,6 +175,10 @@
   border-radius: 24px;
   overflow: hidden;
   background: #eff7fc;
+  /* 사진 상자는 줄어들지 않는다. 글이 길면 사진이 세로로 눌리며 cover 가 위아래를 잘라내는데,
+     그건 넘침보다 나쁘다 — 사진의 내용(현수막 글자 등)이 소리 없이 사라진다. 대신 카드가
+     넘치게 두어 검사(lintCard)에 걸리게 한다. 2026-09-08 실제로 겪었다. */
+  flex: none;
 }
 .cn-root .imgbox img {
   width: 100%;
