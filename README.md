@@ -18,9 +18,15 @@ pnpm media:news # 아임웹에 남은 뉴스 미디어 재수집 (보통 다시 
 
 ## 배포
 
-Vercel 프로젝트 `haddscience` 하나다 (`main` 푸시 → 자동 배포). 한 도메인
-`haddscience.vercel.app` 아래에 `/`(이 사이트) · `/admin` · `/hub`(허브 프로젝트
-`hadd-hub` 로 rewrite) · `/omnis`(Omnis 로 rewrite) 가 산다 — `next.config.ts`.
+Vercel 프로젝트 `haddscience` 하나다. 한 도메인 `haddscience.vercel.app` 아래에
+`/`(이 사이트) · `/admin` · `/hub`(허브 프로젝트 `hadd-hub` 로 rewrite) ·
+`/omnis`(Omnis 로 rewrite) 가 산다 — `next.config.ts`.
+
+프로젝트가 이 저장소(`HADDScience/HADDScience.github.io`)에 연결돼 있다. **`main`
+푸시가 곧 배포다** — 다른 브랜치와 PR 은 프리뷰 주소를 받는다(오리진이 달라 관리
+화면 로그인은 안 된다. 프리뷰로는 화면만 본다). `vercel --prod` 로 손으로 올릴
+수도 있지만, 그러면 그 순간 내 작업 폴더가 그대로 올라간다 — 커밋 안 한 것까지.
+2026-09-08 이전에는 그게 유일한 배포 방법이었다.
 
 | 환경변수 | 뜻 |
 | --- | --- |
