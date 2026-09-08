@@ -1,0 +1,158 @@
+{
+  "id": "167895558",
+  "title": "하드사이언스, AI-바이오 융합 청년 인재 양성 본격 시작",
+  "thumbnail": "nas-01.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "하드사이언스,\nAI·바이오 융합\n청년 인재 양성\n본격 시작\nPIONEERING SCIENCE INNOVATION\n하드사이언스가 수원대학교 창업보육센터가 주관하는 청년창업인턴십 프로그램에 함께하며, AI와 바이오·딥테크 융합 분야에서의 혁신 창업 생태계 조성에 힘을 보탠다.",
+      "photo": [
+        550,
+        525,
+        495,
+        380
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "하드사이언스,\nAI·바이오 융합\n청년 인재 양성 본격 시작",
+          "titleSize": "sm",
+          "cta": "haddscience 알아보기"
+        },
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headline": "청년창업인턴십과 함께하다 🤝",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "하드사이언스가 수원대학교 창업보육센터가\n주관하는 청년창업인턴십 프로그램에 함께하며,\nAI와 바이오·딥테크 융합 분야에서의\n혁신 창업 생태계 조성에 힘을 보탠다.",
+          "footnote": "PIONEERING SCIENCE INNOVATION"
+        }
+      ]
+    },
+    {
+      "source": "05.png",
+      "sourceText": "이번 인턴십은 수원대 데이터과학부 학생들이 중심이 되어 진행되며, 단순한 현장실습을 넘어 AI 모델링·빅데이터 분석·바이오 실험 등 실제 산업 현장에서 필요한 기술을 직접 수행하는 것이 특징이다.\n하드사이언스는 프로그램 과정 속에서 실무 경험과 창업 마인드를 학생들에게 전수하며, 미래 과학 기반 창업가로 성장할 수 있도록 지원할 예정이다.\n하드사이언스 관계자는\nAI와 바이오의 융합은 단순 연구를 넘어 산업 전반을 바꿀 수 있는 차세대 성장 동력\n이라며,\n이번 인턴십은 학생들이 하드사이언스의 핵심 가치를 질문하고, 실험하고, 결과를 만들어내는 과정을 몸소 체험할 수 있는 기회\n라고 강조했다.",
+      "photo": [
+        0,
+        0,
+        375,
+        175
+      ],
+      "omit": [
+        {
+          "line": "하드사이언스 관계자는",
+          "why": "인용 카드의 이름 칸(하드사이언스 관계자)으로 표현"
+        },
+        {
+          "line": "이라며,",
+          "why": "인용 연결 어구. 인용 카드 형식으로 대체"
+        },
+        {
+          "line": "라고 강조했다.",
+          "why": "인용 카드 형식"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "데이터과학부 학생들의 도전 💻",
+          "body": "이번 인턴십은 수원대 데이터과학부 학생들이\n중심이 되어 진행되며, 단순한 현장실습을\n넘어 AI 모델링·빅데이터 분석·바이오 실험\n등 실제 산업 현장에서 필요한 기술을 직접\n수행하는 것이 특징이다."
+        },
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headline": "실무와 창업 마인드를 전수하다 🌱",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "하드사이언스는 프로그램 과정 속에서\n실무 경험과 창업 마인드를 학생들에게\n전수하며, 미래 과학 기반 창업가로\n성장할 수 있도록 지원할 예정이다."
+        },
+        {
+          "type": "quote",
+          "badge": "하드사이언스 관계자 한마디 💬",
+          "quote": "“AI와 바이오의 융합은 단순 연구를 넘어\n산업 전반을 바꿀 수 있는\n차세대 성장 동력”\n\n“이번 인턴십은 학생들이\n하드사이언스의 핵심 가치를\n질문하고, 실험하고,\n결과를 만들어내는 과정을\n몸소 체험할 수 있는 기회”",
+          "attrib": "하드사이언스 관계자"
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "WHAT LIES AHEAD\n또한 이번 프로그램을 통해 학생들은 이론적 지식에 그치지 않고, 실제 문제를 정의하고 해결하며 과학적 통찰과 창업 역량을 동시에 갖춘 인재로 성장할 것으로 기대된다.\n하드사이언스는 이를 발판으로 바이오·딥테크 스타트업의 탄생까지 이어질 수 있도록 적극적으로 지원할 방침이다.",
+      "photo": [
+        0,
+        0,
+        720,
+        613
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "이론을 넘어 실전으로 🔬",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "또한 이번 프로그램을 통해 학생들은\n이론적 지식에 그치지 않고, 실제 문제를\n정의하고 해결하며 과학적 통찰과 창업 역량을\n동시에 갖춘 인재로 성장할 것으로 기대된다.",
+          "footnote": "WHAT LIES AHEAD"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "바이오·딥테크 스타트업을 향해 🚀",
+          "body": "하드사이언스는 이를 발판으로\n바이오·딥테크 스타트업의 탄생까지\n이어질 수 있도록 적극적으로 지원할 방침이다."
+        }
+      ]
+    },
+    {
+      "source": "02.png",
+      "sourceText": "관련 기사\nVERITAS\neMBC 이뉴스투데이",
+      "photo": null,
+      "omit": [
+        {
+          "line": "관련 기사",
+          "why": "구분선. 아래 목록 카드의 배지로 흡수됨"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "관련 기사",
+          "headline": "기사 원문 📰",
+          "marker": "emoji",
+          "items": [
+            {
+              "emoji": "📰",
+              "title": "VERITAS"
+            },
+            {
+              "emoji": "📰",
+              "title": "eMBC 이뉴스투데이"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "VERITAS",
+      "href": "https://www.veritas-a.com/news/articleView.html?idxno=573485"
+    },
+    {
+      "label": "eMBC 이뉴스투데이",
+      "href": "https://www.enewstoday.co.kr/news/articleView.html?idxno=2331669"
+    }
+  ]
+}

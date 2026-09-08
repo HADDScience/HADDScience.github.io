@@ -72,6 +72,31 @@ export function PostBody({
               </BlurFade>
             )
 
+          case "links":
+            return (
+              <BlurFade key={i} inView delay={delay}>
+                <section className="rounded-lg border border-border bg-muted/40 p-5">
+                  <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+                    {block.title}
+                  </h2>
+                  <ul className="mt-3 grid gap-2">
+                    {block.items.map((it, k) => (
+                      <li key={k}>
+                        <a
+                          href={it.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-base font-medium text-brand-blue-600 underline-offset-4 hover:underline"
+                        >
+                          {it.label} ↗
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </BlurFade>
+            )
+
           case "image": {
             /* 카드뉴스는 1024×1024 정사각이지만 앞으로 올릴 사진은 비율이 제각각이다.
                고정 width/height 로 CLS 를 막되 h-auto 로 실제 비율을 따르게 한다. */

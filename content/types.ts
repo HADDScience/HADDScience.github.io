@@ -68,6 +68,11 @@ export type PostBlock =
   | { type: "text"; text: string }
   | { type: "quote"; text: string; cite?: string }
   | { type: "image"; src: string; alt: string; caption?: string }
+  /**
+   * 바깥 링크 목록. 언론 보도처럼 카드뉴스 안에 URL 을 박는 대신 여기에 둔다 — 화면낭독기와 검색엔진이
+   * 읽고, 실제로 눌린다. 제목은 번역되고 항목(언론사 이름·URL)은 그대로 둔다.
+   */
+  | { type: "links"; title: string; items: { label: string; href: string }[] }
 
 export interface PostLocale {
   title: string

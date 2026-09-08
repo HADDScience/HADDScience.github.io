@@ -138,12 +138,17 @@
           "items": [
             {
               "emoji": "📰",
-              "title": "브랜드뉴스",
-              "desc": "ibrandnews.com/news/articleView.html?idxno=10877"
+              "title": "브랜드뉴스"
             }
           ]
         }
       ]
+    }
+  ],
+  "links": [
+    {
+      "label": "브랜드뉴스",
+      "href": "https://www.ibrandnews.com/news/articleView.html?idxno=10877"
     }
   ]
 }

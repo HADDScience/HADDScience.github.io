@@ -5,6 +5,7 @@ import {
   ChevronUp,
   Heading2,
   ImagePlus,
+  Link2,
   Loader2,
   Quote,
   Trash2,
@@ -33,6 +34,22 @@ const BLOCK_LABEL: Record<PostBlock["type"], string> = {
   text: "본문",
   quote: "인용",
   image: "이미지",
+  links: "링크 목록",
+}
+
+/** "이름 | URL" 한 줄이 항목 하나. 편집기에서 표 대신 텍스트로 다루는 게 빠르다. */
+function parseLinkLines(text: string): { label: string; href: string }[] {
+  return text
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean)
+    .map((l) => {
+      const [label, ...rest] = l.split("|")
+      return { label: label.trim(), href: rest.join("|").trim() }
+    })
+}
+function linkLines(items: { label: string; href: string }[]): string {
+  return items.map((it) => `${it.label} | ${it.href}`).join("\n")
 }
 
 export interface BlockEditorProps {
@@ -69,7 +86,9 @@ export function BlockEditor({
         ? { type: "image", src: "", alt: "" }
         : type === "quote"
           ? { type: "quote", text: "" }
-          : { type, text: "" }
+          : type === "links"
+            ? { type: "links", title: "관련 기사", items: [] }
+            : { type, text: "" }
     onChange([...blocks, created])
   }
 
@@ -123,6 +142,20 @@ export function BlockEditor({
               onChange={(e) => update(i, { ...block, text: e.target.value })}
               className="text-lg font-semibold"
             />
+          ) : block.type === "links" ? (
+            <div className="grid gap-2">
+              <Input
+                value={block.title}
+                placeholder="제목 (관련 기사)"
+                onChange={(e) => update(i, { ...block, title: e.target.value })}
+              />
+              <Textarea
+                defaultValue={linkLines(block.items)}
+                placeholder={"한 줄에 하나. 이름 | URL\n중부일보 | https://…"}
+                rows={4}
+                onBlur={(e) => update(i, { ...block, items: parseLinkLines(e.target.value) })}
+              />
+            </div>
           ) : block.type === "quote" ? (
             <div className="grid gap-2">
               <Textarea
@@ -171,6 +204,12 @@ export function BlockEditor({
           icon={<ImagePlus className="size-4" />}
         >
           이미지
+        </AddButton>
+        <AddButton
+          onClick={() => add("links")}
+          icon={<Link2 className="size-4" />}
+        >
+          링크 목록
         </AddButton>
       </div>
     </div>

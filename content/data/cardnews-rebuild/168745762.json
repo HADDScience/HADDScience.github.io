@@ -1,0 +1,337 @@
+{
+  "id": "168745762",
+  "title": "하드사이언스, 2025 Makers Festa",
+  "thumbnail": "nas-04.jpg",
+  "cards": [
+    {
+      "source": "01.png",
+      "sourceText": "카드뉴스\nHadd Science 알아보기",
+      "photo": null,
+      "omit": [
+        {
+          "line": "카드뉴스",
+          "why": "표지 템플릿 라벨(모든 카드뉴스 공통), 새 표지 제목으로 대체"
+        },
+        {
+          "line": "Hadd Science 알아보기",
+          "why": "표지 템플릿 부제, cta 문구로 대체"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "2025\n화성특례시\nMakers Festa",
+          "cta": "haddscience 알아보기"
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "Chapter1\n2025 화성특례시 Makers Festa 현장!\n11월 19일(수), 화성 푸르미르 호텔에서\n지역 딥테크·제조 스타트업의 성장과 교류를 위한\n2025 화성특례시 Makers Festa가 진행되었습니다.\n수원대학교, WOW메이커스, 화성산업진흥원(HIPA)이 함께한 이번 행사는\n시제품 제작지원사업의 성과 발표와 네트워킹으로 현장 분위기가 뜨거웠습니다. 🚀",
+      "photo": [
+        0,
+        0,
+        1126,
+        2000
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headlineSize": "sm",
+          "headline": "2025 화성특례시\nMakers Festa 현장!",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "11월 19일(수), 화성 푸르미르 호텔에서\n지역 딥테크·제조 스타트업의 성장과 교류를 위한\n2025 화성특례시 Makers Festa가 진행되었습니다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "든든한 협업 파트너 🤝",
+          "body": "수원대학교, WOW메이커스, 화성산업진흥원(HIPA)이 함께한 이번 행사는\n시제품 제작지원사업의 성과 발표와 네트워킹으로 현장 분위기가 뜨거웠습니다. 🚀"
+        }
+      ],
+      "omit": [
+        {
+          "line": "Chapter1",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter NN"
+        }
+      ]
+    },
+    {
+      "source": "03.png",
+      "sourceText": "Chapter 2\n하드사이언스, 딥테크\n시제품 공개!\n하드사이언스는\n화성시 딥테크 시제품 제작지원 사업을 통해 개발한\n바이오 딥테크 기반 시제품을 전시했습니다. 🔬",
+      "photo": [
+        1030,
+        635,
+        600,
+        420
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headline": "하드사이언스, 딥테크\n시제품 공개!",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "하드사이언스는\n화성시 딥테크 시제품 제작지원 사업을 통해 개발한\n바이오 딥테크 기반 시제품을 전시했습니다. 🔬"
+        }
+      ],
+      "omit": [
+        {
+          "line": "Chapter 2",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter NN"
+        }
+      ]
+    },
+    {
+      "source": "03.png",
+      "sourceText": "부스 라운딩에서 화성특례시 관계자 및 참여\n기업들이 하드사이언스 시제품에 큰 관심을\n보였으며, 기술력과 회사 비전을 깊게\n공유하는 시간이 이어졌습니다.",
+      "photo": [
+        1030,
+        1150,
+        600,
+        430
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headline": "부스 라운딩, 뜨거운 관심 🤝",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "부스 라운딩에서 화성특례시 관계자 및 참여\n기업들이 하드사이언스 시제품에 큰 관심을\n보였으며, 기술력과 회사 비전을 깊게\n공유하는 시간이 이어졌습니다."
+        }
+      ]
+    },
+    {
+      "source": "04.png",
+      "sourceText": "Chapter 3\n기관 관계자 라운딩 & 현장 피드백\n시제품 전시 부스에서는\n기술 배경, 개발 과정, 실제 적용 가능성 등에 대해\n다양한 관심이 이어졌습니다.\n특히 바이오 × AI 딥테크 기업이라는\n하드사이언스의 정체성을 확실하게 알릴 수 있는\n중요한 자리였습니다. 💬",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "기관 관계자 라운딩 & 현장 피드백 💬",
+          "body": "시제품 전시 부스에서는\n기술 배경, 개발 과정, 실제 적용 가능성 등에 대해\n다양한 관심이 이어졌습니다.\n\n특히 바이오 × AI 딥테크 기업이라는\n하드사이언스의 정체성을 확실하게 알릴 수 있는\n중요한 자리였습니다. 💬"
+        }
+      ],
+      "omit": [
+        {
+          "line": "Chapter 3",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter NN"
+        }
+      ]
+    },
+    {
+      "source": "nas-03.jpg",
+      "sourceText": "Chapter 4\n기업 간 네트워킹 활발... 협력 논의도 활발\n행사 종료 후 이어진 네트워킹 시간에는\n참여 기업들이 자유롭게 교류하며\n공동 프로젝트, 기술 협력 등 다양한 협업 가능성을\n자연스럽게 논의했습니다. 🌟\n이번 Makers Festa는\n화성 지역 기반 딥테크 기업 간의 협력 생태계를\n한층 강화한 의미 있는 자리였습니다. 📈",
+      "photo": [
+        0,
+        0,
+        2000,
+        1126
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 04",
+          "headlineSize": "sm",
+          "headline": "기업 간 네트워킹 활발...\n협력 논의도 활발",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "행사 종료 후 이어진 네트워킹 시간에는\n참여 기업들이 자유롭게 교류하며\n공동 프로젝트, 기술 협력 등 다양한 협업 가능성을\n자연스럽게 논의했습니다. 🌟"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "협력 생태계 강화 📈",
+          "body": "이번 Makers Festa는\n화성 지역 기반 딥테크 기업 간의 협력 생태계를\n한층 강화한 의미 있는 자리였습니다. 📈"
+        }
+      ],
+      "omit": [
+        {
+          "line": "Chapter 4",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter NN"
+        }
+      ]
+    },
+    {
+      "source": "06.png",
+      "sourceText": "Chapter 5\n하드사이언스는 앞으로도\nAI × Bio 딥테크 기술을 기반으로\n더 정확하고 효율적인 연구 환경을 만드는\n혁신을 앞으로도 이어가겠습니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "앞으로도 계속 🚀",
+          "body": "하드사이언스는 앞으로도\nAI × Bio 딥테크 기술을 기반으로\n더 정확하고 효율적인 연구 환경을 만드는\n혁신을 앞으로도 이어가겠습니다."
+        }
+      ],
+      "omit": [
+        {
+          "line": "Chapter 5",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter NN"
+        }
+      ]
+    },
+    {
+      "source": "nas-04.jpg",
+      "sourceText": "행사 사진",
+      "photo": [
+        0,
+        0,
+        600,
+        383
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "단체 기념촬영 📸",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": "2025 화성특례시 Makers Festa"
+        }
+      ]
+    },
+    {
+      "source": "07.png",
+      "sourceText": "행사 사진",
+      "photo": [
+        320,
+        1010,
+        1230,
+        570
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "부스 관람 현장 🚶",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "2025 화성특례시 Makers Festa"
+        }
+      ]
+    },
+    {
+      "source": "08.png",
+      "sourceText": "행사 사진",
+      "photo": [
+        250,
+        380,
+        550,
+        1200
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "참가자 명찰 🪪",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "body": "2025 화성특례시 Makers Festa"
+        }
+      ]
+    },
+    {
+      "source": "nas-05.jpg",
+      "sourceText": "행사 사진",
+      "photo": [
+        0,
+        0,
+        1126,
+        2000
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "행사 안내 배너 🪧",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "body": "2025 화성특례시 Makers Festa"
+        }
+      ]
+    },
+    {
+      "source": "nas-04.jpg",
+      "sourceText": "행사 사진",
+      "photo": [
+        0,
+        0,
+        600,
+        383
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "참가자 단체사진 🎉",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": "2025 화성특례시 Makers Festa"
+        }
+      ]
+    },
+    {
+      "source": "09.png",
+      "sourceText": "교수신문\n수원대학교 WoW!메이커스\n2025년 화성특례시 MAKERS FESTA 성황리 종료",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "관련 기사",
+          "headline": "기사 원문 📰",
+          "marker": "emoji",
+          "items": [
+            {
+              "emoji": "📰",
+              "title": "교수신문",
+              "desc": "수원대학교 WoW!메이커스\n2025년 화성특례시 MAKERS FESTA 성황리 종료"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "교수신문",
+      "href": "https://www.kyosu.net/news/articleView.html?idxno=150171"
+    }
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "id": "167671769",
+  "title": "하드사이언스, 그래핀 기반 치매 초기진단 임상 파트너 협약",
+  "thumbnail": "nas-01.jpg",
+  "cards": [
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "치매 진단기술 | 아밀로이드 베타 | 나노 신소재 | 분광학\n하드사이언스\n그래핀 기반 치매 초기진단 임상 파트너 협약\n의료기관·딥테크 기업과 MOU 체결\nSM그룹 계열사 국일그래핀이 충남대병원 대전광역치매센터와 손잡고 그래핀 기반 치매 초기진단기술의 임상 검증에 나섰다.\n하드사이언스는 국일그래핀과 25일 충남대병원 신경과 오응석 교수(대전광역치매센터장)와 업무협약(MOU)을 함께 체결했으며,\n현장에는 바이오 딥테크 기업 하드사이언스 허채정 대표도 참석했다.\n허 대표는 아밀로이드 베타 단백질 연구로 국제 학술지 논문을 다수 발표한 뇌과학 전문가다.\n이번 협약은 국일그래핀이 보유한 그래핀 바이오 진단(센싱) 기술과 오 교수팀의 임상 경험을 결합해 치매 조기 진단 효용성을 검증하고 상용화를 앞당기기 위한 것이다.\n특히 치매 보건정책 수행 경험과 폭넓은 네트워크를 가진 연구팀과의 협력이 의료 분야 시너지에 기여할 것으로 기대된다.\n국일그래핀은 현재 아밀로이드 베타와 타우 단백질의 응집 상태를 그래핀의 광학적 변화로 분석하는 기술을 고도화 중이며,\n이번 협약을 계기로 전국 치매 네트워크 확대와 시장 진입을 본격화할 계획이다.\n또한 충남대병원 외 국내 의과대학 두 곳과도 협력 논의를 진행 중이며, 2027년 양산품 출시를 목표로 임상 검증과 시제품 개발을 이어간다.\n강태현 대표이사는\n충남대병원과의 파트너십을 통해 치매 진단기술 상용화 속도를 높이고, 퇴행성 뇌 질환까지 연구개발 범위를 넓혀 초고령화 사회 건강에 기여하겠다\n고 밝혔다.\n국일그래핀은 2018년 국일제지의 100% 자회사로 설립돼, 현재 그래핀 신소재 및 치매 진단기술 특허 출원 등 바이오헬스케어 분야 진출을 강화하고 있다.\n1/1",
+      "photo": [
+        0,
+        0,
+        650,
+        408
+      ],
+      "omit": [
+        {
+          "line": "1/1",
+          "why": "포스터 쪽번호"
+        },
+        {
+          "line": "강태현 대표이사는",
+          "why": "인용 카드의 이름 칸(강태현 국일그래핀 대표이사)으로 표현"
+        },
+        {
+          "line": "고 밝혔다.",
+          "why": "인용 카드 형식"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "그래핀 치매\n초기진단\n임상 협약",
+          "cta": "haddscience 알아보기"
+        },
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "하드사이언스",
+          "headlineSize": "sm",
+          "headline": "그래핀 기반 치매 초기진단\n임상 파트너 협약 🤝",
+          "subtitle": "의료기관·딥테크 기업과 MOU 체결",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": "SM그룹 계열사 국일그래핀이\n충남대병원 대전광역치매센터와 손잡고\n그래핀 기반 치매 초기진단기술의\n임상 검증에 나섰다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "충남대병원과 업무협약 체결 🖋️",
+          "body": "하드사이언스는 국일그래핀과 25일\n충남대병원 신경과 오응석 교수\n(대전광역치매센터장)와\n업무협약(MOU)을 함께 체결했으며,"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "협약식 현장에는 🙋",
+          "body": "현장에는 바이오 딥테크 기업\n하드사이언스 허채정 대표도\n참석했다.",
+          "footnote": "치매 진단기술 | 아밀로이드 베타 | 나노 신소재 | 분광학"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "허채정 대표는\n뇌과학 전문가 🧠",
+          "body": "허 대표는 아밀로이드 베타 단백질 연구로\n국제 학술지 논문을 다수 발표한\n뇌과학 전문가다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "그래핀 바이오 센싱 기술 🔬",
+          "body": "이번 협약은 국일그래핀이 보유한\n그래핀 바이오 진단(센싱) 기술과\n오 교수팀의 임상 경험을 결합해\n치매 조기 진단 효용성을 검증하고\n상용화를 앞당기기 위한 것이다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "의료 분야 시너지 기대 🤝",
+          "body": "특히 치매 보건정책 수행 경험과\n폭넓은 네트워크를 가진 연구팀과의\n협력이 의료 분야 시너지에\n기여할 것으로 기대된다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "그래핀 광학 분석 기술 고도화 🧪",
+          "body": "국일그래핀은 현재 아밀로이드 베타와\n타우 단백질의 응집 상태를\n그래핀의 광학적 변화로\n분석하는 기술을 고도화 중이며,"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "전국 치매 네트워크 확대 🗺️",
+          "body": "이번 협약을 계기로\n전국 치매 네트워크 확대와\n시장 진입을 본격화할 계획이다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 07",
+          "headline": "2027년 양산품 출시 목표 🎯",
+          "body": "또한 충남대병원 외 국내 의과대학\n두 곳과도 협력 논의를 진행 중이며,\n2027년 양산품 출시를 목표로\n임상 검증과 시제품 개발을 이어간다."
+        },
+        {
+          "type": "quote",
+          "badge": "강태현 대표이사 한마디 💬",
+          "quote": "“충남대병원과의 파트너십을 통해\n치매 진단기술 상용화 속도를 높이고,\n퇴행성 뇌 질환까지 연구개발 범위를 넓혀\n초고령화 사회 건강에 기여하겠다”",
+          "attrib": "강태현 국일그래핀 대표이사"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 08",
+          "headline": "국일그래핀, 바이오헬스케어 진출 🏢",
+          "body": "국일그래핀은 2018년 국일제지의\n100% 자회사로 설립돼,\n현재 그래핀 신소재 및 치매 진단기술\n특허 출원 등 바이오헬스케어 분야\n진출을 강화하고 있다."
+        }
+      ]
+    },
+    {
+      "source": "02.png",
+      "sourceText": "관련 기사\n서울신문\n더밸류뉴스\n젊은 자본시장 미디어\n1코노미뉴스\n솔로를 위한 정보 NO.1\n서울Pn\n서울경제\nSR타임스\n뉴스락\n세상 모든것이 뉴스다\nNews Lock 탐사·기획 중심 경제미디어\n부산 파이낸셜 뉴스\nGlobal epic\nBUSINESSplus\n경제를 읽는 맑은 창\n중소기업신문\n전국 800만 중소기업의 대변지\n데일리한국\n관련 사진",
+      "photo": null,
+      "omit": [
+        {
+          "line": "관련 기사",
+          "why": "구분선 표제. list 카드 배지 '관련 기사'로 표현"
+        },
+        {
+          "line": "관련 사진",
+          "why": "구분선 표제. 그 사진(16.png)은 01.png와 동일 장면으로 chapter 카드(nas-01.jpg)에 이미 사용"
+        },
+        {
+          "line": "젊은 자본시장 미디어",
+          "why": "언론사 로고의 슬로건"
+        },
+        {
+          "line": "솔로를 위한 정보 NO.1",
+          "why": "언론사 로고의 슬로건"
+        },
+        {
+          "line": "세상 모든것이 뉴스다 · News Lock 탐사·기획 중심 경제미디어",
+          "why": "언론사 로고의 슬로건"
+        },
+        {
+          "line": "경제를 읽는 맑은 창",
+          "why": "언론사 로고의 슬로건"
+        },
+        {
+          "line": "전국 800만 중소기업의 대변지",
+          "why": "언론사 로고의 슬로건"
+        },
+        {
+          "line": "세상 모든것이 뉴스다",
+          "why": "언론사 로고의 슬로건"
+        },
+        {
+          "line": "News Lock 탐사·기획 중심 경제미디어",
+          "why": "언론사 로고의 슬로건"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "관련 기사",
+          "headline": "기사 원문 📰 (1/3)",
+          "marker": "emoji",
+          "items": [
+            {
+              "emoji": "📰",
+              "title": "서울신문"
+            },
+            {
+              "emoji": "📰",
+              "title": "더밸류뉴스"
+            },
+            {
+              "emoji": "📰",
+              "title": "1코노미뉴스"
+            },
+            {
+              "emoji": "📰",
+              "title": "서울Pn"
+            }
+          ]
+        },
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "관련 기사",
+          "headline": "기사 원문 📰 (2/3)",
+          "marker": "emoji",
+          "items": [
+            {
+              "emoji": "📰",
+              "title": "서울경제"
+            },
+            {
+              "emoji": "📰",
+              "title": "SR타임스"
+            },
+            {
+              "emoji": "📰",
+              "title": "뉴스락"
+            },
+            {
+              "emoji": "📰",
+              "title": "부산 파이낸셜 뉴스"
+            }
+          ]
+        },
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "관련 기사",
+          "headline": "기사 원문 📰 (3/3)",
+          "marker": "emoji",
+          "items": [
+            {
+              "emoji": "📰",
+              "title": "Global epic"
+            },
+            {
+              "emoji": "📰",
+              "title": "BUSINESSplus"
+            },
+            {
+              "emoji": "📰",
+              "title": "중소기업신문"
+            },
+            {
+              "emoji": "📰",
+              "title": "데일리한국"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "서울신문",
+      "href": "https://www.seoul.co.kr/news/economy/industry/2025/08/27/20250827027002"
+    },
+    {
+      "label": "더밸류뉴스",
+      "href": "https://www.thevaluenews.co.kr/news/192165"
+    },
+    {
+      "label": "1코노미뉴스",
+      "href": "https://www.1conomynews.co.kr/news/articleView.html?idxno=43014"
+    },
+    {
+      "label": "서울Pn",
+      "href": "https://m1.seoul.co.kr/news/economy/2025/08/27/20250827027002?cp=go"
+    },
+    {
+      "label": "서울경제",
+      "href": "https://v.daum.net/v/20250826141511056"
+    },
+    {
+      "label": "SR타임스",
+      "href": "https://www.srtimes.kr/news/articleView.html?idxno=184373"
+    },
+    {
+      "label": "뉴스락",
+      "href": "https://www.newslock.co.kr/news/articleView.html?idxno=114423"
+    },
+    {
+      "label": "부산 파이낸셜 뉴스",
+      "href": "https://busan.fnnews.com/news/202508261818174364"
+    },
+    {
+      "label": "Global epic",
+      "href": "https://www.globalepic.co.kr/view.php?ud=202508271205423270ac3d53c8ec_29"
+    },
+    {
+      "label": "BUSINESSplus",
+      "href": "https://www.businessplus.kr/news/articleView.html?idxno=95455"
+    },
+    {
+      "label": "중소기업신문",
+      "href": "https://www.smedaily.co.kr/news/articleView.html?idxno=335684"
+    },
+    {
+      "label": "데일리한국",
+      "href": "https://www.pressman.kr/news/articleView.html?idxno=93381"
+    }
+  ]
+}

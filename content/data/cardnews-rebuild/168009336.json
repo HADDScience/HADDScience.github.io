@@ -1,0 +1,176 @@
+{
+  "id": "168009336",
+  "title": "하드사이언스, 수원시와 7,050억 규모 바이오 투자 협약 참여",
+  "thumbnail": "nas-01.jpg",
+  "cards": [
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "하드사이언스, 수원시와 7,050억 규모 바이오 투자 협약 참여\n수원시는 최근 경제자유구역 내 첨단바이오 산업 활성화를 위해 하드사이언스를 비롯한 9개 기업과 투자 의향서를 체결했다.\n이뉴스투데이\n이번 협약은 지역 내 바이오 생태계 구축과 고부가가치 산업 기반 마련을 목표로, 행정과 기업 간 상호 협력의 틀을 다지는 뜻깊은 성사였다.",
+      "photo": [
+        0,
+        95,
+        690,
+        267
+      ],
+      "omit": [
+        {
+          "line": "단락",
+          "why": "포스터 생성 템플릿의 문단 라벨이 문장 앞에 그대로 인쇄됨"
+        },
+        {
+          "line": "이뉴스투데이",
+          "why": "인용 출처 매체명(원 기사 출처)이 문장 중간에 그대로 인쇄됨"
+        },
+        {
+          "line": "이뉴스투데이",
+          "why": "포스터에 박힌 출처 언론사 이름"
+        },
+        {
+          "line": "이뉴스투데이",
+          "why": "포스터에 박힌 출처 언론사 이름. 링크 목록에 있다"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "7,050억 규모\n바이오 투자\n협약 참여",
+          "cta": "haddscience 알아보기"
+        },
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headline": "하드사이언스, 수원시와 7,050억 규모\n바이오 투자 협약 참여 🤝",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "수원시는 최근 경제자유구역 내\n첨단바이오 산업 활성화를 위해\n하드사이언스를 비롯한 9개 기업과\n투자 의향서를 체결했다.",
+          "headlineSize": "sm"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "행정과 기업의 협력 🏛️",
+          "body": "이번 협약은 지역 내 바이오 생태계 구축과\n고부가가치 산업 기반 마련을 목표로,\n행정과 기업 간 상호 협력의 틀을\n다지는 뜻깊은 성사였다."
+        }
+      ]
+    },
+    {
+      "source": "01.jpg",
+      "sourceText": "하드사이언스는 이번 투자 협약에서 지역 내 연구·생산 및 기술 개발 역량을 강화하겠다는 계획을 밝혔다.\n특히 첨단바이오 분야에서의 혁신 기술 확보와 지역 기반 연구 인프라와의 유기적 연계를 모색할 전망이다.\n이를 통해 해당 사업지구가 바이오 허브로 자리매김하길 기대하고 있다.\n수원시는 이번 기업 유치가 지역 일자리 창출과 기술 생태계 확장의 계기가 될 것으로 보고 있다.\n또한 이번 협약을 시작으로 향후 후속 투자 유치 및 연구 지원 정책을 통해 기업과 지역 간 상생 모델을 구축하겠다는 의지를 내비쳤다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "하드사이언스의 계획 📈",
+          "body": "하드사이언스는 이번 투자 협약에서 지역 내\n연구·생산 및 기술 개발 역량을 강화하겠다는\n계획을 밝혔다. 특히 첨단바이오 분야에서의\n혁신 기술 확보와 지역 기반 연구 인프라와의\n유기적 연계를 모색할 전망이다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "바이오 허브로 자리매김 🏙️",
+          "body": "이를 통해 해당 사업지구가\n바이오 허브로 자리매김하길\n기대하고 있다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "일자리 창출 기대 💼",
+          "body": "수원시는 이번 기업 유치가 지역\n일자리 창출과 기술 생태계 확장의\n계기가 될 것으로 보고 있다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "기업과 지역의 상생 모델 🤝",
+          "body": "또한 이번 협약을 시작으로 향후\n후속 투자 유치 및 연구 지원 정책을\n통해 기업과 지역 간 상생 모델을\n구축하겠다는 의지를 내비쳤다."
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "중부일보\n글로벌이코노믹\n데일리안\n대한민국 민영통신사 SEGYE NEWS TONGSIN\n세계뉴스통신\n이데일리\n대한투데이\nDAEHAN TODAY.COM COMMUNICATION",
+      "photo": null,
+      "omit": [
+        {
+          "line": "대한민국 민영통신사 SEGYE NEWS TONGSIN",
+          "why": "언론사 로고 버튼의 영문 부제 장식"
+        },
+        {
+          "line": "DAEHAN TODAY.COM COMMUNICATION",
+          "why": "언론사 로고 버튼의 영문 표기"
+        },
+        {
+          "line": "DAEHAN TODAY.COM COMMUNICATION",
+          "why": "URL 은 카드가 아니라 본문 아래 링크 목록(links 블록)으로"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "관련 기사",
+          "headline": "기사 원문 📰",
+          "marker": "emoji",
+          "items": [
+            {
+              "emoji": "📰",
+              "title": "중부일보"
+            },
+            {
+              "emoji": "📰",
+              "title": "글로벌이코노믹"
+            },
+            {
+              "emoji": "📰",
+              "title": "데일리안"
+            },
+            {
+              "emoji": "📰",
+              "title": "세계뉴스통신"
+            },
+            {
+              "emoji": "📰",
+              "title": "이데일리"
+            },
+            {
+              "emoji": "📰",
+              "title": "대한투데이"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "중부일보",
+      "href": "https://joongboo.com/news/articleView.html?idxno=363704396"
+    },
+    {
+      "label": "글로벌이코노믹",
+      "href": "https://g-enews.com/article/General-News/2025/09/2025092414084378608fbfc802b3_1"
+    },
+    {
+      "label": "데일리안",
+      "href": "https://dailian.co.kr/news/view/1553513"
+    },
+    {
+      "label": "세계뉴스통신",
+      "href": "https://segyenewsagency.com/news/articleView.html?idxno=625003"
+    },
+    {
+      "label": "이데일리",
+      "href": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04168886642303400"
+    },
+    {
+      "label": "대한투데이",
+      "href": "https://dhtoday.com/news/articleView.html?idxno=175709"
+    }
+  ]
+}
