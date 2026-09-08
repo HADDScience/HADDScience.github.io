@@ -728,6 +728,18 @@ function CardForm({
       {card.type === "cover" ? (
         <>
           <TextField label="제목" value={card.title} onChange={(v) => patch({ title: v })} />
+          <div className="grid gap-1.5">
+            <Label htmlFor="card-tsize">제목 크기</Label>
+            <NativeSelect
+              id="card-tsize"
+              value={card.titleSize ?? ""}
+              onChange={(v) => patch({ titleSize: v === "sm" ? "sm" : undefined })}
+              options={[
+                { value: "", label: "기본" },
+                { value: "sm", label: "작게 (제목이 길 때)" },
+              ]}
+            />
+          </div>
           <TextField label="버튼 문구" value={card.cta} onChange={(v) => patch({ cta: v })} />
           <TextField
             label="핸들"
@@ -746,6 +758,18 @@ function CardForm({
             placeholder="“큰따옴표와 함께”"
             onChange={(v) => patch({ quote: v })}
           />
+          <div className="grid gap-1.5">
+            <Label htmlFor="card-qsize">인용문 크기</Label>
+            <NativeSelect
+              id="card-qsize"
+              value={card.quoteSize ?? ""}
+              onChange={(v) => patch({ quoteSize: v === "sm" ? "sm" : undefined })}
+              options={[
+                { value: "", label: "기본" },
+                { value: "sm", label: "작게 (인용문이 길 때)" },
+              ]}
+            />
+          </div>
           <TextField label="이름 · 직함" value={card.attrib} onChange={(v) => patch({ attrib: v })} />
           <ImageField
             image={card.image}

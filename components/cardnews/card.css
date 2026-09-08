@@ -200,6 +200,9 @@
   letter-spacing: -0.03em;
   margin: 32px 0;
 }
+.cn-root .cover-title.sm {
+  font-size: 96px;
+}
 .cn-root .cta {
   display: inline-flex;
   align-items: center;
@@ -226,6 +229,9 @@
 }
 
 /* 인용 */
+.cn-root .quote.sm {
+  font-size: 42px;
+}
 .cn-root .quote {
   color: #11151a;
   font-weight: 800;

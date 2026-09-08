@@ -163,7 +163,7 @@ function Cover({ card, deck }: { card: Extract<Card, { type: "cover" }>; deck: C
           <div className="grow" />
           {/* eslint-disable-next-line @next/next/no-img-element -- 래스터화 대상이라 최적화 불가 */}
           <img className="cover-logo" src={LOGO_SRC} alt="" draggable={false} />
-          <Slot className="cover-title" text={card.title} />
+          <Slot className={card.titleSize === "sm" ? "cover-title sm" : "cover-title"} text={card.title} />
           <div style={{ margin: "24px 0 8px" }}>
             <span className="cta">
               <span dangerouslySetInnerHTML={{ __html: richText(card.cta) }} />
@@ -192,7 +192,7 @@ function Quote({
       <div className="card">
         <div className="pad col" style={{ height: "100%", justifyContent: "center" }}>
           <Slot className="badge" text={card.badge} after={<div className="gap-m" />} />
-          <Slot className="quote" text={card.quote} />
+          <Slot className={card.quoteSize === "sm" ? "quote sm" : "quote"} text={card.quote} />
           <Slot className="attrib" text={card.attrib} before={<div className="gap-s" />} />
           <div className={card.image?.src ? "slot" : "slot is-empty"}>
             <div className="gap-m" />

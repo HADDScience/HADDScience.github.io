@@ -156,6 +156,8 @@ export type Card =
       cta: string
       /** 비우면 덱의 handle 을 쓴다. */
       handle?: string
+      /** 제목이 길면(특히 영문) 한 단 작게. */
+      titleSize?: "sm"
     }
   | {
       type: "quote"
@@ -163,6 +165,8 @@ export type Card =
       quote: string
       attrib: string
       image?: CardImage
+      /** 인용문이 길면 한 단 작게. */
+      quoteSize?: "sm"
     }
   | {
       type: "chapter"
