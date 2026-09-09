@@ -43,10 +43,10 @@ export function NavBar({
       data-site-header
       className="sticky top-0 z-40 border-b border-border bg-background/88 backdrop-blur-[16px] backdrop-saturate-180 over-hero:border-white/14 over-hero:bg-white/8 over-hero:backdrop-blur-[14px] over-hero:backdrop-saturate-100"
     >
-      <Container className="flex h-19 items-center gap-10">
+      <Container className="flex h-19 items-center gap-3 px-4 sm:px-6 lg:gap-10">
         <Link
           href={localePath(lang, "/")}
-          className="flex shrink-0 items-center"
+          className="flex min-w-0 items-center"
           aria-label={companyName}
         >
           {/*
@@ -54,14 +54,14 @@ export function NavBar({
             바꾼다 — NavBar 에 state 를 두지 않기 위한 선택이다(레이아웃 공유 컴포넌트).
             합쳐 28KB 이고 둘 다 스크롤 중에 쓰이므로 어차피 받게 된다.
           */}
-          <span className="relative block h-7">
+          <span className="relative block h-6 sm:h-7">
             <Image
               src="/logo/logo-primary.png"
               alt={companyName}
               width={1000}
               height={153}
               priority
-              className="h-7 w-auto transition-opacity duration-240 ease-[var(--ease-standard)] over-hero:opacity-0"
+              className="h-6 w-auto max-w-full object-contain object-left transition-opacity duration-240 ease-[var(--ease-standard)] sm:h-7 over-hero:opacity-0"
             />
             <Image
               src="/logo/logo-white.png"
@@ -70,7 +70,7 @@ export function NavBar({
               width={677}
               height={104}
               priority
-              className="absolute inset-0 h-7 w-auto opacity-0 transition-opacity duration-240 ease-[var(--ease-standard)] over-hero:opacity-100"
+              className="absolute inset-0 h-6 w-auto max-w-full object-contain object-left opacity-0 transition-opacity duration-240 ease-[var(--ease-standard)] sm:h-7 over-hero:opacity-100"
             />
           </span>
         </Link>
@@ -111,7 +111,7 @@ export function NavBar({
           })}
         </nav>
 
-        <div className="ml-auto flex items-center gap-3 lg:ml-0">
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3 lg:ml-0">
           <LanguageSwitcher lang={lang} labels={ui} />
           <Button
             nativeButton={false}
@@ -127,7 +127,7 @@ export function NavBar({
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={ui.menu}
-            className="flex size-10 items-center justify-center rounded-full border border-border text-foreground lg:hidden over-hero:border-white/40 over-hero:text-white"
+            className="flex size-11 items-center justify-center rounded-full border border-border text-foreground lg:hidden over-hero:border-white/40 over-hero:text-white"
           >
             <span aria-hidden className="text-lg leading-none">
               {open ? "×" : "≡"}
