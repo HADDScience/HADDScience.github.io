@@ -59,3 +59,4 @@ AI 와 함께 일할 때 가장 비싼 실수는 없는 사실을 지어내는 �
 |---|---|---|
 | [tech/content-storage.md](tech/content-storage.md) | canonical | 기사·사진이 어디에 있고 사이트가 어떻게 읽는가 (권위는 Omnis) |
 | [troubleshootings/vercel-deploy-traps.md](troubleshootings/vercel-deploy-traps.md) | reference | 정적 export → 서버 렌더로 옮기며 밟은 함정 |
+| [working/2026-09-09-nav-narrow-overflow.md](working/2026-09-09-nav-narrow-overflow.md) | snapshot | 좁은 화면에서 헤더가 전 페이지를 47px 밀어내던 것 — 원인과 전후 실측 |
