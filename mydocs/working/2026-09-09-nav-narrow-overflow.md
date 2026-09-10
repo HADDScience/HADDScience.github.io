@@ -90,6 +90,6 @@ Container 의 기본 패딩은 건드리지 않았다 — 사이트 전체의 �
 - 홈 화면의 로고 마퀴가 측정 스크립트에서 `bleed` 로 잡힌다. 부모가
   `overflow-hidden` 이라 문서 폭에는 기여하지 않는다(페이지 overflow 가 0인 것이 증거).
   스크립트가 `overflow: auto/scroll` 부모만 제외하고 `hidden` 은 안 걸러서 생기는 오탐
-- `AGENTS.md:68` 이 "Vercel 은 git 푸시로 자동 배포되지 않는다" 인데, `README.md` 는
-  2026-09-08 부터 main 푸시가 곧 배포라고 적혀 있다. 실제로 푸시만으로 배포가 돌았다 —
-  AGENTS.md 쪽이 낡았다
+- ~~`AGENTS.md:68` 이 `README.md` 와 어긋난다~~ — 고쳤다. "Vercel 은 git 푸시로 자동
+  배포되지 않는다" 가 남아 있었는데, 2026-09-08 부터 main 푸시가 곧 배포다.
+  `vercel deploy` 가 커밋하지 않은 것까지 올린다는 경고도 같이 넣었다
