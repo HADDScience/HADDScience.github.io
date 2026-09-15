@@ -2,7 +2,7 @@
 kind: canonical
 status: active
 canonical: mydocs/README.md
-last_verified: 2026-09-07
+last_verified: 2026-09-15
 ---
 
 # mydocs — 이 저장소의 문서 규약
