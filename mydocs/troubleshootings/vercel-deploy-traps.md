@@ -2,7 +2,7 @@
 kind: reference
 status: active
 canonical: mydocs/troubleshootings/vercel-deploy-traps.md
-last_verified: 2026-09-07
+last_verified: 2026-09-15
 ---
 
 # 정적 export 를 서버 렌더로 옮기며 밟은 함정 (2026-09-07)
@@ -42,9 +42,30 @@ Framework Preset = Other 였다. `output: "export"` 를 빼고 그 두 줄만 �
 상위 디렉터리 lockfile 때문에 로컬에서 `turbopack.root` 를 고정했는데, Vercel 에서는 이 값이 "projectPath 밖"
 으로 판정된다(위 허브 오류와 같은 메시지). **대응:** `process.env.VERCEL` 이 없을 때만 설정한다.
 
-## 이 프로젝트는 git 푸시로 자동 배포되지 않는다
+## ~~이 프로젝트는 git 푸시로 자동 배포되지 않는다~~ — 지금은 푸시가 곧 배포다 (2026-09-15 정정)
 
-`main` 을 푸시해도 Vercel 이 빌드하지 않는다. `vercel deploy --prod --yes` 를 직접 돌린다. Omnis 와 같다.
+2026-09-08 에 Vercel 프로젝트를 이 저장소에 연결하면서 뒤집혔다. **`main` 푸시가 곧 배포다.**
+다른 브랜치와 PR 은 프리뷰 주소를 받는다. 실측 — 2026-09-09~10 의 세 커밋이 모두 자동으로 나갔다:
+
+```
+fcb7d38  fix(nav)   → haddscience-4zp2cxkoe  Ready 46s
+e41b4bf  docs(nav)  → 배포됨
+efcad52  docs(agents) → haddscience-nfqxe3808  Ready 45s
+```
+
+**Omnis 도 마찬가지다.** 여기 "Omnis 와 같다"고 적어 둔 것이 두 저장소 모두에서 틀렸다.
+
+```
+$ gh api repos/HADDScience/omnis/deployments
+2026-09-10T01:33:18Z  Production  4b42620
+2026-09-10T01:31:49Z  Preview     985f6d5
+```
+
+`vercel deploy --prod --yes` 로 손으로 올릴 수도 있지만 **커밋하지 않은 것까지 올라간다** —
+다른 세션의 미커밋 변경이 있으면 검증하지 않은 남의 작업이 운영에 나간다. 기본은 푸시다.
+
+옛 문장을 지우지 않고 남기는 이유: 2026-09-08 이전 기록을 읽을 때 그때는 사실이었다는 것이
+보여야 한다.
 
 ## 카드뉴스: 글이 길면 사진이 소리 없이 눌려 잘렸다 (2026-09-08)
 
