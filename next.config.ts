@@ -20,6 +20,51 @@ const nextConfig: NextConfig = {
   },
 
   /**
+   * 아임웹 시절 주소 → 새 페이지. haddscience.com 의 DNS 를 이 프로젝트로 옮기면 검색 결과와
+   * 공유된 기사 링크가 전부 옛 주소로 들어온다. proxy.ts 의 언어 접두사보다 먼저 돌아야
+   * `/Team` 이 `/ko/Team`(404)으로 가지 않는다 — next.config 의 redirects 가 proxy 보다 앞선다.
+   * 목록은 2026-09-17 아임웹 sitemap.xml 과 메뉴에서 뽑았다. 기사 번호는 이전할 때 그대로 뒀다.
+   */
+  async redirects() {
+    const to = (source: string, destination: string) => ({ source, destination, permanent: true })
+    const idx = [{ type: "query" as const, key: "idx", value: "(?<idx>\\d+)" }]
+    const board = [...idx, { type: "query" as const, key: "bmode", value: "view" }]
+    return [
+      // 기사: /?…&bmode=view&idx=N · /news/?bmode=view&idx=N
+      { source: "/", has: board, destination: "/ko/news/:idx/", permanent: true },
+      { source: "/news", has: board, destination: "/ko/news/:idx/", permanent: true },
+      { source: "/noticeall", has: board, destination: "/ko/news/:idx/", permanent: true },
+      // 약관
+      { source: "/", has: [{ type: "query", key: "mode", value: "privacy" }], destination: "/ko/privacy/", permanent: true },
+      { source: "/", has: [{ type: "query", key: "mode", value: "policy" }], destination: "/ko/terms/", permanent: true },
+      // 메뉴
+      to("/main", "/ko/"),
+      to("/56", "/ko/about/"),
+      to("/Team", "/ko/about/team/"),
+      to("/team", "/ko/about/team/"),
+      to("/Location", "/ko/about/location/"),
+      to("/location", "/ko/about/location/"),
+      to("/product", "/ko/products/"),
+      to("/addgelproduct", "/ko/products/"),
+      to("/51", "/ko/products/"),
+      to("/53", "/ko/products/"),
+      to("/57", "/ko/products/livegel/"),
+      to("/haddlibrary", "/ko/library/"),
+      to("/news", "/ko/news/"),
+      to("/noticeall", "/ko/news/"),
+      to("/en-main", "/en/"),
+      to("/en-about", "/en/about/"),
+      to("/en-team", "/en/about/team/"),
+      to("/en-location", "/en/about/location/"),
+      to("/en-contact", "/en/contact/"),
+      // 새 사이트에 짝이 없는 페이지는 첫 화면으로
+      ...["/Project", "/rnd", "/partners", "/FAQ", "/userguide", "/userguide01", "/userguide03", "/64", "/65", "/footer"].map((s) =>
+        to(s, "/ko/")
+      ),
+    ]
+  },
+
+  /**
    * /omnis/* 는 Omnis 로, /hub/* 는 허브(Vercel 프로젝트 hadd-hub)로 넘긴다. 사이트·관리 화면·사진 경로가 전부 같은 도메인의
    * /omnis 를 보기 때문이다. vercel.json 의 rewrite 는 Next 가 라우트를 다 본 뒤에야
    * 적용되는데 `[lang]` 이 /omnis 를 먼저 받아 404 를 냈다. 그래서 beforeFiles 로 둔다.
