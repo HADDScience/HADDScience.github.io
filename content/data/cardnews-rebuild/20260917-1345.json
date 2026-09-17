@@ -1,0 +1,92 @@
+{
+  "id": "20260917-1345",
+  "title": "몸속 장기를 만드는 연구원, 중학생 76명을 만나다",
+  "create": {
+    "date": "2026.09.17",
+    "title": "몸속 장기를 만드는 연구원, 중학생 76명을 만나다",
+    "summary": "제14회 수원청소년진로박람회에서 '바이오연구원' 부스를 운영했습니다."
+  },
+  "thumbnail": "mission.jpg",
+  "cards": [
+    {
+      "source": "booth.jpg",
+      "sourceText": "",
+      "photo": [0, 480, 2400, 1350],
+      "cards": [
+        { "type": "cover", "title": "중학생 76명,\n바이오연구원이\n되어 보다", "cta": "haddscience 알아보기" },
+        {
+          "type": "chapter", "layout": "standard", "badge": "chapter 01", "headlineSize": "sm",
+          "headline": "제14회 수원청소년진로박람회 🎪",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "9월 11일(금) 수원청소년문화센터에서 열린\n제14회 수원청소년진로박람회에\n하드사이언스가 '바이오연구원' 부스로 참여했습니다.",
+          "footnote": "A구역 닥터드림존 3 · 몸 속 장기를 만드는 연구원"
+        },
+        {
+          "type": "chapter", "layout": "stat", "badge": "chapter 02",
+          "headline": "숫자로 보는 바이오연구원 부스 📊",
+          "stats": [
+            { "value": "76", "unit": "명", "label": "참가 학생" },
+            { "value": "7", "unit": "개", "label": "중학교" },
+            { "value": "6", "unit": "회차", "label": "체험 운영" }
+          ],
+          "body": "오전·오후 각 3회차,\n회차마다 40분씩 진행했습니다."
+        }
+      ]
+    },
+    {
+      "source": "mission.jpg",
+      "sourceText": "",
+      "photo": [0, 0, 2400, 1800],
+      "card": {
+        "type": "chapter", "layout": "standard", "badge": "chapter 03",
+        "headline": "체험① 배지교환 미션 🧪",
+        "image": { "src": "@photo", "ratio": "4/3" },
+        "body": "스포이드로 색소 물을 웰 트레이의\n정해진 칸에 정확히 옮기는 미션입니다.\n세포배양 연구원이 매일 하는\n'배지 교환'을 그대로 해 봤습니다."
+      }
+    },
+    {
+      "source": "organoid.jpg",
+      "sourceText": "",
+      "photo": [0, 0, 2400, 1350],
+      "card": {
+        "type": "chapter", "layout": "standard", "badge": "chapter 04",
+        "headline": "체험② 미니 오가노이드 조립 🧫",
+        "image": { "src": "@photo", "ratio": "16/9" },
+        "body": "알지네이트와 염화칼슘이 만나면\n투명한 젤리가 만들어집니다.\n직접 젤리를 만들며 2차원 배양과\n3차원 배양의 차이도 함께 알아봤습니다."
+      }
+    },
+    {
+      "source": "talk.jpg",
+      "sourceText": "",
+      "photo": [0, 0, 2400, 1800],
+      "card": {
+        "type": "chapter", "layout": "standard", "badge": "chapter 05",
+        "headline": "연구원에게 직접 듣는 이야기 💬",
+        "image": { "src": "@photo", "ratio": "4/3" },
+        "body": "체험을 하는 동안 연구원이\n실제 연구실에서 하는 일을\n학생들에게 들려주었습니다."
+      }
+    },
+    {
+      "source": "roster.jpg",
+      "sourceText": "",
+      "photo": [0, 0, 2072, 1485],
+      "card": {
+        "type": "chapter", "layout": "standard", "badge": "chapter 06",
+        "headline": "7개 중학교에서 찾아온 학생들 🏫",
+        "image": { "src": "@photo", "ratio": "4/3" },
+        "body": "동성중 · 명인중 · 구운중 · 영일중\n권선중 · 서호중 · 원천중",
+        "footnote": "회차별 참가 명단 · 학생 이름은 가렸습니다"
+      }
+    },
+    {
+      "source": "roster.jpg",
+      "sourceText": "",
+      "photo": null,
+      "card": {
+        "type": "chapter", "layout": "text", "badge": "chapter 07",
+        "headline": "앞으로도 계속됩니다 🚀",
+        "body": "하드사이언스는 앞으로도 청소년들이\n바이오 연구를 가까이에서 경험할 수 있도록\n다양한 활동을 이어가겠습니다."
+      }
+    }
+  ]
+}
