@@ -71,8 +71,9 @@ export default async function NewsDetailPage({
   // 아직 옮기지 않은 글은 사이트 안에 본문이 없다. 도메인이 넘어오면서 옛 아임웹 주소가
   // 이리로 들어오므로(next.config 의 redirects) 404 대신 원문으로 보낸다. 남은 글을 다
   // 옮기면 이 갈래는 저절로 사라진다.
+  const originalHref = post.externalHref ? externalArticleHref(post.externalHref) : null
   if (!locale?.blocks.length) {
-    if (post.externalHref) redirect(externalArticleHref(post.externalHref))
+    if (originalHref) redirect(originalHref)
     notFound()
   }
 
@@ -103,10 +104,10 @@ export default async function NewsDetailPage({
           </article>
 
           {/* 아임웹 원문이 남아 있는 글은 출처를 함께 남긴다. */}
-          {post.externalHref ? (
+          {originalHref ? (
             <p className="mt-8 text-sm text-muted-foreground">
               <a
-                href={externalArticleHref(post.externalHref)}
+                href={originalHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-4 hover:text-primary"

@@ -86,18 +86,18 @@ export function hasArticle(post: Post, lang: Lang): boolean {
 }
 
 /**
- * 아직 옮기지 않은 글의 원문 주소를 아임웹 기본 주소로 돌린다.
+ * 글의 원문 주소를 쓸 수 있는지 판정한다. 쓸 수 없으면 `null`.
  *
- * 옛 주소는 `https://www.haddscience.com/news/?bmode=view&idx=…` 인데, 2026-09-18 에 그 도메인이
- * 이 사이트로 넘어왔다. 그대로 두면 목록 카드가 자기 사이트로 되돌아오고, 본문이 없는 글이라
- * 404 가 난다(실제로 그렇게 됐다). 아임웹 기본 주소(haddscience.imweb.me)는 구독이 살아 있는
- * 동안 같은 글을 그대로 보여준다 — 남은 글을 다 옮길 때까지의 다리다.
+ * 2026-09-18 까지는 옮기지 않은 글을 아임웹 기본 주소(haddscience.imweb.me)로 보내는 다리가
+ * 여기 있었다. 같은 날 글을 전부 옮겼고 아임웹은 해지했으므로 그 주소는 이제 없는 곳이다.
+ * 남은 것은 **막는 일**이다 — 옛 원문 주소는 우리 도메인(`haddscience.com/news/?bmode=view&idx=…`)
+ * 이나 아임웹을 가리키므로, 링크를 걸면 자기 사이트로 되돌아오거나 죽은 곳으로 보낸다.
+ * 언론사 기사처럼 밖을 가리키는 주소만 그대로 쓴다.
  */
-export function externalArticleHref(href: string): string {
-  return href.replace(
-    /^https?:\/\/(www\.)?haddscience\.com\//,
-    "https://haddscience.imweb.me/"
-  )
+export function externalArticleHref(href: string): string | null {
+  if (/^https?:\/\/(www\.)?haddscience\.com\//.test(href)) return null
+  if (/^https?:\/\/[^/]*imweb\.me\//.test(href)) return null
+  return href
 }
 
 /** Post → 목록 카드용 NewsItem. 라이브러리 글은 `/library/<id>` 로 보낸다. */
@@ -112,12 +112,10 @@ function toNewsItem(post: Post, lang: Lang): NewsItem {
     image: locale?.thumbnail || post.thumbnail,
     summary: locale?.summary || undefined,
     hasArticle: article,
-    // 본문이 있으면 사이트 안으로, 없으면 아임웹 원문으로 보낸다.
-    href: article
-      ? `/${post.category === "library" ? "library" : "news"}/${post.id}`
-      : post.externalHref
-        ? externalArticleHref(post.externalHref)
-        : `/${post.category === "library" ? "library" : "news"}/${post.id}`,
+    // 본문이 있으면 사이트 안으로. 본문이 없는 글은 쓸 수 있는 원문 주소가 있을 때만 밖으로 보낸다.
+    href:
+      (article ? null : post.externalHref ? externalArticleHref(post.externalHref) : null) ??
+      `/${post.category === "library" ? "library" : "news"}/${post.id}`,
   }
 }
 
