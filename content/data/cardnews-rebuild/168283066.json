@@ -1,0 +1,214 @@
+{
+  "id": "168283066",
+  "title": "하드사이언스, '2025 경기 스타트업 서밋(G-SUMMIT)' 참가",
+  "thumbnail": "04.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "HADD'S NEWS\nHADD SCIENCE\n카드 뉴스\n하드사이언스, '2025 경기 스타트업 서밋\n(G-SUMMIT)' 참가\n# G_summit  # ADD_GEL  # 오가노이드",
+      "photo": null,
+      "cards": [
+        {
+          "type": "cover",
+          "title": "2025\n경기 스타트업\nG-SUMMIT 참가",
+          "cta": "haddscience 알아보기",
+          "titleSize": "sm"
+        }
+      ],
+      "omit": [
+        { "line": "HADD'S NEWS", "why": "표지 템플릿 eyebrow 라벨(모든 카드뉴스 공통)" },
+        { "line": "HADD SCIENCE", "why": "표지 템플릿 제목 라벨, 새 표지 제목으로 대체" },
+        { "line": "카드 뉴스", "why": "표지 템플릿 제목 라벨, 새 표지 제목으로 대체" },
+        { "line": "하드사이언스, '2025 경기 스타트업 서밋", "why": "새 표지 제목으로 재구성(같은 행사명, 줄바꿈만 새로)" },
+        { "line": "(G-SUMMIT)' 참가", "why": "새 표지 제목으로 재구성(같은 행사명, 줄바꿈만 새로)" },
+        { "line": "# G_summit  # ADD_GEL  # 오가노이드", "why": "표지 해시태그 장식, 새 표지엔 없음" }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "00\nG_SUMMIT\n경기도 화성시에 위치한 바이오 기술 스타트업 하드사이언스\n(HaddScience) 가\n10월 1~2일, 수원컨벤션센터에서 열린 G-SUMMIT 2025에 참가\n했습니다.\n국내외 투자기관과 글로벌 전문가들이 모인 자리에서 큰 주목을\n받았습니다.",
+      "photo": [196, 443, 690, 290],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headline": "G_SUMMIT",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "경기도 화성시에 위치한 바이오 기술 스타트업\n하드사이언스(HaddScience)가\n10월 1~2일, 수원컨벤션센터에서 열린\nG-SUMMIT 2025에 참가했습니다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "글로벌 이목 집중 🌍",
+          "body": "국내외 투자기관과 글로벌 전문가들이 모인\n자리에서 큰 주목을 받았습니다."
+        }
+      ],
+      "omit": [
+        { "line": "00", "why": "옛 카드의 배지 번호. 새 카드 배지 chapter NN" }
+      ]
+    },
+    {
+      "source": "03.jpg",
+      "sourceText": "01\n🌟 글로벌 무대에서 빛난\nK-바이오\n국내외 200여 개 투자기관과 100여 명의 글로벌 전문가가\n총출동한 서밋에서, 하드사이언스는 부스 운영과 허채정\n대표님의 IR 피칭을 통해 혁신 기술 'ADDGEL'을 성공적으\n로 선보이며 바이오 업계의 이목을 집중시켰습니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "🌟 글로벌 무대에서 빛난\nK-바이오",
+          "body": "국내외 200여 개 투자기관과 100여 명의\n글로벌 전문가가 총출동한 서밋에서,"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "부스와 IR 피칭 🎤",
+          "body": "하드사이언스는 부스 운영과 허채정 대표님의\nIR 피칭을 통해 혁신 기술 'ADDGEL'을\n성공적으로 선보이며 바이오 업계의 이목을\n집중시켰습니다."
+        }
+      ],
+      "omit": [
+        { "line": "01", "why": "옛 카드의 배지 번호. 새 카드 배지 chapter NN" }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "사진\n부스",
+      "photo": [230, 460, 628, 477],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "부스 전시 현장 🎪",
+          "image": { "src": "@photo", "ratio": "4/3" },
+          "body": "2025 경기 스타트업 서밋(G-SUMMIT)"
+        }
+      ],
+      "omit": [
+        { "line": "사진", "why": "옛 카드의 배지, 새 카드 배지 chapter NN으로 대체" }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "03\n🔬 신약 개발의 오랜 숙제\n현재 연구자들은 세포 배양 시 고가의 수입산 '매트리젤'에\n100% 의존하고 있으며, 이 매트리젤이 암세포에서 유래\n한 물질이라 실제 임상 적용에는 엄격한 한계가 존재했습\n니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "🔬 신약 개발의 오랜 숙제",
+          "body": "현재 연구자들은 세포 배양 시 고가의 수입산\n'매트리젤'에 100% 의존하고 있으며, 이\n매트리젤이 암세포에서 유래한 물질이라 실제\n임상 적용에는 엄격한 한계가 존재했습니다."
+        }
+      ],
+      "omit": [
+        { "line": "03", "why": "옛 카드의 배지 번호. 새 카드 배지 chapter NN" }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "피칭",
+      "photo": [450, 205, 490, 685],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "split",
+          "badge": "chapter 05",
+          "headline": "IR 피칭 현장 🎤",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "2025 경기 스타트업 서밋(G-SUMMIT)"
+        }
+      ]
+    },
+    {
+      "source": "07.jpg",
+      "sourceText": "04\n✨ 하드사이언스\n'ADDGEL'의 혁신!\n허채정 대표는 발표를 통해 'ADDGEL'이 매트리젤의 임상\n적용 한계, 높은 수입 의존성, 그리고 과도한 비용 문제까\n지 모두 해결하는 혁신적인 국산 대체 물질임을 강조했습\n니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "✨ 하드사이언스\n'ADDGEL'의 혁신!",
+          "body": "허채정 대표는 발표를 통해 'ADDGEL'이\n매트리젤의 임상 적용 한계, 높은 수입\n의존성, 그리고 과도한 비용 문제까지 모두\n해결하는 혁신적인 국산 대체 물질임을\n강조했습니다."
+        }
+      ],
+      "omit": [
+        { "line": "04", "why": "옛 카드의 배지 번호. 새 카드 배지 chapter NN" }
+      ]
+    },
+    {
+      "source": "08.jpg",
+      "sourceText": "05\n🚀 'ADDGEL'이 연구자들\n에게 사랑받는 이유\n연구 효율과 기술 보호, 'ADDGEL'로 한 번에!\nADDGEL'은 줄기세포 배양액에 추가 시 바로 젤 형태로\n변하는 원스텝 젤화를 통해 편리함을 제공하며, 뇌\n오가노이드와 같은 3D 세포를 장기간 안정적으로\n배양하는 데 탁월한 효율성을 보여줍니다. 또한, 연구자들\n이 기존의 고유한 배양 레시피를 보호하면서 사용할 수\n있다는 점도 큰 장점으로 꼽힙니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 07",
+          "headline": "🚀 'ADDGEL'이 연구자들\n에게 사랑받는 이유",
+          "body": "연구 효율과 기술 보호,\n'ADDGEL'로 한 번에!"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 07",
+          "headline": "원스텝 젤화 ⚗️",
+          "body": "ADDGEL'은 줄기세포 배양액에 추가 시\n바로 젤 형태로 변하는 원스텝 젤화를 통해\n편리함을 제공하며, 뇌 오가노이드와 같은 3D\n세포를 장기간 안정적으로 배양하는 데 탁월한\n효율성을 보여줍니다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 07",
+          "headline": "레시피는 그대로 🔒",
+          "body": "또한, 연구자들이 기존의 고유한 배양 레시피를\n보호하면서 사용할 수 있다는 점도 큰 장점으로\n꼽힙니다."
+        }
+      ],
+      "omit": [
+        { "line": "05", "why": "옛 카드의 배지 번호. 새 카드 배지 chapter NN" }
+      ]
+    },
+    {
+      "source": "09.jpg",
+      "sourceText": "🌟 하드사이언스,\nK-바이오의 미래를\n그리다!\n글로벌 바이오 시장을 향한 힘찬 도약!\n'2025 경기 스타트업 서밋'에서의 성공적인 참여를 발판\n삼아, 하드사이언스의 'ADDGEL'이 국내를 넘어 전 세계\n바이오 연구의 새로운 표준을 제시하며 글로벌 유니콘으\n로 성장할 것을 기대합니다.\n@haddscience",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 08",
+          "headline": "🌟 하드사이언스,\nK-바이오의 미래를\n그리다!",
+          "body": "글로벌 바이오 시장을 향한 힘찬 도약!"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 08",
+          "headline": "새로운 도약 🚀",
+          "body": "'2025 경기 스타트업 서밋'에서의 성공적인\n참여를 발판삼아, 하드사이언스의\n'ADDGEL'이 국내를 넘어 전 세계 바이오\n연구의 새로운 표준을 제시하며 글로벌\n유니콘으로 성장할 것을 기대합니다."
+        }
+      ],
+      "omit": [
+        { "line": "@haddscience", "why": "로고 핸들, 새 카드에서 제외(README 규칙)" }
+      ]
+    },
+    {
+      "source": "10.png",
+      "sourceText": "",
+      "photo": [0, 0, 307, 436],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "overlay",
+          "badge": "행사 사진 ✨",
+          "headline": "현장 스냅 📸",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "2025 경기 스타트업 서밋(G-SUMMIT)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "id": "170273004",
+  "title": "화성시 바이오 판도를 바꾸는 하이패스! 하드사이언스 X RISE",
+  "thumbnail": "nas-01.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "카드뉴스\nhaddscience 알아보기\n@haddscience",
+      "photo": null,
+      "omit": [
+        {
+          "line": "카드뉴스",
+          "why": "옛 표지의 고정 문구. 새 표지는 글 제목을 쓴다"
+        }
+      ],
+      "card": {
+        "type": "cover",
+        "title": "화성시 바이오\n하이패스\nRISE 협력",
+        "titleSize": "sm",
+        "cta": "haddscience 알아보기"
+      }
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "chapter 01\n화성시 바이오 판도를 바꾸는 하이패스!\n하드사이언스 X RISE\n화성시 바이오의 미래, 하드사이언스가 그립니다! 🚀\n지·산·학 협력의 에이스, 하드사이언스의 RISE 대활약상 🔬",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "chapter 01",
+        "headline": "화성시 바이오 판도를 바꾸는\n하이패스! 하드사이언스 X RISE",
+        "headlineSize": "sm",
+        "body": "화성시 바이오의 미래,\n하드사이언스가 그립니다! 🚀\n지·산·학 협력의 에이스,\n하드사이언스의 RISE 대활약상 🔬"
+      }
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "chapter 02\n🔥 2026. 01. 29, 수원대 미래혁신관이\n뜨거웠던 이유!\n화성시, 수원대학교, 그리고 하드사이언스가 뭉쳤다!\n지역 혁신을 위한 컨트롤 타워 '화성지산학위원회' 전격 출범.\n하드사이언스는 바이오 분야 기업 대표로 당당히 이름을 올렸습니다. 🏆",
+      "photo": [
+        0,
+        0,
+        2000,
+        1083
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headline": "🔥 2026. 01. 29, 수원대\n미래혁신관이 뜨거웠던 이유!",
+          "headlineSize": "sm",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "화성시, 수원대학교,\n그리고 하드사이언스가 뭉쳤다!"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "화성지산학위원회 출범 🏆",
+          "body": "지역 혁신을 위한 컨트롤 타워\n'화성지산학위원회' 전격 출범.\n하드사이언스는 바이오 분야 기업 대표로\n당당히 이름을 올렸습니다. 🏆"
+        }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "chapter 03\n💡 잠깐! RISE(라이즈) 사업이 뭔가요?\nRegional Innovation System & Education\n지자체(화성시)가 주도하고, 대학(수원대)이 인재를 키우며, 기업(하드사이언스)이 혁신하는 삼위일체 프로젝트!\n인재가 지역에 남고, 기업이 성장하는 '살기 좋은 화성'을 만드는 마법의 주문입니다. ✨",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "💡 RISE 사업이 뭔가요?",
+          "body": "💡 잠깐! RISE(라이즈) 사업이 뭔가요?\nRegional Innovation System & Education\n지자체(화성시)가 주도하고,\n대학(수원대)이 인재를 키우며,\n기업(하드사이언스)이 혁신하는\n삼위일체 프로젝트!"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "살기 좋은 화성 ✨",
+          "body": "인재가 지역에 남고, 기업이 성장하는\n'살기 좋은 화성'을 만드는\n마법의 주문입니다. ✨"
+        }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "chapter 04\n🧬 하드사이언스의 필살기: 애드젤(ADDGEL)\n3D 세포배양으로 동물실험의 한계를 넘다!\n장기 세포를 3차원으로 구현해 정밀한 데이터를 도출하는 독보적 기술력.\n화성시 바이오 클러스터의 '기술 엔진' 역할을 수행합니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "🧬 필살기: 애드젤(ADDGEL)",
+          "headlineSize": "sm",
+          "body": "🧬 하드사이언스의 필살기: 애드젤(ADDGEL)\n3D 세포배양으로\n동물실험의 한계를 넘다!\n장기 세포를 3차원으로 구현해\n정밀한 데이터를 도출하는\n독보적 기술력."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "바이오 클러스터의 기술 엔진 ⚙️",
+          "headlineSize": "sm",
+          "body": "화성시 바이오 클러스터의\n'기술 엔진' 역할을 수행합니다."
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "chapter 05\n🏠 화성시 '직·주·락(Job, Living, Enjoy)'의 완성\nJob: 하드사이언스가 만드는 양질의 바이오 일자리.\nLiving: 지역 인재가 정착하고 싶은 혁신적인 연구 환경.\n하드사이언스는 화성시를 대한민국 대표 바이오 도시로 만드는 든든한 기둥입니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "🏠 직·주·락의 완성",
+          "body": "🏠 화성시 '직·주·락(Job, Living, Enjoy)'의 완성\nJob: 하드사이언스가 만드는\n양질의 바이오 일자리.\nLiving: 지역 인재가 정착하고 싶은\n혁신적인 연구 환경."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "대표 바이오 도시로 🏙️",
+          "body": "하드사이언스는 화성시를\n대한민국 대표 바이오 도시로 만드는\n든든한 기둥입니다."
+        }
+      ]
+    },
+    {
+      "source": "07.jpg",
+      "sourceText": "chapter 06\n⛰️ 우리 모두의 성장을 돕는 '기술 셰르파'\n지역 내 소공인과 중소 바이오 기업의 기술적 어려움 해결.\n애드젤 활용법과 최적화 프로토콜을 공유하며 함께 성장합니다.\n화성을 넘어 글로벌 표준이 되는 그날까지! 🌍",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "⛰️ 기술 셰르파",
+          "body": "⛰️ 우리 모두의 성장을 돕는 '기술 셰르파'\n지역 내 소공인과 중소 바이오 기업의\n기술적 어려움 해결."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "함께 성장합니다 🌍",
+          "body": "애드젤 활용법과 최적화 프로토콜을\n공유하며 함께 성장합니다.\n화성을 넘어 글로벌 표준이 되는\n그날까지! 🌍"
+        }
+      ]
+    },
+    {
+      "source": "08.jpg",
+      "sourceText": "chapter 07\nHADD SCIENCE 🧪\n지역과 함께 성장하고 기술로 세상을 바꿉니다.\n지금 하드사이언스의 혁신에 동참하세요! 👋",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "chapter 07",
+        "headline": "HADD SCIENCE 🧪",
+        "body": "지역과 함께 성장하고\n기술로 세상을 바꿉니다.\n지금 하드사이언스의 혁신에\n동참하세요! 👋"
+      }
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "",
+      "photo": [
+        0,
+        0,
+        2000,
+        1083
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "image-top",
+        "badge": "발대식 현장 📸",
+        "headline": "화성지산학위원회 발대식",
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        },
+        "body": "2026년 1월 29일 · 수원대학교 미래혁신관"
+      }
+    }
+  ]
+}

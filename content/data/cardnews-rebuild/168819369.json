@@ -1,0 +1,220 @@
+{
+  "id": "168819369",
+  "title": "(주)하드사이언스, ✨대상✨ 수상! 2025 창업인큐베이팅 경진대회 중소벤처기업부 장관상 🏆",
+  "thumbnail": "nas-03.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "HADD'S NEWS\n카드뉴스\n바쁜 당신을 위한 하드사이언스 요약 카드뉴스\n시작하기",
+      "photo": null,
+      "omit": [
+        { "line": "HADD'S NEWS", "why": "표지 템플릿 고정 배지" },
+        { "line": "카드뉴스", "why": "표지 템플릿 고정 제목, 새 표지 제목으로 대체" },
+        { "line": "바쁜 당신을 위한 하드사이언스 요약 카드뉴스", "why": "표지 템플릿 고정 부제" },
+        { "line": "시작하기", "why": "표지 템플릿 버튼 문구, cta 로 대체" }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "2025\n창업인큐베이팅\n대상 수상 🏆",
+          "cta": "haddscience 알아보기"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "chapter 1\n(주)하드사이언스,\n✨대상✨ 수상! 2025 창업인큐베이팅 경진대회 중소벤처기업부 장관상 🏆\n5개월의 치열한 대장정, 마침내 빛나는 결실을 맺다! 🌟",
+      "photo": [375, 435, 325, 430],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headlineSize": "sm",
+          "headline": "(주)하드사이언스,\n✨<b>대상</b>✨ 수상!",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "2025 창업인큐베이팅\n경진대회 중소벤처기업부\n장관상 🏆"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "빛나는 결실 🌟",
+          "body": "5개월의 치열한 대장정,\n마침내 빛나는 결실을\n맺다! 🌟"
+        }
+      ],
+      "omit": [
+        { "line": "chapter 1", "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 01" }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "chapter 2\n영예의 대상 🥇 그리고 허채정 대표\n🎖 수 상 : 중소벤처기업부 장관상 (대상) 쾌거!\n🔥 경 쟁 : 성장사업화 분과 (최종 2개 기업 선정의 바늘구멍 통과!)\n🏛 추 천 : 수원대학교 창업보육센터(BI)의 든든한 지원",
+      "photo": [0, 250, 1126, 1501],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headlineSize": "sm",
+          "headline": "영예의 대상 🥇\n그리고 허채정 대표",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "🎖 수상: 중소벤처기업부\n장관상 (대상) 쾌거!"
+        },
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "chapter 02",
+          "headline": "쾌거의 배경",
+          "marker": "emoji",
+          "items": [
+            { "emoji": "🔥", "title": "🔥 경쟁:", "desc": "성장사업화 분과 (최종 2개 기업 선정의 바늘구멍 통과!)" },
+            { "emoji": "🏛", "title": "🏛 추천:", "desc": "수원대학교 창업보육센터(BI)의 든든한 지원" }
+          ]
+        }
+      ],
+      "omit": [
+        { "line": "chapter 2", "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 02" }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "chapter 3\n🎤 우수 기업 IR 피칭, 청중을 사로잡다!\n대상 수상 기업 자격으로 선 무대!",
+      "photo": [200, 335, 328, 478],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headlineSize": "sm",
+          "headline": "🎤 우수 기업 IR 피칭,\n청중을 사로잡다!",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "대상 수상 기업 자격으로\n선 무대!"
+        }
+      ],
+      "omit": [
+        { "line": "chapter 3", "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 03" }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "🎗 허채정 대표는 5분간의 임팩트 있는 발표로 하드사이언스만의 [핵심 기술/비전]을 선보이며 투자자와 관계자들의 뜨거운 주목을 받았습니다. 👏👏",
+      "photo": [586, 335, 328, 478],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "청중의 반응 👏",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "🎗 허채정 대표는 5분간의 임팩트 있는\n발표로 하드사이언스만의 [핵심 기술/비전]을\n선보이며 투자자와 관계자들의 뜨거운 주목을\n받았습니다. 👏👏"
+        }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "chapter 4\n기술력 입증 완료! 🚀\n더 큰 도약을 향해!\n\"수원대 BI의 지원과 철저한 준비 덕분에 값진 결과를 얻었습니다.\n앞으로 글로벌 바이오시장을 향해 더욱 힘차게 달려가겠습니다!\"\n\n하드사이언스의 눈부신 성장을 함께 응원해주세요! 💖",
+      "photo": [178, 390, 750, 405],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 04",
+          "headlineSize": "sm",
+          "headline": "기술력 입증 완료! 🚀\n더 큰 도약을 향해!",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "\"수원대 BI의 지원과\n철저한 준비 덕분에\n값진 결과를 얻었습니다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "응원 부탁드려요 💖",
+          "body": "앞으로 글로벌 바이오시장을\n향해 더욱 힘차게\n달려가겠습니다!\"\n\n하드사이언스의 눈부신 성장을\n함께 응원해주세요! 💖"
+        }
+      ],
+      "omit": [
+        { "line": "chapter 4", "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 04" }
+      ]
+    },
+    {
+      "source": "nas-03.jpg",
+      "sourceText": "✨행사 사진✨",
+      "photo": [0, 0, 1500, 2000],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "✨행사 사진✨",
+          "headline": "값진 순간 📸",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "2025 창업인큐베이팅 경진대회"
+        }
+      ]
+    },
+    {
+      "source": "nas-04.jpg",
+      "sourceText": "✨행사 사진✨",
+      "photo": [0, 0, 1500, 2000],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "✨행사 사진✨",
+          "headline": "성과보고회 현장 🏨",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "2025 지역창업인프라 통합성과보고회"
+        }
+      ]
+    },
+    {
+      "source": "nas-05.jpg",
+      "sourceText": "✨행사 사진✨",
+      "photo": [0, 0, 2000, 1500],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "✨행사 사진✨",
+          "headline": "무대를 가득 채운 순간",
+          "image": { "src": "@photo", "ratio": "4/3" },
+          "body": "2025 지역창업인프라 통합성과보고회"
+        }
+      ]
+    },
+    {
+      "source": "nas-06.jpg",
+      "sourceText": "✨행사 사진✨",
+      "photo": [430, 0, 739, 739],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "✨행사 사진✨",
+          "headline": "함께한 수상 기업들 🏆",
+          "image": { "src": "@photo", "ratio": "1/1" },
+          "body": "2025 지역창업인프라 통합성과보고회"
+        }
+      ]
+    },
+    {
+      "source": "nas-06.jpg",
+      "sourceText": "✨행사 사진✨",
+      "photo": [143, 0, 1314, 739],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "✨행사 사진✨",
+          "headline": "다시 봐도 뿌듯한 순간",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "2025 지역창업인프라 통합성과보고회"
+        }
+      ]
+    }
+  ],
+  "links": [
+    { "label": "동아일보", "href": "https://www.donga.com/news/It/article/all/20251128/132864828/1" },
+    { "label": "VERITAS", "href": "https://www.veritas-a.com/news/articleView.html?idxno=585366#google_vignette" }
+  ]
+}

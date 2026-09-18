@@ -1,0 +1,420 @@
+{
+  "id": "168456431",
+  "title": "🔬 하드사이언스, 오가노이드 학회 부스에서 오가노이드 배양 플랫폼 선보여!",
+  "thumbnail": "03.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "HADD'S NEWS\nHADD SCIENCE\n카드뉴스\n바쁜 당신을 위한 하드사이언스 요약 카드뉴스\n시작하기 (버튼)",
+      "photo": null,
+      "omit": [
+        {
+          "line": "HADD'S NEWS",
+          "why": "표지 템플릿 배지(모든 카드뉴스 공통), 새 표지엔 없음"
+        },
+        {
+          "line": "HADD SCIENCE",
+          "why": "표지 템플릿 상단 로고 문구"
+        },
+        {
+          "line": "카드뉴스",
+          "why": "표지 템플릿 고정 라벨, 새 표지 제목으로 대체"
+        },
+        {
+          "line": "바쁜 당신을 위한 하드사이언스 요약 카드뉴스",
+          "why": "표지 템플릿 고정 부제(모든 카드뉴스 공통)"
+        },
+        {
+          "line": "시작하기 (버튼)",
+          "why": "표지 템플릿 고정 버튼 문구, cta 문구로 대체"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "오가노이드 학회\n하드사이언스\n부스 참가기",
+          "cta": "haddscience 알아보기"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "chapter 1\n🔬 하드사이언스, 오가노이드 학회 부스에서\n오가노이드 배양 플랫폼 선보여!\n하드사이언스가 최근 개최된 오가노이드 학회에 부스를 마련하고\n혁신적인 생체재료 제품 ADDGEL을 소개했다\n🧬 오가노이드 연구의 새로운 솔루션!",
+      "photo": null,
+      "omit": [
+        {
+          "line": "chapter 1",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 01"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headlineSize": "sm",
+          "headline": "🔬 하드사이언스, 오가노이드 학회 부스에서\n오가노이드 배양 플랫폼 선보여!",
+          "subtitle": "하드사이언스가 최근 개최된\n오가노이드 학회에 부스를 마련하고\n혁신적인 생체재료 제품 ADDGEL을 소개했다",
+          "body": "🧬 오가노이드 연구의 새로운 솔루션!"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "2025년 오가노이드 학회에 하드사이언스 부스를 마련하여,\n3차원 세포 조직 플로팅 배양 플랫폼 젤타입\n연구용 시약 \"ADDGEL\"과",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "ADDGEL 🧫",
+          "body": "2025년 오가노이드 학회에\n하드사이언스 부스를 마련하여,\n3차원 세포 조직 플로팅 배양\n플랫폼 젤타입 연구용 시약\n\"ADDGEL\"과"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "세포 배양과 이미징을 동시에 진행할 수 있는 오가노이드\n홀딩 현미경 배양젤 \"LIVEGEL\"을\n세포배양 및 오가노이드 전문가들에게 선보였습니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "LIVEGEL 🔬",
+          "body": "세포 배양과 이미징을 동시에\n진행할 수 있는 오가노이드 홀딩\n현미경 배양젤 \"LIVEGEL\"을\n세포배양 및 오가노이드\n전문가들에게 선보였습니다."
+        }
+      ]
+    },
+    {
+      "source": "03.jpg",
+      "sourceText": "chapter 2\n\"오가노이드 학회,\n하드사이언스 부스 현장! ✨\"",
+      "photo": [
+        340,
+        395,
+        390,
+        520
+      ],
+      "omit": [
+        {
+          "line": "chapter 2",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 02"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headlineSize": "sm",
+          "headline": "\"오가노이드 학회,\n하드사이언스 부스 현장! ✨\"",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "body": "2025 오가노이드학회 국제학술대회"
+        }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "chapter 3\n🤝 전략적 협업으로 시너지 창출\n하드사이언스는 바이오프린팅 분야 선도 기업과 협력해 두 회사의\n제품을 함께 전시했습니다.",
+      "photo": [
+        120,
+        370,
+        586,
+        330
+      ],
+      "omit": [
+        {
+          "line": "chapter 3",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 03"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "🤝 전략적 협업으로\n시너지 창출",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "하드사이언스는 바이오프린팅 분야\n선도 기업과 협력해 두 회사의\n제품을 함께 전시했습니다."
+        }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "🖨️ 오가노이드 연구와 바이오프린팅 기술의 결합으로 생명공학\n분야의 새로운 가능성을 제시하며 많은 참가자들의 눈길을\n모았습니다! 👀\n▲Bioprinting 회사 제품 (384DeepWellPlate) https://3dbpl.com/",
+      "photo": [
+        735,
+        395,
+        225,
+        300
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "🖨️ 오가노이드 연구와\n바이오프린팅 기술의 결합으로",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "body": "생명공학 분야의 새로운 가능성을\n제시하며 많은 참가자들의\n눈길을 모았습니다! 👀",
+          "footnote": "▲Bioprinting 회사 제품 (384DeepWellPlate) https://3dbpl.com/"
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "chapter 4\n🌐 시장 기반을 다지는 네트워크\n학회 기간 중 연구자, 학계 전문가, 산업 관계자 등 다양한\n인사들과 만나 'ADDGEL'의 기술 가치를 알리고 미래 협력\n기회에 대해 논의했습니다. 💼📈",
+      "photo": [
+        138,
+        500,
+        850,
+        1133
+      ],
+      "omit": [
+        {
+          "line": "chapter 4",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 04"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 04",
+          "headlineSize": "sm",
+          "headline": "🌐 시장 기반을 다지는 네트워크",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "body": "학회 기간 중 연구자, 학계 전문가,\n산업 관계자 등 다양한 인사들과\n만나 'ADDGEL'의 기술 가치를 알리고\n미래 협력 기회에 대해 논의했습니다. 💼📈"
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "chapter 5\n🚀 바이오산업의 미래를 향해!\n오가노이드 기술과 바이오프린팅 분야는 질병 모델링,\n맞춤형 의료의 핵심 기술입니다.",
+      "photo": [
+        160,
+        345,
+        330,
+        440
+      ],
+      "omit": [
+        {
+          "line": "chapter 5",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 05"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 05",
+          "headline": "🚀 바이오산업의 미래를\n향해!",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "body": "오가노이드 기술과 바이오프린팅\n분야는 질병 모델링, 맞춤형\n의료의 핵심 기술입니다."
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "하드사이언스는 혁신적인 솔루션으로\n산업 발전을 주도해 나가겠습니다!",
+      "photo": [
+        575,
+        345,
+        330,
+        440
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 05",
+          "headline": "하드사이언스는\n혁신적인 솔루션으로",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "body": "산업 발전을 주도해\n나가겠습니다!"
+        }
+      ]
+    },
+    {
+      "source": "07.jpg",
+      "sourceText": "chapter 6\n✨ 혁신적인 3차원 배양 솔루션으로\n글로벌로 나아가는 하드사이언스✨\n앞으로도 지속적인 기술 개발과 업계 협력을 통해\n오가노이드 및 바이오프린팅 분야의 발전에\n기여하겠습니다.\n#하드사이언스 #ADDGEL #오가노이드 #바이오프린팅 #생체재료 #생명공학",
+      "photo": null,
+      "omit": [
+        {
+          "line": "chapter 6",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 06"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "글로벌로 나아가는\n하드사이언스 ✨",
+          "body": "✨ 혁신적인 3차원 배양 솔루션으로\n글로벌로 나아가는 하드사이언스✨\n\n앞으로도 지속적인 기술 개발과 업계\n협력을 통해 오가노이드 및 바이오프린팅\n분야의 발전에 기여하겠습니다.",
+          "footnote": "#하드사이언스 #ADDGEL #오가노이드 #바이오프린팅 #생체재료 #생명공학"
+        }
+      ]
+    },
+    {
+      "source": "08.jpg",
+      "sourceText": "✨감사장✨\n감 사 장\n하드사이언스\n귀사는 오가노이드학회가 주관하는\n'세계 오가노이드 날 제정 2주년 기념 2025 연례 국제학술대회'에서\n본 학회의 학문적 연구와 발전을 위해 기여하고 지대한 공헌을 하였으므로\n감사의 뜻을 모아 이 감사장을 드립니다.\n오가노이드학회\n회 장 김형룡\n이사장 강경선",
+      "photo": [
+        130,
+        330,
+        795,
+        592
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "split",
+          "badge": "✨감사장✨",
+          "headline": "감 사 장",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "imageFit": "contain",
+          "body": "하드사이언스\n\n귀사는 오가노이드학회가 주관하는\n'세계 오가노이드 날 제정 2주년 기념\n2025 연례 국제학술대회'에서\n본 학회의 학문적 연구와 발전을 위해\n기여하고 지대한 공헌을 하였으므로\n감사의 뜻을 모아 이 감사장을 드립니다.",
+          "footnote": "오가노이드학회 회 장 김형룡 · 이사장 강경선"
+        }
+      ]
+    },
+    {
+      "source": "09.jpg",
+      "sourceText": "✨행사 사진✨\nBEST POSTER AWARD",
+      "photo": [
+        150,
+        672,
+        395,
+        247
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "✨행사 사진✨",
+          "headlineSize": "sm",
+          "headline": "BEST POSTER AWARD 🏆",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": "2025 오가노이드학회 국제학술대회"
+        }
+      ]
+    },
+    {
+      "source": "nas-02.jpg",
+      "sourceText": "✨행사 사진✨",
+      "photo": [
+        138,
+        500,
+        850,
+        1133
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "✨행사 사진✨",
+          "headline": "전시 부스 현장 👀",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "body": "2025 오가노이드학회 국제학술대회"
+        }
+      ]
+    },
+    {
+      "source": "10.jpg",
+      "sourceText": "✨행사 사진✨",
+      "photo": [
+        128,
+        330,
+        795,
+        592
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "✨행사 사진✨",
+          "headline": "시상식 현장 🎤",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "2025 오가노이드학회 국제학술대회"
+        }
+      ]
+    },
+    {
+      "source": "11.jpg",
+      "sourceText": "✨행사 사진✨\nCommemorating the 2nd Anniversary of World Organoid Day",
+      "photo": [
+        128,
+        330,
+        795,
+        592
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "✨행사 사진✨",
+          "headlineSize": "sm",
+          "headline": "World Organoid Day 🎉",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "2025 오가노이드학회 국제학술대회",
+          "footnote": "Commemorating the 2nd Anniversary of World Organoid Day"
+        }
+      ]
+    },
+    {
+      "source": "12.png",
+      "sourceText": "",
+      "photo": [
+        0,
+        0,
+        732,
+        549
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "✨행사 사진✨",
+          "headline": "시상식 스케치 🎥",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "2025 오가노이드학회 국제학술대회"
+        }
+      ]
+    }
+  ]
+}

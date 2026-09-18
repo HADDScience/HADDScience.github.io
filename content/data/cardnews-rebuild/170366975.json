@@ -1,0 +1,201 @@
+{
+  "id": "170366975",
+  "title": "하드사이언스, 순창 ‘마이크로바이옴’ 현장 습격 사건! 🏃",
+  "thumbnail": "03.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "HADD\nSCIENCE\n카드뉴스\nhaddscience 알아보기",
+      "photo": null,
+      "omit": [
+        {
+          "line": "HADD\nSCIENCE\n카드뉴스",
+          "why": "표지 템플릿 로고/라벨(모든 카드뉴스 공통), 새 표지 제목으로 대체"
+        },
+        {
+          "line": "카드뉴스",
+          "why": "옛 표지의 고정 문구. 새 표지는 글 제목을 쓴다"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "순창\n마이크로바이옴\n현장 습격 사건",
+          "cta": "haddscience 알아보기"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "chapter 01\n하드 사이언스,\n순창 '마이크로바이옴' 현장 습격 사건! 🏃‍♂️♂️\n하드 사이언스가 다녀왔습니다!\n순창의 <b>149억 원짜리</b> 초대장 ✉️\n마이크로바이옴 지식산업센터 입주 설명회 <b>리얼 후기!</b>",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headlineSize": "sm",
+          "headline": "하드 사이언스,\n순창 '마이크로바이옴'\n현장 습격 사건! 🏃‍♂️♂️",
+          "body": "하드 사이언스가 다녀왔습니다!\n순창의 <b>149억 원짜리</b> 초대장 ✉️",
+          "footnote": "마이크로바이옴 지식산업센터 입주 설명회 <b>리얼 후기!</b>"
+        }
+      ]
+    },
+    {
+      "source": "03.jpg",
+      "sourceText": "chapter 02\n\"자리 있나요?\" 기업들로 북적이는 순창 🏢\n발효미생물산업진흥원 1층이\n전국 바이오 기업들로 <b>꽉 찼어요!</b>\n하드 사이언스를 포함해 총 25개사가 참석한 뜨거운 열기 🔥\n순창군수님까지 직접 오셔서 산업 육성 의지를\n팍팍 보여주셨습니다.",
+      "photo": [
+        113,
+        460,
+        865,
+        320
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headlineSize": "sm",
+          "headline": "\"자리 있나요?\" 기업들로\n북적이는 순창 🏢",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "발효미생물산업진흥원 1층이\n전국 바이오 기업들로 <b>꽉 찼어요!</b>"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "뜨거운 반응 🔥",
+          "body": "하드 사이언스를 포함해\n총 25개사가 참석한 뜨거운 열기 🔥\n순창군수님까지 직접 오셔서 산업 육성 의지를\n팍팍 보여주셨습니다."
+        }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "chapter 03\n연구에만 집중할 수 있는 완벽한 환경 🧪\n공공임대 방식: 초기 투자비 부담 없이 안정적으로 연구 가능!\n풀 패키지 시설: 연구실, 생산 라인, 사무실이 한 건물에 다 모여요.\n하드 사이언스가 꿈꾸는 기술 구현을 위한 최적의 베이스캠프 📍",
+      "photo": [
+        175,
+        305,
+        735,
+        445
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headlineSize": "sm",
+          "headline": "연구에만 집중할 수 있는\n완벽한 환경 🧪",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": "공공임대 방식: 초기 투자비\n부담 없이 안정적으로 연구 가능!\n풀 패키지 시설: 연구실, 생산 라인,\n사무실이 한 건물에 다 모여요."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "완벽한 베이스캠프 📍",
+          "body": "하드 사이언스가 꿈꾸는 기술 구현을 위한\n최적의 베이스캠프 📍"
+        }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "chapter 04\n\"순창이 깔아준 판,\n하드 사이언스가 접수할 지도?\" 😎\n단순한 사무실이 아니라 <b>시제품 제작</b>부터 <b>사업화</b>까지 뚫린 고속도로!\n하드 사이언스의 아이디어를 실물로 바꿀 <b>최강</b>의 하드웨어 확인 🛠️\n이 정도 인프라면 하드 사이언스의 성장 속도는 이제 광속 모드! 🚀",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 04",
+          "headlineSize": "sm",
+          "headline": "\"순창이 깔아준 판,\n하드 사이언스가 접수할 지도?\" 😎",
+          "body": "단순한 사무실이 아니라 <b>시제품 제작</b>부터\n<b>사업화</b>까지 뚫린 고속도로!\n\n하드 사이언스의 아이디어를 실물로 바꿀\n<b>최강</b>의 하드웨어 확인 🛠️"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "광속 성장 모드 🚀",
+          "body": "이 정도 인프라면\n하드 사이언스의 성장 속도는\n이제 광속 모드! 🚀"
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "chapter 05\n하드 사이언스와 순창의 기분 좋은 동행 🌈\n2027년 개소할 센터는 지역 바이오 산업의 핵심 거점이 됩니다.\n하드 사이언스의 기술력이 순창의 인프라를 만나면?\n<b>양질의 일자리</b>와 <b>혁신적인 제품</b>으로 보답하겠습니다! 🚀",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 05",
+          "headlineSize": "sm",
+          "headline": "하드 사이언스와\n순창의 기분 좋은 동행 🌈",
+          "body": "2027년 개소할 센터는\n지역 바이오 산업의 핵심 거점이 됩니다.\n하드 사이언스의 기술력이 순창의 인프라를 만나면?"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "양질의 일자리 🚀",
+          "body": "<b>양질의 일자리</b>와\n<b>혁신적인 제품</b>으로 보답하겠습니다! 🚀"
+        }
+      ]
+    },
+    {
+      "source": "07.jpg",
+      "sourceText": "chapter 06\n하드 사이언스의 새로운 도전,\n순창에서 꽃피울 수 있을까요? 🌸\n하드 사이언스(Haddscience) | 순창군 발효미생물산업진흥원\n#하드사이언스 #순창군 #마이크로바이옴 #입주설명회\n#바이오혁신 #미래성장",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 06",
+          "headlineSize": "sm",
+          "headline": "하드 사이언스의 새로운 도전,\n순창에서 꽃피울 수 있을까요? 🌸",
+          "body": "하드 사이언스(Haddscience) |\n순창군 발효미생물산업진흥원",
+          "footnote": "#하드사이언스 #순창군 #마이크로바이옴 #입주설명회\n#바이오혁신 #미래성장"
+        }
+      ]
+    },
+    {
+      "source": "10.jpg",
+      "sourceText": "행사 사진",
+      "photo": [
+        0,
+        0,
+        658,
+        329
+      ],
+      "note": "카드 틀 없는 원본 사진(03.jpg와 같은 촬영 세트, 다른 프레이밍). NAS 원본 없음",
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "현장 단체 사진 📸",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "순창군 마이크로바이옴\n공공임대형 지식산업센터 입주설명회"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "신아일보",
+      "href": "https://www.shinailbo.co.kr/index2.html?editcode=MAIN_18"
+    },
+    {
+      "label": "뉴시스",
+      "href": "https://v.daum.net/v/zKGAZyztY9?f=p"
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "id": "168265042",
+  "title": "🚀 하드사이언스 허채정 대표, 부산대 강단에 서다! \"바이오와 물리의 융합\" 특강 성료",
+  "thumbnail": "nas-01.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "HADD'S NEWS\nHADD SCIENCE\n카드뉴스\n바쁜 당신을 위한 하드사이언스 요약 카드뉴스\n시작하기 (버튼)",
+      "photo": null,
+      "omit": [
+        {
+          "line": "HADD'S NEWS",
+          "why": "표지 템플릿 배지(모든 카드뉴스 공통)"
+        },
+        {
+          "line": "HADD SCIENCE\n카드뉴스",
+          "why": "표지 템플릿 제목, 새 표지 제목으로 대체"
+        },
+        {
+          "line": "바쁜 당신을 위한 하드사이언스 요약 카드뉴스",
+          "why": "표지 템플릿 부제(모든 카드뉴스 공통)"
+        },
+        {
+          "line": "시작하기 (버튼)",
+          "why": "표지 템플릿 버튼 문구, cta 로 대체"
+        },
+        {
+          "line": "카드뉴스",
+          "why": "옛 표지의 고정 문구. 새 표지는 글 제목을 쓴다"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "허채정 대표,\n부산대 강단에\n서다",
+          "cta": "haddscience 알아보기"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "chapter 1\n🚀 하드사이언스, 부산대 강단에 서다!\n\"물리와 바이오 융합기술이 만드는 세상\"\n(주)하드사이언스 허채정 대표 특별 강연 성료\n🧠 강연 핵심 주제는?\n\n\"물리와 바이오 융합기술이 만드는 세상\" (Beyond Limits: The\nBio-Physical Challenge Begins) AI와 딥테크(Deep-tech)가\n바꿀 바이오의 미래상을 제시했습니다.\n\n🔬 어떤 기술을 다뤘나요?\n\n\"3D Cellular Modeling & Neurological Diagnosis\" (3D 세포\n모델링 및 신경학적 진단) 뇌신경 질환과 같은 난제 해결을 위한\n물리학과 생명공학의 융합 기술을 심도 있게 소개했습니다.",
+      "photo": null,
+      "omit": [
+        {
+          "line": "chapter 1",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 01"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headlineSize": "sm",
+          "headline": "🚀 하드사이언스,\n부산대 강단에 서다!",
+          "body": "\"물리와 바이오 융합기술이 만드는 세상\"\n(주)하드사이언스 허채정 대표 특별 강연 성료"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "🧠 강연 핵심 주제는?",
+          "body": "\"물리와 바이오 융합기술이 만드는\n세상\" (Beyond Limits: The\nBio-Physical Challenge\nBegins) AI와 딥테크(Deep-tech)가\n바꿀 바이오의 미래상을 제시했습니다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "🔬 어떤 기술을 다뤘나요?",
+          "body": "\"3D Cellular Modeling &\nNeurological Diagnosis\"\n(3D 세포 모델링 및 신경학적 진단)\n뇌신경 질환과 같은 난제 해결을 위한\n물리학과 생명공학의 융합 기술을\n심도 있게 소개했습니다."
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "chapter 2\n\"물리와 바이오 융합기술\n이 만드는 세상\"\n\"3D Cellular Modeling & Neurological Diagnosis\"",
+      "photo": [
+        0,
+        0,
+        2000,
+        1500
+      ],
+      "omit": [
+        {
+          "line": "chapter 2",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 02"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headlineSize": "sm",
+          "headline": "\"물리와 바이오 융합기술이\n만드는 세상\"",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "\"3D Cellular Modeling &\nNeurological Diagnosis\""
+        }
+      ]
+    },
+    {
+      "source": "nas-02.jpg",
+      "sourceText": "chapter 3\n🧑‍🦰👩🧑‍🦱♂️ 뜨거웠던 현장!\n강연장은 바이오 딥테크 분야에 대한 학생들의 뜨거운 학구열로\n가득 찼습니다. 전공 지식부터 미래 진로까지! 날카로운 Q&A가 이\n어졌습니다.",
+      "photo": [
+        0,
+        0,
+        1605,
+        1204
+      ],
+      "omit": [
+        {
+          "line": "chapter 3",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 03"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "🧑‍🦰👩🧑‍🦱♂️ 뜨거웠던 현장!",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "강연장은 바이오 딥테크 분야에 대한\n학생들의 뜨거운 학구열로 가득 찼습니다.\n전공 지식부터 미래 진로까지!\n날카로운 Q&A가 이어졌습니다."
+        }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "chapter 4\n✨ 하드사이언스의 비전\n\"미래 인재들과의 동행, 혁신을 향한 약속\"\n\n\"산업 현장의 혁신과 학계의 열정이 만난 의미 있는 자\n리였습니다.\" 미래 인재들과 지속적으로 소통하며 대한\n민국 바이오 산업 발전에 기여하겠습니다!",
+      "photo": null,
+      "omit": [
+        {
+          "line": "chapter 4",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 04"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "✨ 하드사이언스의 비전",
+          "body": "\"미래 인재들과의 동행, 혁신을 향한 약속\"\n\"산업 현장의 혁신과 학계의 열정이 만난\n의미 있는 자리였습니다.\" 미래 인재들과\n지속적으로 소통하며 대한민국 바이오\n산업 발전에 기여하겠습니다!"
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "",
+      "photo": [
+        0,
+        0,
+        2000,
+        1500
+      ],
+      "note": "옛 06.png(카드 프레임 없는 원본 사진, 텍스트 없음)와 같은 장면. NAS 원본 nas-01.jpg 재사용",
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "image-top",
+          "badge": "현장 사진 ✨",
+          "headline": "강연 현장 📸",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "(주)하드사이언스 허채정 대표\n특별 강연 현장"
+        }
+      ]
+    }
+  ]
+}

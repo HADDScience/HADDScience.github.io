@@ -1,0 +1,272 @@
+{
+  "id": "169639982",
+  "title": "AI가 일상이 된 세상, 기술의 한계는 사라졌습니다 🔭",
+  "thumbnail": "06.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "카드뉴스\nhaddscience 알아보기",
+      "photo": null,
+      "omit": [
+        {
+          "line": "카드뉴스",
+          "why": "옛 표지의 고정 문구, 새 표지는 글 제목을 쓴다"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "AI가 연 미래,\nCES 2026\n현장을 가다",
+          "cta": "haddscience 알아보기"
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "chapter 01\nAI가 일상이 된 세상,\n기술의 한계는 사라졌습니다 🔭\n\"전 세계가 주목한 최대 IT 전시회 'CES 2026'의\n핵심 이슈를 정리하고, 하드사이언스가 회사 차원에서\n현장을 누비며 포착한 미래 기술 트렌드를 전해드립니다.\"",
+      "photo": [0, 0, 2000, 1126],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headline": "AI가 일상이 된 세상,\n기술의 한계는 사라졌습니다 🔭",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "\"전 세계가 주목한 최대 IT 전시회 'CES 2026'의\n핵심 이슈를 정리하고, 하드사이언스가 회사 차원에서\n현장을 누비며 포착한 미래 기술 트렌드를 전해드립니다.\""
+        }
+      ]
+    },
+    {
+      "source": "nas-02.jpg",
+      "sourceText": "chapter 02\n역대 최대 규모, 전 세계가 주목한 기술의 향연 ✨\n\"지난 1월 9일 막을 내린 CES 2026은 150개국 4,000여 개\n기업이 참가해 성황을 이뤘습니다. 인공지능(AI), 모빌리티,\n그리고 디지털 헬스케어가 인류의 삶을 어떻게 혁신하는지\n증명하는 자리였습니다.\"",
+      "photo": [0, 0, 2000, 1126],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headline": "역대 최대 규모, 전 세계가\n주목한 기술의 향연 ✨",
+          "headlineSize": "sm",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "\"지난 1월 9일 막을 내린 CES 2026은 150개국 4,000여 개\n기업이 참가해 성황을 이뤘습니다. 인공지능(AI), 모빌리티,\n그리고 디지털 헬스케어가 인류의 삶을 어떻게 혁신하는지\n증명하는 자리였습니다.\""
+        }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "chapter 03\n개인 맞춤형 의료, 데이터 관리의 새 지평을 열다\n\"글로벌 기업 '밀리포어(Millipore)'는 이번 전시에서 AI를 활용한\n개인 의료 데이터의 정보 처리 및 의료 정보 토탈 관리\n시스템 구축 현황을 공개하며, 데이터 사이언스가 이끄는 헬스케어의\n미래를 보여주었습니다.\"",
+      "photo": [235, 365, 600, 345],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "개인 맞춤형 의료,\n데이터 관리의 새 지평을 열다",
+          "headlineSize": "sm",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "\"글로벌 기업 '밀리포어(Millipore)'는 이번 전시에서 AI를 활용한\n개인 의료 데이터의 정보 처리 및 의료 정보 토탈 관리\n시스템 구축 현황을 공개하며, 데이터 사이언스가 이끄는 헬스케어의\n미래를 보여주었습니다.\""
+        }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "chapter 04\n내 몸의 신호를 실시간으로 읽다,\n애보트(Abbott) 🩺\n\"이미 당뇨 모니터링 시장에서 가장 유명한\n'애보트'는 '링고(Lingo)'와 같은 혁신 기기를 통해 실시간 신체",
+      "photo": [185, 370, 295, 378],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 04",
+          "headline": "내 몸의 신호를\n실시간으로 읽다,\n애보트(Abbott) 🩺",
+          "headlineSize": "sm",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "\"이미 당뇨 모니터링 시장에서 가장 유명한\n'애보트'는 '링고(Lingo)'와 같은\n혁신 기기를 통해 실시간 신체"
+        }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "바이오 데이터를 모니터링하는 퍼스널 기기 개발에\n박차를 가하고 있음을 확실히 각인시켰습니다.\"",
+      "photo": [550, 478, 380, 270],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 04",
+          "headline": "실시간 바이오 모니터링 📶",
+          "image": { "src": "@photo", "ratio": "4/3" },
+          "body": "바이오 데이터를 모니터링하는\n퍼스널 기기 개발에 박차를 가하고\n있음을 확실히 각인시켰습니다.\""
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "chapter 05\nCES를 휩쓴 'K-스타트업', 혁신의 중심에 서다 🇰🇷\n\"올해 유레카 파크(Eureka Park)는 한국 스타트업들의\n독무대였습니다. 역대 최대 규모로 꾸려진\n'K-스타트업 통합관'은 AI, 로봇, 헬스케어 분야에서\n혁신상을 휩쓸며 전 세계 투자자와 관람객들의\n발길을 사로잡았습니다.\"",
+      "photo": [245, 372, 590, 350],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 05",
+          "headline": "CES를 휩쓴 'K-스타트업',\n혁신의 중심에 서다 🇰🇷",
+          "headlineSize": "sm",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "\"올해 유레카 파크(Eureka Park)는\n한국 스타트업들의 독무대였습니다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "K-스타트업 통합관,\n혁신상 휩쓸다 🏆",
+          "body": "역대 최대 규모로 꾸려진\n'K-스타트업 통합관'은 AI, 로봇,\n헬스케어 분야에서 혁신상을 휩쓸며\n전 세계 투자자와 관람객들의\n발길을 사로잡았습니다.\""
+        }
+      ]
+    },
+    {
+      "source": "07.jpg",
+      "sourceText": "chapter 06\n하드사이언스 전사적 참관,\n글로벌 트렌드와 호흡하다 👁️\n\"이번 CES에는 하드사이언스가 회사 차원에서 함께 참관하여\n글로벌 기술의 최전선을 확인했습니다. 밀리포어, 애보트, 그리고\nK-스타트업들이 보여준 '데이터 기반 헬스케어'의 흐름은\n우리가 추구해 온 방향성과 정확히 일치했습니다.\"",
+      "photo": [245, 393, 590, 330],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 06",
+          "headline": "하드사이언스 전사적 참관,\n글로벌 트렌드와 호흡하다 👁️",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "\"이번 CES에는 하드사이언스가\n회사 차원에서 함께 참관하여\n글로벌 기술의 최전선을 확인했습니다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "밀리포어·애보트·\nK-스타트업의 방향 🧭",
+          "body": "밀리포어, 애보트, 그리고\nK-스타트업들이 보여준\n'데이터 기반 헬스케어'의 흐름은\n우리가 추구해 온 방향성과\n정확히 일치했습니다.\""
+        }
+      ]
+    },
+    {
+      "source": "08.jpg",
+      "sourceText": "chapter 07\n더 정교해질 하드사이언스의\n솔루션을 기대하세요 🚀\n\"하드사이언스는 현장에서 얻은 인사이트를 바탕으로 R&D에\n속도를 더하겠습니다. 자체 개발 중인 딥러닝 예측 모델을\n고도화하고, 세계적 트렌드에 발맞춘 차세대 헬스케어\n솔루션을 선보일 것입니다.\"",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 07",
+          "headline": "더 정교해질\n하드사이언스의\n솔루션을 기대하세요 🚀",
+          "body": "\"하드사이언스는 현장에서 얻은 인사이트를\n바탕으로 R&D에 속도를 더하겠습니다.\n자체 개발 중인 딥러닝 예측 모델을\n고도화하고, 세계적 트렌드에 발맞춘\n차세대 헬스케어 솔루션을 선보일 것입니다.\""
+        }
+      ]
+    },
+    {
+      "source": "09.jpg",
+      "sourceText": "chapter 08\n기술로 여는 더 나은 미래,\n하드사이언스가 함께합니다 🤝\n\"급변하는 기술 트렌드 속에서도 하드사이언스는 흔들리지 않는 데이터 전문성으로 해답을 찾겠습니다. 여러분의 비즈니스를 혁신할\n든든한 파트너, 하드사이언스가 함께 하겠습니다.\"",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 08",
+          "headline": "기술로 여는 더 나은\n미래, 하드사이언스가\n함께합니다 🤝",
+          "body": "\"급변하는 기술 트렌드 속에서도\n하드사이언스는 흔들리지 않는\n데이터 전문성으로 해답을 찾겠습니다.\n여러분의 비즈니스를 혁신할 든든한\n파트너, 하드사이언스가 함께 하겠습니다.\""
+        }
+      ]
+    },
+    {
+      "source": "nas-03.jpg",
+      "sourceText": "행사 사진",
+      "photo": [0, 0, 2000, 1126],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "세그웨이 부스 탐방 🛴",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "CES 2026 전시장 현장"
+        }
+      ]
+    },
+    {
+      "source": "nas-04.jpg",
+      "sourceText": "행사 사진",
+      "photo": [0, 0, 2000, 1126],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "West Hall 입구 풍경 🚪",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "CES 2026 전시장 현장"
+        }
+      ]
+    },
+    {
+      "source": "nas-05.jpg",
+      "sourceText": "행사 사진",
+      "photo": [0, 0, 2000, 1126],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "컨벤션센터 내부 통로 🚶",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "CES 2026 전시장 현장"
+        }
+      ]
+    },
+    {
+      "source": "nas-06.jpg",
+      "sourceText": "행사 사진",
+      "photo": [0, 0, 2000, 1126],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "SpaceX 헬스케어 부스 🩻",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "CES 2026 전시장 현장"
+        }
+      ]
+    },
+    {
+      "source": "13.jpg",
+      "sourceText": "행사 사진",
+      "photo": [135, 245, 400, 238],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "BrainU 부스 관람 현장 🧠",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "CES 2026 전시장 현장"
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "",
+      "photo": [700, 150, 1300, 731],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "라스베가스 컨벤션센터 🏙️",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "CES 2026 전시장 현장"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "CES 2026",
+      "href": "https://www.ces.tech/"
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "id": "170335521",
+  "title": "애드젤, 세계 지도를 펼치다 — 하드사이언스 X 수원대 RISE 글로벌 수출 아카데미",
+  "thumbnail": "04.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "HADD\nSCIENCE\n카드뉴스\nhaddscience 알아보기\n@haddscience",
+      "photo": null,
+      "omit": [
+        {
+          "line": "HADD\nSCIENCE\n카드뉴스",
+          "why": "표지 템플릿 로고/라벨(모든 카드뉴스 공통), 새 표지 제목으로 대체"
+        },
+        {
+          "line": "카드뉴스",
+          "why": "옛 표지의 고정 문구. 새 표지는 글 제목을 쓴다"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "애드젤,\n세계 지도를\n펼치다",
+          "cta": "haddscience 알아보기"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "chapter 01\n애드젤(ADDGEL), 이제 세계 지도를 펼치다!\n🌍 하드사이언스 X 수원대 RISE\n'글로벌 수출 아카데미' 생생 리포트 ✈️\n📅 2026. 02. 23 ~ 27 (3일간의 실전 기록)\n장소: 수원대학교 미래혁신관\n주제: \"강의로 끝나지 않는다! 기업 맞춤형 수출 실행 프로그램\"\n하드사이언스가 글로벌 바이오 시장 공략을 위해 참가했습니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "애드젤, 세계로 🌍",
+          "body": "애드젤(ADDGEL), 이제 세계 지도를 펼치다!\n🌍 하드사이언스 X 수원대 RISE\n'글로벌 수출 아카데미' 생생 리포트 ✈️"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "3일의 기록 📅",
+          "body": "📅 2026. 02. 23 ~ 27\n(3일간의 실전 기록)\n장소: 수원대학교 미래혁신관"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "실행 프로그램 📋",
+          "body": "주제: \"강의로 끝나지 않는다!\n기업 맞춤형 수출 실행 프로그램\"\n\n하드사이언스가 글로벌 바이오 시장\n공략을 위해 참가했습니다."
+        }
+      ]
+    },
+    {
+      "source": "03.jpg",
+      "sourceText": "chapter 02\n🤝 수출 전문가 강승원 대표와의\n1:1 맞춤형 전략\nMission\n애드젤의 해외 진출을 위한 의료기기 인증(ISO/CE 등) 로드맵 수립 🔬\n단순 이론이 아닌, 하드사이언스 제품에 딱 맞춘 실질적인 수출 계획을 수립했습니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "chapter 02",
+          "headline": "🤝 수출 전문가 강승원 대표와의\n1:1 맞춤형 전략",
+          "marker": "bullet",
+          "items": [
+            {
+              "title": "Mission",
+              "desc": "애드젤의 해외 진출을 위한\n의료기기 인증(ISO/CE 등) 로드맵 수립 🔬"
+            }
+          ]
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "실질적인 수출 계획 📋",
+          "body": "단순 이론이 아닌, 하드사이언스 제품에\n딱 맞춘 실질적인 수출 계획을 수립했습니다."
+        }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "chapter 03\n🌟 글로벌 시장을 향한 진지한 발걸음\n해외 전시회 전략부터 상품 기획까지, 현장의 목소리를 하나하나 놓치지 않는 열정!\n하드사이언스는 실무진의 적극적인 참여를 통해 글로벌 비즈니스의 초석을 다졌습니다. ✍️\n(사진 속 좌측 두 번째 실무자의 진지한 참여 모습 📷)",
+      "photo": [
+        120,
+        325,
+        840,
+        340
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "🌟 글로벌 시장을 향한 진지한 발걸음",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "해외 전시회 전략부터 상품 기획까지,\n현장의 목소리를 하나하나\n놓치지 않는 열정!",
+          "footnote": "(사진 속 좌측 두 번째 실무자의 진지한 참여 모습 📷)"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "글로벌 비즈니스의 초석 🤝",
+          "body": "하드사이언스는 실무진의 적극적인 참여를 통해\n글로벌 비즈니스의 초석을\n다졌습니다. ✍️"
+        }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "chapter 04\n📝 글로벌 무대로 나가는 '3가지 필살기'\n전시회 공략\n전 세계 연구자들의 시선을 사로잡는 부스운영법\n상품 기획\n현지 시장의 니즈를 관통하는 제품 가치 제안\n수출 프로세스\n복잡한 통관 및 인증 절차의 체계적 이해",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "list",
+        "badge": "chapter 04",
+        "headline": "📝 글로벌 무대로 나가는\n'3가지 필살기'",
+        "marker": "number",
+        "items": [
+          {
+            "title": "전시회 공략",
+            "desc": "전 세계 연구자들의 시선을 사로잡는 부스운영법"
+          },
+          {
+            "title": "상품 기획",
+            "desc": "현지 시장의 니즈를 관통하는 제품 가치 제안"
+          },
+          {
+            "title": "수출 프로세스",
+            "desc": "복잡한 통관 및 인증 절차의 체계적 이해"
+          }
+        ]
+      }
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "chapter 05\nHADD SCIENCE 🧪 세계를 향한 도약,\n이제 시작입니다.\n수원대 RISE 사업단과 함께 만든 글로벌 비전, 애드젤이 세계 시장의 표준이 되는 그날까지 멈추지 않겠습니다! 👏",
+      "photo": null,
+      "card": {
+        "type": "chapter",
+        "layout": "text",
+        "badge": "chapter 05",
+        "headline": "HADD SCIENCE 🧪 세계를 향한 도약,\n이제 시작입니다.",
+        "body": "수원대 RISE 사업단과 함께 만든\n글로벌 비전, 애드젤이 세계 시장의\n표준이 되는 그날까지 멈추지 않겠습니다! 👏"
+      }
+    },
+    {
+      "source": "08.png",
+      "sourceText": "",
+      "photo": [
+        0,
+        0,
+        640,
+        259
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "image-top",
+        "badge": "행사 사진 ✨",
+        "headline": "현장의 열기 🙌",
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        },
+        "body": "'글로벌 진출 전략 포럼 & 1:1 수출 멘토링\n수출아카데미 프로그램' 현장"
+      },
+      "note": "카드 프레임 없는 원본 사진(풀블리드)을 그대로 사진 카드로 만듦. 원문에 배지 외 글자 없음(현수막 글자는 사진 속 요소로 대조 제외)."
+    }
+  ],
+  "links": [
+    {
+      "label": "브릿지경제",
+      "href": "https://www.viva100.com/article/20260223500830"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "id": "168928073",
+  "title": "🏆 하드사이언스, 경기지방중소벤처기업청장 표창 수상",
+  "thumbnail": "08.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "카드뉴스\nhaddscience 알아보기",
+      "photo": null,
+      "omit": [
+        {
+          "line": "카드뉴스",
+          "why": "옛 표지의 고정 문구, 새 표지는 글 제목을 쓴다"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "🏆하드사이언스,\n경기지방중소벤처\n기업청장 표창 수상",
+          "cta": "haddscience 알아보기",
+          "titleSize": "sm"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "chapter 01\n🏆하드사이언스,\n경기지방중소벤처기업청장 표창 수상\n2025 경기지역창업보육센터 협의회 만남의 장 & 동계워크숍",
+      "photo": [242, 401, 596, 399],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headlineSize": "sm",
+          "headline": "🏆하드사이언스,\n경기지방중소벤처기업청장 표창 수상",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": "2025 경기지역창업보육센터 협의회 만남의 장 & 동계워크숍"
+        }
+      ]
+    },
+    {
+      "source": "03.jpg",
+      "sourceText": "chapter 02\n📅12월 1일, 노보텔 앰배서더 수원\n'2025 경기지역창업보육센터 협의회 만남의 장'\n경기 지역의 우수한 창업 기업과 관계자들이 모여 한 해의 성과를 나누고 서로를 격려하는 뜻깊은 자리가 마련되었습니다.",
+      "photo": [187, 404, 744, 395],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headlineSize": "sm",
+          "headline": "📅12월 1일, 노보텔 앰배서더 수원\n'2025 경기지역창업보육센터\n협의회 만남의 장'",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "경기 지역의 우수한 창업 기업과 관계자들이\n모여 한 해의 성과를 나누고 서로를 격려하는\n뜻깊은 자리가 마련되었습니다."
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "chapter 03\n🏆 경기지방중소벤처기업청장 표창\n이 자리에서 하드사이언스는 기술 혁신과 지역 창업 생태계 활성화에 기여한 공로를 인정받아 경기지방중소벤처기업청장 표창 (창업 활성화 유공자 부문)을 수상하는 영예를 안았습니다.",
+      "photo": [0, 0, 1421, 2000],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "split",
+          "badge": "chapter 03",
+          "headline": "🏆 경기지방중소벤처\n기업청장 표창",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "imageFit": "contain",
+          "body": "이 자리에서 하드사이언스는 기술 혁신과 지역\n창업 생태계 활성화에 기여한 공로를 인정받아\n경기지방중소벤처기업청장 표창 (창업 활성화\n유공자 부문)을 수상하는 영예를 안았습니다."
+        }
+      ],
+      "omit": [
+        {
+          "line": "chapter 03",
+          "why": "옛 카드(04.jpg)의 배지 번호. 새 카드 배지 chapter 03"
+        }
+      ],
+      "note": "04.jpg 대신 NAS 원본 nas-01.jpg 사용(워터마크 없음·고해상도). 텍스트는 04.jpg 그대로."
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "chapter 04\n딥테크(Deep-tech) 기업으로서의 도약🚀\n이번 수상은 하드사이언스가 추구해 온 첨단 바이오 기술의 혁신성과 미래 성장 잠재력을 공식적으로 인정받았다는 점에서 더욱 의미가 깊습니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "딥테크(Deep-tech)\n기업으로서의 도약🚀",
+          "body": "이번 수상은 하드사이언스가 추구해 온 첨단\n바이오 기술의 혁신성과 미래 성장 잠재력을\n공식적으로 인정받았다는 점에서 더욱 의미가\n깊습니다."
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "chapter 05\n🤝함께 만든 성과입니다!\n기업의 성장을 위해 묵묵히 지원해 주신 수원대학교 창업보육센터\n노은정 매니저님도 이날 함께 표창을 수상했습니다.🎉\n\n든든한 지원과 협력이 있었기에 가능한 결과였습니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "🤝함께 만든 성과입니다!",
+          "body": "기업의 성장을 위해 묵묵히 지원해 주신\n수원대학교 창업보육센터 노은정 매니저님도 이날\n함께 표창을 수상했습니다.🎉\n든든한 지원과 협력이 있었기에 가능한\n결과였습니다."
+        }
+      ],
+      "note": "원본의 HADD SCIENCE × USW 창업지원단 로고 조합(사진 1장 제한에 안 맞음)은 생략. 문구는 원문 그대로."
+    },
+    {
+      "source": "07.jpg",
+      "sourceText": "chapter 06\n멈추지 않고 나아가겠습니다 🏃‍♂️\n보내주신 관심과 격려에 깊이 감사드립니다.\n이번 수상을 원동력 삼아 인류의 건강한 삶에 기여하는\n바이오 딥테크 선도 기업이 되겠습니다.",
+      "photo": [200, 475, 685, 125],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "split",
+          "badge": "chapter 06",
+          "headline": "멈추지 않고\n나아가겠습니다 🏃‍♂️",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "imageFit": "contain",
+          "body": "보내주신 관심과 격려에 깊이 감사드립니다.\n이번 수상을 원동력 삼아 인류의 건강한 삶에\n기여하는 바이오 딥테크 선도 기업이\n되겠습니다."
+        }
+      ]
+    },
+    {
+      "source": "08.jpg",
+      "sourceText": "행사 사진",
+      "photo": [206, 312, 668, 556],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "표창장을 품에 안고 🎉",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "2025 경기지역창업보육센터 협의회 만남의 장\n& 동계워크숍"
+        }
+      ]
+    },
+    {
+      "source": "10.jpg",
+      "sourceText": "",
+      "photo": [0, 0, 1920, 887],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "image-top",
+          "badge": "행사 사진 ✨",
+          "headline": "뜨거웠던 현장의 함성 🙌",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "2025 경기지역창업보육센터 협의회 만남의 장\n& 동계워크숍"
+        }
+      ],
+      "note": "카드 프레임 없는 원본 사진(풀블리드)을 그대로 사진 카드로 만듦. 원문에 배지 외 글자 없음."
+    },
+    {
+      "source": "09.jpg",
+      "sourceText": "기사 원문\nVERITAS\n※페이지 클릭시 기사로 넘어갑니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "기사 원문",
+          "headline": "기사 원문 📰",
+          "marker": "emoji",
+          "items": [
+            {
+              "emoji": "📰",
+              "title": "VERITAS",
+              "desc": "※페이지 클릭시 기사로 넘어갑니다."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "베리타스알파",
+      "href": "https://www.veritas-a.com/news/articleView.html?idxno=586733"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "id": "168549942",
+  "title": "하드사이언스 X MJ프론티어 전략적 업무협약(MOU) 체결!",
+  "thumbnail": "07.png",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "HADD Card News\nHADD SCIENCE\n카드뉴스\n바쁜 당신을 위한 하드사이언스 요약 카드뉴스\n자세히보기",
+      "photo": null,
+      "cards": [
+        {
+          "type": "cover",
+          "title": "하드사이언스 X\nMJ프론티어\nMOU 체결",
+          "cta": "haddscience 알아보기"
+        }
+      ],
+      "omit": [
+        {
+          "line": "HADD Card News",
+          "why": "표지 템플릿 상단 라벨(모든 카드뉴스 공통)"
+        },
+        {
+          "line": "HADD SCIENCE",
+          "why": "로고 이미지 안의 글자"
+        },
+        {
+          "line": "카드뉴스",
+          "why": "표지 템플릿 고정 문구, 새 표지 제목으로 대체"
+        },
+        {
+          "line": "바쁜 당신을 위한 하드사이언스 요약 카드뉴스",
+          "why": "표지 템플릿 고정 부제(모든 카드뉴스 공통)"
+        },
+        {
+          "line": "자세히보기",
+          "why": "표지 템플릿 버튼 문구, cta 문구로 대체"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "Chapter 01\n🤝 하드사이언스 X MJ프론티어\n전략적 업무협약(MOU) 체결!\n\"'뉴로젤(Neurogel)' 사업의\n성공적인 시장 진출을 위해\n두 기업이 손을 잡았습니다. ✨\"",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "🤝 하드사이언스 X MJ프론티어 전략적\n업무협약(MOU) 체결!",
+          "body": "\"'뉴로젤(Neurogel)' 사업의\n성공적인 시장 진출을 위해\n두 기업이 손을 잡았습니다. ✨\"",
+          "headlineSize": "sm"
+        }
+      ],
+      "omit": [
+        {
+          "line": "Chapter 01",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 01"
+        }
+      ]
+    },
+    {
+      "source": "03.jpg",
+      "sourceText": "Chapter 02\n🚀 '뉴로젤' 사업,\n날개를 달다!\n혁신적 생체소재 기업 (주)하드사이언스와 바이오 컨설팅 전문 MJ프론티어가 '뉴로젤 사업 시판 컨설팅'을 위한 MOU를 체결했습니다. ✍️",
+      "photo": [
+        227,
+        394,
+        625,
+        397
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headline": "🚀 '뉴로젤' 사업,\n날개를 달다!",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": "혁신적 생체소재 기업 (주)하드사이언스와 바이오 컨설팅 전문 MJ프론티어가 '뉴로젤 사업 시판 컨설팅'을 위한 MOU를 체결했습니다. ✍️"
+        }
+      ],
+      "omit": [
+        {
+          "line": "Chapter 02",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 02"
+        }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "Chapter 03\n📈 포괄적인 컨설팅 지원\n시장조사 및 분석 📊\n제품 개발 및 마케팅 전략 수립\n인허가 및 규제 대응 전략 📋\n\"양사는 이번 협약을 통해 '뉴로젤' 사업의\n성공적인 시장 안착을\n위해 다음과 같은 업무를 긴밀히\n협력합니다\"",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "chapter 03",
+          "headline": "📈 포괄적인 컨설팅 지원",
+          "marker": "bullet",
+          "items": [
+            {
+              "title": "시장조사 및 분석 📊"
+            },
+            {
+              "title": "제품 개발 및 마케팅 전략 수립"
+            },
+            {
+              "title": "인허가 및 규제 대응 전략 📋"
+            }
+          ]
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "긴밀한 협력 체계",
+          "body": "\"양사는 이번 협약을 통해 '뉴로젤' 사업의\n성공적인 시장 안착을\n위해 다음과 같은 업무를 긴밀히\n협력합니다\""
+        }
+      ],
+      "omit": [
+        {
+          "line": "Chapter 03",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 03"
+        }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "Chapter 04\n전문가 두 집단의\n강력한 시너지 기대!\n하드사이언스:\n\"이번 협력은 '뉴로젤'이 세포 치료제\n시장에 진입하는 중요한 전환점이\n될 것입니다.\"\n\nMJ프론티어:\n\"하드사이언스의 혁신 기술이\n시장을 선도할 수 있도록 최선을\n다해 지원하겠습니다.\"",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "전문가 두 집단의\n강력한 시너지 기대!",
+          "body": "하드사이언스:\n\"이번 협력은 '뉴로젤'이 세포 치료제\n시장에 진입하는 중요한 전환점이\n될 것입니다.\""
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "적극적인 지원 약속",
+          "body": "MJ프론티어:\n\"하드사이언스의 혁신 기술이\n시장을 선도할 수 있도록 최선을\n다해 지원하겠습니다.\""
+        }
+      ],
+      "omit": [
+        {
+          "line": "Chapter 04",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 04"
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "Chapter 05\n🌐 글로벌 바이오 시장을\n항해!\n이번 MOU를 시작으로 regenerative medicine 시장을 진출하고,\n글로벌 바이오 생태계에서 입지를 더욱 공고히 하겠습니다!\n#하드사이언스 #MJ프론티어 #MOU #업무협약 #뉴로젤 #Neurogel\n#바이오컨설팅 #생체소재 #혁신기술",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "🌐 글로벌 바이오 시장을\n항해!",
+          "body": "이번 MOU를 시작으로 regenerative medicine 시장을 진출하고,\n글로벌 바이오 생태계에서 입지를 더욱 공고히 하겠습니다!",
+          "footnote": "#하드사이언스 #MJ프론티어 #MOU #업무협약 #뉴로젤 #Neurogel\n#바이오컨설팅 #생체소재 #혁신기술"
+        }
+      ],
+      "omit": [
+        {
+          "line": "Chapter 05",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 05"
+        }
+      ]
+    },
+    {
+      "source": "07.png",
+      "sourceText": "",
+      "photo": [
+        0,
+        0,
+        789,
+        501
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "MOU 체결식 현장 🤝",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": "하드사이언스 X MJ프론티어"
+        }
+      ]
+    }
+  ]
+}

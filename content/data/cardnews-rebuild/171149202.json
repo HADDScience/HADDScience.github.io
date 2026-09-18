@@ -1,0 +1,240 @@
+{
+  "id": "171149202",
+  "title": "🧬 BIO KOREA 2026 x 하드사이언스",
+  "thumbnail": "nas-06.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "카드뉴스\nhaddscience 알아보기",
+      "photo": null,
+      "omit": [
+        {
+          "line": "카드뉴스",
+          "why": "표지 템플릿 고정 문구, 새 표지 제목으로 대체"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "BIO KOREA\n2026\n하드사이언스",
+          "cta": "haddscience 알아보기"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "chapter 01\n🧬 BIO KOREA 2026 x 하드사이언스\n동물실험 대체를 위한 가장 확실한 해답, 3D 세포 배양 플랫폼의 미래를 엽니다. 🚀\n👉 옆으로 넘겨서 현장 소식 확인하기",
+      "photo": [140, 356, 810, 314],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headlineSize": "sm",
+          "headline": "🧬 BIO KOREA 2026\nx 하드사이언스",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "동물실험 대체를 위한 가장 확실한 해답,\n3D 세포 배양 플랫폼의 미래를 엽니다. 🚀",
+          "footnote": "👉 옆으로 넘겨서 현장 소식 확인하기"
+        }
+      ]
+    },
+    {
+      "source": "03.jpg",
+      "sourceText": "chapter 02\n역대 최대 규모, 글로벌 바이오 융합의 장 🌍\n전 세계 59개국, 770여 개 기업 총출동!\n\n하드사이언스가 대한민국 바이오 산업의 중심, COEX 현장에 섰습니다.",
+      "photo": [95, 320, 890, 410],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headline": "역대 최대 규모,\n글로벌 바이오 융합의 장 🌍",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "전 세계 59개국, 770여 개 기업 총출동!\n\n하드사이언스가 대한민국 바이오 산업의 중심,\nCOEX 현장에 섰습니다."
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "chapter 03\n오가노이드 연구의 새로운 표준:\n애드젤 & 라이브젤 🧫\n기존 2D 배양의 한계를 완벽히 극복하다!\n오염을 최소화하고 효율을 극대화하여, 인체와 가장 유사한 3차원 세포 배양 환경을 제공합니다.",
+      "photo": [0, 0, 2000, 1500],
+      "note": "NAS 원본 nas-01.jpg(같은 ADDGEL 부스 장면, 확정 매치)를 사용",
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headlineSize": "sm",
+          "headline": "오가노이드 연구의 새로운 표준:\n애드젤 & 라이브젤 🧫",
+          "image": { "src": "@photo", "ratio": "4/3" },
+          "body": "기존 2D 배양의 한계를 완벽히 극복하다!\n\n오염을 최소화하고 효율을 극대화하여,\n인체와 가장 유사한 3차원 세포 배양\n환경을 제공합니다."
+        }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "chapter 04\n완벽한 대체를 위해,\n전임상 변수까지 통제하다 🔬\n궁극적인 동물실험 완전 대체를 향한 여정!\n\n현재 플랫폼 검증을 위한 필수 전임상 단계에서는 '상처보호캡' 등을 도입해 동물의 행동 변수와 오염까지 철저히 원천 차단하고 있습니다.🎉\n하드사이언스가 만들어가는 바이오 혁신, 이제 시작입니다!",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "완벽한 대체를 위해,\n전임상 변수까지 통제하다 🔬",
+          "body": "궁극적인 동물실험 완전 대체를 향한 여정!\n\n현재 플랫폼 검증을 위한 필수\n전임상 단계에서는 '상처보호캡' 등을\n도입해 동물의 행동 변수와 오염까지\n철저히 원천 차단하고 있습니다.🎉",
+          "footnote": "하드사이언스가 만들어가는 바이오 혁신, 이제 시작입니다!"
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "chapter 05\nHADD 바이오에 AI를 더하다 💻🧬\n\" 애드젤로 배양한 오가노이드, 끝이 아닙니다.\n의료 빅데이터 분석과 AI 기술을 융합하여 뇌질환 진단과 세포치료제 개발의 속도를 혁신적으로 단축합니다.🧬",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "HADD 바이오에\nAI를 더하다 💻🧬",
+          "body": "\" 애드젤로 배양한 오가노이드, 끝이 아닙니다.\n의료 빅데이터 분석과 AI 기술을\n융합하여 뇌질환 진단과 세포치료제\n개발의 속도를 혁신적으로 단축합니다.🧬"
+        }
+      ]
+    },
+    {
+      "source": "07.jpg",
+      "sourceText": "chapter 05\n연구실을 넘어, 생명의 내일로 ✨\n타협 없는 혁신으로 패러다임을 바꾸는 기업,\n(주)하드사이언스 차세대 바이오 생태계, 그 중심에 서겠습니다.\n🧬",
+      "photo": null,
+      "omit": [
+        {
+          "line": "chapter 05",
+          "why": "옛 06.jpg와 배지 번호가 중복된 원본 오류(원본에도 chapter 05로 두 번 표기). 새 카드 배지는 chapter 06으로 수정"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "연구실을 넘어,\n생명의 내일로 ✨",
+          "body": "타협 없는 혁신으로 패러다임을 바꾸는 기업,\n(주)하드사이언스 차세대 바이오 생태계,\n그 중심에 서겠습니다.🧬"
+        }
+      ]
+    },
+    {
+      "source": "08.jpg",
+      "sourceText": "굿즈 호응\n🎁 \"준비된 물량 전량 소진!\"\n문전성시를 이룬 하드사이언스 부스",
+      "photo": [330, 395, 400, 540],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "굿즈 호응",
+          "headline": "🎁 \"준비된 물량 전량 소진!\"\n문전성시를 이룬 하드사이언스 부스",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "BIO KOREA 2026"
+        }
+      ]
+    },
+    {
+      "source": "nas-02.jpg",
+      "sourceText": "행사 사진",
+      "photo": [0, 0, 1500, 2000],
+      "note": "옛 09.jpg와 같은 장면의 NAS 원본(확정 매치)을 사용",
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진",
+          "headline": "이웃 부스도 활기찬 하루 👀",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "BIO KOREA 2026"
+        }
+      ]
+    },
+    {
+      "source": "10.jpg",
+      "sourceText": "행사 사진",
+      "photo": [140, 313, 805, 600],
+      "note": "NAS 원본 nas-03.jpg 는 이 행사와 무관한 다른 안내문 사진(마이크로바이옴 공청회 포스터)이라 오매치로 판단, 옛 10.jpg에서 그대로 사용",
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진",
+          "headline": "전시장 곳곳을 오가는 발걸음 🚶",
+          "image": { "src": "@photo", "ratio": "4/3" },
+          "body": "BIO KOREA 2026"
+        }
+      ]
+    },
+    {
+      "source": "nas-04.jpg",
+      "sourceText": "행사 사진",
+      "photo": [0, 0, 1500, 2000],
+      "note": "옛 11.jpg와 같은 행사·다른 사진(서명 클로즈업)의 NAS 원본을 사용",
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진",
+          "headline": "현장에서 이어진 상담과 기록 ✍️",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "BIO KOREA 2026"
+        }
+      ]
+    },
+    {
+      "source": "nas-05.jpg",
+      "sourceText": "행사 사진",
+      "photo": [0, 0, 1500, 2000],
+      "note": "옛 12.jpg와 같은 장면의 NAS 원본(확정 매치)을 사용",
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진",
+          "headline": "하드사이언스 부스 전경 🏢",
+          "image": { "src": "@photo", "ratio": "3/4" },
+          "body": "BIO KOREA 2026"
+        }
+      ]
+    },
+    {
+      "source": "nas-06.jpg",
+      "sourceText": "행사 사진",
+      "photo": [0, 0, 2000, 1126],
+      "note": "옛 13.jpg와 같은 장면의 NAS 원본(확정 매치)을 사용",
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진",
+          "headline": "쉴 새 없던 상담 행렬 💬",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "BIO KOREA 2026"
+        }
+      ]
+    },
+    {
+      "source": "15.png",
+      "sourceText": "",
+      "photo": [0, 0, 960, 540],
+      "note": "옛 03.jpg와 같은 테이프 커팅식 장면. 카드 프레임 없는 원본 사진(15.png)을 그대로 사용",
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진",
+          "headline": "테이프 커팅식 현장 🎀",
+          "image": { "src": "@photo", "ratio": "16/9" },
+          "body": "BIO KOREA 2026"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "BIO KOREA 2026",
+      "href": "https://www.biokorea.org/index.do"
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "id": "170271833",
+  "title": "동물실험의 미래, 하드사이언스가 제시하는 '세포배양의 새로운 기준'",
+  "thumbnail": "nas-01.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "카드뉴스\nhaddscience 알아보기",
+      "photo": null,
+      "omit": [
+        {
+          "line": "카드뉴스",
+          "why": "옛 표지의 고정 문구, 새 표지는 글 제목을 쓴다"
+        },
+        {
+          "line": "haddscience 알아보기",
+          "why": "표지 템플릿 부제, cta 문구로 대체"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "동물실험의 미래\n세포배양의\n새로운 기준",
+          "cta": "haddscience 알아보기",
+          "titleSize": "sm"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "chapter 01\n동물실험의 미래,\n하드사이언스가 제시하는\n'세포배양의 새로운 기준'\n연구의 한계를 넘는 혁신 동물실험 학회에서\n'하드사이언스'를 만나보세요! 🔬\n\n하드사이언스가 제안하는 전임상 연구의 디지털 전환",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headline": "동물실험의 미래,\n하드사이언스가 제시하는\n'세포배양의 새로운 기준'",
+          "body": "연구의 한계를 넘는 혁신 동물실험 학회에서\n'하드사이언스'를 만나보세요! 🔬\n\n하드사이언스가 제안하는 전임상 연구의 디지털 전환"
+        }
+      ]
+    },
+    {
+      "source": "03.jpg",
+      "sourceText": "chapter 02\n🧬 왜 우리는 여전히 동물실험에 의존할까요?\n2D 세포배양으로는 실제 장기의 복잡한 반응을 확인하기\n어렵기 때문입니다.",
+      "photo": [
+        410,
+        355,
+        305,
+        425
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "split",
+          "badge": "chapter 02",
+          "headline": "🧬 왜 우리는 여전히\n동물실험에 의존할까요?",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "imageFit": "contain",
+          "body": "2D 세포배양으로는 실제 장기의 복잡한 반응을 확인하기\n어렵기 때문입니다."
+        }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "chapter 03\n🔥 학회 현장 설문조사 결과:\n\"가장 관심 가는 기술 1위\"\n부스 방문 연구자들이 직접 선택한 HADD SCIENCE\n3D 세포배양을 통한 동물실험의 실질적 대체 가능성.\n현장의 뜨거운 관심이 하드사이언스의 기술력을 입증했습니다.",
+      "photo": [
+        280,
+        388,
+        550,
+        370
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headline": "🔥 학회 현장 설문조사 결과:\n\"가장 관심 가는 기술 1위\"",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": "부스 방문 연구자들이 직접 선택한 HADD SCIENCE\n3D 세포배양을 통한 동물실험의 실질적 대체 가능성.\n현장의 뜨거운 관심이 하드사이언스의 기술력을 입증했습니다."
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "chapter 04\n🧪 ADDGEL: 3D 세포배양의 문을 열다\n연구자가 쓰는 배양액을 즉시 젤화하여 입체적인\n세포 성장을 지원합니다.\n세포가 생체 내 장기 조직처럼 활동할 수 있는 최적의 환경을 만듭니다.",
+      "photo": [
+        0,
+        0,
+        1180,
+        784
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 04",
+          "headline": "🧪 ADDGEL: 3D 세포배양의 문을 열다",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/10"
+          },
+          "body": "연구자가 쓰는 배양액을 즉시 젤화하여 입체적인\n세포 성장을 지원합니다.\n세포가 생체 내 장기 조직처럼 활동할 수 있는 최적의 환경을 만듭니다."
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "chapter 05\n📊 장기 세포가 동물실험을 대신하는 방법\nADDGEL로 구현된 3D 장기 모델은 동물 모델보다\n더 인체에 가까운 반응을 보입니다.\n이를 통해 독성 평가 및 효능 시험에서 동물실험의 비중을\n획기적으로 낮출 수 있습니다.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 05",
+          "headlineSize": "sm",
+          "headline": "📊 장기 세포가 동물실험을 대신하는 방법",
+          "body": "ADDGEL로 구현된 3D 장기 모델은 동물 모델보다\n더 인체에 가까운 반응을 보입니다.\n이를 통해 독성 평가 및 효능 시험에서 동물실험의 비중을\n획기적으로 낮출 수 있습니다."
+        }
+      ]
+    },
+    {
+      "source": "nas-02.jpg",
+      "sourceText": "chapter 06\n🏆 더 정밀하게, 더 윤리적으로\n오염은 줄이고 회수율은 높여 데이터의\n신뢰도를 확보했습니다.\n하드사이언스의 기술력은 실험동물의 희생을\n줄이고 연구의 품질을 높입니다.\n◀ HADD 부스",
+      "photo": [
+        0,
+        0,
+        1400,
+        1050
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 06",
+          "headline": "🏆 더 정밀하게, 더 윤리적으로",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "오염은 줄이고 회수율은 높여 데이터의\n신뢰도를 확보했습니다.\n하드사이언스의 기술력은 실험동물의 희생을\n줄이고 연구의 품질을 높입니다.",
+          "footnote": "◀ HADD 부스"
+        }
+      ]
+    },
+    {
+      "source": "nas-03.jpg",
+      "sourceText": "chapter 07\nHADD SCIENCE 🧪 동물실험 대체 기술의 리더\n학회장에서 애드젤과 함께하는\n새로운 전임상 연구를 확인하세요. 👋",
+      "photo": [
+        109,
+        0,
+        1395,
+        784
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 07",
+          "headlineSize": "sm",
+          "headline": "HADD SCIENCE 🧪 동물실험 대체 기술의 리더",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "학회장에서 애드젤과 함께하는\n새로운 전임상 연구를 확인하세요. 👋"
+        }
+      ]
+    },
+    {
+      "source": "nas-04.jpg",
+      "sourceText": "현장 사진",
+      "photo": [
+        0,
+        0,
+        1400,
+        1050
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "현장 사진",
+          "headline": "부스 상담 현장 🗣️",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "2026 한국실험동물학회 동계심포지엄"
+        }
+      ]
+    },
+    {
+      "source": "nas-05.jpg",
+      "sourceText": "현장 사진",
+      "photo": [
+        60,
+        80,
+        1250,
+        870
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "현장 사진",
+          "headline": "오가노이드 배너 전시 🪧",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "2026 한국실험동물학회 동계심포지엄"
+        }
+      ]
+    },
+    {
+      "source": "nas-06.jpg",
+      "sourceText": "현장 사진",
+      "photo": [
+        0,
+        0,
+        1400,
+        1050
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "현장 사진",
+          "headline": "심포지엄 포토월 📷",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "2026 한국실험동물학회 동계심포지엄"
+        }
+      ]
+    },
+    {
+      "source": "12.png",
+      "sourceText": "",
+      "photo": [
+        0,
+        0,
+        772,
+        730
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "참고 자료 📊",
+          "headline": "설문조사 원본 데이터",
+          "image": {
+            "src": "@photo",
+            "ratio": "1/1"
+          },
+          "body": "2026 실험동물학회 관심 샘플 수요조사"
+        }
+      ]
+    }
+  ]
+}

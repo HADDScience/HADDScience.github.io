@@ -1,0 +1,241 @@
+{
+  "id": "168284367",
+  "title": "✨ 하드사이언스, KSEA 심포지엄 후원 성료!",
+  "thumbnail": "05.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "HADD SCIENCE\n최신뉴스\n하드 사이언스 알아보기 (버튼)\n@hadd_science",
+      "photo": null,
+      "omit": [
+        {
+          "line": "HADD SCIENCE\n최신뉴스",
+          "why": "표지 템플릿 라벨(최신 소식 알림, 모든 카드뉴스 공통), 새 표지 제목으로 대체"
+        },
+        {
+          "line": "하드 사이언스 알아보기 (버튼)",
+          "why": "표지 템플릿 버튼 문구, cta 문구로 대체"
+        },
+        {
+          "line": "@hadd_science",
+          "why": "표지 템플릿 핸들 표기(다른 카드의 @haddscience 와도 다른 오탈자), 덱 공통 handle 필드로 대체"
+        },
+        {
+          "line": "최신뉴스",
+          "why": "옛 표지의 고정 문구(머리표). 새 표지는 글 제목을 쓴다"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "코넬대 KSEA\n심포지엄\n후원 성료!",
+          "cta": "haddscience 알아보기",
+          "titleSize": "sm"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "✨ 하드사이언스,\nKSEA 심포지엄 후원 성료!\n미국 코넬대에서 열린 KSEA Upstate NY\nFall Symposium, 그 뜨거웠던 현장을\n전해드립니다!",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 01",
+          "headline": "✨ 하드사이언스,\nKSEA 심포지엄\n후원 성료!",
+          "body": "미국 코넬대에서 열린 KSEA Upstate NY\nFall Symposium, 그 뜨거웠던 현장을\n전해드립니다!"
+        }
+      ]
+    },
+    {
+      "source": "03.jpg",
+      "sourceText": "📸 KSEA 심포지엄 성공적 개최!\n일시: 2025년 10월 4일 (토)\n장소: Cornell University, Ithaca, NY\n글로벌 과학 인재들이 한자리에 모였습니다.\n@haddscience",
+      "photo": null,
+      "omit": [
+        {
+          "line": "@haddscience",
+          "why": "매 카드 하단 핸들 워터마크(전 카드 공통 템플릿), 새 카드는 표지에만 handle 표시"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "chapter 02",
+          "headline": "📸 KSEA 심포지엄 성공적 개최!",
+          "marker": "bullet",
+          "items": [
+            {
+              "title": "일시: 2025년 10월 4일 (토)"
+            },
+            {
+              "title": "장소: Cornell University, Ithaca, NY",
+              "desc": "글로벌 과학 인재들이 한자리에 모였습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "04.jpg",
+      "sourceText": "💡 HaddScience, 미래 과학의\n힘을 더하다!\n하드사이언스는 글로벌 바이오 및 과학 커뮤니티의 활발한 교류와\n협력 확대를 위해 이번 KSEA 심포지엄을 성공적으로\n후원했습니다. 🤝\n@haddscience",
+      "photo": [
+        145,
+        310,
+        820,
+        375
+      ],
+      "omit": [
+        {
+          "line": "@haddscience",
+          "why": "매 카드 하단 핸들 워터마크(전 카드 공통 템플릿), 새 카드는 표지에만 handle 표시"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headlineSize": "sm",
+          "headline": "💡 HaddScience, 미래 과학의\n힘을 더하다!",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "하드사이언스는 글로벌 바이오 및 과학 커뮤니티의 활발한 교류와\n협력 확대를 위해 이번 KSEA 심포지엄을 성공적으로\n후원했습니다. 🤝"
+        }
+      ]
+    },
+    {
+      "source": "05.jpg",
+      "sourceText": "🔬 열정과 지식이 가득했던 순간들\nTrainee's Research Seminar부터 Career Development Panel\nDiscussion까지! 다양한 프로그램에서 뛰어난 연구 성과 발표와 미\n래를 위한 인사이트가 공유되었습니다.\n@haddscience",
+      "photo": [
+        145,
+        305,
+        820,
+        355
+      ],
+      "omit": [
+        {
+          "line": "@haddscience",
+          "why": "매 카드 하단 핸들 워터마크(전 카드 공통 템플릿), 새 카드는 표지에만 handle 표시"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 04",
+          "headlineSize": "sm",
+          "headline": "🔬 열정과 지식이 가득했던 순간들",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "Trainee's Research Seminar부터\nCareer Development Panel Discussion까지!\n다양한 프로그램에서 뛰어난 연구 성과 발표와\n미래를 위한 인사이트가 공유되었습니다."
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "💡 HaddScience, 미래 과학의\n힘을 더하다!\n이번 심포지엄을 통해 수많은 과학 인재들이 자신들의 연구를\n발표하고, 시상식을 통해 그 노고를 인정받았습니다.",
+      "photo": [
+        160,
+        295,
+        350,
+        340
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 05",
+          "headlineSize": "sm",
+          "headline": "💡 HaddScience, 미래 과학의\n힘을 더하다!",
+          "image": {
+            "src": "@photo",
+            "ratio": "1/1"
+          },
+          "body": "이번 심포지엄을 통해 수많은 과학 인재들이\n자신들의 연구를 발표하고,\n시상식을 통해 그 노고를 인정받았습니다."
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "하드사이언스의 후원으로 제작한 상패를 수여받는 영광의 순간!\n미래를 이끌어갈 주역들의 활약을 기대합니다!\n@haddscience",
+      "photo": [
+        545,
+        295,
+        350,
+        340
+      ],
+      "omit": [
+        {
+          "line": "@haddscience",
+          "why": "매 카드 하단 핸들 워터마크(전 카드 공통 템플릿), 새 카드는 표지에만 handle 표시"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 05",
+          "headline": "영광의 순간",
+          "image": {
+            "src": "@photo",
+            "ratio": "1/1"
+          },
+          "body": "하드사이언스의 후원으로 제작한\n상패를 수여받는 영광의 순간!\n미래를 이끌어갈 주역들의\n활약을 기대합니다!"
+        }
+      ]
+    },
+    {
+      "source": "07.jpg",
+      "sourceText": "HADD SCIENCE\n🚀 글로벌 네트워크를 향한 도약!\n🌐 하드사이언스는 이번 후원을 발판 삼아, 미국\n현지 과학자들과의 네트워크를 더욱 공고히 하고\n글로벌 인재 지원을 계속 이어가겠습니다!\n@haddscience",
+      "photo": null,
+      "omit": [
+        {
+          "line": "HADD SCIENCE",
+          "why": "마무리 카드의 브랜드 워드마크(장식용 로고), 새 카드에는 별도 로고 없음"
+        },
+        {
+          "line": "@haddscience",
+          "why": "매 카드 하단 핸들 워터마크(전 카드 공통 템플릿), 새 카드는 표지에만 handle 표시"
+        }
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 06",
+          "headline": "🚀 글로벌 네트워크를\n향한 도약!",
+          "body": "🌐 하드사이언스는 이번 후원을 발판 삼아, 미국\n현지 과학자들과의 네트워크를 더욱 공고히 하고\n글로벌 인재 지원을 계속 이어가겠습니다!"
+        }
+      ]
+    },
+    {
+      "source": "08.png",
+      "sourceText": "",
+      "photo": [
+        0,
+        0,
+        444,
+        214
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진 ✨",
+          "headline": "현장 스케치 📷",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "KSEA Upstate NY Fall Symposium"
+        }
+      ]
+    }
+  ]
+}

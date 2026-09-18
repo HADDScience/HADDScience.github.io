@@ -1,0 +1,238 @@
+{
+  "id": "170848929",
+  "title": "🧬 하드사이언스, ‘세계 오가노이드 날’ 3주년 학술대회 성료!",
+  "thumbnail": "nas-02.jpg",
+  "cards": [
+    {
+      "source": "01.jpg",
+      "sourceText": "HADD\nSCIENCE\n카드뉴스\nhaddscience 알아보기\n@haddscience",
+      "photo": null,
+      "omit": [
+        {
+          "line": "HADD",
+          "why": "표지 템플릿 로고 문구(모든 카드뉴스 공통)"
+        },
+        {
+          "line": "SCIENCE",
+          "why": "표지 템플릿 로고 문구(모든 카드뉴스 공통)"
+        },
+        {
+          "line": "카드뉴스",
+          "why": "표지 템플릿 고정 라벨, 새 표지 제목으로 대체"
+        },
+        {
+          "line": "haddscience 알아보기",
+          "why": "표지 템플릿 버튼 문구, cta 로 재사용"
+        },
+        {
+          "line": "@haddscience",
+          "why": "표지 템플릿 핸들(모든 카드뉴스 공통), 덱 handle 로 별도 관리"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "세계 오가노이드 날\n3주년 학술대회 성료",
+          "cta": "haddscience 알아보기",
+          "titleSize": "sm"
+        }
+      ]
+    },
+    {
+      "source": "02.jpg",
+      "sourceText": "chapter 01\n🧬 하드사이언스, ‘세계 오가노이드 날’\n3주년 학술대회 성료!\n독보적인 배양 기술력으로 학회의 이목을 집중시키다 👀✨\n👉 옆으로 넘겨서 현장 소식 확인하기",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 01",
+          "headlineSize": "sm",
+          "headline": "🧬 하드사이언스, ‘세계 오가노이드 날’\n3주년 학술대회 성료!",
+          "body": "독보적인 배양 기술력으로 학회의\n이목을 집중시키다 👀✨",
+          "footnote": "👉 옆으로 넘겨서 현장 소식 확인하기"
+        }
+      ]
+    },
+    {
+      "source": "03.jpg",
+      "sourceText": "chapter 02\n📅 2026 춘계국제학술대회,\n400여 명의 석학이 모이다\n일시/장소: 4월 3일, 가톨릭대학교 의과대학 성의회관\n\n주요 참석자: 강경선 이사장(서울대), 김형룡 회장(전북대), 장진아 교수(포스텍), 구본경 단장(IBS), 김윤희 박사(국립암센터) 등\n\n30여 개 대표 바이오 기업들과 함께 오가노이드의 미래를 논의했습니다. 🤝",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headlineSize": "sm",
+          "headline": "📅 2026 춘계국제학술대회,\n400여 명의 석학이 모이다",
+          "body": "일시/장소: 4월 3일, 가톨릭대학교\n의과대학 성의회관"
+        },
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 02",
+          "headline": "함께한 전문가들 🎓",
+          "body": "주요 참석자: 강경선 이사장(서울대),\n김형룡 회장(전북대),\n장진아 교수(포스텍),\n구본경 단장(IBS),\n김윤희 박사(국립암센터) 등\n\n30여 개 대표 바이오 기업들과 함께\n오가노이드의 미래를 논의했습니다. 🤝"
+        }
+      ]
+    },
+    {
+      "source": "nas-01.jpg",
+      "sourceText": "chapter 03\n💡 하드사이언스 전용 홍보 부스 성황리 운영\n차세대 오가노이드 배양 및 분석 솔루션 전격 공개!\n🔬 연구 효율을 극대화하는 독자적인 기술력에 많은 연구기관과 기업들의 문의가 쏟아졌습니다.\n실질적인 공동 연구 논의까지 척척 진행 중! 📈",
+      "photo": [
+        0,
+        0,
+        2000,
+        1500
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 03",
+          "headlineSize": "sm",
+          "headline": "💡 하드사이언스 전용 홍보 부스\n성황리 운영",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "차세대 오가노이드 배양 및\n분석 솔루션 전격 공개!"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 03",
+          "headline": "쏟아진 문의 🔬",
+          "body": "🔬 연구 효율을 극대화하는\n독자적인 기술력에 많은\n연구기관과 기업들의\n문의가 쏟아졌습니다.\n\n실질적인 공동 연구 논의까지\n척척 진행 중! 📈"
+        }
+      ]
+    },
+    {
+      "source": "nas-02.jpg",
+      "sourceText": "chapter 04\n🏆 한국오가노이드학회 감사장 수상\n단순한 기술 개발을 넘어, 오가노이드 산업 발전과 생태계 조성에 기여한 공로를 공식적으로 인정받았습니다. 🎉\n\n하드사이언스가 만들어가는 바이오 혁신, 이제 시작입니다!",
+      "photo": [
+        0,
+        0,
+        1500,
+        2000
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "chapter 04",
+          "headlineSize": "sm",
+          "headline": "🏆 한국오가노이드학회 감사장 수상",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "body": "단순한 기술 개발을 넘어, 오가노이드\n산업 발전과 생태계 조성에 기여한\n공로를 공식적으로 인정받았습니다. 🎉"
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "바이오 혁신의 시작 🎉",
+          "body": "하드사이언스가 만들어가는 바이오\n혁신, 이제 시작입니다!"
+        }
+      ]
+    },
+    {
+      "source": "06.jpg",
+      "sourceText": "chapter 05\n🚀 글로벌 오가노이드 표준을 제시하는 하드사이언스\n\"이번 학술대회 현장에서 확인한 학계와 산업계의 뜨거운 관심은 하드사이언스가 나아갈 방향성을 더욱 명확하게 해주었습니다.\n\n현장의 니즈를 적극 반영하여,\n누구나 신뢰할 수 있는 글로벌 오가노이드 배양 및 분석 솔루션을 완성하겠습니다.\n\n\" 앞으로도 바이오 생태계의 혁신을 이끌어갈 하드사이언스의 여정에 많은 기대 부탁드립니다. 🧬",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "글로벌 표준 제시 🚀",
+          "body": "🚀 글로벌 오가노이드\n표준을 제시하는 하드사이언스\n\n\"이번 학술대회 현장에서\n확인한 학계와 산업계의\n뜨거운 관심은 하드사이언스가\n나아갈 방향성을 더욱\n명확하게 해주었습니다."
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 05",
+          "headline": "앞으로의 다짐 🧬",
+          "body": "현장의 니즈를 적극 반영하여,\n누구나 신뢰할 수 있는 글로벌\n오가노이드 배양 및 분석\n솔루션을 완성하겠습니다.\n\n\" 앞으로도 바이오 생태계의\n혁신을 이끌어갈 하드사이언스의\n여정에 많은 기대\n부탁드립니다. 🧬"
+        }
+      ]
+    },
+    {
+      "source": "07.jpg",
+      "sourceText": "행사 사진",
+      "photo": [
+        110,
+        320,
+        320,
+        240
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진",
+          "headline": "다 함께 셀카 📸",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "2026 춘계국제학술대회"
+        }
+      ]
+    },
+    {
+      "source": "nas-03.jpg",
+      "sourceText": "행사 사진",
+      "photo": [
+        0,
+        0,
+        2000,
+        1500
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진",
+          "headline": "감사장 든 팀 🏆",
+          "image": {
+            "src": "@photo",
+            "ratio": "4/3"
+          },
+          "body": "2026 춘계국제학술대회"
+        }
+      ]
+    },
+    {
+      "source": "09.jpg",
+      "sourceText": "",
+      "photo": [
+        0,
+        0,
+        1920,
+        2560
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "standard",
+          "badge": "행사 사진",
+          "headline": "감사장 전달식 현장 🎉",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "body": "2026 춘계국제학술대회"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "The Organoid Society",
+      "href": "https://organoids.org/company/registration.php"
+    }
+  ]
+}
