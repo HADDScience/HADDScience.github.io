@@ -1,0 +1,217 @@
+{
+  "id": "173482936",
+  "title": "🤝 허채정 대표, 화성지산학위원회 위원 위촉",
+  "create": {
+    "date": "2026.08.27",
+    "title": "🤝 허채정 대표, 화성지산학위원회 위원 위촉",
+    "summary": "",
+    "position": 1
+  },
+  "thumbnail": "nas-ceo.jpg",
+  "cards": [
+    {
+      "source": "01.png",
+      "sourceText": "카드뉴스\nhaddscience 알아보기",
+      "photo": null,
+      "omit": [
+        {
+          "line": "카드뉴스",
+          "why": "옛 표지의 고정 문구, 새 표지는 글 제목을 쓴다"
+        }
+      ],
+      "cards": [
+        {
+          "type": "cover",
+          "title": "허채정 대표\n화성지산학위원회\n위원 위촉",
+          "cta": "haddscience 알아보기",
+          "titleSize": "sm"
+        }
+      ]
+    },
+    {
+      "source": "nas-appoint.jpg",
+      "sourceText": "2026. 01\n허채정 대표가\n화성지산학위원회 위원으로\n위촉됐습니다\n화성컨소시엄 RISE사업단\n화성지산학위원회 발대식",
+      "photo": [
+        0,
+        500,
+        1126,
+        1126
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "overlay",
+          "badge": "2026. 01",
+          "headline": "허채정 대표가\n화성지산학위원회 위원으로\n위촉됐습니다",
+          "image": {
+            "src": "@photo",
+            "ratio": "1/1"
+          },
+          "body": "화성컨소시엄 RISE사업단\n화성지산학위원회 발대식"
+        }
+      ]
+    },
+    {
+      "source": "nas-group.jpg",
+      "sourceText": "CHAPTER 01\n지·산·학·연·관·민이\n한자리에 모였습니다\n1월 29일 수원대학교 미래혁신관에서\n화성지산학위원회가 공식 출범했습니다.\n화성컨소시엄 RISE사업단",
+      "photo": [
+        0,
+        0,
+        2000,
+        1083
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "image-top",
+          "badge": "chapter 01",
+          "headline": "지·산·학·연·관·민이\n한자리에 모였습니다",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "1월 29일 수원대학교 미래혁신관에서\n<b>화성지산학위원회</b>가 공식 출범했습니다.",
+          "footnote": "화성컨소시엄 RISE사업단"
+        }
+      ],
+      "omit": [
+        {
+          "line": "CHAPTER 01",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 01"
+        }
+      ]
+    },
+    {
+      "source": "04.png",
+      "sourceText": "CHAPTER 02\n\"지역 산업 발전과\n인재 양성에 기여해\n주시기 바랍니다\"\n위촉장에 적힌 문구입니다.\n지산학 얼라이언스 고도화를\n위한 위원회",
+      "photo": [
+        130,
+        235,
+        415,
+        610
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "split",
+          "badge": "chapter 02",
+          "headline": "\"지역 산업 발전과\n인재 양성에 기여해\n주시기 바랍니다\"",
+          "image": {
+            "src": "@photo",
+            "ratio": "3/4"
+          },
+          "imageFit": "contain",
+          "body": "위촉장에 적힌 문구입니다.\n\n지산학 얼라이언스 고도화를\n위한 위원회"
+        }
+      ],
+      "omit": [
+        {
+          "line": "CHAPTER 02",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 02"
+        }
+      ]
+    },
+    {
+      "source": "nas-hall.jpg",
+      "sourceText": "CHAPTER 03\n화성지산학위원회는\n무엇을 하나요\n화성특례시의 지역혁신 전략을 세우고,\n인재양성·기술혁신·창업활성화 프로그램을 기획·심의합니다.\n대학과 지자체, 산업체와 연구기관 사이의 역할도 조정합니다",
+      "photo": [
+        0,
+        0,
+        2000,
+        1126
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "image-top",
+          "badge": "chapter 03",
+          "headline": "화성지산학위원회는\n무엇을 하나요",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          },
+          "body": "화성특례시의 지역혁신 전략을 세우고,\n인재양성·기술혁신·창업활성화\n프로그램을 기획·심의합니다.",
+          "footnote": "대학과 지자체, 산업체와 연구기관 사이의 역할도 조정합니다"
+        }
+      ],
+      "omit": [
+        {
+          "line": "CHAPTER 03",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 03"
+        }
+      ]
+    },
+    {
+      "source": "06.png",
+      "sourceText": "CHAPTER 04\n위원 15명 가운데\n참여기업은 두 곳\n수원대학교 · 화성의과학대학교 · 수원과학대학교,\n화성특례시청 · 화성시연구원 · 화성산업진흥원,\n그리고 지역 협의회와 참여기업.\n하드사이언스가 그 두 곳 중 하나입니다",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 04",
+          "headline": "위원 15명 가운데\n참여기업은 두 곳",
+          "body": "수원대학교 · 화성의과학대학교 · 수원과학대학교,\n화성특례시청 · 화성시연구원 · 화성산업진흥원,\n그리고 지역 협의회와 참여기업.",
+          "footnote": "하드사이언스가 그 두 곳 중 하나입니다"
+        }
+      ],
+      "omit": [
+        {
+          "line": "CHAPTER 04",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 04"
+        }
+      ]
+    },
+    {
+      "source": "nas-ceo.jpg",
+      "sourceText": "CHAPTER 05\n연구실에서 지역으로\n3차원 세포배양 소재를 만드는 회사가\n지역의 바이오 인재를 어떻게 키울지 함께 논의합니다.",
+      "photo": [
+        150,
+        250,
+        1100,
+        1100
+      ],
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "overlay",
+          "badge": "chapter 05",
+          "headline": "연구실에서 지역으로",
+          "image": {
+            "src": "@photo",
+            "ratio": "1/1"
+          },
+          "body": "3차원 세포배양 소재를 만드는 회사가\n지역의 바이오 인재를 어떻게\n키울지 함께 논의합니다."
+        }
+      ],
+      "omit": [
+        {
+          "line": "CHAPTER 05",
+          "why": "옛 카드의 배지 번호. 새 카드 배지 chapter 05"
+        }
+      ]
+    },
+    {
+      "source": "nas-group.jpg",
+      "sourceText": "맺으며\n\"지역 산업 발전과 인재 양성에\n기여해 주시기 바랍니다\"\n화성컨소시엄RISE사업단장 · 수원대학교 부총장 임선홍",
+      "photo": [
+        0,
+        0,
+        2000,
+        1083
+      ],
+      "cards": [
+        {
+          "type": "quote",
+          "badge": "맺으며",
+          "quote": "\"지역 산업 발전과 인재 양성에\n기여해 주시기 바랍니다\"",
+          "attrib": "화성컨소시엄RISE사업단장 · 수원대학교 부총장 임선홍",
+          "image": {
+            "src": "@photo",
+            "ratio": "16/9"
+          }
+        }
+      ]
+    }
+  ]
+}

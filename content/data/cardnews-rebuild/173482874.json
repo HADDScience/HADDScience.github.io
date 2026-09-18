@@ -1,0 +1,190 @@
+{
+  "id": "173482874",
+  "title": "🎤 허채정 대표, 2026 WISET 창업멘토링 멘토로 나서다",
+  "create": {
+    "date": "2026.08.27",
+    "title": "🎤 허채정 대표, 2026 WISET 창업멘토링 멘토로 나서다",
+    "summary": "",
+    "position": 2
+  },
+  "thumbnail": "02.png",
+  "cards": [
+    {
+      "source": "01.png",
+      "sourceText": "카드뉴스\nhaddscience 알아보기\n@haddscience",
+      "photo": null,
+      "omit": [
+        {
+          "line": "카드뉴스",
+          "why": "표지 템플릿 고정 문구, 새 표지는 글 제목을 쓴다"
+        }
+      ],
+      "card": {
+        "type": "cover",
+        "title": "허채정 대표\nWISET 멘토링\n멘토로 나서다",
+        "cta": "haddscience 알아보기"
+      }
+    },
+    {
+      "source": "02.png",
+      "sourceText": "2026. 07\n허채정 대표가\n멘토석에 앉았습니다\n한국여성과학기술인육성재단(WISET)\n2026 창업멘토링\n다녀온 이야기를 전합니다",
+      "photo": [
+        70,
+        70,
+        940,
+        430
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "overlay",
+        "badge": "2026. 07",
+        "headline": "허채정 대표가\n멘토석에 앉았습니다",
+        "image": {
+          "src": "@photo",
+          "ratio": "1/1"
+        },
+        "body": "한국여성과학기술인육성재단(WISET)\n2026 창업멘토링",
+        "footnote": "다녀온 이야기를 전합니다"
+      }
+    },
+    {
+      "source": "03.png",
+      "sourceText": "CHAPTER 01\n기술로 변화하는\n미래를 열다\n여성과학기술인의 창업을\n주제로 열린 자리에\n허채정 대표가 멘토로\n참여했습니다.\n7월 9일 · 16일 · 줌 웨비나",
+      "photo": [
+        90,
+        80,
+        470,
+        880
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "split",
+        "badge": "chapter 01",
+        "headline": "기술로 변화하는\n미래를 열다",
+        "image": {
+          "src": "@photo",
+          "ratio": "3/4"
+        },
+        "imageFit": "contain",
+        "body": "여성과학기술인의 창업을\n주제로 열린 자리에\n<b>허채정 대표</b>가 멘토로\n참여했습니다.",
+        "footnote": "7월 9일 · 16일 · 줌 웨비나"
+      }
+    },
+    {
+      "source": "04.png",
+      "sourceText": "CHAPTER 02\n두 사람이\n각자의 길을 이야기했습니다\n탄소전환기술로 기후 위기\n대응의 판도를 바꾸는 혁신적\n청년 창업가\n이지은 대표 / 리필\n연구실의 아이디어를 딥테크\n창업으로 연결한 바이오 소재\n국산화의 선두주자\n허채정 대표 / 하드 사이언스\n탄소전환기술의 리필 이지은 대표와\n바이오 소재의 하드사이언스 허채정 대표.",
+      "photo": null,
+      "cards": [
+        {
+          "type": "chapter",
+          "layout": "list",
+          "badge": "chapter 02",
+          "headline": "두 사람이\n각자의 길을 이야기했습니다",
+          "marker": "emoji",
+          "items": [
+            {
+              "emoji": "🌱",
+              "title": "이지은 대표 / 리필",
+              "desc": "탄소전환기술로 기후 위기 대응의 판도를 바꾸는\n혁신적 청년 창업가"
+            },
+            {
+              "emoji": "🧬",
+              "title": "허채정 대표 / 하드 사이언스",
+              "desc": "연구실의 아이디어를 딥테크 창업으로 연결한\n바이오 소재 국산화의 선두주자"
+            }
+          ]
+        },
+        {
+          "type": "chapter",
+          "layout": "text",
+          "badge": "chapter 02",
+          "headline": "각자의 창업 이야기 💬",
+          "body": "탄소전환기술의 <b>리필 이지은 대표</b>와\n바이오 소재의 <b>하드사이언스 허채정 대표</b>."
+        }
+      ]
+    },
+    {
+      "source": "nas-talk.jpg",
+      "sourceText": "CHAPTER 03\n\"연구실의 아이디어를\n딥테크 창업으로 연결한\n바이오 소재 국산화의 선두주자\"\nWISET이 허채정 대표를 소개한 문구입니다.",
+      "photo": [
+        420,
+        239,
+        1000,
+        1000
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "overlay",
+        "badge": "chapter 03",
+        "headline": "\"연구실의 아이디어를\n딥테크 창업으로 연결한\n바이오 소재 국산화의 선두주자\"",
+        "image": {
+          "src": "@photo",
+          "ratio": "1/1"
+        },
+        "body": "WISET이 허채정 대표를 소개한 문구입니다."
+      }
+    },
+    {
+      "source": "06.png",
+      "sourceText": "CHAPTER 04\n17년의 연구가\n세 가지 제형이 되기까지\n시린지 · 바틀 · 동결건조.\n연구자가 실험을 설계하는 방식이 저마다 다르기 때문입니다.",
+      "photo": [
+        70,
+        70,
+        940,
+        395
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "image-top",
+        "badge": "chapter 04",
+        "headline": "17년의 연구가\n세 가지 제형이 되기까지",
+        "image": {
+          "src": "@photo",
+          "ratio": "16/10"
+        },
+        "body": "시린지 · 바틀 · 동결건조.\n연구자가 실험을 설계하는\n방식이 저마다 다르기 때문입니다."
+      }
+    },
+    {
+      "source": "nas-lab.jpg",
+      "sourceText": "CHAPTER 05\n논문이 곧바로\n팔리는 제품이 되지는 않습니다\n그 구간을 어떻게 지나왔는지가\n이야기의 핵심이었습니다.",
+      "photo": [
+        500,
+        0,
+        1239,
+        1239
+      ],
+      "card": {
+        "type": "chapter",
+        "layout": "overlay",
+        "badge": "chapter 05",
+        "headline": "논문이 곧바로\n팔리는 제품이 되지는 않습니다",
+        "image": {
+          "src": "@photo",
+          "ratio": "1/1"
+        },
+        "body": "그 구간을 어떻게 지나왔는지가\n이야기의 핵심이었습니다."
+      }
+    },
+    {
+      "source": "nas-group.jpg",
+      "sourceText": "맺으며\n\"먼저 지나온 구간을 나누는 일이\n뒤따라오는 사람의 시간을 줄인다면,\n그것으로 충분한 자리였습니다\"\n하드사이언스",
+      "photo": [
+        300,
+        120,
+        1700,
+        1000
+      ],
+      "card": {
+        "type": "quote",
+        "badge": "맺으며",
+        "quote": "\"먼저 지나온 구간을 나누는 일이\n뒤따라오는 사람의 시간을 줄인다면,\n그것으로 충분한 자리였습니다\"",
+        "attrib": "하드사이언스",
+        "image": {
+          "src": "@photo",
+          "ratio": "16/9"
+        }
+      }
+    }
+  ]
+}
