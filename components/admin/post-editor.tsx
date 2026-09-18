@@ -170,9 +170,11 @@ export function PostEditor({
         </Button>
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-semibold">
-            {post.content[post.sourceLang]?.title || "제목 없는 기사"}
+            {post.content[post.sourceLang]?.title || "제목 없는 글"}
           </p>
-          <p className="font-mono text-xs text-muted-foreground">{post.id}</p>
+          <p className="font-mono text-xs text-muted-foreground">
+            {post.category === "library" ? "하드:라이브러리" : "뉴스"} · {post.id}
+          </p>
         </div>
         <Button
           variant="outline"
@@ -224,6 +226,37 @@ export function PostEditor({
         </div>
 
         <div className="grid content-start gap-4">
+          <div className="grid gap-1.5">
+            <Label>목록</Label>
+            <div className="flex flex-wrap gap-2">
+              {(
+                [
+                  { id: "news", label: "뉴스" },
+                  { id: "library", label: "하드:라이브러리" },
+                ] as const
+              ).map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setPost((p) => ({ ...p, category: c.id }))}
+                  className={cn(
+                    "rounded-[12px] border px-3 py-1.5 text-sm font-semibold transition-colors duration-120 ease-[var(--ease-standard)]",
+                    post.category === c.id
+                      ? "border-brand-blue-700 bg-brand-blue-700 text-white"
+                      : "border-border bg-card hover:border-brand-blue-500"
+                  )}
+                >
+                  {c.label}
+                </button>
+              ))}
+            </div>
+            {post.category !== initial.category ? (
+              <p className="text-xs text-brand-blue-700">
+                저장하면 이 글이 {post.category === "library" ? "하드:라이브러리" : "뉴스"} 목록
+                맨 앞으로 옮겨집니다. 주소도 함께 바뀝니다.
+              </p>
+            ) : null}
+          </div>
           <div className="grid gap-1.5 sm:max-w-48">
             <Label htmlFor="date">날짜</Label>
             <Input
@@ -248,8 +281,9 @@ export function PostEditor({
               }
             />
             <p className="text-xs text-muted-foreground">
-              보도자료처럼 외부에 원문이 있는 글이면 넣어 주세요. 기사 아래에 출처
-              링크로 붙습니다.
+              {post.category === "library"
+                ? "논문이나 기사 원문이 밖에 있으면 넣어 주세요. 글 아래에 출처 링크로 붙습니다. 본문 안에 여러 개를 넣으려면 아래에서 '링크 모음' 블록을 쓰세요."
+                : "보도자료처럼 외부에 원문이 있는 글이면 넣어 주세요. 기사 아래에 출처 링크로 붙습니다."}
             </p>
           </div>
         </div>

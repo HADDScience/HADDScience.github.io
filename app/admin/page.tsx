@@ -84,6 +84,9 @@ function Workspace({
   const [view, setView] = React.useState<View>({ mode: "list" })
   const [query, setQuery] = React.useState("")
   const [refreshing, setRefreshing] = React.useState(false)
+  /* 뉴스와 하드:라이브러리는 같은 표를 쓰고 화면만 갈린다. 한 목록에 섞어 놓으면
+     150건이 한 줄로 늘어서 어느 쪽 글인지 알 수 없다. */
+  const [tab, setTab] = React.useState<Post["category"]>("news")
 
   const refresh = React.useCallback(async () => {
     setRefreshing(true)
@@ -102,12 +105,12 @@ function Workspace({
     void Promise.resolve().then(refresh)
   }, [refresh])
 
-  function startNew(kind: "post" | "deck") {
+  function startNew(kind: "post" | "deck", category: Post["category"] = tab) {
     const now = new Date()
     setView({
       mode: "edit",
       kind,
-      post: newPost(newPostId(now), formatDate(now), "ko"),
+      post: newPost(newPostId(now), formatDate(now), "ko", category),
       isNew: true,
     })
   }
@@ -149,13 +152,15 @@ function Workspace({
   }
 
   const posts = index?.posts ?? []
+  const count = (c: Post["category"]) => posts.filter((p) => p.category === c).length
+  const inTab = posts.filter((p) => p.category === tab)
   const filtered = query.trim()
-    ? posts.filter((p) =>
+    ? inTab.filter((p) =>
         Object.values(p.content).some((l) =>
           l?.title.toLowerCase().includes(query.trim().toLowerCase())
         )
       )
-    : posts
+    : inTab
 
   return (
     <main className="mx-auto max-w-6xl px-6 pb-24">
@@ -181,6 +186,37 @@ function Workspace({
         </Button>
       </header>
 
+      <div className="mb-4 flex flex-wrap gap-2">
+        {(
+          [
+            { id: "news", label: "뉴스" },
+            { id: "library", label: "하드:라이브러리" },
+          ] as const
+        ).map((t) => (
+          <button
+            key={t.id}
+            type="button"
+            onClick={() => setTab(t.id)}
+            className={cn(
+              "flex items-center gap-2 rounded-[12px] border px-4 py-2 text-sm font-semibold transition-colors duration-120 ease-[var(--ease-standard)]",
+              tab === t.id
+                ? "border-brand-blue-700 bg-brand-blue-700 text-white"
+                : "border-border bg-card hover:border-brand-blue-500"
+            )}
+          >
+            {t.label}
+            <span
+              className={cn(
+                "rounded-full px-1.5 py-0.5 font-mono text-[10px] font-bold",
+                tab === t.id ? "bg-white/20" : "bg-muted"
+              )}
+            >
+              {count(t.id)}
+            </span>
+          </button>
+        ))}
+      </div>
+
       <div className="mb-6 flex flex-wrap items-center gap-3">
         <div className="relative min-w-56 flex-1">
           <Search className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
@@ -199,11 +235,14 @@ function Workspace({
           <RefreshCw className={cn("size-4", refreshing && "animate-spin")} />
           새로고침
         </Button>
-        <Button variant="outline" onClick={() => startNew("deck")}>
-          <LayoutGrid className="size-4" />새 카드뉴스
-        </Button>
-        <Button onClick={() => startNew("post")}>
-          <Plus className="size-4" />새 기사
+        {tab === "news" ? (
+          <Button variant="outline" onClick={() => startNew("deck", "news")}>
+            <LayoutGrid className="size-4" />새 카드뉴스
+          </Button>
+        ) : null}
+        <Button onClick={() => startNew("post", tab)}>
+          <Plus className="size-4" />
+          {tab === "library" ? "새 라이브러리 글" : "새 기사"}
         </Button>
       </div>
 
@@ -222,6 +261,15 @@ function Workspace({
         </div>
       ) : (
         <ul className="grid gap-2">
+          {!filtered.length ? (
+            <li className="rounded-lg border border-dashed border-border bg-card p-8 text-sm text-muted-foreground">
+              {query.trim()
+                ? "찾는 제목이 없습니다."
+                : tab === "library"
+                  ? "하드:라이브러리 글이 없습니다. 오른쪽 위에서 새로 쓸 수 있습니다."
+                  : "기사가 없습니다."}
+            </li>
+          ) : null}
           {filtered.map((post) => {
             const locale = post.content[post.sourceLang]
             const translated = Object.entries(post.content)
@@ -282,7 +330,7 @@ function Workspace({
 
                 {hasBody ? (
                   <a
-                    href={`/ko/news/${post.id}/`}
+                    href={`/ko/${post.category === "library" ? "library" : "news"}/${post.id}/`}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="사이트에서 보기"

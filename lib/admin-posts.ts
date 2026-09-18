@@ -69,11 +69,15 @@ export function formatDate(now: Date): string {
   return `${now.getFullYear()}.${p(now.getMonth() + 1)}.${p(now.getDate())}`
 }
 
-export function newPost(id: string, date: string, sourceLang: Lang): Post {
+export function newPost(
+  id: string,
+  date: string,
+  sourceLang: Lang,
+  category: Post["category"] = "news"
+): Post {
   return {
     id,
-    // 관리 화면에서 새로 쓰는 글은 뉴스다. 라이브러리는 이식 스크립트가 넣는다.
-    category: "news",
+    category,
     date,
     sourceLang,
     thumbnail: "",
@@ -173,6 +177,9 @@ export async function savePost(cfg: ApiConfig, opts: SaveOptions): Promise<SaveR
 
   const post = replaceStrings(opts.post, urlOf)
   const body = {
+    // 분류를 반드시 실어 보낸다. 빼면 서버가 원래 분류를 지키지만(뉴스 기본),
+    // 라이브러리 글을 뉴스로 옮기는 편집이 조용히 되던 자리다.
+    category: post.category,
     date: post.date,
     sourceLang: post.sourceLang,
     thumbnail: post.thumbnail || null,
