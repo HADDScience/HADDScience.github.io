@@ -24,5 +24,6 @@ haddscience.com 홈페이지. Next.js 16 (App Router) · React 19 · Tailwind v4
 |---|---|
 | 기사가 어디서 오는가 | [`mydocs/tech/content-storage.md`](mydocs/tech/content-storage.md) |
 | 배포에서 밟은 함정 | [`mydocs/troubleshootings/vercel-deploy-traps.md`](mydocs/troubleshootings/vercel-deploy-traps.md) |
+| 도메인 전환에서 밟은 함정 | [`mydocs/troubleshootings/domain-cutover-traps.md`](mydocs/troubleshootings/domain-cutover-traps.md) |
 | 비개발자용 사용법 | [`docs/콘텐츠-관리.md`](docs/콘텐츠-관리.md) |
 | 품질 게이트 | `pnpm typecheck && pnpm lint && pnpm build` |

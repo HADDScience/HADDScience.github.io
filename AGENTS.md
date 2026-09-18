@@ -27,6 +27,7 @@ Omnis 저장소의 `AGENTS.md` 와 같은 방법론(Hyper-Waterfall)을 따른�
    | 기사 · 사진 · 관리 화면 저장 | [`mydocs/tech/content-storage.md`](mydocs/tech/content-storage.md) (권위는 Omnis) |
    | 인증 · SSO | Omnis `mydocs/tech/auth-architecture.md` |
    | 배포 | [`mydocs/troubleshootings/vercel-deploy-traps.md`](mydocs/troubleshootings/vercel-deploy-traps.md) · `README.md` "배포" |
+   | 도메인·DNS | [`mydocs/troubleshootings/domain-cutover-traps.md`](mydocs/troubleshootings/domain-cutover-traps.md) |
    | 디자인시스템 · 컴포넌트 | `README.md` "디자인시스템 매핑" |
 
 4. 오늘 작업 — `mydocs/orders/{yyyymmdd}.md`
