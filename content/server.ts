@@ -73,6 +73,21 @@ export function hasArticle(post: Post, lang: Lang): boolean {
   return (getPostLocale(post, lang)?.blocks.length ?? 0) > 0
 }
 
+/**
+ * 아직 옮기지 않은 글의 원문 주소를 아임웹 기본 주소로 돌린다.
+ *
+ * 옛 주소는 `https://www.haddscience.com/news/?bmode=view&idx=…` 인데, 2026-09-18 에 그 도메인이
+ * 이 사이트로 넘어왔다. 그대로 두면 목록 카드가 자기 사이트로 되돌아오고, 본문이 없는 글이라
+ * 404 가 난다(실제로 그렇게 됐다). 아임웹 기본 주소(haddscience.imweb.me)는 구독이 살아 있는
+ * 동안 같은 글을 그대로 보여준다 — 남은 글을 다 옮길 때까지의 다리다.
+ */
+export function externalArticleHref(href: string): string {
+  return href.replace(
+    /^https?:\/\/(www\.)?haddscience\.com\//,
+    "https://haddscience.imweb.me/"
+  )
+}
+
 /** Post → 목록 카드용 NewsItem. */
 function toNewsItem(post: Post, lang: Lang): NewsItem {
   const locale = getPostLocale(post, lang)
@@ -86,7 +101,11 @@ function toNewsItem(post: Post, lang: Lang): NewsItem {
     summary: locale?.summary || undefined,
     hasArticle: article,
     // 본문이 있으면 사이트 안으로, 없으면 아임웹 원문으로 보낸다.
-    href: article ? `/news/${post.id}` : (post.externalHref ?? `/news/${post.id}`),
+    href: article
+      ? `/news/${post.id}`
+      : post.externalHref
+        ? externalArticleHref(post.externalHref)
+        : `/news/${post.id}`,
   }
 }
 

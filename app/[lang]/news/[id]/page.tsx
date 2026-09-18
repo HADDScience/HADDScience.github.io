@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 
 import { PageHeader } from "@/components/ds/page-header"
 import { PostBody } from "@/components/ds/post-body"
@@ -8,6 +8,7 @@ import { Container, Section } from "@/components/ds/primitives"
 import { Button } from "@/components/ui/button"
 import { AVAILABLE_LANGS, isLang, localePath } from "@/content"
 import {
+  externalArticleHref,
   getArticleNeighbors,
   getContent,
   getPost,
@@ -65,7 +66,13 @@ export default async function NewsDetailPage({
   if (!post) notFound()
 
   const locale = getPostLocale(post, lang)
-  if (!locale?.blocks.length) notFound()
+  // 아직 옮기지 않은 글은 사이트 안에 본문이 없다. 도메인이 넘어오면서 옛 아임웹 주소가
+  // 이리로 들어오므로(next.config 의 redirects) 404 대신 원문으로 보낸다. 남은 글을 다
+  // 옮기면 이 갈래는 저절로 사라진다.
+  if (!locale?.blocks.length) {
+    if (post.externalHref) redirect(externalArticleHref(post.externalHref))
+    notFound()
+  }
 
   const { prev, next } = await getArticleNeighbors(post.id, lang)
   const path = (href: string) => localePath(lang, href)
@@ -97,7 +104,7 @@ export default async function NewsDetailPage({
           {post.externalHref ? (
             <p className="mt-8 text-sm text-muted-foreground">
               <a
-                href={post.externalHref}
+                href={externalArticleHref(post.externalHref)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-4 hover:text-primary"
