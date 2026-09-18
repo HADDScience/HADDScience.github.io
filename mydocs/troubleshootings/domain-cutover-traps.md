@@ -73,3 +73,39 @@ DKIM·DMARC 는 없었다. Vercel DNS 는 같은 이름·값의 MX 를 우선순
 SPF 는 수신처(네이버웍스)와 맞지 않는 값(`include:_spf.daum.net`)이 그대로 있었다.
 `include:spf.worksmobile.com` 을 앞에 더하자 받는 쪽 헤더가 `spf=pass` 로 바뀌었다.
 확인은 Gmail 에서 `RAW` 로 받아 `Authentication-Results` 를 읽는 것이 가장 빠르다.
+
+## 브라우저만 무한 리다이렉트로 죽는다 — 크롬의 DNS 는 따로 돈다
+
+증상: `curl` 로는 `200` 인 주소가 크롬(Playwright 포함)에서는 `ERR_TOO_MANY_REDIRECTS` 로 죽는다.
+2026-09-18 확인한 사슬은 이랬다.
+
+```
+302 https://haddscience.com/ko/news/50378159/ → http://www.haddscience.com/ko/news/50378159/
+301 http://www.haddscience.com/ko/news/50378159/ → /
+```
+
+첫 302 는 우리 것이 아니다. **아임웹**이다 — apex 를 www 로 보내고, www 에서 없는 경로는 홈으로 떨군다.
+Vercel 은 반대로 `www → apex` 308 이고 경로를 그대로 들고 간다(`--resolve` 로 확인).
+
+```
+imweb  apex 302 → http://www.haddscience.com/ko/news/50378159/
+imweb  www  301 → https://www.haddscience.com/
+vercel www  308 → https://haddscience.com/ko/news/50378159
+```
+
+원인은 이름 풀이다. 크롬은 기본으로 보안 DNS(DoH)를 자기 해석기로 쓰고 캐시도 따로 갖는다.
+시스템 해석기가 Vercel 주소(64.29.17.x · 216.198.79.x)를 줘도 크롬은 옛 아임웹 주소(13.225.117.x)를
+계속 쓸 수 있다. 같은 날 KT 해석기(168.126.63.1)는 `www` 에 여전히 13.225.117.x 를 줬다.
+
+확인·대처
+
+| 하려는 것 | 방법 |
+|---|---|
+| 지금 어디로 가는지 | `dig +short <이름> @1.1.1.1` · `@8.8.8.8` · `@168.126.63.1` 을 견줘 본다 |
+| 서버가 정상인지 | `curl --resolve <이름>:443:<Vercel IP>` — 이름 풀이를 건너뛴다 |
+| 크롬 캐시 비우기 | `chrome://net-internals/#dns` → Clear host cache (보안 DNS 를 껐다 켜는 것도 같은 효과) |
+| 자동화에서 고정 | Playwright/크롬에 `--host-resolver-rules=MAP <이름> <IP>` |
+
+**사이트 버그로 오해하기 쉽다.** 브라우저에서만 이상하면 먼저 이름 풀이를 의심한다.
+아임웹 구독을 해지하면 이 사슬은 루프가 아니라 그냥 실패가 된다 — 어느 쪽이든 옛 주소가 남은 해석기에서는
+전환이 끝나 보이지 않는다. 기다리거나 캐시를 비우는 것 말고 우리가 할 수 있는 일은 없다.
