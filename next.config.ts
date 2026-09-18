@@ -30,6 +30,17 @@ const nextConfig: NextConfig = {
     const idx = [{ type: "query" as const, key: "idx", value: "(?<idx>\\d+)" }]
     const board = [...idx, { type: "query" as const, key: "bmode", value: "view" }]
     return [
+      /**
+       * www 는 대표 주소(haddscience.com)로 보낸다. 둘 다 200 을 주면 검색엔진이 같은 글을 둘로 세고,
+       * Omnis SSO 는 오리진마다 앱이 따로라 www 에서는 관리 화면 로그인이 막힌다(등록은 apex 뿐).
+       * 경로·쿼리를 그대로 들고 간다. 아임웹은 반대로 apex → www 였다.
+       */
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.haddscience.com" }],
+        destination: "https://haddscience.com/:path*",
+        permanent: true,
+      },
       // 기사: /?…&bmode=view&idx=N · /news/?bmode=view&idx=N
       { source: "/", has: board, destination: "/ko/news/:idx/", permanent: true },
       { source: "/news", has: board, destination: "/ko/news/:idx/", permanent: true },
