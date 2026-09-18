@@ -20,6 +20,7 @@ interface PostDto extends Omit<Post, "thumbnail"> {
 function fromDto(dto: PostDto): Post {
   return {
     id: dto.id,
+    category: dto.category === "library" ? "library" : "news",
     date: dto.date,
     sourceLang: dto.sourceLang,
     thumbnail: dto.thumbnail ?? "",
@@ -71,6 +72,8 @@ export function formatDate(now: Date): string {
 export function newPost(id: string, date: string, sourceLang: Lang): Post {
   return {
     id,
+    // 관리 화면에서 새로 쓰는 글은 뉴스다. 라이브러리는 이식 스크립트가 넣는다.
+    category: "news",
     date,
     sourceLang,
     thumbnail: "",

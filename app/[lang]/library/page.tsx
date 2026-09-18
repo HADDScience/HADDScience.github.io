@@ -1,9 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-import { PageHeader } from "@/components/ds/page-header"
-import { Container, Section, SurfaceCard } from "@/components/ds/primitives"
-import { BlurFade } from "@/components/ui/blur-fade"
+import { LibraryListPage } from "@/components/ds/library-list"
 import { isLang } from "@/content"
 import { getContent } from "@/content/server"
 
@@ -24,37 +22,5 @@ export default async function LibraryPage({
 }) {
   const { lang } = await params
   if (!isLang(lang)) notFound()
-
-  const c = await getContent(lang)
-  const l = c.library
-
-  return (
-    <>
-      <PageHeader
-        breadcrumb={l.breadcrumb}
-        title={l.headline}
-        description={l.disclaimer}
-      />
-
-      <Section>
-        <Container narrow>
-          <div className="grid gap-4">
-            {l.items.map((item, i) => (
-              <BlurFade key={item.title} inView delay={i * 0.06}>
-                <SurfaceCard className="grid gap-3 p-6 md:p-8">
-                  <time className="font-mono text-xs text-muted-foreground">
-                    {item.date}
-                  </time>
-                  <h2 className="text-xl font-bold text-balance">
-                    {item.title}
-                  </h2>
-                  <p className="text-muted-foreground">{item.excerpt}</p>
-                </SurfaceCard>
-              </BlurFade>
-            ))}
-          </div>
-        </Container>
-      </Section>
-    </>
-  )
+  return <LibraryListPage lang={lang} content={await getContent(lang)} page={1} />
 }

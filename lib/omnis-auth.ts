@@ -23,12 +23,14 @@
  */
 
 /**
- * 발급자 주소. 경로(/omnis)가 붙어 있다 — haddscience.vercel.app 이 /omnis/* 를 Omnis 로
- * rewrite 하므로, 한 도메인에서는 같은 오리진 호출이 되고 github.io 처럼 다른 오리진에서는
- * CORS 로 간다. `new URL("/path", OMNIS_ORIGIN)` 은 이 경로를 지우므로 문자열로 이어 붙인다.
+ * 발급자 주소. 2026-09-18 부터 Omnis 는 자기 서브도메인 루트에 있다(그전에는 홈페이지의
+ * /omnis 아래에 rewrite 로 얹혀 있어서 경로가 붙어 있었다). 오리진이 다르므로 SSO 왕복은
+ * CORS 로 간다 — Omnis 에 등록된 오리진(website-admin-com)만 토큰을 받는다.
+ * `new URL("/path", OMNIS_ORIGIN)` 이 경로를 지우는 문제는 없지만, 문자열로 이어 붙이는
+ * 방식을 그대로 둔다(경로가 붙은 옛 주소를 환경변수로 줄 수도 있다).
  */
 export const OMNIS_ORIGIN =
-  process.env.NEXT_PUBLIC_OMNIS_URL ?? "https://haddscience.vercel.app/omnis"
+  process.env.NEXT_PUBLIC_OMNIS_URL ?? "https://omnis.haddscience.com"
 
 /** next.config.ts 에 basePath 는 없고 관리 화면은 /admin 아래다. */
 const BASE_PATH = "/admin"

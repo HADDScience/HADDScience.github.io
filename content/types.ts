@@ -102,6 +102,8 @@ export interface PostLocale {
  */
 export interface Post {
   id: string
+  /** 어느 목록의 글인가. 뉴스와 하드:라이브러리가 같은 표를 쓰고 화면만 갈린다. */
+  category: "news" | "library"
   /** 표시용 날짜 문자열. `2026.07.08` */
   date: string
   /** 번역 원본 언어. 번역 스크립트가 이 언어를 읽어 나머지를 채운다. */
@@ -256,11 +258,11 @@ export interface NewsItem {
   hasArticle: boolean
 }
 
-export interface LibraryItem {
-  date: string
-  title: string
-  excerpt: string
-}
+/**
+ * 하드:라이브러리 항목. 2026-09-18 부터 뉴스와 같은 모양을 쓴다 — 아임웹에 있던 글 103건을
+ * 옮겨 오면서 사진과 상세 페이지가 생겼고, 목록 카드·쪽나누기도 뉴스와 같은 것을 쓴다.
+ */
+export type LibraryItem = NewsItem
 
 export interface TeamMember {
   role: string

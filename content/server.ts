@@ -15,7 +15,7 @@ import type { NewsItem, Post, PostLocale, SiteContent } from "./types"
  * 즉시 갈아 끼운다.
  */
 const API =
-  process.env.OMNIS_API_BASE ?? "https://omnis-hadd.vercel.app/omnis/api/website"
+  process.env.OMNIS_API_BASE ?? "https://omnis.haddscience.com/api/website"
 
 /** 캐시 태그. `/api/revalidate` 가 이 이름으로 비운다. */
 export const POSTS_TAG = "posts"
@@ -29,6 +29,8 @@ interface PostDto extends Omit<Post, "thumbnail"> {
 function fromDto(dto: PostDto): Post {
   return {
     id: dto.id,
+    // 옛 응답에는 없다 — 그때는 전부 뉴스였다.
+    category: dto.category === "library" ? "library" : "news",
     date: dto.date,
     sourceLang: dto.sourceLang,
     thumbnail: dto.thumbnail ?? "",
@@ -63,6 +65,16 @@ export async function getPost(id: string): Promise<Post | undefined> {
   return (await listPosts()).find((p) => p.id === id)
 }
 
+/** 뉴스 글만. 하드:라이브러리는 같은 표에 있지만 다른 화면이다. */
+export async function listNews(): Promise<Post[]> {
+  return (await listPosts()).filter((p) => p.category !== "library")
+}
+
+/** 하드:라이브러리 글만. */
+export async function listLibrary(): Promise<Post[]> {
+  return (await listPosts()).filter((p) => p.category === "library")
+}
+
 /** 해당 언어의 본문. 없으면 원본 언어로 대체한다(번역이 아직 없을 수 있다). */
 export function getPostLocale(post: Post, lang: Lang): PostLocale | undefined {
   return post.content[lang] ?? post.content[post.sourceLang]
@@ -88,7 +100,7 @@ export function externalArticleHref(href: string): string {
   )
 }
 
-/** Post → 목록 카드용 NewsItem. */
+/** Post → 목록 카드용 NewsItem. 라이브러리 글은 `/library/<id>` 로 보낸다. */
 function toNewsItem(post: Post, lang: Lang): NewsItem {
   const locale = getPostLocale(post, lang)
   const article = hasArticle(post, lang)
@@ -102,10 +114,10 @@ function toNewsItem(post: Post, lang: Lang): NewsItem {
     hasArticle: article,
     // 본문이 있으면 사이트 안으로, 없으면 아임웹 원문으로 보낸다.
     href: article
-      ? `/news/${post.id}`
+      ? `/${post.category === "library" ? "library" : "news"}/${post.id}`
       : post.externalHref
         ? externalArticleHref(post.externalHref)
-        : `/news/${post.id}`,
+        : `/${post.category === "library" ? "library" : "news"}/${post.id}`,
   }
 }
 
@@ -114,9 +126,12 @@ const dictionaries: Record<Lang, SiteContent> = { ko, en }
 export async function getContent(lang: Lang): Promise<SiteContent> {
   const base = dictionaries[lang] ?? dictionaries[DEFAULT_LANG]
   const posts = await listPosts()
+  const items = (category: Post["category"]) =>
+    posts.filter((p) => (p.category === "library") === (category === "library")).map((p) => toNewsItem(p, lang))
   return {
     ...base,
-    news: { ...base.news, items: posts.map((p) => toNewsItem(p, lang)) },
+    news: { ...base.news, items: items("news") },
+    library: { ...base.library, items: items("library") },
   }
 }
 
@@ -130,7 +145,10 @@ export async function getArticleNeighbors(
   id: string,
   lang: Lang
 ): Promise<{ prev?: Post; next?: Post }> {
-  const articles = (await listPosts()).filter((p) => hasArticle(p, lang))
+  const all = await listPosts()
+  const self = all.find((p) => p.id === id)
+  const sameList = all.filter((p) => (p.category === "library") === (self?.category === "library"))
+  const articles = sameList.filter((p) => hasArticle(p, lang))
   const i = articles.findIndex((p) => p.id === id)
   if (i < 0) return {}
   return { next: articles[i - 1], prev: articles[i + 1] }

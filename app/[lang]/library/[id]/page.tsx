@@ -1,3 +1,8 @@
+/**
+ * 하드:라이브러리 글 상세. 뉴스 상세와 같은 렌더(PostBody)를 쓰고, 이전·다음 글만
+ * 라이브러리 안에서 찾는다 - getArticleNeighbors 가 같은 목록만 본다.
+ * 영문은 글자만 번역되어 있고 이미지는 원문을 그대로 쓴다(그림에 한글이 없다).
+ */
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound, redirect } from "next/navigation"
@@ -14,16 +19,15 @@ import {
   getPost,
   getPostLocale,
   hasArticle,
-  listNews,
+  listLibrary,
 } from "@/content/server"
 
 export async function generateStaticParams() {
   const params: { lang: string; id: string }[] = []
-  const posts = await listNews()
+  const posts = await listLibrary()
   for (const lang of AVAILABLE_LANGS) {
     for (const post of posts) {
-      // 본문 블록이 있는 글만 사이트 안에 페이지를 갖는다. 나머지는 목록 카드가
-      // 아임웹 원문으로 직접 보낸다.
+      // 본문 블록이 있는 글만 페이지를 갖는다. 옮겨 온 라이브러리 글은 모두 본문이 있다.
       if (hasArticle(post, lang)) params.push({ lang, id: post.id })
     }
   }
@@ -53,7 +57,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function NewsDetailPage({
+export default async function LibraryDetailPage({
   params,
 }: {
   params: Promise<{ lang: string; id: string }>
@@ -63,9 +67,8 @@ export default async function NewsDetailPage({
 
   const content = await getContent(lang)
   const post = await getPost(id)
-  if (!post) notFound()
-  // 라이브러리 글은 자기 주소에서 본다. 같은 표를 쓰므로 여기로도 들어올 수 있다.
-  if (post.category === "library") redirect(localePath(lang, `/library/${post.id}`))
+  // 뉴스 글 주소로는 열리지 않게 한다(같은 표를 쓴다).
+  if (!post || post.category !== "library") notFound()
 
   const locale = getPostLocale(post, lang)
   // 아직 옮기지 않은 글은 사이트 안에 본문이 없다. 도메인이 넘어오면서 옛 아임웹 주소가
@@ -81,7 +84,7 @@ export default async function NewsDetailPage({
 
   return (
     <>
-      <PageHeader breadcrumb={content.news.breadcrumb} title={locale.title} />
+      <PageHeader breadcrumb={content.library.breadcrumb} title={locale.title} />
 
       <Section>
         <Container narrow>
@@ -124,7 +127,7 @@ export default async function NewsDetailPage({
             >
               {prev ? (
                 <Link
-                  href={path(`/news/${prev.id}`)}
+                  href={path(`/library/${prev.id}`)}
                   className="group grid gap-1 rounded-lg border border-border p-5 transition-colors duration-120 ease-[var(--ease-standard)] hover:border-brand-blue-500"
                 >
                   <span className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
@@ -139,7 +142,7 @@ export default async function NewsDetailPage({
               )}
               {next ? (
                 <Link
-                  href={path(`/news/${next.id}`)}
+                  href={path(`/library/${next.id}`)}
                   className="group grid gap-1 rounded-lg border border-border p-5 text-right transition-colors duration-120 ease-[var(--ease-standard)] hover:border-brand-blue-500 sm:col-start-2"
                 >
                   <span className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
@@ -157,7 +160,7 @@ export default async function NewsDetailPage({
             <Button
               nativeButton={false}
               variant="outline"
-              render={<Link href={path("/news")} />}
+              render={<Link href={path("/library")} />}
             >
               <span aria-hidden>←</span> {content.news.backToList}
             </Button>

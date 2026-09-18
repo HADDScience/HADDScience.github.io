@@ -26,7 +26,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const lang of AVAILABLE_LANGS) {
     for (const p of STATIC_PATHS) urls.push({ url: `${SITE_URL}/${lang}${p}/` })
     for (const post of posts) {
-      if (hasArticle(post, lang)) urls.push({ url: `${SITE_URL}/${lang}/news/${post.id}/` })
+      if (!hasArticle(post, lang)) continue
+      const section = post.category === "library" ? "library" : "news"
+      urls.push({ url: `${SITE_URL}/${lang}/${section}/${post.id}/` })
     }
   }
   return urls

@@ -47,6 +47,18 @@ const nextConfig: NextConfig = {
        */
       { source: "/hub", destination: "https://hub.haddscience.com/", permanent: true },
       { source: "/hub/:path*", destination: "https://hub.haddscience.com/:path*", permanent: true },
+      /**
+       * Omnis 도 2026-09-18 에 자기 서브도메인 루트로 나갔다. 사람이 보는 화면은 넘겨야 한다 —
+       * rewrite 로 남겨 두면 첫 페이지는 뜨지만 그 안의 링크가 접두어 없이 나가 홈페이지에서 404 가 된다
+       * (basePath 가 없어져 Next 가 /omnis 를 붙이지 않는다).
+       * 단 `/omnis/api/*` 는 넘기지 않는다 — 기사 사진과 관리 화면 호출이 같은 오리진이어야 한다(아래 rewrite).
+       */
+      { source: "/omnis", destination: "https://omnis.haddscience.com/", permanent: true },
+      {
+        source: "/omnis/:path((?!api/).*)",
+        destination: "https://omnis.haddscience.com/:path",
+        permanent: true,
+      },
       // 기사: /?…&bmode=view&idx=N · /news/?bmode=view&idx=N
       { source: "/", has: board, destination: "/ko/news/:idx/", permanent: true },
       { source: "/news", has: board, destination: "/ko/news/:idx/", permanent: true },
@@ -82,23 +94,22 @@ const nextConfig: NextConfig = {
   },
 
   /**
-   * /omnis/* 는 Omnis 로 넘긴다. 사이트·관리 화면·사진 경로가 전부 같은 도메인의
-   * /omnis 를 보기 때문이다. vercel.json 의 rewrite 는 Next 가 라우트를 다 본 뒤에야
-   * 적용되는데 `[lang]` 이 /omnis 를 먼저 받아 404 를 냈다. 그래서 beforeFiles 로 둔다.
+   * `/omnis/api/*` 만 Omnis 로 넘긴다(사람이 보는 화면은 위 redirects 가 서브도메인으로 보낸다).
+   * 기사 사진(`/omnis/api/website/media/…`)과 관리 화면 호출은 같은 오리진이어야 한다 —
+   * 이미지 최적화를 끈 이유도, 관리 화면이 Bearer 토큰으로 바로 부르는 이유도 여기에 걸려 있다.
+   * vercel.json 의 rewrite 는 Next 가 라우트를 다 본 뒤에야 적용되는데 `[lang]` 이 먼저 받아
+   * 404 를 냈다. 그래서 beforeFiles 로 둔다.
    * MCP 디스커버리(.well-known)는 규격상 호스트 루트에 있어야 해서 여기서 Omnis 로 넘긴다.
    */
   async rewrites() {
     const omnis =
       process.env.OMNIS_UPSTREAM ??
-      (process.env.NODE_ENV === "production"
-        ? "https://omnis-hadd.vercel.app/omnis"
-        : "http://localhost:3000")
+      (process.env.NODE_ENV === "production" ? "https://omnis.haddscience.com" : "http://localhost:3000")
     const mcp = `${omnis}/api/ip-mcp/.well-known`
 
     return {
       beforeFiles: [
-        { source: "/omnis", destination: omnis },
-        { source: "/omnis/:path*", destination: `${omnis}/:path*` },
+        { source: "/omnis/api/:path*", destination: `${omnis}/api/:path*` },
         { source: "/.well-known/oauth-authorization-server/omnis/api/ip-mcp", destination: `${mcp}/oauth-authorization-server` },
         { source: "/.well-known/oauth-protected-resource/omnis/api/ip-mcp", destination: `${mcp}/oauth-protected-resource` },
         { source: "/.well-known/oauth-authorization-server", destination: `${mcp}/oauth-authorization-server` },

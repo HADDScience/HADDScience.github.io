@@ -451,47 +451,8 @@ export const en: SiteContent = {
     headline: "HADD:Library",
     disclaimer:
       "Article summaries are based on actual news sources. Images are AI-generated for illustrative purposes.",
-    items: [
-      {
-        date: "2026.06.20",
-        title:
-          "Blocking the gut and the kidney at once — HbA1c fell by nearly one point in 12 weeks",
-        excerpt:
-          "Jeil Pharmaceutical’s JP-2266 lowered HbA1c by 0.94–0.97 points versus placebo in a Phase 2 type 2 diabetes trial. JP-2266 is an oral candidate that inhibits SGLT1 in the gut and SGLT2 in the kidney together.",
-      },
-      {
-        date: "2026.06.20",
-        title: "Korean clinical trials go global — the government’s new card",
-        excerpt:
-          "On 20 June the Ministry of Health and Welfare and KoNECT held their ‘2026 World Clinical Trials Day’ event, putting global clinical trial collaboration front and centre as this year’s core message.",
-      },
-      {
-        date: "2026.06.20",
-        title:
-          "Samsung, Celltrion and SK all in — the K-bio big-deal battle heading for San Diego",
-        excerpt: "K-bio converges on BIO USA 2026 for an all-out push on licensing and orders.",
-      },
-      {
-        date: "2026.06.20",
-        title: "Moderna takes on flu vaccines — the second act of mRNA has begun",
-        excerpt:
-          "On 18 June a US FDA advisory committee judged that the benefits of Moderna’s seasonal influenza vaccine mFlusiva outweigh its risks in adults aged 50 and over.",
-      },
-      {
-        date: "2026.06.08",
-        title:
-          "A Gwanggyo bio lab station makes real noise — the card a K-startup played in the alternatives-to-animal-testing market",
-        excerpt:
-          "Non-clinical CRO Corestem Chemon and bio startup HADD Science signed a joint R&D agreement on 4 June to build a future organoid platform.",
-      },
-      {
-        date: "2026.06.01",
-        title:
-          "60% lower mortality, 33% tumour control — ASCO 2026 sees the first new RAS(ON) era",
-        excerpt:
-          "At ASCO 2026 on 31 May, Revolution Medicines released late-stage results from 500 patients for its pancreatic cancer drug daraxonrasib.",
-      },
-    ],
+    // Items come from Omnis posts (category=library) — content/server.ts
+    items: [],
   },
 
   contact: {
