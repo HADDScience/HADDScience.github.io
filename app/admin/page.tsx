@@ -276,10 +276,12 @@ function Workspace({
               .filter(([, l]) => (l?.blocks.length ?? 0) > 0)
               .map(([l]) => l)
             const hasBody = (locale?.blocks.length ?? 0) > 0
+            // li 에 min-w-0 이 없으면 제목이 긴 글에서 li 의 최소 너비(=truncate 한 제목의
+            // 한 줄 전체 너비)가 그리드 칸을 밀어내 목록이 화면 오른쪽으로 삐져나간다.
             return (
               <li
                 key={post.id}
-                className="flex items-center gap-4 rounded-lg border border-border bg-card p-3"
+                className="flex min-w-0 items-center gap-4 rounded-lg border border-border bg-card p-3"
               >
                 <div className="relative size-16 shrink-0 overflow-hidden rounded-[12px] bg-muted">
                   {post.thumbnail ? (

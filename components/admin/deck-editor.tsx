@@ -390,7 +390,7 @@ export function DeckEditor({
   return (
     <div className="grid gap-6">
       {/* 상단 바 */}
-      <div className="sticky top-0 z-10 -mx-6 flex flex-wrap items-center gap-3 border-b border-border bg-background/88 px-6 py-4 backdrop-blur-md">
+      <div className="sticky top-0 z-10 -mx-6 flex min-w-0 flex-wrap items-center gap-3 border-b border-border bg-background/88 px-6 py-4 backdrop-blur-md">
         <Button variant="ghost" size="sm" onClick={onCancel} disabled={busy}>
           <ArrowLeft className="size-4" />
           목록
