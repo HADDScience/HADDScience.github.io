@@ -2,7 +2,7 @@
 kind: canonical
 status: active
 canonical: mydocs/README.md
-last_verified: 2026-09-15
+last_verified: 2026-09-22
 ---
 
 # mydocs — 이 저장소의 문서 규약
@@ -59,4 +59,10 @@ AI 와 함께 일할 때 가장 비싼 실수는 없는 사실을 지어내는 �
 |---|---|---|
 | [tech/content-storage.md](tech/content-storage.md) | canonical | 기사·사진이 어디에 있고 사이트가 어떻게 읽는가 (권위는 Omnis) |
 | [troubleshootings/vercel-deploy-traps.md](troubleshootings/vercel-deploy-traps.md) | reference | 정적 export → 서버 렌더로 옮기며 밟은 함정 |
+| [troubleshootings/domain-cutover-traps.md](troubleshootings/domain-cutover-traps.md) | reference | 아임웹에서 도메인을 넘겨받으며 밟은 함정 |
+| [working/2026-09-07-omnis-sso-and-db.md](working/2026-09-07-omnis-sso-and-db.md) | snapshot | 카드뉴스 편집기 · Omnis SSO · 기사 Neon 이전 |
+| [working/2026-09-07-cardnews-rebuild.md](working/2026-09-07-cardnews-rebuild.md) | snapshot | 카드뉴스 재작성 — 조판 검사 페이지 · 편집기 자동 영문 |
+| [working/2026-09-08-imweb-news-inventory.md](working/2026-09-08-imweb-news-inventory.md) | snapshot | 아임웹 뉴스 전수 수집과 레이아웃 대조 |
 | [working/2026-09-09-nav-narrow-overflow.md](working/2026-09-09-nav-narrow-overflow.md) | snapshot | 좁은 화면에서 헤더가 전 페이지를 47px 밀어내던 것 — 원인과 전후 실측 |
+| [working/2026-09-21-admin-list-overflow.md](working/2026-09-21-admin-list-overflow.md) | snapshot | 관리 화면 목록이 칸 밖으로 나가던 것 — 그리드 항목의 min-width 와 전후 실측 |
+| [working/2026-09-21-admin-content-stats.md](working/2026-09-21-admin-content-stats.md) | snapshot | 콘텐츠 현황 패널 — 고른 것·버린 것과 실측 |
