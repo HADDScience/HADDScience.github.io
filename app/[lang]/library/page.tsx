@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { LibraryListPage } from "@/components/ds/library-list"
 import { isLang } from "@/content"
 import { getContent } from "@/content/server"
+import { JsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo"
 
 export async function generateMetadata({
   params,
@@ -12,7 +13,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: (await getContent(lang)).library.pageTitle }
+  const content = await getContent(lang)
+  return pageMetadata({
+    lang,
+    content,
+    path: "/library",
+    title: content.library.pageTitle,
+    description: content.library.headline,
+  })
 }
 
 export default async function LibraryPage({
@@ -22,5 +30,15 @@ export default async function LibraryPage({
 }) {
   const { lang } = await params
   if (!isLang(lang)) notFound()
-  return <LibraryListPage lang={lang} content={await getContent(lang)} page={1} />
+  const content = await getContent(lang)
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd(lang, content, [
+          { name: content.library.pageTitle, path: "/library" },
+        ])}
+      />
+      <LibraryListPage lang={lang} content={content} page={1} />
+    </>
+  )
 }

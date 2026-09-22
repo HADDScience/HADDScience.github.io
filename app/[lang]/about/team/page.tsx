@@ -7,6 +7,7 @@ import { Container, Section } from "@/components/ds/primitives"
 import { BlurFade } from "@/components/ui/blur-fade"
 import { isLang, localePath } from "@/content"
 import { getContent } from "@/content/server"
+import { JsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo"
 
 export async function generateMetadata({
   params,
@@ -15,7 +16,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: (await getContent(lang)).team.pageTitle }
+  const content = await getContent(lang)
+  return pageMetadata({
+    lang,
+    content,
+    path: "/about/team",
+    title: content.team.pageTitle,
+    description: content.team.intro[0],
+  })
 }
 
 export default async function TeamPage({
@@ -33,6 +41,12 @@ export default async function TeamPage({
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd(lang, c, [
+          { name: c.about.pageTitle, path: "/about" },
+          { name: t.pageTitle, path: "/about/team" },
+        ])}
+      />
       <PageHeader
         breadcrumb={t.breadcrumb}
         title={t.pageTitle}

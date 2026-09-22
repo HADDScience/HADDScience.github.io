@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { LibraryListPage, libraryTotalPages } from "@/components/ds/library-list"
 import { AVAILABLE_LANGS, isLang } from "@/content"
 import { getContent } from "@/content/server"
+import { pageMetadata } from "@/lib/seo"
 
 export async function generateStaticParams() {
   const params: { lang: string; page: string }[] = []
@@ -22,8 +23,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang, page } = await params
   if (!isLang(lang)) return {}
-  const c = await getContent(lang)
-  return { title: `${c.library.pageTitle} (${page})` }
+  const content = await getContent(lang)
+  return pageMetadata({
+    lang,
+    content,
+    // canonical 은 자기 페이지. 1페이지로 몰면 2페이지에만 있는 글이 색인에서 사라진다.
+    path: `/library/page/${page}`,
+    title: `${content.library.pageTitle} (${page})`,
+    description: content.library.headline,
+    // 뉴스 목록과 같은 판단이다 — 쪽나누기 페이지는 중복 문서가 되기 쉬우므로
+    // 색인에서 빼고, 링크는 따라가게 둬 옛 글까지 크롤러가 닿게 한다.
+    robots: { index: false, follow: true },
+  })
 }
 
 export default async function LibraryPagedPage({

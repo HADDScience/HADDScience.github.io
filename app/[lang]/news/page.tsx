@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { NewsListPage } from "@/components/ds/news-list"
 import { isLang } from "@/content"
 import { getContent } from "@/content/server"
+import { JsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo"
 
 export async function generateMetadata({
   params,
@@ -12,7 +13,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: (await getContent(lang)).news.pageTitle }
+  const content = await getContent(lang)
+  return pageMetadata({
+    lang,
+    content,
+    path: "/news",
+    title: content.news.pageTitle,
+    description: content.news.description,
+  })
 }
 
 export default async function NewsPage({
@@ -22,5 +30,15 @@ export default async function NewsPage({
 }) {
   const { lang } = await params
   if (!isLang(lang)) notFound()
-  return <NewsListPage lang={lang} content={await getContent(lang)} page={1} />
+  const content = await getContent(lang)
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd(lang, content, [
+          { name: content.news.pageTitle, path: "/news" },
+        ])}
+      />
+      <NewsListPage lang={lang} content={content} page={1} />
+    </>
+  )
 }

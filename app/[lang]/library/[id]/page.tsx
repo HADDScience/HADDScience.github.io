@@ -21,6 +21,13 @@ import {
   hasArticle,
   listLibrary,
 } from "@/content/server"
+import {
+  JsonLd,
+  breadcrumbJsonLd,
+  isoDate,
+  newsArticleJsonLd,
+  pageMetadata,
+} from "@/lib/seo"
 
 export async function generateStaticParams() {
   const params: { lang: string; id: string }[] = []
@@ -45,16 +52,18 @@ export async function generateMetadata({
   if (!post) return {}
   const locale = getPostLocale(post, lang)
   if (!locale) return {}
-  return {
+  const image = locale.thumbnail || post.thumbnail
+  const published = isoDate(post.date)
+  return pageMetadata({
+    lang,
+    content: await getContent(lang),
+    path: `/library/${post.id}`,
     title: locale.title,
     description: locale.summary || undefined,
-    openGraph: {
-      type: "article",
-      title: locale.title,
-      description: locale.summary || undefined,
-      images: [locale.thumbnail || post.thumbnail],
-    },
-  }
+    type: "article",
+    ...(published ? { publishedTime: published } : {}),
+    ...(image ? { images: [{ url: image, alt: locale.title }] } : {}),
+  })
 }
 
 export default async function LibraryDetailPage({
@@ -83,8 +92,28 @@ export default async function LibraryDetailPage({
   const { prev, next } = await getArticleNeighbors(post.id, lang)
   const path = (href: string) => localePath(lang, href)
 
+  const image = locale.thumbnail || post.thumbnail
+
   return (
     <>
+      {/* 뉴스와 같은 글 모델이라 같은 구조화 데이터를 쓴다. 경로만 라이브러리다. */}
+      <JsonLd
+        data={newsArticleJsonLd({
+          lang,
+          content,
+          path: `/library/${post.id}`,
+          headline: locale.title,
+          description: locale.summary || undefined,
+          datePublished: isoDate(post.date),
+          images: image ? [image] : undefined,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd(lang, content, [
+          { name: content.library.pageTitle, path: "/library" },
+          { name: locale.title, path: `/library/${post.id}` },
+        ])}
+      />
       <PageHeader breadcrumb={content.library.breadcrumb} title={locale.title} />
 
       <Section>

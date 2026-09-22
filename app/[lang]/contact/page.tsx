@@ -6,6 +6,7 @@ import { Container, Section, SurfaceCard } from "@/components/ds/primitives"
 import { ContactForm } from "@/components/forms/contact-form"
 import { isLang } from "@/content"
 import { getContent } from "@/content/server"
+import { JsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo"
 
 export async function generateMetadata({
   params,
@@ -14,7 +15,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: (await getContent(lang)).contact.pageTitle }
+  const content = await getContent(lang)
+  return pageMetadata({
+    lang,
+    content,
+    path: "/contact",
+    title: content.contact.pageTitle,
+    description: content.contact.description,
+  })
 }
 
 export default async function ContactPage({
@@ -29,6 +37,11 @@ export default async function ContactPage({
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd(lang, c, [
+          { name: c.contact.pageTitle, path: "/contact" },
+        ])}
+      />
       <PageHeader
         breadcrumb={c.contact.breadcrumb}
         title={c.contact.headline}

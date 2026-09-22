@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/ds/page-header"
 import { Container, Section, SurfaceCard } from "@/components/ds/primitives"
 import { isLang, localePath } from "@/content"
 import { getContent } from "@/content/server"
+import { JsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo"
 
 export async function generateMetadata({
   params,
@@ -14,7 +15,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: (await getContent(lang)).location.pageTitle }
+  const content = await getContent(lang)
+  return pageMetadata({
+    lang,
+    content,
+    path: "/about/location",
+    title: content.location.pageTitle,
+    description: content.location.headline,
+  })
 }
 
 export default async function LocationPage({
@@ -31,6 +39,12 @@ export default async function LocationPage({
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd(lang, c, [
+          { name: c.about.pageTitle, path: "/about" },
+          { name: c.location.pageTitle, path: "/about/location" },
+        ])}
+      />
       <PageHeader
         breadcrumb={c.location.breadcrumb}
         title={c.location.pageTitle}

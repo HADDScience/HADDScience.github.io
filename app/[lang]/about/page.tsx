@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { isLang, localePath } from "@/content"
 import { getContent } from "@/content/server"
+import { JsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo"
 
 export async function generateMetadata({
   params,
@@ -21,7 +22,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: (await getContent(lang)).about.pageTitle }
+  const content = await getContent(lang)
+  return pageMetadata({
+    lang,
+    content,
+    path: "/about",
+    title: content.about.pageTitle,
+    description: content.about.lead[0],
+  })
 }
 
 export default async function AboutPage({
@@ -39,6 +47,9 @@ export default async function AboutPage({
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd(lang, c, [{ name: a.pageTitle, path: "/about" }])}
+      />
       <PageHeader
         breadcrumb={a.breadcrumb}
         title={a.pageTitle}

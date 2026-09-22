@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -19,8 +20,21 @@ import { Button } from "@/components/ui/button"
 import { isLang, localePath } from "@/content"
 import { getContent } from "@/content/server"
 import { partnersFor } from "@/content/partners"
+import { pageMetadata } from "@/lib/seo"
 import { cn } from "@/lib/utils"
 import { notFound } from "next/navigation"
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}): Promise<Metadata> {
+  const { lang } = await params
+  if (!isLang(lang)) return {}
+  // 제목은 레이아웃의 기본값(`content.meta.title`)을 그대로 쓴다. 첫 화면에
+  // `제목 | HADD SCIENCE` 처럼 템플릿이 붙으면 회사 이름이 두 번 나온다.
+  return pageMetadata({ lang, content: await getContent(lang), path: "/" })
+}
 
 export default async function HomePage({
   params,

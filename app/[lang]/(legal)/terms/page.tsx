@@ -6,6 +6,7 @@ import { LegalDocument } from "@/components/ds/legal-doc"
 import { Container, Section } from "@/components/ds/primitives"
 import { isLang } from "@/content"
 import { getContent } from "@/content/server"
+import { JsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo"
 
 export async function generateMetadata({
   params,
@@ -14,7 +15,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLang(lang)) return {}
-  return { title: (await getContent(lang)).footer.terms }
+  const content = await getContent(lang)
+  return pageMetadata({
+    lang,
+    content,
+    path: "/terms",
+    title: content.footer.terms,
+    description: content.legal.terms.intro,
+  })
 }
 
 export default async function TermsPage({
@@ -28,6 +36,11 @@ export default async function TermsPage({
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd(lang, c, [
+          { name: c.footer.terms, path: "/terms" },
+        ])}
+      />
       <PageHeader breadcrumb={c.legal.breadcrumb} title={c.footer.terms} />
       <Section>
         <Container narrow>

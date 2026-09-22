@@ -16,6 +16,13 @@ import {
   hasArticle,
   listNews,
 } from "@/content/server"
+import {
+  JsonLd,
+  breadcrumbJsonLd,
+  isoDate,
+  newsArticleJsonLd,
+  pageMetadata,
+} from "@/lib/seo"
 
 export async function generateStaticParams() {
   const params: { lang: string; id: string }[] = []
@@ -41,16 +48,20 @@ export async function generateMetadata({
   if (!post) return {}
   const locale = getPostLocale(post, lang)
   if (!locale) return {}
-  return {
+  const image = locale.thumbnail || post.thumbnail
+  const published = isoDate(post.date)
+  return pageMetadata({
+    lang,
+    content: await getContent(lang),
+    path: `/news/${post.id}`,
     title: locale.title,
     description: locale.summary || undefined,
-    openGraph: {
-      type: "article",
-      title: locale.title,
-      description: locale.summary || undefined,
-      images: [locale.thumbnail || post.thumbnail],
-    },
-  }
+    type: "article",
+    // 날짜 형식이 `YYYY.MM.DD` 가 아니면 넣지 않는다. 틀린 발행일은 없는 것만 못하다.
+    ...(published ? { publishedTime: published } : {}),
+    // 썸네일이 없는 글은 공용 OG 이미지로 떨어진다(`pageMetadata` 의 기본값).
+    ...(image ? { images: [{ url: image, alt: locale.title }] } : {}),
+  })
 }
 
 export default async function NewsDetailPage({
@@ -80,8 +91,31 @@ export default async function NewsDetailPage({
   const { prev, next } = await getArticleNeighbors(post.id, lang)
   const path = (href: string) => localePath(lang, href)
 
+  const image = locale.thumbnail || post.thumbnail
+
   return (
     <>
+      {/*
+        기사임을 알린다. 발행처·저자는 레이아웃이 낸 Organization 을 `@id` 로 참조한다 —
+        기사마다 회사 정보를 다시 적으면 한쪽만 고쳐질 자리가 생긴다.
+      */}
+      <JsonLd
+        data={newsArticleJsonLd({
+          lang,
+          content,
+          path: `/news/${post.id}`,
+          headline: locale.title,
+          description: locale.summary || undefined,
+          datePublished: isoDate(post.date),
+          images: image ? [image] : undefined,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd(lang, content, [
+          { name: content.news.pageTitle, path: "/news" },
+          { name: locale.title, path: `/news/${post.id}` },
+        ])}
+      />
       <PageHeader breadcrumb={content.news.breadcrumb} title={locale.title} />
 
       <Section>
