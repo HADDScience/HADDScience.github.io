@@ -15,6 +15,11 @@ import {
 import * as React from "react"
 import { toast } from "sonner"
 
+import {
+  ContentStats,
+  matchesIssue,
+  type IssueKey,
+} from "@/components/admin/content-stats"
 import { DeckEditor } from "@/components/admin/deck-editor"
 import { PostEditor } from "@/components/admin/post-editor"
 import { SignIn } from "@/components/admin/sign-in"
@@ -55,13 +60,7 @@ export default function AdminPage() {
     return <SignIn onSubmit={signIn} error={state.error} />
   }
 
-  return (
-    <Workspace
-      cfg={state.cfg}
-      who={state.user.name}
-      onSignOut={signOut}
-    />
-  )
+  return <Workspace cfg={state.cfg} who={state.user.name} onSignOut={signOut} />
 }
 
 /* ------------------------------------------------------------ 작업 화면 */
@@ -87,6 +86,9 @@ function Workspace({
   /* 뉴스와 하드:라이브러리는 같은 표를 쓰고 화면만 갈린다. 한 목록에 섞어 놓으면
      150건이 한 줄로 늘어서 어느 쪽 글인지 알 수 없다. */
   const [tab, setTab] = React.useState<Post["category"]>("news")
+  /* 현황 패널의 "손볼 것" 을 누르면 목록이 그 글만 남는다. 탭을 옮기면 푼다 —
+     결함 수는 탭마다 다르고, 옮긴 탭에서 0건인 필터가 켜져 있으면 빈 목록만 보인다. */
+  const [issue, setIssue] = React.useState<IssueKey | null>(null)
 
   const refresh = React.useCallback(async () => {
     setRefreshing(true)
@@ -94,7 +96,9 @@ function Workspace({
       setIndex(await loadPosts(cfg))
       setError(null)
     } catch (err) {
-      setError(err instanceof Error ? err.message : "기사를 불러오지 못했습니다")
+      setError(
+        err instanceof Error ? err.message : "기사를 불러오지 못했습니다"
+      )
     } finally {
       setRefreshing(false)
     }
@@ -118,7 +122,12 @@ function Workspace({
   async function remove(post: Post) {
     if (!index) return
     const title = post.content[post.sourceLang]?.title ?? post.id
-    if (!confirm(`"${title}" 기사를 삭제할까요?\n사진도 함께 지워지고 되돌릴 수 없습니다.`)) return
+    if (
+      !confirm(
+        `"${title}" 기사를 삭제할까요?\n사진도 함께 지워지고 되돌릴 수 없습니다.`
+      )
+    )
+      return
     try {
       await deletePost(cfg, post.id)
       toast.success("삭제했습니다")
@@ -152,15 +161,19 @@ function Workspace({
   }
 
   const posts = index?.posts ?? []
-  const count = (c: Post["category"]) => posts.filter((p) => p.category === c).length
+  const count = (c: Post["category"]) =>
+    posts.filter((p) => p.category === c).length
   const inTab = posts.filter((p) => p.category === tab)
-  const filtered = query.trim()
-    ? inTab.filter((p) =>
-        Object.values(p.content).some((l) =>
-          l?.title.toLowerCase().includes(query.trim().toLowerCase())
-        )
-      )
-    : inTab
+  const q = query.trim().toLowerCase()
+  const filtered = inTab
+    .filter((p) => (issue ? matchesIssue(p, issue) : true))
+    .filter((p) =>
+      q
+        ? Object.values(p.content).some((l) =>
+            l?.title.toLowerCase().includes(q)
+          )
+        : true
+    )
 
   return (
     <main className="mx-auto max-w-6xl px-6 pb-24">
@@ -196,7 +209,10 @@ function Workspace({
           <button
             key={t.id}
             type="button"
-            onClick={() => setTab(t.id)}
+            onClick={() => {
+              setTab(t.id)
+              setIssue(null)
+            }}
             className={cn(
               "flex items-center gap-2 rounded-[12px] border px-4 py-2 text-sm font-semibold transition-colors duration-120 ease-[var(--ease-standard)]",
               tab === t.id
@@ -246,6 +262,16 @@ function Workspace({
         </Button>
       </div>
 
+      {index ? (
+        <ContentStats
+          posts={inTab}
+          total={posts.length}
+          label={tab === "library" ? "하드:라이브러리" : "뉴스"}
+          issue={issue}
+          onIssue={setIssue}
+        />
+      ) : null}
+
       {error ? (
         <p
           role="alert"
@@ -263,11 +289,13 @@ function Workspace({
         <ul className="grid gap-2">
           {!filtered.length ? (
             <li className="rounded-lg border border-dashed border-border bg-card p-8 text-sm text-muted-foreground">
-              {query.trim()
-                ? "찾는 제목이 없습니다."
-                : tab === "library"
-                  ? "하드:라이브러리 글이 없습니다. 오른쪽 위에서 새로 쓸 수 있습니다."
-                  : "기사가 없습니다."}
+              {issue
+                ? "이 조건에 걸리는 글이 없습니다."
+                : query.trim()
+                  ? "찾는 제목이 없습니다."
+                  : tab === "library"
+                    ? "하드:라이브러리 글이 없습니다. 오른쪽 위에서 새로 쓸 수 있습니다."
+                    : "기사가 없습니다."}
             </li>
           ) : null}
           {filtered.map((post) => {
@@ -314,7 +342,9 @@ function Workspace({
                   <p className="mt-0.5 flex flex-wrap items-center gap-2 font-mono text-xs text-muted-foreground">
                     <span>{post.date}</span>
                     <span aria-hidden>·</span>
-                    <span>{translated.join(" / ").toUpperCase() || "본문 없음"}</span>
+                    <span>
+                      {translated.join(" / ").toUpperCase() || "본문 없음"}
+                    </span>
                     {post.deck ? (
                       <>
                         <span aria-hidden>·</span>
