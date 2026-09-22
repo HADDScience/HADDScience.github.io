@@ -104,6 +104,13 @@ export interface Post {
   id: string
   /** 어느 목록의 글인가. 뉴스와 하드:라이브러리가 같은 표를 쓰고 화면만 갈린다. */
   category: "news" | "library"
+  /**
+   * 목록 맨 위에 고정한 글. 카드에 `ui.pinned` 배지와 강조 테두리가 붙는다.
+   *
+   * 순서를 옮기는 대신 상태를 따로 두는 이유: 그러면 고정을 풀었을 때 원래 자리로
+   * 그대로 돌아간다. 목록 순서는 Omnis 가 고정 글을 앞에 두고 내려보낸다.
+   */
+  pinned: boolean
   /** 표시용 날짜 문자열. `2026.07.08` */
   date: string
   /** 번역 원본 언어. 번역 스크립트가 이 언어를 읽어 나머지를 채운다. */
@@ -256,6 +263,8 @@ export interface NewsItem {
   summary?: string
   /** 사이트 안에 상세 페이지가 있는가. 없으면 `href` 가 아임웹 원문을 가리킨다. */
   hasArticle: boolean
+  /** 고정한 글. 카드가 강조되고 배지가 붙는다. */
+  pinned: boolean
 }
 
 /**
@@ -318,6 +327,8 @@ export interface SiteContent {
     intendedUse: string
     sampleAvailable: string
     sampleUnavailable: string
+    /** 고정한 기사 카드의 배지. 한글·영문이 같은 말이다(브랜드 표기). */
+    pinned: string
     mainLine: string
     fax: string
     inquirySubjectPrefix: string

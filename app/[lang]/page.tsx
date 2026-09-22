@@ -224,7 +224,12 @@ export default async function HomePage({
               <div className="rounded-lg border border-border bg-card px-6">
                 {c.news.items.slice(0, 4).map((item, i) => (
                   <BlurFade key={item.id} inView delay={i * 0.07}>
-                    <NewsCard item={item} lang={lang} layout="row" />
+                    <NewsCard
+                      item={item}
+                      lang={lang}
+                      layout="row"
+                      pinnedLabel={c.ui.pinned}
+                    />
                   </BlurFade>
                 ))}
               </div>
