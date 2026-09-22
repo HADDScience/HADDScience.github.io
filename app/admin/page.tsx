@@ -1,12 +1,10 @@
 "use client"
 
 import {
-  ExternalLink,
   FileText,
   ImageOff,
   LayoutGrid,
   Loader2,
-  LogOut,
   Pin,
   PinOff,
   Plus,
@@ -14,21 +12,16 @@ import {
   Search,
   Trash2,
 } from "lucide-react"
+import { useSearchParams } from "next/navigation"
 import * as React from "react"
 import { toast } from "sonner"
 
-import {
-  ContentStats,
-  matchesIssue,
-  type IssueKey,
-} from "@/components/admin/content-stats"
+import { matchesIssue, type IssueKey } from "@/components/admin/content-stats"
 import { DeckEditor } from "@/components/admin/deck-editor"
 import { PostEditor } from "@/components/admin/post-editor"
-import { SignIn } from "@/components/admin/sign-in"
-import { SiteStats } from "@/components/admin/site-stats"
+import { AdminShell } from "@/components/admin/shell"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { useAdminSession } from "@/hooks/use-admin-session"
 import { useVisitStats } from "@/hooks/use-visit-stats"
 import type { Post } from "@/content/types"
 import {
@@ -41,31 +34,34 @@ import {
   type PostIndex,
 } from "@/lib/admin-posts"
 import type { ApiConfig } from "@/lib/admin-config"
-import { OMNIS_ORIGIN } from "@/lib/omnis-auth"
 import { cn } from "@/lib/utils"
 
 /**
- * 콘텐츠 관리 화면.
+ * 콘텐츠 화면 — 글을 쓰고 고치는 곳.
  *
- * 정적 화면이다. 로그인은 Omnis 자체계정(SSO), 기사와 사진은 Omnis 의 API 로 읽고 쓴다.
- * 저장하면 Omnis 가 사이트 캐시를 비워 곧바로 반영된다.
+ * 숫자는 여기 없다. 통계는 `/admin/stats` 로 갈라 두었다 — 글 하나 고치러 들어와서
+ * 통계부터 읽고 내려오지 않게 한다. 다만 목록의 각 줄에는 그 글이 몇 번 읽혔는지가
+ * 붙는다(그건 그 글에 대한 정보라 관리하면서 같이 보는 편이 낫다).
+ *
+ * 통계 화면의 "손볼 것" 은 여기로 주소를 달고 넘어온다 — `/admin?issue=no-body&tab=news`.
  */
 export default function AdminPage() {
-  const { state, signIn, signOut } = useAdminSession()
-
-  if (state.status === "loading") {
-    return (
-      <div className="grid min-h-svh place-items-center">
-        <Loader2 className="size-6 animate-spin text-muted-foreground" />
-      </div>
-    )
-  }
-
-  if (state.status === "anonymous") {
-    return <SignIn onSubmit={signIn} error={state.error} />
-  }
-
-  return <Workspace cfg={state.cfg} who={state.user.name} onSignOut={signOut} />
+  return (
+    <AdminShell current="/admin" title="콘텐츠 관리">
+      {(cfg) => (
+        // useSearchParams 는 Suspense 경계를 요구한다(정적으로 미리 그리는 페이지라서).
+        <React.Suspense
+          fallback={
+            <div className="grid place-items-center py-24">
+              <Loader2 className="size-6 animate-spin text-muted-foreground" />
+            </div>
+          }
+        >
+          <Workspace cfg={cfg} />
+        </React.Suspense>
+      )}
+    </AdminShell>
+  )
 }
 
 /* ------------------------------------------------------------ 작업 화면 */
@@ -74,15 +70,11 @@ type View =
   | { mode: "list" }
   | { mode: "edit"; kind: "post" | "deck"; post: Post; isNew: boolean }
 
-function Workspace({
-  cfg,
-  who,
-  onSignOut,
-}: {
-  cfg: ApiConfig
-  who: string
-  onSignOut: () => void
-}) {
+function Workspace({ cfg }: { cfg: ApiConfig }) {
+  // 통계 화면에서 "손볼 것" 을 눌러 넘어온 경우. 주소에 남으므로 북마크도 되고
+  // "번역 없는 글 목록" 을 그대로 남에게 보낼 수도 있다.
+  const params = useSearchParams()
+  const asked = params.get("issue")
   const [index, setIndex] = React.useState<PostIndex | null>(null)
   const [error, setError] = React.useState<string | null>(null)
   const [view, setView] = React.useState<View>({ mode: "list" })
@@ -92,10 +84,19 @@ function Workspace({
   const [pinning, setPinning] = React.useState<string | null>(null)
   /* 뉴스와 하드:라이브러리는 같은 표를 쓰고 화면만 갈린다. 한 목록에 섞어 놓으면
      150건이 한 줄로 늘어서 어느 쪽 글인지 알 수 없다. */
-  const [tab, setTab] = React.useState<Post["category"]>("news")
+  const [tab, setTab] = React.useState<Post["category"]>(
+    params.get("tab") === "library" ? "library" : "news"
+  )
   /* 현황 패널의 "손볼 것" 을 누르면 목록이 그 글만 남는다. 탭을 옮기면 푼다 —
      결함 수는 탭마다 다르고, 옮긴 탭에서 0건인 필터가 켜져 있으면 빈 목록만 보인다. */
-  const [issue, setIssue] = React.useState<IssueKey | null>(null)
+  const [issue, setIssue] = React.useState<IssueKey | null>(
+    asked === "untranslated" ||
+      asked === "no-body" ||
+      asked === "no-thumbnail" ||
+      asked === "no-summary"
+      ? asked
+      : null
+  )
   /* 목록 순서는 사이트에 나가는 순서(position)다. 여기서 많이 본 순으로 바꿔도
      사이트는 그대로다 — 화면에서만 다시 세운다. */
   const [sort, setSort] = React.useState<"order" | "views">("order")
@@ -179,19 +180,17 @@ function Workspace({
     // 이미지 블록만 보여 고칠 수가 없다.
     const Editor = view.kind === "deck" ? DeckEditor : PostEditor
     return (
-      <main className="mx-auto max-w-6xl px-6 pb-24">
-        <Editor
-          cfg={cfg}
-          post={view.post}
-          order={index.order}
-          isNew={view.isNew}
-          onCancel={() => setView({ mode: "list" })}
-          onDone={() => {
-            setView({ mode: "list" })
-            void refresh()
-          }}
-        />
-      </main>
+      <Editor
+        cfg={cfg}
+        post={view.post}
+        order={index.order}
+        isNew={view.isNew}
+        onCancel={() => setView({ mode: "list" })}
+        onDone={() => {
+          setView({ mode: "list" })
+          void refresh()
+        }}
+      />
     )
   }
 
@@ -217,30 +216,15 @@ function Workspace({
       ? [...filtered].sort((a, b) => views(b) - views(a))
       : filtered
 
-  return (
-    <main className="mx-auto max-w-6xl px-6 pb-24">
-      <header className="flex flex-wrap items-center gap-3 py-8">
-        <div className="min-w-0 flex-1">
-          <p className="font-mono text-xs font-semibold tracking-[0.12em] text-muted-foreground uppercase">
-            HADD SCIENCE
-          </p>
-          <h1 className="text-2xl font-bold tracking-[-0.02em]">콘텐츠 관리</h1>
-        </div>
-        <a
-          href={`${OMNIS_ORIGIN}/settings`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary"
-        >
-          계정 설정 <ExternalLink className="size-3" />
-        </a>
-        <span className="text-sm text-muted-foreground">{who}</span>
-        <Button variant="ghost" size="sm" onClick={onSignOut}>
-          <LogOut className="size-4" />
-          나가기
-        </Button>
-      </header>
+  const ISSUE_LABEL: Record<IssueKey, string> = {
+    untranslated: "번역 없음",
+    "no-body": "본문 없음",
+    "no-thumbnail": "썸네일 없음",
+    "no-summary": "요약 없음",
+  }
 
+  return (
+    <>
       <div className="mb-4 flex flex-wrap gap-2">
         {(
           [
@@ -329,16 +313,20 @@ function Workspace({
         </Button>
       </div>
 
-      {index ? <SiteStats stats={stats} posts={posts} /> : null}
-
-      {index ? (
-        <ContentStats
-          posts={inTab}
-          total={posts.length}
-          label={tab === "library" ? "하드:라이브러리" : "뉴스"}
-          issue={issue}
-          onIssue={setIssue}
-        />
+      {issue ? (
+        <p className="mb-4 flex flex-wrap items-center gap-2 rounded-lg border border-border bg-muted/50 px-4 py-3 text-sm">
+          <span className="font-semibold">{ISSUE_LABEL[issue]}</span>
+          <span className="text-muted-foreground">
+            인 글만 보고 있습니다 ({rows.length}건)
+          </span>
+          <button
+            type="button"
+            onClick={() => setIssue(null)}
+            className="ml-auto text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground"
+          >
+            전체 보기
+          </button>
+        </p>
       ) : null}
 
       {error ? (
@@ -499,6 +487,6 @@ function Workspace({
           })}
         </ul>
       )}
-    </main>
+    </>
   )
 }
