@@ -84,6 +84,8 @@ export const ko: SiteContent = {
     intendedUse: "용도",
     sampleAvailable: "샘플 신청 가능",
     sampleUnavailable: "샘플 신청 불가",
+    // 브랜드 표기라 영문 페이지도 같은 말을 쓴다.
+    pinned: "HADD PICK",
     mainLine: "대표번호",
     fax: "팩스",
     inquirySubjectPrefix: "홈페이지 문의",

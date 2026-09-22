@@ -11,8 +11,9 @@ import type { CardDeck, Lang, Post, PostLocale } from "@/content/types"
  * 임시 경로를 바꿔 넣은 뒤 기사를 PUT 한다. 편집기 화면은 이 치환을 모른다.
  */
 
-interface PostDto extends Omit<Post, "thumbnail"> {
+interface PostDto extends Omit<Post, "thumbnail" | "pinned"> {
   position: number
+  pinned?: boolean
   thumbnail: string | null
   updatedAt: string
 }
@@ -21,6 +22,7 @@ function fromDto(dto: PostDto): Post {
   return {
     id: dto.id,
     category: dto.category === "library" ? "library" : "news",
+    pinned: dto.pinned === true,
     date: dto.date,
     sourceLang: dto.sourceLang,
     thumbnail: dto.thumbnail ?? "",
@@ -78,6 +80,7 @@ export function newPost(
   return {
     id,
     category,
+    pinned: false,
     date,
     sourceLang,
     thumbnail: "",
@@ -197,4 +200,22 @@ export async function savePost(cfg: ApiConfig, opts: SaveOptions): Promise<SaveR
 
 export async function deletePost(cfg: ApiConfig, postId: string): Promise<void> {
   await api(cfg, `/posts/${postId}`, { method: "DELETE" })
+}
+
+/**
+ * 목록 맨 위 고정을 켜고 끈다.
+ *
+ * 기사 전체를 PUT 하지 않는다 — 본문·덱을 다시 쓰고 번역까지 돌아가고, 그 사이 다른
+ * 사람이 고친 본문을 이 화면이 들고 있던 옛 내용으로 덮을 수 있다. 압정은 압정만 바꾼다.
+ */
+export async function setPinned(
+  cfg: ApiConfig,
+  postId: string,
+  pinned: boolean
+): Promise<boolean> {
+  const res = await api<{ pinned: boolean }>(cfg, `/posts/${postId}/pin`, {
+    method: "PUT",
+    body: JSON.stringify({ pinned }),
+  })
+  return res.pinned
 }

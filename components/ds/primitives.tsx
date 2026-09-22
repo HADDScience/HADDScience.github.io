@@ -151,12 +151,14 @@ export function Badge({
   tone = "neutral",
   ...props
 }: React.ComponentProps<"span"> & {
-  tone?: "neutral" | "success" | "warning"
+  tone?: "neutral" | "success" | "warning" | "brand"
 }) {
   const tones = {
     neutral: "bg-muted text-muted-foreground",
     success: "bg-status-success-bg text-status-success",
     warning: "bg-status-warning-bg text-status-warning",
+    // 사진 위에 얹히는 배지(고정 기사). 어떤 사진 위에서도 읽히도록 채운 색을 쓴다.
+    brand: "bg-brand-blue-700 text-white",
   }
   return (
     <span

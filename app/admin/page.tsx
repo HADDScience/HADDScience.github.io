@@ -7,6 +7,8 @@ import {
   LayoutGrid,
   Loader2,
   LogOut,
+  Pin,
+  PinOff,
   Plus,
   RefreshCw,
   Search,
@@ -33,6 +35,7 @@ import {
   loadPosts,
   newPost,
   newPostId,
+  setPinned,
   type PostIndex,
 } from "@/lib/admin-posts"
 import type { ApiConfig } from "@/lib/admin-config"
@@ -83,6 +86,8 @@ function Workspace({
   const [view, setView] = React.useState<View>({ mode: "list" })
   const [query, setQuery] = React.useState("")
   const [refreshing, setRefreshing] = React.useState(false)
+  /* 고정을 바꾸는 중인 글. 연타로 두 번 보내면 마지막 응답이 이기므로 하나씩 받는다. */
+  const [pinning, setPinning] = React.useState<string | null>(null)
   /* 뉴스와 하드:라이브러리는 같은 표를 쓰고 화면만 갈린다. 한 목록에 섞어 놓으면
      150건이 한 줄로 늘어서 어느 쪽 글인지 알 수 없다. */
   const [tab, setTab] = React.useState<Post["category"]>("news")
@@ -117,6 +122,28 @@ function Workspace({
       post: newPost(newPostId(now), formatDate(now), "ko", category),
       isNew: true,
     })
+  }
+
+  /**
+   * 목록 맨 위 고정. 켜면 사이트 카드에 「HADD PICK」 배지와 강조 테두리가 붙는다.
+   *
+   * 저장 뒤 목록을 다시 받는다 — 순서는 서버가 정하므로(고정 먼저), 화면에서 흉내 내면
+   * 새로고침할 때 자리가 달라진다. 개수 제한은 없다.
+   */
+  async function togglePin(post: Post) {
+    if (pinning) return
+    setPinning(post.id)
+    try {
+      await setPinned(cfg, post.id, !post.pinned)
+      toast.success(post.pinned ? "고정을 풀었습니다" : "목록 맨 위에 고정했습니다")
+      await refresh()
+    } catch (err) {
+      toast.error("고정을 바꾸지 못했습니다", {
+        description: err instanceof Error ? err.message : undefined,
+      })
+    } finally {
+      setPinning(null)
+    }
   }
 
   async function remove(post: Post) {
@@ -309,7 +336,10 @@ function Workspace({
             return (
               <li
                 key={post.id}
-                className="flex min-w-0 items-center gap-4 rounded-lg border border-border bg-card p-3"
+                className={cn(
+                  "flex min-w-0 items-center gap-4 rounded-lg border bg-card p-3",
+                  post.pinned ? "border-primary" : "border-border"
+                )}
               >
                 <div className="relative size-16 shrink-0 overflow-hidden rounded-[12px] bg-muted">
                   {post.thumbnail ? (
@@ -340,6 +370,11 @@ function Workspace({
                     {locale?.title || post.id}
                   </p>
                   <p className="mt-0.5 flex flex-wrap items-center gap-2 font-mono text-xs text-muted-foreground">
+                    {post.pinned ? (
+                      <span className="rounded-[4px] bg-primary px-1.5 py-0.5 font-semibold text-primary-foreground">
+                        HADD PICK
+                      </span>
+                    ) : null}
                     <span>{post.date}</span>
                     <span aria-hidden>·</span>
                     <span>
@@ -360,6 +395,27 @@ function Workspace({
                   </p>
                 </button>
 
+                <button
+                  type="button"
+                  title={post.pinned ? "고정 풀기" : "목록 맨 위에 고정"}
+                  aria-pressed={post.pinned}
+                  disabled={pinning !== null}
+                  onClick={() => void togglePin(post)}
+                  className={cn(
+                    "grid size-9 place-items-center rounded-[12px] disabled:opacity-40",
+                    post.pinned
+                      ? "text-primary hover:bg-primary/10"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  )}
+                >
+                  {pinning === post.id ? (
+                    <Loader2 className="size-4 animate-spin" />
+                  ) : post.pinned ? (
+                    <PinOff className="size-4" />
+                  ) : (
+                    <Pin className="size-4" />
+                  )}
+                </button>
                 {hasBody ? (
                   <a
                     href={`/ko/${post.category === "library" ? "library" : "news"}/${post.id}/`}
