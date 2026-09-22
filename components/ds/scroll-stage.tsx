@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { HeroFlipGrid } from "@/components/ds/hero-flip-grid"
 import { Container, Eyebrow, Tag } from "@/components/ds/primitives"
 import { BlurFade } from "@/components/ui/blur-fade"
 import { Button } from "@/components/ui/button"
@@ -22,9 +23,10 @@ import type { SiteContent } from "@/content/types"
  *   패널의 등장 애니메이션만 BlurFade(motion) 가 담당한다.
  *
  * 배경 사진에 대하여
- *   자사 활동 사진 6장을 합쳐 네이비 스크림을 씌운 콜라주다
- *   (scripts/build-hero-collage.mjs). 디자인시스템은 사진 배경을 금하지만 스톡이 아닌
- *   자사 기록이고 네이비 아래 텍스처로만 쓰이므로 히어로 한 곳에 한해 확장했다.
+ *   자사 수상 기록 사진이다 — 2025 창업인큐베이팅 경진대회 중소벤처기업부 장관상 대상,
+ *   우수사례 공모전 최우수상 등(scripts/build-hero-tiles.mjs). 디자인시스템은 사진 배경을
+ *   금하지만 스톡이 아닌 자사 기록이고 네이비 아래 텍스처로만 쓰이므로 히어로 한 곳에
+ *   한해 확장했다. 2026-09-22 에 한 장짜리 콜라주에서 플립 그리드로 바꿨다.
  */
 export function ScrollStage({
   lang,
@@ -51,28 +53,10 @@ export function ScrollStage({
       {/* 고정 배경 */}
       <div className="sticky top-0 h-svh overflow-hidden bg-brand-blue-900">
         {/*
-          <picture> 를 쓰는 이유: next/image 두 개를 `hidden`/`sm:hidden` 으로 감추면
-          숨긴 쪽도 함께 다운로드된다(측정: 데스크톱에서 세로판 76KB 낭비).
-          source media 로 갈라야 브라우저가 한 장만 받는다. 정적 export 라
-          `unoptimized: true` 이므로 next/image 를 써도 얻는 것이 없다.
+          배경은 한 장짜리 콜라주가 아니라 여섯 칸이 각자 도는 플립 그리드다
+          (components/ds/hero-flip-grid.tsx). 사진 교체는 scripts/build-hero-tiles.mjs.
         */}
-        <picture>
-          <source
-            media="(max-width: 639px)"
-            srcSet="/hero/collage-portrait.webp"
-            width={1200}
-            height={1600}
-          />
-          <img
-            src="/hero/collage-wide.webp"
-            alt=""
-            width={2400}
-            height={1350}
-            fetchPriority="high"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        </picture>
+        <HeroFlipGrid />
         {/*
           텍스트가 놓이는 좌측을 눌러 대비를 확보한다. 디자인시스템이 허용한 히어로
           그라디언트(120° navy)를 이 자리에 쓴다. 파란 색면으로 덮이지 않도록 알파를
