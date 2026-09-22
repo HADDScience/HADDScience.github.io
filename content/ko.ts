@@ -7,9 +7,30 @@ import type { SiteContent } from "./types"
 export const ko: SiteContent = {
   meta: {
     lang: "ko",
-    title: "하드사이언스 | 3D 세포배양의 새로운 기준",
+    title: "하드사이언스 HADD SCIENCE | 오가노이드 · 3D 세포배양 생체소재",
     description:
-      "하드사이언스는 자연유래 폴리핵산 젤 기술을 기반으로 3D 세포배양 소재 ADDGEL과 LiVEGEL을 개발합니다.",
+      "하드사이언스는 자연유래 폴리핵산 젤 기술로 오가노이드와 3차원(3D) 세포배양을 위한 생체소재를 만듭니다. Animal free 젤타입 배지 ADDGEL과 액상형 배지 LiVEGEL을 연구용으로 공급합니다.",
+    // 화면 카피에 실제로 있는 말만 적는다 — 아래 home·about·products 를 함께 볼 것.
+    keywords: [
+      "하드사이언스",
+      "HADD SCIENCE",
+      "haddscience",
+      "오가노이드",
+      "오가노이드 배양",
+      "생체소재",
+      "3D 세포배양",
+      "3차원 세포배양",
+      "세포배양 젤",
+      "젤타입 배지",
+      "하이드로젤",
+      "매트리젤 대체",
+      "스페로이드",
+      "ADDGEL",
+      "애드젤",
+      "LiVEGEL",
+      "라이브젤",
+    ],
+    ogImageAlt: "하드사이언스 — 오가노이드 · 3D 세포배양 생체소재",
   },
 
   company: {
@@ -336,7 +357,10 @@ export const ko: SiteContent = {
       {
         // 실제 사이트 히어로에는 "세로운" 오타가 있다. About 페이지의 동일 문장을 따라 "새로운"으로 수정했다.
         title: ["과학은 실험에서", "혁신은 사람에게서 시작됩니다."],
-        description: ["17년간의 연구, 그리고 지금", "세포배양의 새로운 기준을 만듭니다."],
+        description: [
+          "17년간의 3D 세포배양과 생체소재 연구, 그리고 지금",
+          "오가노이드 배양, 세포배양의 새로운 기준을 만듭니다.",
+        ],
       },
       {
         eyebrow: "LiVEGEL",
@@ -360,7 +384,7 @@ export const ko: SiteContent = {
       },
     ],
     stats: [
-      { value: "17", suffix: "년", label: "3D 세포배양 · 바이오 소재 연구" },
+      { value: "17", suffix: "년", label: "오가노이드 · 3D 세포배양 생체소재 연구" },
       { value: "3", suffix: "Forms", label: "Syringe · Bottle · Lyophilized" },
       { value: "3", suffix: "곳", label: "본사 · 연구협력기관 · 연구소" },
       { value: "2024", label: "하드사이언스 설립" },
@@ -382,7 +406,7 @@ export const ko: SiteContent = {
       title: "ADD the Values to Human Life",
       body: [
         "바이오테크놀로지와 생명과학 분야에서 도전을 이어가는 젊은 스타트업입니다.",
-        "최첨단 기술과 창의적인 접근으로 인류 건강을 위한 배양액 솔루션을 개발하며, 전 세계에 긍정적인 변화를 목표로 하고 있습니다.",
+        "최첨단 기술과 창의적인 접근으로 인류 건강을 위한 배양액과 생체소재 솔루션을 개발하며, 전 세계에 긍정적인 변화를 목표로 하고 있습니다.",
       ],
       cta: "회사 소개 보기",
     },
@@ -398,7 +422,7 @@ export const ko: SiteContent = {
       lineup: {
         eyebrow: "Product lineup",
         title: "연구가 필요한 형태로, 네 가지",
-        description: "제형만 고르면 3차원 배양이 시작됩니다.",
+        description: "제형만 고르면 스페로이드 · 오가노이드 3차원 배양이 시작됩니다.",
       },
       scrollHint: "스크롤",
     },
@@ -437,7 +461,11 @@ export const ko: SiteContent = {
       // 원문은 항목마다 이모지를 달고 있으나 디자인시스템이 이모지를 금지하므로 번호 라벨로 대체했다.
       items: [
         { index: "01", title: "ADDGEL 개발 및 공급", description: "3D 세포배양젤 ADDGEL을 개발하고 공급합니다." },
-        { index: "02", title: "바이오소재 연구", description: "바이오소재를 연구하고 신제품을 기획합니다." },
+        {
+          index: "02",
+          title: "생체소재 연구",
+          description: "오가노이드 배양과 세포치료에 쓰이는 생체소재를 연구하고 신제품을 기획합니다.",
+        },
         { index: "03", title: "연구자와의 협업", description: "연구자와 협업하며 맞춤형 실험을 지원합니다." },
       ],
     },
@@ -547,7 +575,8 @@ export const ko: SiteContent = {
       eyebrow: "Gel-type culture media",
       tagline: "culture matrix for 3D cell culture.",
       heading: "ADDGEL — Three forms, one powerful 3D culture solution",
-      description: "기존 매트리젤 / 하이드로젤을 대체하는 3D 세포배양용 배지 조성물",
+      description:
+        "기존 매트리젤 / 하이드로젤을 대체하는 3D 세포배양 · 오가노이드 배양용 배지 조성물",
       regulatory: "For research use only",
       href: "/products",
       variants: [
@@ -586,7 +615,8 @@ export const ko: SiteContent = {
       eyebrow: "Ready-to-use liquid culture media",
       tagline: "for advanced 3D cell culture.",
       heading: "LiVEGEL — Simply add, instantly culture in 3D",
-      description: "기존 매트리젤 / 하이드로젤을 대체하는 3D 세포배양용 배지 조성물",
+      description:
+        "넣고 바로 쓰는 액상형 — 오가노이드 · 스페로이드 3D 세포배양용 배지 조성물",
       regulatory: "For research use only",
       href: "/products/livegel",
       variants: [

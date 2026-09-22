@@ -320,6 +320,14 @@ export interface SiteContent {
     lang: Lang
     title: string
     description: string
+    /**
+     * 검색 키워드. 구글은 `<meta keywords>` 를 무시하지만 네이버는 여전히 읽는다.
+     * 여기 적는 말은 **화면 카피에도 실제로 있어야 한다** — 본문에 없는 단어를
+     * 키워드에만 적어 두면 근거 없는 신호가 되고, 그 검색어로 잡히지도 않는다.
+     */
+    keywords: string[]
+    /** OG 이미지 대체 텍스트. 이미지 자체는 `public/og/hadd-og.png`. */
+    ogImageAlt: string
   }
   company: {
     nameKo: string

@@ -13,9 +13,25 @@ import type { SiteContent } from "./types"
 export const en: SiteContent = {
   meta: {
     lang: "en",
-    title: "HADD Science | A new standard in 3D cell culture",
+    title: "HADD SCIENCE | Organoid & 3D cell culture biomaterials",
     description:
-      "HADD Science develops ADDGEL and LiVEGEL, 3D cell culture materials built on natural polynucleotide hydrogel technology.",
+      "HADD SCIENCE builds biomaterials for organoid and 3D cell culture on natural polynucleotide gel technology — the animal-free gel-type medium ADDGEL and the ready-to-use liquid medium LiVEGEL, for research use.",
+    // 한국어판과 같은 원칙: 화면에 실제로 있는 말만 적는다.
+    keywords: [
+      "HADD SCIENCE",
+      "haddscience",
+      "organoid",
+      "organoid culture",
+      "biomaterial",
+      "3D cell culture",
+      "gel-type culture media",
+      "hydrogel",
+      "Matrigel alternative",
+      "spheroid",
+      "ADDGEL",
+      "LiVEGEL",
+    ],
+    ogImageAlt: "HADD SCIENCE — organoid and 3D cell culture biomaterials",
   },
 
   company: {
@@ -343,8 +359,8 @@ export const en: SiteContent = {
       {
         title: ["Science begins with experiments.", "Innovation begins with people."],
         description: [
-          "Powered by 17 years of research, and now —",
-          "creating a new standard in cell culture.",
+          "Powered by 17 years of 3D cell culture and biomaterials research, and now —",
+          "creating a new standard in organoid and cell culture.",
         ],
       },
       {
@@ -369,7 +385,7 @@ export const en: SiteContent = {
       },
     ],
     stats: [
-      { value: "17", suffix: "yrs", label: "3D cell culture & biomaterials research" },
+      { value: "17", suffix: "yrs", label: "Organoid · 3D cell culture · biomaterials research" },
       { value: "3", suffix: "Forms", label: "Syringe · Bottle · Lyophilized" },
       { value: "3", suffix: "sites", label: "Head office · Collaboration center · Institute" },
       { value: "2024", label: "HADD Science founded" },
@@ -407,7 +423,7 @@ export const en: SiteContent = {
       lineup: {
         eyebrow: "Product lineup",
         title: "Four forms, shaped by how research works",
-        description: "Pick a format and 3D culture begins.",
+        description: "Pick a format and spheroid · organoid 3D culture begins.",
       },
       scrollHint: "Scroll",
     },
@@ -454,7 +470,8 @@ export const en: SiteContent = {
         {
           index: "02",
           title: "Biomaterials research",
-          description: "Biomaterials research and innovative product development.",
+          description:
+            "Research on biomaterials for organoid culture and cell therapy, and new product planning.",
         },
         {
           index: "03",
@@ -576,7 +593,7 @@ export const en: SiteContent = {
       tagline: "culture matrix for 3D cell culture.",
       heading: "ADDGEL — Three forms, one powerful 3D culture solution",
       description:
-        "A 3D cell culture medium composition that replaces conventional Matrigel and hydrogels.",
+        "A medium composition for 3D cell culture and organoid culture that replaces conventional Matrigel and hydrogels.",
       regulatory: "For research use only",
       href: "/products",
       variants: [
@@ -618,7 +635,7 @@ export const en: SiteContent = {
       tagline: "for advanced 3D cell culture.",
       heading: "LiVEGEL — Simply add, instantly culture in 3D",
       description:
-        "A 3D cell culture medium composition that replaces conventional Matrigel and hydrogels.",
+        "A ready-to-use liquid medium composition for organoid and spheroid 3D cell culture.",
       regulatory: "For research use only",
       href: "/products/livegel",
       variants: [
