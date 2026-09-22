@@ -491,6 +491,13 @@ export const en: SiteContent = {
       reset: "Write another enquiry",
       required: "This field is required.",
       invalidEmail: "Please enter a valid email address.",
+      tooLong: "This is too long — please shorten it a little.",
+      failTitle: "We cannot take your enquiry right now.",
+      failBody:
+        "Please try again in a moment. If it is urgent, use the button below to email us directly.",
+      failMailto: "Send by email",
+      rateLimited:
+        "Too many enquiries from here. Please try again later — anything you already sent has been received.",
     },
   },
 

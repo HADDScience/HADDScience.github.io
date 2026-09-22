@@ -455,6 +455,13 @@ export const ko: SiteContent = {
       reset: "새 문의 작성",
       required: "필수 항목입니다.",
       invalidEmail: "이메일 형식이 올바르지 않습니다.",
+      tooLong: "너무 깁니다. 조금 줄여 주세요.",
+      failTitle: "지금은 접수가 되지 않습니다.",
+      failBody:
+        "잠시 뒤에 다시 시도해 주세요. 급하시면 아래 버튼으로 메일을 보내 주셔도 됩니다.",
+      failMailto: "메일로 보내기",
+      rateLimited:
+        "문의가 너무 잦습니다. 잠시 뒤에 다시 시도해 주세요. 이미 보내신 문의는 접수돼 있습니다.",
     },
   },
 

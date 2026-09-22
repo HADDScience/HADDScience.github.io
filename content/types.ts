@@ -440,6 +440,12 @@ export interface SiteContent {
       reset: string
       required: string
       invalidEmail: string
+      tooLong: string
+      /** 접수에 실패했을 때. 문의를 잃지 않도록 메일 되돌림을 함께 띄운다. */
+      failTitle: string
+      failBody: string
+      failMailto: string
+      rateLimited: string
     }
   }
   footer: {
