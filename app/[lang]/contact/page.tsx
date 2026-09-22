@@ -38,7 +38,7 @@ export default async function ContactPage({
       <Section>
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr]">
-            <ContactForm content={c} />
+            <ContactForm content={c} lang={lang} />
 
             <aside className="grid content-start gap-6">
               <SurfaceCard variant="tint" className="grid gap-4 p-6">

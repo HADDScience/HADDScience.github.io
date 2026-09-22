@@ -1,3 +1,5 @@
+import { OMNIS_API_BASE as API } from "@/lib/site-env"
+
 import { en } from "./en"
 import { ko } from "./ko"
 import { DEFAULT_LANG, type Lang } from "./index"
@@ -14,8 +16,6 @@ import type { NewsItem, Post, PostLocale, SiteContent } from "./types"
  * 갔다. 여기서는 60초 캐시로 읽고, 저장이 일어나면 Omnis 가 `/api/revalidate` 를 불러
  * 즉시 갈아 끼운다.
  */
-const API =
-  process.env.OMNIS_API_BASE ?? "https://omnis.haddscience.com/api/website"
 
 /** 캐시 태그. `/api/revalidate` 가 이 이름으로 비운다. */
 export const POSTS_TAG = "posts"
