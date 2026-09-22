@@ -62,4 +62,4 @@ last_verified: 2026-09-22
 - 2026-08-12 ~ 09-07: git 이 DB. 기사 JSON 과 사진을 저장소에 커밋, 정적 export 를 GitHub Pages · Synology 에.
 - 2026-09-07: Omnis SSO 로 로그인을 옮기자 브라우저가 GitHub 토큰을 들 수 없게 됐다. 서버가 대신 커밋하게 하느니 DB 가 단순해 Neon 으로.
 - 2026-09-22: `WebsitePost.pinned` 추가(Omnis PR #55) · 관리 화면 자동 로그인(사이트 PR #6).
-  계획서는 Omnis 의 `mydocs/plans/2026-09-22-website-post-pin.md`.
+  계획서는 Omnis 의 `mydocs/plans/archives/2026-09-22-website-post-pin.md`.
