@@ -6,14 +6,8 @@ import * as React from "react"
 import { MiniBars } from "@/components/admin/mini-bars"
 import { StatTile } from "@/components/admin/stat-tile"
 import type { Post } from "@/content/types"
-import { ApiError } from "@/lib/admin-api"
-import type { ApiConfig } from "@/lib/admin-config"
-import {
-  loadStats,
-  STATS_DAYS,
-  type StatsDays,
-  type VisitStats,
-} from "@/lib/admin-stats"
+import type { VisitStatsState } from "@/hooks/use-visit-stats"
+import { STATS_DAYS, type VisitStats } from "@/lib/admin-stats"
 import { cn } from "@/lib/utils"
 
 /**
@@ -66,11 +60,15 @@ function describe(path: string, titles: Map<string, string>) {
 
 /* -------------------------------------------------- 화면 */
 
-export function SiteStats({ cfg, posts }: { cfg: ApiConfig; posts: Post[] }) {
-  const [days, setDays] = React.useState<StatsDays>(30)
-  const [data, setData] = React.useState<VisitStats | null>(null)
-  const [error, setError] = React.useState<string | null>(null)
-  const [busy, setBusy] = React.useState(false)
+export function SiteStats({
+  stats,
+  posts,
+}: {
+  /** 통계 한 벌. 목록의 글별 숫자와 같은 것을 본다 (`useVisitStats`) */
+  stats: VisitStatsState
+  posts: Post[]
+}) {
+  const { days, setDays, data, error, busy, reload } = stats
 
   const titles = React.useMemo(
     () =>
@@ -81,32 +79,6 @@ export function SiteStats({ cfg, posts }: { cfg: ApiConfig; posts: Post[] }) {
       ),
     [posts]
   )
-
-  const load = React.useCallback(
-    async (d: StatsDays) => {
-      setBusy(true)
-      try {
-        setData(await loadStats(cfg, d))
-        setError(null)
-      } catch (err) {
-        // 통계 경로가 아직 배포되지 않은 상태와 진짜 오류를 구분해 준다 — 둘의 대처가 다르다.
-        setError(
-          err instanceof ApiError && err.status === 404
-            ? "통계를 받을 준비가 아직 안 됐습니다 (Omnis 에 배포되면 보입니다)."
-            : err instanceof Error
-              ? err.message
-              : "통계를 불러오지 못했습니다"
-        )
-      } finally {
-        setBusy(false)
-      }
-    },
-    [cfg]
-  )
-
-  React.useEffect(() => {
-    void Promise.resolve().then(() => load(days))
-  }, [load, days])
 
   return (
     <section
@@ -138,7 +110,7 @@ export function SiteStats({ cfg, posts }: { cfg: ApiConfig; posts: Post[] }) {
         ) : null}
         <button
           type="button"
-          onClick={() => void load(days)}
+          onClick={reload}
           title="새로고침"
           className="ml-auto grid size-7 place-items-center rounded-[10px] text-muted-foreground hover:bg-muted hover:text-foreground"
         >

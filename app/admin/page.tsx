@@ -29,6 +29,7 @@ import { SiteStats } from "@/components/admin/site-stats"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useAdminSession } from "@/hooks/use-admin-session"
+import { useVisitStats } from "@/hooks/use-visit-stats"
 import type { Post } from "@/content/types"
 import {
   deletePost,
@@ -95,6 +96,10 @@ function Workspace({
   /* 현황 패널의 "손볼 것" 을 누르면 목록이 그 글만 남는다. 탭을 옮기면 푼다 —
      결함 수는 탭마다 다르고, 옮긴 탭에서 0건인 필터가 켜져 있으면 빈 목록만 보인다. */
   const [issue, setIssue] = React.useState<IssueKey | null>(null)
+  /* 목록 순서는 사이트에 나가는 순서(position)다. 여기서 많이 본 순으로 바꿔도
+     사이트는 그대로다 — 화면에서만 다시 세운다. */
+  const [sort, setSort] = React.useState<"order" | "views">("order")
+  const stats = useVisitStats(cfg)
 
   const refresh = React.useCallback(async () => {
     setRefreshing(true)
@@ -136,7 +141,9 @@ function Workspace({
     setPinning(post.id)
     try {
       await setPinned(cfg, post.id, !post.pinned)
-      toast.success(post.pinned ? "고정을 풀었습니다" : "목록 맨 위에 고정했습니다")
+      toast.success(
+        post.pinned ? "고정을 풀었습니다" : "목록 맨 위에 고정했습니다"
+      )
       await refresh()
     } catch (err) {
       toast.error("고정을 바꾸지 못했습니다", {
@@ -193,6 +200,7 @@ function Workspace({
     posts.filter((p) => p.category === c).length
   const inTab = posts.filter((p) => p.category === tab)
   const q = query.trim().toLowerCase()
+  const views = (p: Post) => stats.byPost.get(p.id)?.views ?? 0
   const filtered = inTab
     .filter((p) => (issue ? matchesIssue(p, issue) : true))
     .filter((p) =>
@@ -202,6 +210,12 @@ function Workspace({
           )
         : true
     )
+  // sort 는 원본을 건드리지 않는다. inTab 은 index 의 배열을 그대로 쓰므로
+  // 여기서 sort() 하면 다른 화면이 보는 순서까지 바뀐다.
+  const rows =
+    sort === "views"
+      ? [...filtered].sort((a, b) => views(b) - views(a))
+      : filtered
 
   return (
     <main className="mx-auto max-w-6xl px-6 pb-24">
@@ -271,6 +285,31 @@ function Workspace({
             className="pl-9"
           />
         </div>
+        {stats.data ? (
+          <div className="flex items-center gap-1 rounded-full border border-border p-1">
+            {(
+              [
+                { id: "order", label: "목록 순서" },
+                { id: "views", label: "많이 본 순" },
+              ] as const
+            ).map((o) => (
+              <button
+                key={o.id}
+                type="button"
+                onClick={() => setSort(o.id)}
+                aria-pressed={sort === o.id}
+                className={cn(
+                  "rounded-full px-3 py-1 text-xs font-semibold transition-colors duration-120 ease-[var(--ease-standard)]",
+                  sort === o.id
+                    ? "bg-brand-blue-700 text-white"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                {o.label}
+              </button>
+            ))}
+          </div>
+        ) : null}
         <Button
           variant="outline"
           onClick={() => void refresh()}
@@ -290,7 +329,7 @@ function Workspace({
         </Button>
       </div>
 
-      {index ? <SiteStats cfg={cfg} posts={posts} /> : null}
+      {index ? <SiteStats stats={stats} posts={posts} /> : null}
 
       {index ? (
         <ContentStats
@@ -317,7 +356,7 @@ function Workspace({
         </div>
       ) : (
         <ul className="grid gap-2">
-          {!filtered.length ? (
+          {!rows.length ? (
             <li className="rounded-lg border border-dashed border-border bg-card p-8 text-sm text-muted-foreground">
               {issue
                 ? "이 조건에 걸리는 글이 없습니다."
@@ -328,7 +367,7 @@ function Workspace({
                     : "기사가 없습니다."}
             </li>
           ) : null}
-          {filtered.map((post) => {
+          {rows.map((post) => {
             const locale = post.content[post.sourceLang]
             const translated = Object.entries(post.content)
               .filter(([, l]) => (l?.blocks.length ?? 0) > 0)
@@ -397,6 +436,23 @@ function Workspace({
                     ) : null}
                   </p>
                 </button>
+
+                {/* 이 글이 그 기간에 몇 번 열렸는가. 통계가 아직 없으면 자리를 비워 둔다 —
+                    0 을 적으면 "아무도 안 봤다"와 "아직 못 받았다"가 구별되지 않는다. */}
+                {stats.data ? (
+                  <span
+                    title={
+                      stats.byPost.get(post.id)
+                        ? `최근 ${stats.days}일 · 방문자 ${stats.byPost.get(post.id)?.visitors}명`
+                        : `최근 ${stats.days}일 방문 없음`
+                    }
+                    className="w-16 shrink-0 text-right text-xs text-muted-foreground tabular-nums"
+                  >
+                    {stats.byPost.get(post.id)
+                      ? `${stats.byPost.get(post.id)?.views}회`
+                      : "–"}
+                  </span>
+                ) : null}
 
                 <button
                   type="button"
