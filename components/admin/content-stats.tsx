@@ -2,6 +2,8 @@
 
 import * as React from "react"
 
+import { MiniBars } from "@/components/admin/mini-bars"
+import { StatTile } from "@/components/admin/stat-tile"
 import type { Lang, Post } from "@/content/types"
 import { cn } from "@/lib/utils"
 
@@ -125,7 +127,6 @@ export function ContentStats({
   ).length
   const recent = months.reduce((n, m) => n + m.count, 0)
   const latest = posts.reduce((a, p) => (p.date > a ? p.date : a), "")
-  const peak = Math.max(1, ...months.map((m) => m.count))
 
   const counts = Object.fromEntries(
     ISSUES.map((i) => [
@@ -140,19 +141,19 @@ export function ContentStats({
       className="mb-4 grid min-w-0 gap-5 rounded-lg border border-border bg-card p-5"
     >
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <Tile
+        <StatTile
           value={String(posts.length)}
           unit="건"
           label={label}
           note={`전체 ${total}건 가운데`}
         />
-        <Tile
+        <StatTile
           value={String(decks.length)}
           unit="건"
           label="카드뉴스"
           note={cards ? `카드 ${cards}장` : "아직 없다"}
         />
-        <Tile
+        <StatTile
           value={String(translated)}
           unit={`/ ${posts.length}`}
           label="번역 있음"
@@ -162,7 +163,7 @@ export function ContentStats({
               : "글이 없다"
           }
         />
-        <Tile
+        <StatTile
           value={String(recent)}
           unit="건"
           label="최근 12개월"
@@ -218,37 +219,8 @@ export function ContentStats({
         ) : null}
       </div>
 
-      <Trend months={months} peak={peak} />
+      <Trend months={months} />
     </section>
-  )
-}
-
-function Tile({
-  value,
-  unit,
-  label,
-  note,
-}: {
-  value: string
-  unit: string
-  label: string
-  note: string
-}) {
-  return (
-    <div className="min-w-0 rounded-[12px] bg-muted/50 px-4 py-3">
-      <p className="truncate text-xs font-semibold text-muted-foreground">
-        {label}
-      </p>
-      <p className="mt-1 flex items-baseline gap-1">
-        <span className="text-2xl font-bold tracking-[-0.02em] tabular-nums">
-          {value}
-        </span>
-        <span className="text-sm text-muted-foreground">{unit}</span>
-      </p>
-      <p className="mt-0.5 truncate text-[11px] text-muted-foreground tabular-nums">
-        {note}
-      </p>
-    </div>
   )
 }
 
@@ -258,52 +230,24 @@ function Tile({
  */
 function Trend({
   months,
-  peak,
 }: {
   months: { key: string; label: string; count: number }[]
-  peak: number
 }) {
   return (
     <figure className="min-w-0">
       <figcaption className="mb-2 text-xs font-semibold text-muted-foreground">
         월별 발행 (최근 12개월)
       </figcaption>
-      <ul className="flex h-20 items-end gap-0.5">
-        {months.map((m) => (
-          <li
-            key={m.key}
-            className="group/bar relative flex h-full flex-1 items-end"
-          >
-            <span className="sr-only">
-              {m.key.replace("-", "년 ")}월 {m.count}건
-            </span>
-            <span
-              aria-hidden
-              className={cn(
-                "mx-auto w-full max-w-9 rounded-t-[4px]",
-                m.count ? "bg-brand-blue-700" : "bg-border"
-              )}
-              style={{ height: m.count ? `${(m.count / peak) * 100}%` : "2px" }}
-            />
-            <span
-              aria-hidden
-              className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1 -translate-x-1/2 rounded-[8px] bg-foreground px-2 py-1 text-[10px] whitespace-nowrap text-background tabular-nums opacity-0 transition-opacity duration-120 ease-[var(--ease-standard)] group-hover/bar:opacity-100"
-            >
-              {m.key} · {m.count}건
-            </span>
-          </li>
-        ))}
-      </ul>
-      <ul aria-hidden className="mt-1 flex gap-0.5">
-        {months.map((m, i) => (
-          <li
-            key={m.key}
-            className="flex-1 text-center text-[10px] text-muted-foreground tabular-nums"
-          >
-            {i % 3 === 0 || i === months.length - 1 ? m.label : ""}
-          </li>
-        ))}
-      </ul>
+      <MiniBars
+        bars={months.map((m, i) => ({
+          key: m.key,
+          // 눈금을 다 적으면 서로 붙어 읽히지 않는다. 석 달마다와 마지막 달만.
+          label: i % 3 === 0 || i === months.length - 1 ? m.label : "",
+          value: m.count,
+          tooltip: `${m.key} · ${m.count}건`,
+          sr: `${m.key.replace("-", "년 ")}월 ${m.count}건`,
+        }))}
+      />
     </figure>
   )
 }
