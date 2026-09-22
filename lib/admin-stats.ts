@@ -19,6 +19,8 @@ export interface VisitStats {
   today: { views: number; visitors: number }
   daily: { date: string; views: number; visitors: number }[]
   topPaths: { path: string; views: number; visitors: number }[]
+  /** 글별. 한국어판·영문판을 한 글로 합쳐 센다. 방문이 없는 글은 없다 */
+  posts: { id: string; views: number; visitors: number }[]
   referrers: { host: string; views: number }[]
   devices: { device: string; views: number }[]
 }
