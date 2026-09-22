@@ -45,7 +45,7 @@ export function LibraryListPage({
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item, i) => (
               <BlurFade key={item.id} inView delay={i * 0.06}>
-                <NewsCard item={item} lang={lang} />
+                <NewsCard item={item} lang={lang} pinnedLabel={content.ui.pinned} />
               </BlurFade>
             ))}
           </div>

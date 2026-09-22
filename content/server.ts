@@ -20,8 +20,9 @@ const API =
 /** 캐시 태그. `/api/revalidate` 가 이 이름으로 비운다. */
 export const POSTS_TAG = "posts"
 
-interface PostDto extends Omit<Post, "thumbnail"> {
+interface PostDto extends Omit<Post, "thumbnail" | "pinned"> {
   position: number
+  pinned?: boolean
   thumbnail: string | null
   updatedAt: string
 }
@@ -31,6 +32,9 @@ function fromDto(dto: PostDto): Post {
     id: dto.id,
     // 옛 응답에는 없다 — 그때는 전부 뉴스였다.
     category: dto.category === "library" ? "library" : "news",
+    // 고정을 모르는 옛 Omnis 가 응답하면 없다. 그때는 고정되지 않은 것으로 본다 —
+    // 사이트가 Omnis 보다 먼저 배포돼도 목록이 깨지지 않는다.
+    pinned: dto.pinned === true,
     date: dto.date,
     sourceLang: dto.sourceLang,
     thumbnail: dto.thumbnail ?? "",
@@ -112,6 +116,7 @@ function toNewsItem(post: Post, lang: Lang): NewsItem {
     image: locale?.thumbnail || post.thumbnail,
     summary: locale?.summary || undefined,
     hasArticle: article,
+    pinned: post.pinned,
     // 본문이 있으면 사이트 안으로. 본문이 없는 글은 쓸 수 있는 원문 주소가 있을 때만 밖으로 보낸다.
     href:
       (article ? null : post.externalHref ? externalArticleHref(post.externalHref) : null) ??

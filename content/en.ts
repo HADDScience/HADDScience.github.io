@@ -93,6 +93,8 @@ export const en: SiteContent = {
     intendedUse: "Use",
     sampleAvailable: "Sample available",
     sampleUnavailable: "Sample unavailable",
+    // 한글 쪽과 같은 말이다 — 브랜드 표기라 번역하지 않는다.
+    pinned: "HADD PICK",
     mainLine: "Tel",
     fax: "Fax",
     inquirySubjectPrefix: "Website enquiry",

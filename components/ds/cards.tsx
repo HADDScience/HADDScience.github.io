@@ -6,6 +6,7 @@ import { Badge, SurfaceCard, Tag } from "@/components/ds/primitives"
 import { Lens } from "@/components/ui/lens"
 import { MagicCard } from "@/components/ui/magic-card"
 import { localePath, type Lang } from "@/content"
+import { cn } from "@/lib/utils"
 import type {
   NewsItem,
   ProductVariant,
@@ -118,10 +119,13 @@ export function NewsCard({
   item,
   lang,
   layout = "card",
+  pinnedLabel,
 }: {
   item: NewsItem
   lang: Lang
   layout?: "card" | "row"
+  /** `ui.pinned` — 고정한 글에만 쓴다. 없으면 배지 없이 강조만 한다. */
+  pinnedLabel?: string
 }) {
   // 카드뉴스를 이관한 글은 사이트 내부 상세 페이지로, 나머지는 아임웹 원문으로 보낸다.
   const external = item.href.startsWith("http")
@@ -147,9 +151,14 @@ export function NewsCard({
           />
         </div>
         <div className="min-w-0 flex-1">
-          <time className="font-mono text-xs text-muted-foreground">
-            {item.date}
-          </time>
+          <div className="flex items-center gap-2">
+            <time className="font-mono text-xs text-muted-foreground">
+              {item.date}
+            </time>
+            {item.pinned && pinnedLabel ? (
+              <Badge tone="brand">{pinnedLabel}</Badge>
+            ) : null}
+          </div>
           <p className="mt-1 line-clamp-2 font-semibold text-balance group-hover:text-primary">
             {item.title}
           </p>
@@ -165,7 +174,15 @@ export function NewsCard({
   }
 
   return (
-    <SurfaceCard interactive className="overflow-hidden p-0">
+    /* 고정한 글은 크기를 키우지 않고 테두리·그림자로만 구분한다. 첫 줄만 넓게 쓰면
+       그리드 리듬이 깨지고, 화면 폭에 따라 배치가 달라져 예측하기 어렵다. */
+    <SurfaceCard
+      interactive
+      className={cn(
+        "overflow-hidden p-0",
+        item.pinned && "border-2 border-brand-blue-700 shadow-ds-brand"
+      )}
+    >
       <Link href={href} {...linkProps} className="group block h-full">
         <div className="relative aspect-[16/10] overflow-hidden bg-muted">
           <Image
@@ -175,6 +192,11 @@ export function NewsCard({
             sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
             className="object-cover"
           />
+          {item.pinned && pinnedLabel ? (
+            <Badge tone="brand" className="absolute top-3 left-3 shadow-ds-xs">
+              {pinnedLabel}
+            </Badge>
+          ) : null}
         </div>
         <div className="grid gap-2 p-5">
           <time className="font-mono text-xs text-muted-foreground">
