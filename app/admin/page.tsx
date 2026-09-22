@@ -25,6 +25,7 @@ import {
 import { DeckEditor } from "@/components/admin/deck-editor"
 import { PostEditor } from "@/components/admin/post-editor"
 import { SignIn } from "@/components/admin/sign-in"
+import { SiteStats } from "@/components/admin/site-stats"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useAdminSession } from "@/hooks/use-admin-session"
@@ -288,6 +289,8 @@ function Workspace({
           {tab === "library" ? "새 라이브러리 글" : "새 기사"}
         </Button>
       </div>
+
+      {index ? <SiteStats cfg={cfg} posts={posts} /> : null}
 
       {index ? (
         <ContentStats

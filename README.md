@@ -34,6 +34,7 @@ Vercel 프로젝트 `haddscience` 하나다. 한 도메인 `haddscience.vercel.a
 | `SITE_URL` | sitemap · robots 의 절대 주소 (기본 `https://haddscience.com`) |
 | `OMNIS_API_BASE` | 기사를 읽는 Omnis API (기본 `https://omnis-hadd.vercel.app/omnis/api/website`) |
 | `REVALIDATE_SECRET` | Omnis 가 저장 뒤 `/api/revalidate/` 를 부를 때 쓰는 비밀. Omnis 의 `WEBSITE_REVALIDATE_SECRET` 과 같은 값 |
+| `WEBSITE_VISIT_SECRET` | 방문 기록을 Omnis 로 넘길 때 쓰는 비밀. Omnis 의 같은 이름 변수와 같은 값. **없으면 집계가 조용히 멈춘다**(화면은 멀쩡하다) |
 
 2026-09-07 까지는 정적 export 를 GitHub Pages(컨펌)와 Synology(실서비스)에 올렸다. 기사가
 Omnis 의 DB 로 가면서 서버 렌더가 필요해져 그 둘은 끝났다. 실도메인 `haddscience.com` 은
@@ -235,6 +236,30 @@ DB"). 관리 화면이 Omnis SSO 로 옮겨 가면서 브라우저가 GitHub 토
 
 NAS 가 꺼지면 사진이 안 나오는 문제는 Omnis 쪽 미디어 경로가 `immutable` 1년 캐시를 주어
 Vercel 엣지가 막는다 — 사진 이름이 업로드마다 고유해서 가능하다.
+
+## 방문 통계
+
+2026-09-22 부터 방문을 센다. 그전에는 아무것도 모으지 않았다 — `@vercel/analytics` 도 GA 도
+없었고 Vercel Web Analytics 도 꺼져 있었다. **그래서 숫자는 그날부터다.**
+
+```
+공개 페이지 <VisitBeacon>  →  POST /api/hit  →  Omnis POST /api/website/visits  →  Neon
+관리 화면                  →  Omnis GET /api/website/stats (SSO)
+```
+
+설계의 정본은 Omnis 의 `mydocs/plans/2026-09-22-website-visit-stats.md` 다. 이 저장소가 맡는
+것은 비콘과 전달, 그리고 관리 화면의 표시뿐이다.
+
+| 결정 | 이유 |
+| --- | --- |
+| **쿠키를 쓰지 않는다** | 방문자 구분은 `HMAC(비밀, KST날짜+IP+UA)` 앞 16바이트. 날짜가 키에 들어가 어제와 오늘을 이을 수 없다. 동의 배너가 필요 없고 IP 원본은 어디에도 남지 않는다 |
+| **IP·UA 는 Omnis 로 보내지 않는다** | `/api/hit` 에서 해시를 만들고 버린다. 받지 않으면 샐 수도 없다 |
+| **서버가 아니라 브라우저가 알린다** | 미들웨어에서 세면 크롤러까지 세고 페이지 응답이 느려진다. 비콘은 자바스크립트가 돌아야 오므로 봇 대부분이 애초에 오지 않는다. 대신 JS 를 끈 방문은 못 센다 |
+| **관리 화면은 세지 않는다** | 비콘은 `app/[lang]/layout.tsx` 에만 있다. `/admin` 은 레이아웃이 따로다 |
+| **질의문자를 떼고 보낸다** | `?utm=…`·`#…` 은 통계에 쓸모가 없고 개인을 가리키는 값이 붙어 오기도 한다 |
+
+거르는 것: 봇 UA · 프리페치(`Sec-Purpose`) · 다른 오리진에서 온 요청 · `/ko`·`/en` 밖의 경로.
+무엇에 걸렸든 응답은 똑같이 204 다 — 어느 조건에 걸렸는지 알려 주면 피해 가기 쉬워진다.
 
 ## 콘텐츠 관리 (`/admin`)
 

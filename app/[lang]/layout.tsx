@@ -6,6 +6,7 @@ import { fontMono, pretendard } from "../fonts"
 import { Footer } from "@/components/nav/footer"
 import { NavBar } from "@/components/nav/nav-bar"
 import { ThemeProvider } from "@/components/theme-provider"
+import { VisitBeacon } from "@/components/visit-beacon"
 import { AVAILABLE_LANGS, isLang } from "@/content"
 import { getContent } from "@/content/server"
 import { IS_REVIEW_BUILD } from "@/lib/site-env"
@@ -79,6 +80,8 @@ export default async function LangLayout({
             <main className="flex-1">{children}</main>
             <Footer lang={lang} content={content} />
           </div>
+          {/* 방문 집계. 공개 페이지에만 있다 — 관리 화면은 레이아웃이 따로라 세지 않는다 */}
+          <VisitBeacon />
         </ThemeProvider>
       </body>
     </html>
