@@ -102,12 +102,225 @@ export const en: SiteContent = {
 
   legal: {
     breadcrumb: "LEGAL",
-    termsHeading: "Terms text still to be migrated",
-    termsBody:
-      "Please copy the terms and conditions from the site currently in operation. This is a legally binding document, so no wording has been drafted here.",
-    privacyHeading: "Privacy policy text still to be migrated",
-    privacyBody:
-      "The contact form collects a name, email address and phone number, so the privacy policy from the current site must be migrated before launch. This is a legally binding document, so no wording has been drafted here.",
+    effectiveLabel: "Effective from",
+
+    /**
+     * 한국어판이 정본이다. 분쟁이 생기면 한국어판이 우선한다는 조항을 두 문서 모두에
+     * 넣어 두었다 — 번역이 조항의 뜻을 바꿀 수 있기 때문이다.
+     */
+    privacy: {
+      effectiveFrom: "2026-09-22",
+      intro:
+        "HADD SCIENCE (\"the Company\") processes personal information collected through haddscience.com in accordance with the Personal Information Protection Act of the Republic of Korea and other applicable laws. This policy explains what we collect, why, how we handle it and when we delete it. Where this translation differs from the Korean version, the Korean version governs.",
+      sections: [
+        {
+          title: "1. What we collect and why",
+          paragraphs: [
+            "The contact form is the only place on this site where we collect personal information. There is no sign-up and no payment function, and we do not gather personal information by any other route.",
+          ],
+          table: {
+            head: ["Source", "Items", "Purpose", "Retention"],
+            rows: [
+              [
+                "Contact form (required)",
+                "Name, email address, message",
+                "Acknowledging and answering the enquiry",
+                "3 years from the date received",
+              ],
+              [
+                "Contact form (optional)",
+                "Organization, phone number, enquiry type",
+                "Reaching you, and advising on quotes and products",
+                "3 years from the date received",
+              ],
+              [
+                "Collected automatically on submission",
+                "IP address, browser information (User-Agent), time of submission",
+                "Blocking bulk and duplicate submissions by automated programs",
+                "3 years from the date received",
+              ],
+            ],
+          },
+        },
+        {
+          title: "2. How an enquiry is handled",
+          paragraphs: [
+            "An enquiry first lands in the inbox of the Company's internal system. Only after a member of staff has read it is it moved into our customer and quotation records. An enquiry that is never moved does not become a customer record, and it is deleted from the inbox once the retention period ends.",
+            "If an enquiry leads to a quotation, the information is from that point held as the record of a trading counterparty and follows the periods in section 6.",
+          ],
+        },
+        {
+          title: "3. Disclosure to third parties",
+          paragraphs: [
+            "We do not disclose your personal information to third parties. The exception is where a law specifically requires it, or where an investigative authority requests it through the procedure that the law prescribes.",
+          ],
+        },
+        {
+          title: "4. Processors and transfer outside Korea",
+          paragraphs: [
+            "The Company does not run its own servers. It uses the providers below, and your enquiry is stored outside Korea as part of that arrangement.",
+          ],
+          table: {
+            head: ["Recipient", "Work entrusted", "Items transferred", "Country of storage", "When and how"],
+            rows: [
+              [
+                "Vercel Inc. (United States)",
+                "Hosting the website and internal system, and serving requests",
+                "Everything entered in the contact form",
+                "United States — requests are served from the Seoul region. Vercel does not store the enquiry itself, but access logs (including the IP address) are retained.",
+                "Sent over the network at the moment you submit the form",
+              ],
+              [
+                "Neon Inc. (United States)",
+                "Holding the enquiry database",
+                "Everything entered in the contact form, plus the automatically collected items",
+                "Singapore",
+                "Sent and stored at the moment the enquiry is received",
+              ],
+            ],
+          },
+          list: [
+            "Retention by the recipient: until the Company ends the arrangement or deletes the information.",
+            "You may refuse the transfer of your personal information outside Korea. To do so, contact us by phone or email (section 9) instead of using the form.",
+            "An enquiry submitted through the form cannot be handled without this transfer, so if you refuse it you cannot use the form. Reaching us by any other means remains entirely open to you.",
+          ],
+        },
+        {
+          title: "5. Deletion",
+          paragraphs: [
+            "We delete personal information without delay once the retention period has passed or the purpose has been fulfilled. Electronic records are deleted by a method that makes them unrecoverable.",
+          ],
+        },
+        {
+          title: "6. Retention required by law",
+          paragraphs: [
+            "Notwithstanding the periods above, where the following laws require a record to be kept, we keep it for the period they set.",
+          ],
+          list: [
+            "Act on Consumer Protection in Electronic Commerce — records of contracts and withdrawal of offers: 5 years; records of payment and supply of goods: 5 years; records of consumer complaints and dispute resolution: 3 years",
+            "Framework Act on National Taxes and Corporate Tax Act — books and supporting documents for transactions: 5 years",
+          ],
+        },
+        {
+          title: "7. Your rights",
+          paragraphs: [
+            "You may at any time ask to see, correct or delete your personal information, or ask us to stop processing it. Contact us using section 9 and we will act without delay and tell you the outcome.",
+            "You may also act through a representative, who should provide a letter of authority.",
+          ],
+        },
+        {
+          title: "8. Security measures",
+          list: [
+            "All traffic to this site and to the internal system is encrypted with HTTPS.",
+            "Access to the enquiry inbox is limited to employees signed in with a company account, and permissions are kept to the minimum the work requires.",
+            "This site uses no tracking or advertising cookies and no analytics tools. Only your display theme (light or dark) is stored in your browser, and that value is never sent to our servers.",
+          ],
+        },
+        {
+          title: "9. Privacy officer and contact",
+          paragraphs: [
+            "Please direct any question, complaint or request for redress concerning personal information to the contact below. We respond and act without delay.",
+          ],
+          list: [
+            "Privacy officer: Chaejung Heo (CEO)",
+            "Email: neuroheo@haddscience.com",
+            "Phone: +82 31 8055 3780",
+          ],
+        },
+        {
+          title: "10. Where else to turn",
+          paragraphs: [
+            "If you need advice or redress for an infringement of your personal information, you may contact the following bodies in Korea.",
+          ],
+          list: [
+            "Personal Information Dispute Mediation Committee — 1833-6972 (www.kopico.go.kr)",
+            "Privacy Infringement Report Centre — 118 (privacy.kisa.or.kr)",
+            "Supreme Prosecutors' Office, Cyber Investigation Division — 1301 (www.spo.go.kr)",
+            "National Police Agency, Cyber Bureau — 182 (ecrm.police.go.kr)",
+          ],
+        },
+        {
+          title: "11. Changes to this policy",
+          paragraphs: [
+            "We announce any change on this page at least 7 days before it takes effect, and at least 30 days before where the change is to your disadvantage.",
+          ],
+        },
+      ],
+    },
+
+    terms: {
+      effectiveFrom: "2026-09-22",
+      intro:
+        "These terms govern the use of haddscience.com (\"the Site\"), operated by HADD SCIENCE (\"the Company\"). The Site introduces the Company and its products and receives enquiries; it has no sign-up and no payment function. Where this translation differs from the Korean version, the Korean version governs.",
+      sections: [
+        {
+          title: "1. Definitions",
+          list: [
+            "\"Site\" means haddscience.com and its pages, operated by the Company.",
+            "\"User\" means anyone who visits the Site and uses what it offers under these terms.",
+            "\"Content\" means all material on the Site, including text, photographs, figures, video, design and trade marks.",
+          ],
+        },
+        {
+          title: "2. Effect and amendment",
+          paragraphs: [
+            "These terms take effect when posted on the Site. The Company may amend them within the limits of applicable law, announcing any change on this page at least 7 days before it takes effect, and at least 30 days before where the change is to the User's disadvantage.",
+          ],
+        },
+        {
+          title: "3. What the Site offers",
+          list: [
+            "Information about the Company and its products",
+            "News and HADD:LIBRARY material",
+            "Receipt of consultation and quotation requests through the contact form",
+          ],
+        },
+        {
+          title: "4. Availability",
+          paragraphs: [
+            "The Company aims to keep the Site available throughout the year. It may suspend all or part of the Site temporarily for maintenance or replacement of equipment, loss of communications, natural disaster or similar unavoidable cause. Where this can be foreseen we announce it on the Site; where it cannot, we announce it afterwards.",
+          ],
+        },
+        {
+          title: "5. Using the contact form",
+          paragraphs: [
+            "You may request a consultation or a quotation through the contact form. A member of staff reads the enquiry and replies; receipt of an enquiry does not itself form a contract or fix a quotation.",
+            "The handling of personal information is governed by our Privacy policy.",
+          ],
+          list: [
+            "You must not use another person's name or contact details, or enter information you know to be untrue.",
+            "The Company may decline to reply to advertising, abusive messages, or bulk submissions made by automated programs.",
+          ],
+        },
+        {
+          title: "6. Rights in the Content",
+          paragraphs: [
+            "Copyright and other intellectual property rights in the Content belong to the Company or to the rightful owner. You may not reproduce, transmit, publish, distribute or broadcast the Content, or otherwise use it for commercial purposes, without the Company's prior consent.",
+            "Ordinary use for introduction, reporting or research, with attribution, is not restricted by the above.",
+          ],
+        },
+        {
+          title: "7. About the product information",
+          paragraphs: [
+            "Specifications, methods of use and research results shown on the Site are for research purposes. They are not a basis for medical diagnosis or treatment. Results vary with actual conditions of use, so please consult the Company before applying them to your own work.",
+            "Prices and stock are as at the time stated on the Site. Where a formal quotation exists, the quotation prevails.",
+          ],
+        },
+        {
+          title: "8. Limits of liability",
+          paragraphs: [
+            "The Company works to keep the information on the Site accurate, but is not liable for loss arising from causes beyond its control, such as natural disaster or communications failure.",
+            "The Company is not responsible for the content of other sites linked from the Site.",
+          ],
+        },
+        {
+          title: "9. Governing law and jurisdiction",
+          paragraphs: [
+            "These terms are interpreted under the law of the Republic of Korea. Any dispute between the Company and a User arising from use of the Site is to be brought before the court having jurisdiction under the Civil Procedure Act.",
+          ],
+        },
+      ],
+    },
   },
 
   home: {

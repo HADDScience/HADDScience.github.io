@@ -11,6 +11,28 @@ export interface NavItem {
   children?: NavChild[]
 }
 
+/**
+ * 약관·처리방침처럼 법적 효력이 있는 문서 한 편.
+ *
+ * 본문을 마크다운 문자열 하나로 두지 않고 절(節)로 쪼갠 이유는, 조항을 고칠 때 어디를
+ * 고쳤는지 diff 에 드러나게 하려는 것이다. 이 문서들은 "언제 무엇이 바뀌었는가"가
+ * 내용만큼 중요하다.
+ */
+export interface LegalDoc {
+  /** 이 판이 효력을 갖는 날. `YYYY-MM-DD`. */
+  effectiveFrom: string
+  intro: string
+  sections: LegalSection[]
+}
+
+export interface LegalSection {
+  title: string
+  paragraphs?: string[]
+  list?: string[]
+  /** 수집 항목·위탁처럼 줄과 칸으로 읽는 편이 나은 절. */
+  table?: { head: string[]; rows: string[][] }
+}
+
 export interface HeroSlide {
   eyebrow?: string
   title: string[]
@@ -335,10 +357,9 @@ export interface SiteContent {
   }
   legal: {
     breadcrumb: string
-    termsHeading: string
-    termsBody: string
-    privacyHeading: string
-    privacyBody: string
+    effectiveLabel: string
+    privacy: LegalDoc
+    terms: LegalDoc
   }
   home: {
     heroSlides: HeroSlide[]

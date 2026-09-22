@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { PageHeader } from "@/components/ds/page-header"
-import { Container, Section, SurfaceCard } from "@/components/ds/primitives"
+import { LegalDocument } from "@/components/ds/legal-doc"
+import { Container, Section } from "@/components/ds/primitives"
 import { isLang } from "@/content"
 import { getContent } from "@/content/server"
 
@@ -30,11 +31,10 @@ export default async function PrivacyPage({
       <PageHeader breadcrumb={c.legal.breadcrumb} title={c.footer.privacy} />
       <Section>
         <Container narrow>
-          {/* 문의 폼이 개인정보를 수집하므로 공개 전에 반드시 채워야 하는 페이지다. */}
-          <SurfaceCard variant="flat" className="grid gap-3 p-8">
-            <h2 className="text-xl font-bold">{c.legal.privacyHeading}</h2>
-            <p className="text-muted-foreground">{c.legal.privacyBody}</p>
-          </SurfaceCard>
+          <LegalDocument
+            doc={c.legal.privacy}
+            effectiveLabel={c.legal.effectiveLabel}
+          />
         </Container>
       </Section>
     </>
