@@ -116,7 +116,7 @@ export const en: SiteContent = {
         {
           title: "1. What we collect and why",
           paragraphs: [
-            "The contact form is the only place on this site where we collect personal information. There is no sign-up and no payment function, and we do not gather personal information by any other route.",
+            "There are two places on this site where we collect information about you: the contact form and our visit statistics. There is no sign-up and no payment function, and we do not gather personal information by any other route.",
           ],
           table: {
             head: ["Source", "Items", "Purpose", "Retention"],
@@ -139,24 +139,38 @@ export const en: SiteContent = {
                 "Blocking bulk and duplicate submissions by automated programs",
                 "3 years from the date received",
               ],
+              [
+                "Visit statistics (collected automatically)",
+                "Page visited, language, device type (mobile or desktop), referring domain, visitor hash",
+                "Understanding which pages are read and how often",
+                "400 days from the date of the visit",
+              ],
             ],
           },
         },
         {
-          title: "2. How an enquiry is handled",
+          title: "2. About the visitor hash",
           paragraphs: [
-            "An enquiry first lands in the inbox of the Company's internal system. Only after a member of staff has read it is it moved into our customer and quotation records. An enquiry that is never moved does not become a customer record, and it is deleted from the inbox once the retention period ends.",
-            "If an enquiry leads to a quotation, the information is from that point held as the record of a trading counterparty and follows the periods in section 6.",
+            "The visitor hash in our visit statistics is derived from your IP address and browser information together with the current date. The IP address and browser information themselves are never stored — they are discarded the moment the hash is made, and they are not passed to our internal system.",
+            "Because the date goes into the hash, the same person gets a different value once the day changes. We therefore cannot join yesterday's visits to today's, or follow one person's history across days. This site sets no cookie to recognise you.",
+            "Use of the admin pages (/admin) is not counted.",
           ],
         },
         {
-          title: "3. Disclosure to third parties",
+          title: "3. How an enquiry is handled",
+          paragraphs: [
+            "An enquiry first lands in the inbox of the Company's internal system. Only after a member of staff has read it is it moved into our customer and quotation records. An enquiry that is never moved does not become a customer record, and it is deleted from the inbox once the retention period ends.",
+            "If an enquiry leads to a quotation, the information is from that point held as the record of a trading counterparty and follows the periods in section 7.",
+          ],
+        },
+        {
+          title: "4. Disclosure to third parties",
           paragraphs: [
             "We do not disclose your personal information to third parties. The exception is where a law specifically requires it, or where an investigative authority requests it through the procedure that the law prescribes.",
           ],
         },
         {
-          title: "4. Processors and transfer outside Korea",
+          title: "5. Processors and transfer outside Korea",
           paragraphs: [
             "The Company does not run its own servers. It uses the providers below, and your enquiry is stored outside Korea as part of that arrangement.",
           ],
@@ -172,8 +186,8 @@ export const en: SiteContent = {
               ],
               [
                 "Neon Inc. (United States)",
-                "Holding the enquiry database",
-                "Everything entered in the contact form, plus the automatically collected items",
+                "Holding the enquiry and visit-statistics databases",
+                "Everything entered in the contact form, plus the automatically collected items and the visit-statistics items",
                 "Singapore",
                 "Sent and stored at the moment the enquiry is received",
               ],
@@ -181,18 +195,18 @@ export const en: SiteContent = {
           },
           list: [
             "Retention by the recipient: until the Company ends the arrangement or deletes the information.",
-            "You may refuse the transfer of your personal information outside Korea. To do so, contact us by phone or email (section 9) instead of using the form.",
+            "You may refuse the transfer of your personal information outside Korea. To do so, contact us by phone or email (section 10) instead of using the form.",
             "An enquiry submitted through the form cannot be handled without this transfer, so if you refuse it you cannot use the form. Reaching us by any other means remains entirely open to you.",
           ],
         },
         {
-          title: "5. Deletion",
+          title: "6. Deletion",
           paragraphs: [
             "We delete personal information without delay once the retention period has passed or the purpose has been fulfilled. Electronic records are deleted by a method that makes them unrecoverable.",
           ],
         },
         {
-          title: "6. Retention required by law",
+          title: "7. Retention required by law",
           paragraphs: [
             "Notwithstanding the periods above, where the following laws require a record to be kept, we keep it for the period they set.",
           ],
@@ -202,22 +216,23 @@ export const en: SiteContent = {
           ],
         },
         {
-          title: "7. Your rights",
+          title: "8. Your rights",
           paragraphs: [
-            "You may at any time ask to see, correct or delete your personal information, or ask us to stop processing it. Contact us using section 9 and we will act without delay and tell you the outcome.",
+            "You may at any time ask to see, correct or delete your personal information, or ask us to stop processing it. Contact us using section 10 and we will act without delay and tell you the outcome.",
             "You may also act through a representative, who should provide a letter of authority.",
           ],
         },
         {
-          title: "8. Security measures",
+          title: "9. Security measures",
           list: [
             "All traffic to this site and to the internal system is encrypted with HTTPS.",
             "Access to the enquiry inbox is limited to employees signed in with a company account, and permissions are kept to the minimum the work requires.",
-            "This site uses no tracking or advertising cookies and no analytics tools. Only your display theme (light or dark) is stored in your browser, and that value is never sent to our servers.",
+            "This site uses no external analytics or advertising tools such as Google Analytics. We compile our visit statistics ourselves and collect nothing beyond what sections 1 and 2 describe.",
+            "This site sets no cookies. Only your display theme (light or dark) is stored in your browser, and that value is never sent to our servers.",
           ],
         },
         {
-          title: "9. Privacy officer and contact",
+          title: "10. Privacy officer and contact",
           paragraphs: [
             "Please direct any question, complaint or request for redress concerning personal information to the contact below. We respond and act without delay.",
           ],
@@ -228,7 +243,7 @@ export const en: SiteContent = {
           ],
         },
         {
-          title: "10. Where else to turn",
+          title: "11. Where else to turn",
           paragraphs: [
             "If you need advice or redress for an infringement of your personal information, you may contact the following bodies in Korea.",
           ],
@@ -240,7 +255,7 @@ export const en: SiteContent = {
           ],
         },
         {
-          title: "11. Changes to this policy",
+          title: "12. Changes to this policy",
           paragraphs: [
             "We announce any change on this page at least 7 days before it takes effect, and at least 30 days before where the change is to your disadvantage.",
           ],
