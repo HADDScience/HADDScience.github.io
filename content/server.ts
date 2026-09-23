@@ -14,9 +14,24 @@ import type { NewsItem, Post, PostLocale, SiteContent } from "./types"
  *
  * 기사는 Omnis 의 `/api/website/posts` 가 단일 출처다. 예전에는 `content/data/news/*.json`
  * 을 빌드 때 읽었는데(git 이 DB), 관리 화면이 Omnis 로 옮겨 가면서 저장소도 그쪽 DB 로
- * 갔다. 여기서는 60초 캐시로 읽고, 저장이 일어나면 Omnis 가 `/api/revalidate` 를 불러
+ * 갔다. 여기서는 30분 캐시로 읽고, 저장이 일어나면 Omnis 가 `/api/revalidate` 를 불러
  * 즉시 갈아 끼운다.
  */
+
+/**
+ * 기사 목록을 다시 받는 주기(초).
+ *
+ * 2026-09-23 까지 60초였다. 이 fetch 가 Omnis → Neon 을 부르는데, Neon 은 요청이 없으면
+ * 5분 뒤 잠들고 깨어 있던 시간만큼 요금이 나온다(Launch 플랜, 월 기본료 없음). 60초면
+ * 방문이 이어지는 내내 1분에 한 번 깨워 사실상 잠들지 못한다 — 그날 무료 한도(100
+ * CU-시간)를 다 써서 Omnis 와 홈페이지가 함께 멈췄다(`mydocs/troubleshootings/
+ * vercel-deploy-traps.md`).
+ *
+ * 저장 즉시 반영은 이 주기가 아니라 웹훅(`/api/revalidate` 가 `posts` 태그를 비운다)이
+ * 맡으므로 주기를 늘려도 편집 결과가 늦게 뜨지 않는다. 이 주기가 실제로 쓰이는 것은
+ * 웹훅이 실패했을 때의 안전망뿐이다 — 그때 늦어도 30분 안에는 맞춰진다.
+ */
+const POSTS_REVALIDATE_SECONDS = 30 * 60
 
 /** 캐시 태그. `/api/revalidate` 가 이 이름으로 비운다. */
 export const POSTS_TAG = "posts"
@@ -59,7 +74,7 @@ function fromDto(dto: PostDto): Post {
 export async function listPosts(): Promise<Post[]> {
   try {
     const res = await omnisFetch(`${API}/posts`, {
-      next: { revalidate: 60, tags: [POSTS_TAG] },
+      next: { revalidate: POSTS_REVALIDATE_SECONDS, tags: [POSTS_TAG] },
     })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const dtos = (await res.json()) as PostDto[]

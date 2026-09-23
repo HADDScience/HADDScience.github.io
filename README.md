@@ -75,7 +75,7 @@ components/
 content/
   types.ts              SiteContent 인터페이스 — 언어별 딕셔너리의 계약
   ko.ts / en.ts         카피
-  server.ts             서버 전용 로더. 기사는 Omnis API 에서 60초 캐시로 읽는다
+  server.ts             서버 전용 로더. 기사는 Omnis API 에서 30분 캐시로 읽는다(저장 즉시 반영은 웹훅)
   index.ts              언어 해석 · localePath
 app/api/revalidate/     Omnis 가 기사를 저장하면 부른다. 기사 캐시를 즉시 비운다
 app/robots.ts · sitemap.ts
@@ -86,7 +86,7 @@ scripts/
 ### 렌더 방식
 
 뉴스 페이지는 서버에서 렌더하고 ISR 로 캐시한다. `content/server.ts` 가 Omnis 의
-`/api/website/posts` 를 `revalidate: 60` · 태그 `posts` 로 읽고, Omnis 가 저장·삭제 뒤
+`/api/website/posts` 를 `revalidate: 1800`(30분) · 태그 `posts` 로 읽고, Omnis 가 저장·삭제 뒤
 `/api/revalidate/` 를 불러 그 태그를 비운다. 그래서 관리 화면에서 저장하면 곧바로 반영된다.
 
 기사 사진은 `/omnis/api/website/media/<id>/<name>` 상대 경로다. 배포에서는 `vercel.json` 이,

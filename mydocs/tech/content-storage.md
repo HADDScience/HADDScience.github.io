@@ -15,7 +15,7 @@ last_verified: 2026-09-22
 |---|---|
 | 기사 본문·덱·순서·고정 | Omnis Neon `WebsitePost` |
 | 사진 | NAS `/HADD Science/옴니스 첨부파일/files/website/<id>/<name>` · 목록은 `WebsiteMedia` |
-| 사이트가 읽는 곳 | `content/server.ts` → `GET {OMNIS_API_BASE}/posts` (60초 캐시, 태그 `posts`) |
+| 사이트가 읽는 곳 | `content/server.ts` → `GET {OMNIS_API_BASE}/posts` (30분 캐시 — 2026-09-23 까지 60초, 태그 `posts`) |
 | 사진 URL | `/omnis/api/website/media/<id>/<name>` 상대 경로. `next.config.ts` 의 rewrite 가 Omnis 로 넘긴다 |
 | 즉시 반영 | Omnis 가 저장·삭제 뒤 `POST /api/revalidate/` (비밀 `REVALIDATE_SECRET`) → 태그 `posts` 비움 |
 | 관리 화면 쓰기 | `lib/admin-posts.ts` — 사진 `POST /media` → URL 치환 → `PUT /posts/<id>` |
