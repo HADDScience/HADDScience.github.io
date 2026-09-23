@@ -2,7 +2,7 @@
 kind: reference
 status: active
 canonical: mydocs/troubleshootings/vercel-deploy-traps.md
-last_verified: 2026-09-15
+last_verified: 2026-09-23
 ---
 
 # 정적 export 를 서버 렌더로 옮기며 밟은 함정 (2026-09-07)
@@ -91,3 +91,30 @@ $ gh api repos/HADDScience/omnis/deployments
 thinkingBudget 1024, JSON 파싱 실패 시 최대 3회 재시도, 영문 결과에 한글·한자가 남은 칸은 예시("venue · on site ·
 scene")를 주며 다시 시키고, 그래도 남으면 알려진 오역만 손으로 치환. 재작성 보고서는 영문 덱의 한글·한자 잔여를
 "남은 문제"로 센다.
+
+## 업스트림이 죽은 동안 빌드가 돌면 사이트맵이 빈 채로 굳는다 (2026-09-23)
+
+기사는 Omnis API 에서 온다. `listPosts()` 는 실패하면 **빈 배열을 돌려준다** — 뉴스 한
+섹션 때문에 홈페이지 전체가 500 으로 죽지 않게 한 설계다(`content/server.ts`). 그래서
+Omnis 가 죽어 있는 동안 배포가 돌면 **기사 0건짜리 정적 산출물**이 구워진다.
+
+2026-09-23 에 실제로 그랬다. Omnis 의 Neon 이 무료 한도를 넘겨 posts API 가 500 이었고,
+그 시각에 배포가 나갔다. 업스트림이 살아난 뒤 화면은 이렇게 갈렸다.
+
+| | 복구 방식 | 결과 |
+|---|---|---|
+| 뉴스·라이브러리 목록 | ISR (`x-nextjs-stale-time: 300`) | 몇 분 안에 저절로 돌아왔다 |
+| 쪽나누기 `/news/page/2` | 같음 | 404 → 200 으로 돌아왔다 |
+| `/feed.xml` | 요청 시점 렌더 | 애초에 데이터 캐시의 옛 응답을 써서 비지 않았다 |
+| **`/sitemap.xml`** | — | **8분 넘게 `x-vercel-cache: HIT` (age 311) 로 22개에 고정** |
+
+사이트맵은 쿼리스트링·`Cache-Control: no-cache` 로도 갱신되지 않았다. 다시 배포해서
+해결했다. 빌드 출력의 revalidate 표시는 `1m` 이지만 그대로 굳어 있었다 — 정적(`○`)
+라우트라 목록 페이지(`●`)와 복구 경로가 다르다.
+
+**교훈: 업스트림이 죽은 것을 알면서 배포하지 않는다.** 이미 나갔다면 업스트림 복구 뒤
+`/sitemap.xml` 의 `<loc>` 수를 직접 세어 보고, 그대로면 다시 배포한다.
+
+```bash
+curl -s https://haddscience.com/sitemap.xml | grep -c "<loc>"   # 정상이면 300+
+```

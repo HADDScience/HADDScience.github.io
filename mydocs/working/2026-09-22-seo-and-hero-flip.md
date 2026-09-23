@@ -292,11 +292,37 @@ Omnis 에 크론은 없다(`vercel.json` 의 `crons` 가 비었다). 컴퓨트 �
 한도가 풀리면 ISR(60초)로 저절로 다시 채워진다. 배포를 다시 할 필요는 없다.
 12초 간격으로 여섯 번 다시 불러 확인했으나, API 가 500 인 동안에는 채워지지 않는다.
 
+### 복구 (2026-09-23)
+
+Neon 을 Launch(사용량 과금 · 월 기본료 없음)로 올려 한도가 풀렸다. 실측:
+
+```
+Omnis posts API                  200
+haddscience.com/omnis/...        200
+Prisma 직접 연결                  WebsitePost 153행
+
+/ko/news/        기사 링크 16개      (빈 목록 → 복구)
+/ko/news/page/2/ 404 → 200
+/feed.xml        30건
+/sitemap.xml     22개에서 안 움직임  ← 다시 배포해서 해결
+```
+
+사이트맵만 스스로 돌아오지 않았다. 함정은
+[`../troubleshootings/vercel-deploy-traps.md`](../troubleshootings/vercel-deploy-traps.md)
+맨 아래에 적었다.
+
+`app/sitemap.ts` 에 `export const revalidate = 3600` 을 넣어 볼까 했으나 **빌드 출력이
+그대로였다**(`○ /sitemap.xml  1m  1y`) — 안쪽 fetch 의 60초가 이미 라우트 값으로 잡혀
+있어 동작이 바뀌지 않는다. 동작을 바꾸지 않는 줄은 넣지 않고 되돌렸다.
+
 ## 5. 남은 것
 
 - **타사 수상자 얼굴** — 위 1절 참고. 대외 공개 전에 확인할 것.
-- **Neon 한도** — 위 4절. 유료 전환하거나 다음 결제 주기를 기다려야 한다. 이 저장소에서 할 수 있는 일은 없고,
-  풀리면 뉴스가 저절로 돌아온다.
+- ~~**Neon 한도**~~ — 해결됨(2026-09-23, Launch 전환).
+- **컴퓨트 사용량 줄이기** — Launch 는 월 기본료가 없고 깨어 있던 시간만큼 낸다. 이 사이트의 ISR 폴링
+  (`content/server.ts` 의 `revalidate: 60`)이 Omnis→Neon 을 1분에 한 번 찔러 컴퓨트를 계속 깨운다.
+  기사 저장 시 즉시 반영은 `/api/revalidate` 웹훅이 이미 하므로, 주기를 늘리면 체감 변화 없이 요금이 준다.
+  **아직 하지 않았다** — 작업지시자 판단 대기.
 - **소유확인 코드** — 아직 없다. 받아서 Vercel 환경변수에 넣고 재배포하면 태그가 나간다.
 - **`haddscience.vercel.app` 리다이렉트** — canonical 로 덮었지만 주소 자체는 살아 있다.
 - **네이버 채널** — 네이버는 자사 서비스(블로그·카페·뉴스)를 웹사이트보다 위에 놓는다.
