@@ -366,12 +366,41 @@ $ node scripts/check-hero-rotation.mjs
 이 저장소에서 Neon 을 깨우는 경로는 이제 둘이다 — 기사 목록(최대 30분에 한 번)과 방문
 비콘(`/api/hit`, 페이지를 볼 때마다 한 번 쓴다). 비콘은 묶어 보내려면 Omnis 쪽 일이다.
 
+## 7. 검색엔진 등록 (2026-09-23)
+
+작업지시자가 두 콘솔에서 코드를 받아 주었고, Vercel 운영 환경변수에 넣은 뒤 **운영 중이던 같은
+커밋을 `vercel redeploy` 로 다시 빌드**했다(로컬 폴더를 올리는 `vercel --prod` 가 아니다 —
+커밋 안 된 것이 섞이지 않는다). 재빌드 전 Omnis API 200 을 먼저 확인했다.
+
+```
+GOOGLE_SITE_VERIFICATION   production · plain (HTML 에 그대로 나가는 공개값)
+NAVER_SITE_VERIFICATION    production · plain
+
+$ curl -sL https://haddscience.com/ | grep site-verification     (/ → /ko/ 를 따라감)
+<meta name="google-site-verification" content="HeoXSi6W33NWO-vX-ffXg7HFU02kWfv4oDj16LmzLGc"/>
+<meta name="naver-site-verification" content="ce4e6800e9f7802cf7d0f2171665f2054296677b"/>
+/en/ 에도 두 줄 · sitemap <loc> 328
+```
+
+| 검색엔진 | 결과 (작업지시자 화면) |
+|---|---|
+| 구글 서치콘솔 | URL 접두어 `https://haddscience.com` · HTML 태그 방식 **소유권 확인됨** |
+| 네이버 서치어드바이저 | 소유확인 · 사이트맵 `sitemap.xml` 제출(14:14:12) · RSS `feed.xml` 제출(14:14:31) · `/ko/` 수집 요청(14:14:45) |
+
+루트가 `/ko/` 로 307 리다이렉트되는데 두 검색엔진 모두 따라가서 태그를 찾았다. HTML 파일 방식은
+필요 없었다.
+
+**태그는 환경변수가 있어야만 나간다.** 값을 지우거나 이름을 바꾼 채 배포하면 다음 재확인 때
+소유권이 풀린다(구글도 확인 화면에서 "메타태그를 삭제하지 마세요"라고 적는다).
+
 ## 5. 남은 것
 
 - ~~**타사 수상자 얼굴**~~ — 작업지시자가 괜찮다고 확인(2026-09-23).
 - ~~**Neon 한도**~~ — 해결됨(2026-09-23, Launch 전환).
 - ~~**컴퓨트 사용량 줄이기**~~ — 기사 목록 재검증 60초 → 30분(2026-09-23, 6절). 방문 비콘 묶어 보내기는 Omnis 쪽 일로 남는다.
-- **소유확인 코드** — 아직 없다. 받아서 Vercel 환경변수에 넣고 재배포하면 태그가 나간다.
+- ~~**소유확인 코드**~~ — 구글·네이버 모두 확인(2026-09-23, 7절).
+- **구글 사이트맵 제출** — 서치콘솔 → Sitemaps → `sitemap.xml`. 작업지시자 몫.
+- **며칠 뒤 확인** — 구글 「색인 생성 → 페이지」, 네이버 「리포트 → 수집 현황」. 색인까지 보통 며칠, 길면 2~3주.
 - **`haddscience.vercel.app` 리다이렉트** — canonical 로 덮었지만 주소 자체는 살아 있다.
 - **네이버 채널** — 네이버는 자사 서비스(블로그·카페·뉴스)를 웹사이트보다 위에 놓는다.
   「하드사이언스」 첫 화면을 노린다면 웹사이트 등록만으로는 부족하다.
