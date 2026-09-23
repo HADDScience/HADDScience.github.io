@@ -1,3 +1,4 @@
+import { omnisFetch } from "@/lib/omnis-fetch"
 import { OMNIS_API_BASE as API } from "@/lib/site-env"
 
 import { en } from "./en"
@@ -50,10 +51,14 @@ function fromDto(dto: PostDto): Post {
  * Omnis 가 응답하지 않으면 빈 목록을 돌려준다. 뉴스 한 섹션 때문에 회사 홈페이지 전체가
  * 500 으로 죽는 것보다 뉴스가 잠시 비는 편이 낫다. 실패 응답은 캐시되지 않으므로
  * 다음 요청이 다시 시도한다. 빌드 때도 같다 — 기사 페이지는 요청 시점에 만들어진다.
+ *
+ * **답이 없는 것과 늦는 것을 구별해야 한다.** 이 호출은 빌드가 361쪽을 만드는 재료라,
+ * 타임아웃이 없으면 한 건이 매달린 채 빌드 전체가 45분 한도까지 간다 — `omnisFetch` 가
+ * 10초에 끊고 한 번 더 시도한다.
  */
 export async function listPosts(): Promise<Post[]> {
   try {
-    const res = await fetch(`${API}/posts`, {
+    const res = await omnisFetch(`${API}/posts`, {
       next: { revalidate: 60, tags: [POSTS_TAG] },
     })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 
+import { omnisFetch } from "@/lib/omnis-fetch"
 import { OMNIS_API_BASE } from "@/lib/site-env"
 
 /**
@@ -100,9 +101,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "unavailable" }, { status: 503 })
   }
 
+  // 타임아웃이 없으면 Omnis 가 느릴 때 방문자의 폼이 끝없이 도는 상태로 남는다 —
+  // 메일 되돌림조차 보지 못한다. 기본값(10초)보다 짧게 잡는 이유는 기다리는 쪽이
+  // 사람이기 때문이다. 빌드는 20초를 견디지만 폼 앞의 방문자는 그렇지 않다.
+  // 운영 왕복은 1초대였으므로 5초는 넉넉하다. 재시도가 문의를 둘로 쌓지 않는 이유는
+  // `lib/omnis-fetch.ts` 에 적어 뒀다.
   let res: Response
   try {
-    res = await fetch(`${OMNIS_API_BASE}/inquiries`, {
+    res = await omnisFetch(`${OMNIS_API_BASE}/inquiries`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${secret}`,
@@ -120,7 +126,7 @@ export async function POST(req: NextRequest) {
         userAgent: req.headers.get("user-agent") ?? undefined,
       }),
       cache: "no-store",
-    })
+    }, 5_000)
   } catch (err) {
     console.error("[contact] Omnis 에 닿지 못했다:", err instanceof Error ? err.message : err)
     return NextResponse.json({ error: "unavailable" }, { status: 503 })
