@@ -257,8 +257,26 @@ Vercel 런타임 로그 (프로젝트 omnis-hadd, 2026-09-23 00:36~00:40 UTC)
   Can't reach database server at `ep-cool-heart-b3mtdee2-pooler.c-4.ap-southeast-1.aws.neon.tech:5432`
 ```
 
-Neon 엔드포인트는 TCP 5432 가 열려 있고(프록시는 응답한다) Omnis 앱 자체도 200 이다 —
-DB 컴퓨트 쪽 문제로 보인다.
+**DB 는 죽지 않았다. Neon 무료 한도를 넘겼다.** Prisma 가 그것을 "Can't reach database
+server"(P1001)로 바꿔 보여줘 서버가 내려간 것처럼 읽혔다. 로컬에서 같은 운영 URL 로
+Prisma 를 한 번 붙여 서버가 보낸 말을 그대로 받았다.
+
+```
+$ PROBE_URL=<운영 DATABASE_URL> node dbprobe.mjs
+Invalid `prisma.websitePost.count()` invocation:
+Error querying the database:
+  ERROR: Your account or project has exceeded the quota. Upgrade your plan to increase limits.
+```
+
+연결 자체는 멀쩡하다 — 시작 메시지를 직접 보내 보면 풀러·직결 두 엔드포인트 모두
+인증 요청(`R`)으로 답한다. 거절은 **쿼리 단계**에서 일어난다.
+
+플랜은 Vercel 마켓플레이스의 Neon **Free(`free_v3`)** — 프로젝트당 저장소 0.5GB,
+컴퓨트 100 CU-시간. Neon 프로젝트 `old-smoke-02400115`. 둘 중 어느 한도를 넘겼는지는
+쿼리가 막혀 DB 안에서 확인할 수 없다(Neon 콘솔 Usage 에서 봐야 한다).
+
+Omnis 에 크론은 없다(`vercel.json` 의 `crons` 가 비었다). 컴퓨트 시간은 평소 트래픽이
+쓴다 — 직원의 Omnis 사용, 이 사이트의 ISR 재검증(60초), 방문 비콘 쓰기.
 
 `content/server.ts` 의 `listPosts()` 는 실패하면 빈 배열을 돌려준다(뉴스 때문에 홈페이지
 전체가 500 으로 죽지 않게 한 설계다). 그래서 **DB 가 죽은 동안 빌드된 이 배포본은 뉴스·
@@ -271,13 +289,14 @@ DB 컴퓨트 쪽 문제로 보인다.
 | 뉴스·라이브러리 목록, 사이트맵의 기사 | **빈 상태** |
 | `/feed.xml` | 30건이 보인다 — 요청 시점 렌더라 Vercel 데이터 캐시의 옛 응답을 쓴다 |
 
-DB 가 살아나면 ISR(60초)로 저절로 다시 채워진다. 배포를 다시 할 필요는 없다.
+한도가 풀리면 ISR(60초)로 저절로 다시 채워진다. 배포를 다시 할 필요는 없다.
 12초 간격으로 여섯 번 다시 불러 확인했으나, API 가 500 인 동안에는 채워지지 않는다.
 
 ## 5. 남은 것
 
 - **타사 수상자 얼굴** — 위 1절 참고. 대외 공개 전에 확인할 것.
-- **Omnis DB 복구** — 위 4절. 이 저장소에서 할 수 있는 일이 없다. 복구되면 뉴스가 저절로 돌아온다.
+- **Neon 한도** — 위 4절. 유료 전환하거나 다음 결제 주기를 기다려야 한다. 이 저장소에서 할 수 있는 일은 없고,
+  풀리면 뉴스가 저절로 돌아온다.
 - **소유확인 코드** — 아직 없다. 받아서 Vercel 환경변수에 넣고 재배포하면 태그가 나간다.
 - **`haddscience.vercel.app` 리다이렉트** — canonical 로 덮었지만 주소 자체는 살아 있다.
 - **네이버 채널** — 네이버는 자사 서비스(블로그·카페·뉴스)를 웹사이트보다 위에 놓는다.
