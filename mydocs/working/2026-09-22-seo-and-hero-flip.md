@@ -218,9 +218,66 @@ $ pnpm build
 화면 확인: 1440×900 과 414×860 에서 헤드리스 크롬으로 히어로를 찍었다. 데스크톱 3열×2행,
 모바일 2열×3행, 플립 뒤에도 사진이 바로 서 있고 여섯 칸이 모두 다른 사진이다.
 
-## 4. 남은 것
+## 4. 배포 (2026-09-23)
+
+`feat/seo-and-hero-flip` 을 origin/main 위로 리베이스(다른 세션이 관리 화면 분리 커밋 5개를
+먼저 올려 두었다. `mydocs/orders/20260922.md` 한 곳이 충돌 — 두 줄을 나란히 남겼다)하고
+ff 머지 후 푸시. 품질 게이트는 리베이스한 트리에서 다시 돌렸다(363 페이지 생성).
+
+```
+b62ecb8..42cd7fa  main -> main
+```
+
+운영 확인 — 전 경로 실제 HTTP 요청.
+
+```
+/ko/ /en/ /ko/about/ /en/about/ /ko/about/team/ /ko/about/location/
+/ko/products/ /ko/products/livegel/ /ko/news/ /ko/library/ /ko/contact/
+/ko/terms/ /ko/privacy/ /en/products/livegel/ /en/news/
+/sitemap.xml /robots.txt /feed.xml /og/hadd-og.png
+/hero/tiles/w-01.webp /hero/tiles/p-18.webp /admin          → 전부 200
+
+canonical  https://haddscience.com/ko/
+hreflang   ko · en · x-default (페이지별로 자기 경로)
+JSON-LD    Organization · PostalAddress · WebSite
+og:image   https://haddscience.com/og/hadd-og.png
+```
+
+### 배포 직후 발견 — Omnis 의 DB 가 죽어 있다
+
+`/ko/news/page/2/` 가 404 이고 사이트맵 URL 이 328개에서 **22개**로 줄었다. 기사가 하나도
+없다는 뜻이다. 원인은 이 저장소가 아니다.
+
+```
+$ curl -s -o /dev/null -w "%{http_code}" https://omnis-hadd.vercel.app/api/website/posts
+500
+
+Vercel 런타임 로그 (프로젝트 omnis-hadd, 2026-09-23 00:36~00:40 UTC)
+  PrismaClientInitializationError: Invalid `prisma.websitePost.findMany()` invocation:
+  Can't reach database server at `ep-cool-heart-b3mtdee2-pooler.c-4.ap-southeast-1.aws.neon.tech:5432`
+```
+
+Neon 엔드포인트는 TCP 5432 가 열려 있고(프록시는 응답한다) Omnis 앱 자체도 200 이다 —
+DB 컴퓨트 쪽 문제로 보인다.
+
+`content/server.ts` 의 `listPosts()` 는 실패하면 빈 배열을 돌려준다(뉴스 때문에 홈페이지
+전체가 500 으로 죽지 않게 한 설계다). 그래서 **DB 가 죽은 동안 빌드된 이 배포본은 뉴스·
+라이브러리 목록과 사이트맵이 빈 채로 구워졌다.** 정적 페이지라 그대로 남는다.
+
+| 무엇 | 지금 |
+|---|---|
+| 회사 소개·제품·문의·법적 문서 | 정상 |
+| 히어로·검색 메타·구조화 데이터·OG | 정상 |
+| 뉴스·라이브러리 목록, 사이트맵의 기사 | **빈 상태** |
+| `/feed.xml` | 30건이 보인다 — 요청 시점 렌더라 Vercel 데이터 캐시의 옛 응답을 쓴다 |
+
+DB 가 살아나면 ISR(60초)로 저절로 다시 채워진다. 배포를 다시 할 필요는 없다.
+12초 간격으로 여섯 번 다시 불러 확인했으나, API 가 500 인 동안에는 채워지지 않는다.
+
+## 5. 남은 것
 
 - **타사 수상자 얼굴** — 위 1절 참고. 대외 공개 전에 확인할 것.
+- **Omnis DB 복구** — 위 4절. 이 저장소에서 할 수 있는 일이 없다. 복구되면 뉴스가 저절로 돌아온다.
 - **소유확인 코드** — 아직 없다. 받아서 Vercel 환경변수에 넣고 재배포하면 태그가 나간다.
 - **`haddscience.vercel.app` 리다이렉트** — canonical 로 덮었지만 주소 자체는 살아 있다.
 - **네이버 채널** — 네이버는 자사 서비스(블로그·카페·뉴스)를 웹사이트보다 위에 놓는다.
