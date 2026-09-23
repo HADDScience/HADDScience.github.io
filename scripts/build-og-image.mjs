@@ -26,8 +26,11 @@ const OUT = path.join(ROOT, "public", "og", "hadd-og.png")
 const CHROME =
   process.env.CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
-/** 배경에 쓸 타일. 시상식 무대가 크게 잡힌 칸을 고른다. */
-const TILE = path.join(ROOT, "public", "hero", "tiles", "w-01.webp")
+/**
+ * 배경에 쓸 타일 — 무대의 대상 수상기업 라인업. 번호는 `build-hero-tiles.mjs` 의 PHOTOS
+ * 순서다(2026-09-23 목록을 다시 짜면서 w-01 → w-07 로 옮겼다. 사진은 같다).
+ */
+const TILE = path.join(ROOT, "public", "hero", "tiles", "w-07.webp")
 const LOGO = path.join(ROOT, "public", "logo", "logo-white.png")
 const FONT = path.join(ROOT, "app", "fonts", "PretendardVariable.woff2")
 

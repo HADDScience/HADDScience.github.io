@@ -1,39 +1,39 @@
 랜딩 히어로 플립 그리드 원본 (NAS) — 시안 B: B · 수상 · 장면이 읽히는 톤(얕은 블러)
-scripts/build-hero-tiles.mjs 로 생성. 사진을 바꾸려면 그 파일의 PICKS 를 고칠 것.
+scripts/build-hero-tiles.mjs 로 생성. 사진을 바꾸려면 그 파일의 PHOTOS 를 고칠 것.
 
-1. 시상식 무대 · 대상 수상기업
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_14.jpg
-2. 대상 상장 · 백드롭
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_20.jpg
-3. 시상식 무대 전경
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/20251125_150236.jpg
-4. 수상자 단체 기념사진
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251126_203039301_05.jpg
-5. 시상식 무대 · 상장 단체
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_16.jpg
-6. 우수사례 공모전 최우수상 수여
-   /Users/jeong-uchang/NAS/HADD Science/62. HADD 홈페이지/기사 원본 파일/우수사례_공모전_수상식_사진/우수사례공모전_정우창_최우수상_상패수여순간.jpeg
-7. 대상 상장 전달
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_164039849_04.jpg
-8. 수상자 단체 2
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_212133885_03.jpg
-9. 무대 라인업
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_15.jpg
-10. 최우수상 기념
-   /Users/jeong-uchang/NAS/HADD Science/62. HADD 홈페이지/기사 원본 파일/우수사례_공모전_수상식_사진/우수사례공모전_정우창_최우수상_수상기념사진.jpeg
-11. 장관상 수상기업 라인업
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_17.jpg
-12. 통합성과보고회 단체
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/1764156900404.jpg
-13. 대상 상장 수여
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_184737586.jpg
-14. 대상 상장 · 팀 기념
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_24.jpg
-15. 수상자 단체 3
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_212133885_01.jpg
-16. 대상 팻말 · 팀
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_23.jpg
-17. 전체 수상자 단체
-   /Users/jeong-uchang/NAS/HADD Science/62. HADD 홈페이지/기사 원본 파일/우수사례_공모전_수상식_사진/우수사례공모전_전체수상자_단체기념사진.jpeg
-18. 시상식 무대 단체
-   /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/20251125_150303.jpg
+01. [stage] 시상식 무대 전경
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/20251125_150236.jpg
+02. [infra] 대상 상장 · 지역창업인프라 백드롭
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_20.jpg
+03. [title] 통합성과보고회 스크린
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_18.jpg
+04. [best] 우수사례 공모전 최우수상 수여
+    /Users/jeong-uchang/NAS/HADD Science/62. HADD 홈페이지/기사 원본 파일/우수사례_공모전_수상식_사진/우수사례공모전_정우창_최우수상_상패수여순간.jpeg
+05. [kobizma] 수상자 단체 · 성과보고회 보드
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251126_203039301_05.jpg
+06. [board] 대상 수상기업 보드 · 제품
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/20251125_133446.jpg
+07. [stage] 무대 · 대상 수상기업 라인업
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_14.jpg
+08. [stage] 장관상 수상기업 라인업(가까이)
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_17.jpg
+09. [stage] 대상 스크린 · 팻말 2인
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_13.jpg
+10. [stage] 무대 · 대상 상장 수여
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_184737586.jpg
+11. [sign] 대상 안내판 · 테이블
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/20251125_141544.jpg
+12. [sign] 대상 상장 · 안내판
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/20251125_150259.jpg
+13. [talk] 우수사례 공모전 발표 · Omnis
+    /Users/jeong-uchang/NAS/HADD Science/62. HADD 홈페이지/기사 원본 파일/우수사례_공모전_수상식_사진/우수사례공모전_정우창_발표_Omnis소개.jpeg
+14. [infra] 대상 팻말 · 팀
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_234755763_23.jpg
+15. [infra] 수상자 단체 · 지역창업인프라
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_212133885_03.jpg
+16. [best] 최우수상 기념
+    /Users/jeong-uchang/NAS/HADD Science/62. HADD 홈페이지/기사 원본 파일/우수사례_공모전_수상식_사진/우수사례공모전_정우창_최우수상_수상기념사진.jpeg
+17. [best] 우수사례 전체 수상자
+    /Users/jeong-uchang/NAS/HADD Science/62. HADD 홈페이지/기사 원본 파일/우수사례_공모전_수상식_사진/우수사례공모전_전체수상자_단체기념사진.jpeg
+18. [board] 대상 수상기업 보드 · 2인
+    /Users/jeong-uchang/NAS/HADD Science/09. 하드사이언스 사진/251125_2025 창업인큐베이팅 경진대회(장관상 대상)/KakaoTalk_20251125_140459195.jpg
