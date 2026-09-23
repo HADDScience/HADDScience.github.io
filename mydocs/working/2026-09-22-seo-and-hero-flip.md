@@ -307,6 +307,16 @@ Prisma 직접 연결                  WebsitePost 153행
 /sitemap.xml     22개에서 안 움직임  ← 다시 배포해서 해결
 ```
 
+다시 배포하자 사이트맵이 328개로 돌아왔다. 복구 뒤 전 범위 재확인(2026-09-23):
+
+```
+경로 22개 전부 200
+sitemap <loc> 328 · feed <item> 30
+/ko/news 기사 링크 16 · /ko/library 20
+홈 JSON-LD        Organization · PostalAddress · WebSite
+기사 JSON-LD      NewsArticle · BreadcrumbList · WebPage · Organization · WebSite
+```
+
 사이트맵만 스스로 돌아오지 않았다. 함정은
 [`../troubleshootings/vercel-deploy-traps.md`](../troubleshootings/vercel-deploy-traps.md)
 맨 아래에 적었다.
