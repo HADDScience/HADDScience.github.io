@@ -414,6 +414,24 @@ vercel.app  /api/revalidate/ (GET)     405 (그대로)
 localhost · haddscience.com · 프리뷰 호스트  /ko/          200 (그대로)
 ```
 
+운영(`54ce9d9`) — 배포 직전과 직후를 같은 경로로 비교했다.
+
+```
+haddscience.vercel.app                 배포 전                          배포 후
+/ko/                                   200                            308 https://haddscience.com/ko/
+/admin/                                200                            200
+/hub/                                  308 https://hub.haddscience.com/   (같음)
+/omnis/                                308 https://omnis.haddscience.com/ (같음)
+/omnis/api/ip-mcp                      200                            200
+/api/revalidate/                       405                            405
+/sitemap.xml                           200                            200
+/.well-known/oauth-protected-resource  200                            200
+
+대표 주소 /ko/ 200 · 소유확인 태그 2줄 · sitemap 328
+```
+
+바뀐 것은 공개 페이지 한 줄뿐이다.
+
 ## 5. 남은 것
 
 - ~~**타사 수상자 얼굴**~~ — 작업지시자가 괜찮다고 확인(2026-09-23).
