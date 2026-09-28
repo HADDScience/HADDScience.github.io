@@ -1,13 +1,13 @@
 ---
 kind: snapshot
 status: active
-canonical: ../plans/2026-09-28-live-cardnews.md
+canonical: ../plans/archives/2026-09-28-live-cardnews.md
 last_verified: 2026-09-28
 ---
 
 # 2026-09-28 — 카드뉴스를 HTML 로 그린다 · 작업 결과
 
-계획서는 [`../plans/2026-09-28-live-cardnews.md`](../plans/2026-09-28-live-cardnews.md).
+계획서는 [`../plans/archives/2026-09-28-live-cardnews.md`](../plans/archives/2026-09-28-live-cardnews.md).
 
 ## 바꾼 것
 

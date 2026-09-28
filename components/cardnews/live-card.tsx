@@ -15,7 +15,7 @@ import "./live-card.css"
  *   카드 안의 글이 이미지로 구워져 있으면 검색엔진은 alt 만 읽고, 스크린리더도 alt 에
  *   기댄다. 편집기는 원본(`post.deck`)을 이 `CardFace` 로 그린 뒤 그 DOM 을 굽는다 —
  *   굽기 전 단계를 그대로 보여 주면 글자가 본문이 된다. 같은 DOM 이라 구운 결과와 같은
- *   그림이다. 계획서 `mydocs/plans/2026-09-28-live-cardnews.md`.
+ *   그림이다. 계획서 `mydocs/plans/archives/2026-09-28-live-cardnews.md`.
  *
  * 크기
  *   카드는 1080×1080 고정으로 설계돼 있다. 글꼴·여백을 다시 계산하지 않고 통째로
