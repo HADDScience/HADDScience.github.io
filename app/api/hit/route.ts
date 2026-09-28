@@ -109,6 +109,14 @@ export async function POST(req: NextRequest) {
         device: MOBILE.test(ua) ? "mobile" : "desktop",
       }),
       cache: "no-store",
+      // Node 의 fetch 에는 기본 타임아웃이 없어, Omnis 가 매달리면 이 함수도 그만큼 붙들린다
+      // (Omnis 는 2026-09-28 부터 최대 45초로 끊는다 — 그 전에는 끝이 없었다). 방문자는 이미
+      // 응답을 받고 떠났으니 기다려 줄 이유가 없다. 4초는 Omnis 쪽이 권한 3~5초의 가운데다.
+      //
+      // `omnisFetch` 를 쓰지 않는다 — 한 번 더 시도하기 때문이다. 방문 기록은 문의와 달리
+      // 중복을 걸러 주는 장치가 없어서, 늦게 도착한 첫 시도와 재시도가 같은 방문을 두 번 센다.
+      // 통계 한 건을 잃는 편이 부풀리는 편보다 낫다.
+      signal: AbortSignal.timeout(4_000),
     })
   } catch {
     // 통계 한 건보다 방문자의 화면이 먼저다. 조용히 버린다.
