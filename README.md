@@ -20,7 +20,8 @@ pnpm media:news # 아임웹에 남은 뉴스 미디어 재수집 (보통 다시 
 
 Vercel 프로젝트 `haddscience` 하나다. 한 도메인 `haddscience.vercel.app` 아래에
 `/`(이 사이트) · `/admin` · `/hub`(허브 프로젝트 `hadd-hub` 로 rewrite) ·
-`/omnis`(Omnis 로 rewrite) 가 산다 — `next.config.ts`.
+`/omnis`(Omnis 로 rewrite) 가 산다 — `next.config.ts`. 그중 공개 페이지는 2026-09-28 부터
+`haddscience.com` 으로 308 넘어간다(`proxy.ts`, 아래 "검색 노출").
 
 프로젝트가 이 저장소(`HADDScience/HADDScience.github.io`)에 연결돼 있다. **`main`
 푸시가 곧 배포다** — 다른 브랜치와 PR 은 프리뷰 주소를 받는다(오리진이 달라 관리
@@ -315,9 +316,11 @@ Vercel 엣지가 막는다 — 사진 이름이 업로드마다 고유해서 가
 회사명이라 등록하면 잡히고, 「오가노이드」·「생체소재」는 기관·학술 문서가 상위라 순위를
 약속할 수 없다. 여기서 한 일은 *잡힐 근거를 만드는 것*까지다.
 
-> `haddscience.vercel.app` 도 같은 내용을 그대로 서브한다(www 는 308 로 대표 주소로 넘어가지만
-> vercel.app 은 넘어가지 않는다). canonical 이 전부 `haddscience.com` 을 가리키므로 색인은
-> 한쪽으로 모이지만, 완전히 끊으려면 Vercel 쪽에서 리다이렉트를 걸어야 한다.
+> `haddscience.vercel.app` 의 **공개 페이지는 308 로 대표 주소에 넘어간다**(2026-09-28,
+> `proxy.ts`). 도메인 설정으로 호스트를 통째로 넘기지 않은 이유는 그 호스트가 공개 사이트
+> 말고도 쓰이기 때문이다 — `/admin`(Omnis SSO 에 이 오리진으로 등록) · `/omnis/api/ip-mcp`
+> (MCP 클라이언트는 리다이렉트를 따르지 않는다). 이 경로들과 파일(`sitemap.xml` 등)은
+> `proxy.ts` 의 matcher 밖이라 그대로 남는다.
 
 ## 방문 통계
 

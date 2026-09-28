@@ -393,6 +393,27 @@ $ curl -sL https://haddscience.com/ | grep site-verification     (/ → /ko/ 를
 **태그는 환경변수가 있어야만 나간다.** 값을 지우거나 이름을 바꾼 채 배포하면 다음 재확인 때
 소유권이 풀린다(구글도 확인 화면에서 "메타태그를 삭제하지 마세요"라고 적는다).
 
+## 8. `haddscience.vercel.app` 공개 페이지 이전 (2026-09-28)
+
+도메인 설정으로 호스트를 통째로 넘기면 안 됐다. 두 저장소를 뒤져 이 호스트에 기대는 것을 찾았다:
+Omnis SSO 의 `website-admin-vercel` 앱 오리진(`/admin` 로그인), HADD IP MCP 엔드포인트
+(`/omnis/api/ip-mcp`). 그래서 `proxy.ts` 에서 **호스트가 정확히 `haddscience.vercel.app` 이고
+공개 페이지일 때만** 경로를 그대로 둔 채 308 로 대표 주소에 보낸다. `/admin · /api · /omnis ·
+/hub · /.well-known · 파일` 은 matcher 밖이라 이 코드에 닿지 않는다.
+
+경로는 그대로 두고 호스트만 바꾼다. 언어 고르기(`/` → `/ko/`)는 대표 주소가 한 번 더 한다 —
+308 은 브라우저가 기억하므로 방문자마다 다른 곳을 가리키면 안 된다.
+
+```
+로컬 (Host 헤더를 바꿔 요청)
+vercel.app  /ko/                       308 → https://haddscience.com/ko/
+vercel.app  /ko/news/20260917-1345/?x=1 308 → https://haddscience.com/ko/news/20260917-1345/?x=1
+vercel.app  /                          308 → https://haddscience.com/
+vercel.app  /admin/ · /sitemap.xml · /robots.txt · 타일     200 (그대로)
+vercel.app  /api/revalidate/ (GET)     405 (그대로)
+localhost · haddscience.com · 프리뷰 호스트  /ko/          200 (그대로)
+```
+
 ## 5. 남은 것
 
 - ~~**타사 수상자 얼굴**~~ — 작업지시자가 괜찮다고 확인(2026-09-23).
@@ -400,7 +421,7 @@ $ curl -sL https://haddscience.com/ | grep site-verification     (/ → /ko/ 를
 - ~~**컴퓨트 사용량 줄이기**~~ — 기사 목록 재검증 60초 → 30분(2026-09-23, 6절). 방문 비콘 묶어 보내기는 Omnis 쪽 일로 남는다.
 - ~~**소유확인 코드**~~ — 구글·네이버 모두 확인(2026-09-23, 7절).
 - **며칠 뒤 확인** — 구글 「색인 생성 → 페이지」, 네이버 「리포트 → 수집 현황」. 색인까지 보통 며칠, 길면 2~3주.
-- **`haddscience.vercel.app` 리다이렉트** — canonical 로 덮었지만 주소 자체는 살아 있다.
+- ~~**`haddscience.vercel.app` 리다이렉트**~~ — 공개 페이지만 308(2026-09-28, 8절).
 - **네이버 채널** — 네이버는 자사 서비스(블로그·카페·뉴스)를 웹사이트보다 위에 놓는다.
   「하드사이언스」 첫 화면을 노린다면 웹사이트 등록만으로는 부족하다.
 - **기사 본문이 이미지뿐인 글** — **153건 중 37건**(2026-09-28 Omnis API 실측: `content.ko.blocks` 에
