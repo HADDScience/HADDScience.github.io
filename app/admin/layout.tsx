@@ -12,7 +12,8 @@ import { cn } from "@/lib/utils"
  * 필요 없고, `<html lang>` 도 관리 화면 언어(한국어)로 고정이다.
  */
 export const metadata: Metadata = {
-  title: "콘텐츠 관리 | HADD SCIENCE",
+  // 화면마다 제목이 다르다. 페이지가 자기 제목을 주면 틀에 끼워 넣고, 없으면 기본값을 쓴다.
+  title: { default: "관리 화면 | HADD SCIENCE", template: "%s | HADD SCIENCE" },
   // 공개 사이트에 함께 올라가므로 색인만은 확실히 막는다. 접근 통제는 GitHub 토큰이 한다.
   robots: { index: false, follow: false, nocache: true },
 }
