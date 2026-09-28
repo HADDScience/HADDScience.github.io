@@ -1,13 +1,13 @@
 ---
 kind: snapshot
 status: active
-canonical: ../plans/2026-09-22-seo-and-hero-flip.md
+canonical: ../plans/archives/2026-09-22-seo-and-hero-flip.md
 last_verified: 2026-09-22
 ---
 
 # 2026-09-22 — 검색 노출과 히어로 플립 그리드 · 작업 결과
 
-계획서는 [`../plans/2026-09-22-seo-and-hero-flip.md`](../plans/2026-09-22-seo-and-hero-flip.md).
+계획서는 [`../plans/archives/2026-09-22-seo-and-hero-flip.md`](../plans/archives/2026-09-22-seo-and-hero-flip.md) (2026-09-28 마감).
 
 ## 1. 히어로 — 수상 사진 2×3 플립 그리드
 
@@ -403,5 +403,7 @@ $ curl -sL https://haddscience.com/ | grep site-verification     (/ → /ko/ 를
 - **`haddscience.vercel.app` 리다이렉트** — canonical 로 덮었지만 주소 자체는 살아 있다.
 - **네이버 채널** — 네이버는 자사 서비스(블로그·카페·뉴스)를 웹사이트보다 위에 놓는다.
   「하드사이언스」 첫 화면을 노린다면 웹사이트 등록만으로는 부족하다.
-- **기사 본문이 이미지뿐인 글** — 카드뉴스로 이관한 10건은 검색엔진이 읽을 텍스트가 없다.
-  「오가노이드」·「생체소재」로 걸릴 문서를 늘리려면 이쪽이 실질적이다(README "남은 작업").
+- **기사 본문이 이미지뿐인 글** — **153건 중 37건**(2026-09-28 Omnis API 실측: `content.ko.blocks` 에
+  text·heading·quote 블록이 하나도 없다). 검색엔진이 읽을 수 있는 것은 이미지 alt 뿐이다.
+  「오가노이드」·「생체소재」로 걸릴 문서를 늘리려면 이쪽이 실질적이다. (처음 적은 "10건"은 옛 README 의
+  숫자를 옮긴 것이었다.)
