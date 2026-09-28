@@ -126,6 +126,12 @@ export function SiteStats({
         <div className="grid place-items-center py-10">
           <Loader2 className="size-5 animate-spin text-muted-foreground" />
         </div>
+      ) : data.bufferOk === false ? (
+        // 고장이 먼저다. 아래 숫자는 맞으므로 경고와 함께 그대로 보여 준다.
+        <>
+          <BufferDownNote />
+          {data.totals.views ? <Body data={data} titles={titles} /> : null}
+        </>
       ) : !data.totals.views ? (
         // 기록이 0 이어도 옮겨지기를 기다리는 방문이 있으면 "기록이 없다"가 아니다.
         data.pending ? (
@@ -140,6 +146,20 @@ export function SiteStats({
         <Body data={data} titles={titles} />
       )}
     </section>
+  )
+}
+
+/**
+ * 방문 버퍼가 죽었다(`bufferOk: false`). 숫자는 맞으니 멈춘 게 아니라는 것과, 그래도 고쳐야
+ * 하는 이유(요금)를 같이 적는다 — "경고"만 띄우면 무엇이 문제인지 모른 채 넘긴다.
+ * 흔한 원인은 Upstash 토큰을 재발급하고 Omnis 를 다시 배포하지 않은 것이다.
+ */
+function BufferDownNote() {
+  return (
+    <p className="rounded-[12px] bg-status-warning-bg px-4 py-3 text-sm text-status-warning">
+      <span className="font-semibold">방문 버퍼가 끊겼습니다.</span> 방문은 빠짐없이 기록되지만 한 건마다
+      DB 를 깨워 요금이 늘어납니다. Upstash 토큰을 재발급했다면 Omnis 를 다시 배포해야 합니다.
+    </p>
   )
 }
 

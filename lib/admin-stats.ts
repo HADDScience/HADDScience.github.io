@@ -31,6 +31,15 @@ export interface VisitStats {
    * 그래서 옮기기 전까지 `today` 가 0 으로 보일 수 있다. 옛 Omnis 는 이 칸을 보내지 않는다.
    */
   pending?: number
+  /**
+   * 방문 버퍼(Redis)가 살아 있는가(2026-09-28 부터). `false` 면 **고장** — Omnis 가 방문을
+   * Postgres 에 바로 쓰는 옛 방식으로 돌아가 있다. 숫자는 맞지만 방문마다 Neon 을 깨운다.
+   *
+   * 이 칸이 생긴 이유: 토큰 재발급 뒤 재배포가 빠져 버퍼가 죽었는데, 방문도 통계도 멀쩡해
+   * 보여서 아무도 몰랐다. 실패를 삼키고 0 을 돌려주던 탓에 "0건"과 "못 셌다"가 같았다.
+   * `true` 는 정상(또는 자격이 아예 없는 개발 환경). 옛 Omnis 는 이 칸을 보내지 않는다.
+   */
+  bufferOk?: boolean
 }
 
 export function loadStats(
