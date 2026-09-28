@@ -127,14 +127,33 @@ export function SiteStats({
           <Loader2 className="size-5 animate-spin text-muted-foreground" />
         </div>
       ) : !data.totals.views ? (
-        <p className="rounded-[12px] bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
-          아직 기록이 없습니다. 방문 집계는 켠 날부터 쌓이고, 지난 방문은 복원할
-          수 없습니다.
-        </p>
+        // 기록이 0 이어도 옮겨지기를 기다리는 방문이 있으면 "기록이 없다"가 아니다.
+        data.pending ? (
+          <PendingNote count={data.pending} />
+        ) : (
+          <p className="rounded-[12px] bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
+            아직 기록이 없습니다. 방문 집계는 켠 날부터 쌓이고, 지난 방문은 복원할
+            수 없습니다.
+          </p>
+        )
       ) : (
         <Body data={data} titles={titles} />
       )}
     </section>
+  )
+}
+
+/**
+ * 아직 숫자에 들어가지 않은 방문. Omnis 가 방문을 모았다가 매일 새벽 4시에 한 번에 옮기므로
+ * 그 전까지 "오늘 방문자"가 0 으로 보인다 — 집계가 멈춘 것으로 오해하지 않게 한 줄 적는다.
+ * "오늘"이라고 쓰지 않는 이유: 새벽 0~4시의 방문도 이 안에 있어 날짜가 걸쳐 있다.
+ */
+function PendingNote({ count }: { count: number }) {
+  return (
+    <p className="rounded-[12px] bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
+      아직 집계 전인 방문 <span className="font-semibold text-foreground tabular-nums">{count}</span>건 —
+      매일 새벽 4시(KST)에 집계에 더해집니다.
+    </p>
   )
 }
 
@@ -156,6 +175,7 @@ function Body({
 
   return (
     <>
+      {data.pending ? <PendingNote count={data.pending} /> : null}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile
           value={String(data.today.visitors)}

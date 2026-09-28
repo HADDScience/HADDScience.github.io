@@ -23,6 +23,14 @@ export interface VisitStats {
   posts: { id: string; views: number; visitors: number }[]
   referrers: { host: string; views: number }[]
   devices: { device: string; views: number }[]
+  /**
+   * 아직 집계 표로 옮겨지지 않은 방문 수 — 위 숫자에 **들어 있지 않다**(2026-09-28 부터).
+   *
+   * Omnis 가 방문을 받는 즉시 Postgres 에 쓰지 않고 Redis 에 모았다가 매일 새벽 4시(KST)에
+   * 한 번에 옮긴다. 방문 한 건마다 Neon 을 깨우면 깨어 있던 시간만큼 요금이 나오기 때문이다.
+   * 그래서 옮기기 전까지 `today` 가 0 으로 보일 수 있다. 옛 Omnis 는 이 칸을 보내지 않는다.
+   */
+  pending?: number
 }
 
 export function loadStats(
