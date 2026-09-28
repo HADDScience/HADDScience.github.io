@@ -90,6 +90,8 @@ pnpm build      → ✓ Compiled successfully · 363/363
 
 **안 된 것 둘.** 로컬 `.env.vercel` 의 민감 값(번역 키 · 사이트 주소 · 재검증 비밀)이 `[SENSITIVE]` 자리표시로만
 들어 있다(`vercel env pull` 은 민감 값을 내려주지 않는다).
-- 영문 번역이 돌지 않았다. 영문은 예전 그대로이고 `translatedFrom` 이 원문과 달라 "오래됨"으로 잡힌다 —
-  `/admin` 에서 글을 한 번 저장하면 운영 Omnis 가 번역한다.
+- 영문 번역이 돌지 않았다. → **같은 날 Omnis 세션(omnis-local-50)이 `scripts/retranslate-website-post.ts`
+  (`fillTranslations` 직접 호출)로 두 건을 번역했다**(작업지시자 승인). 영문 블록을 API 로 읽어 한국어
+  본문과 1:1 인 것을 확인했다(heading · text 순서 그대로, 수치 50% · 30% 동일). 영문 페이지에 보이는
+  원문에 없는 문장(「K-Bio Surpasses 20 Trillion Won…」)은 본문이 아니라 「← Previous」 이전 글 링크다.
 - 사이트 캐시 비우기가 실패했다. 기사 목록 재검증 주기(30분) 안에 반영된다.
