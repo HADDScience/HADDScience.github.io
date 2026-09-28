@@ -134,7 +134,14 @@ export default async function NewsDetailPage({
           ) : null}
 
           <article>
-            <PostBody blocks={locale.blocks} />
+            {/*
+              카드뉴스는 원문 언어 페이지에서만 원본(덱)을 HTML 로 그린다. 덱은 원문 언어로만
+              있어서, 영문 페이지에 쓰면 번역된 alt 대신 한글 카드 글이 본문이 된다.
+            */}
+            <PostBody
+              blocks={locale.blocks}
+              deck={lang === post.sourceLang ? post.deck : undefined}
+            />
           </article>
 
           {/* 아임웹 원문이 남아 있는 글은 출처를 함께 남긴다. */}

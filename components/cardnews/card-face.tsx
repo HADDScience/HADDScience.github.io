@@ -22,6 +22,15 @@ const LOGO_SRC = "/cardnews/logo-hadd-wordmark.png"
 const HAND_SRC = "/cardnews/cursor-hand.svg"
 
 /**
+ * 카드 안 사진을 언제 받을지.
+ *
+ * 기본은 즉시(eager)다 — 편집기 미리보기와 굽는 무대는 래스터화하는 순간 사진이 이미
+ * 받아져 있어야 한다. 기사 페이지(`live-card.tsx`)만 lazy 로 감싼다. 카드 열 몇 장이면
+ * 원본 사진(1600px)을 한꺼번에 받게 되기 때문이다.
+ */
+export const CardImageLoading = React.createContext<"eager" | "lazy">("eager")
+
+/**
  * 스크립트의 `_esc` 와 같다. 전부 이스케이프한 뒤 `<b>` 하나만 되살린다.
  * 본문에 마크업을 허용하면 덱이 HTML 조각이 되어 번역·재사용이 어려워지므로
  * 강조 하나만 예외다. 그 밖의 태그는 글자 그대로 보인다.
@@ -128,6 +137,7 @@ function ImgBox({
   resolveSrc: Resolve
   className?: string
 }) {
+  const loading = React.useContext(CardImageLoading)
   if (!image?.src) {
     return (
       <div
@@ -146,6 +156,7 @@ function ImgBox({
       <img
         src={resolveSrc ? resolveSrc(image.src) : image.src}
         alt=""
+        loading={loading}
         draggable={false}
         style={{ objectPosition: image.pos ?? "center" }}
       />
@@ -280,6 +291,7 @@ function Split({
   card: Extract<Chapter, { layout: "split" }>
   resolveSrc: Resolve
 }) {
+  const loading = React.useContext(CardImageLoading)
   const contain = card.imageFit === "contain"
   return (
     <div className="frame">
@@ -291,6 +303,7 @@ function Split({
               <img
                 src={resolveSrc ? resolveSrc(card.image.src) : card.image.src}
                 alt=""
+                loading={loading}
                 draggable={false}
                 style={{ objectPosition: card.image.pos ?? "center" }}
               />
@@ -321,6 +334,7 @@ function Overlay({
   card: Extract<Chapter, { layout: "overlay" }>
   resolveSrc: Resolve
 }) {
+  const loading = React.useContext(CardImageLoading)
   return (
     <div className="frame">
       <div className="card">
@@ -330,6 +344,7 @@ function Overlay({
             <img
               src={resolveSrc ? resolveSrc(card.image.src) : card.image.src}
               alt=""
+              loading={loading}
               draggable={false}
               style={{ objectPosition: card.image.pos ?? "center" }}
             />

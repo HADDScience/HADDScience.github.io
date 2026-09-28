@@ -1,0 +1,58 @@
+/*
+ * 기사 페이지의 카드뉴스(live-card.tsx) — 1080 캔버스를 본문 폭에 맞춰 줄인다.
+ *
+ * `--cn-scale` 은 자바스크립트(ResizeObserver)가 실제 폭으로 덮어쓴다. 여기 값은 그 전 —
+ * 하이드레이션 전 첫 화면 — 에만 쓰인다. 각 구간의 **가장 좁은 폭** 기준이라 카드가 상자보다
+ * 조금 작게 그려질 뿐 잘리지 않는다.
+ *
+ * 본문 폭 = min(화면 폭, 840) − 좌우 여백(768 미만 48 · 이상 64). `Container narrow` 가 바뀌면
+ * 이 식으로 표를 다시 계산한다. 840 이상은 본문이 776px 로 고정이라 정확하다.
+ */
+.live-card {
+  --cn-scale: 0.2518; /* 320px 이하 가정 */
+}
+
+@media (min-width: 360px) {
+  .live-card { --cn-scale: 0.2888; } /* 본문 312px */
+}
+@media (min-width: 375px) {
+  .live-card { --cn-scale: 0.3027; } /* 본문 327px */
+}
+@media (min-width: 390px) {
+  .live-card { --cn-scale: 0.3166; } /* 본문 342px */
+}
+@media (min-width: 412px) {
+  .live-card { --cn-scale: 0.337; } /* 본문 364px */
+}
+@media (min-width: 430px) {
+  .live-card { --cn-scale: 0.3537; } /* 본문 382px */
+}
+@media (min-width: 480px) {
+  .live-card { --cn-scale: 0.4; } /* 본문 432px */
+}
+@media (min-width: 540px) {
+  .live-card { --cn-scale: 0.4555; } /* 본문 492px */
+}
+@media (min-width: 600px) {
+  .live-card { --cn-scale: 0.5111; } /* 본문 552px */
+}
+@media (min-width: 680px) {
+  .live-card { --cn-scale: 0.5851; } /* 본문 632px */
+}
+@media (min-width: 768px) {
+  .live-card { --cn-scale: 0.6518; } /* 본문 704px */
+}
+@media (min-width: 800px) {
+  .live-card { --cn-scale: 0.6814; } /* 본문 736px */
+}
+@media (min-width: 840px) {
+  .live-card { --cn-scale: 0.7185; } /* 본문 776px */
+}
+
+.live-card-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(var(--cn-scale));
+  transform-origin: top left;
+}
