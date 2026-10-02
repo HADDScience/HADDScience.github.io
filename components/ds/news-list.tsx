@@ -43,7 +43,7 @@ export function NewsListPage({
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item, i) => (
-              <BlurFade key={item.id} inView delay={i * 0.06}>
+              <BlurFade key={item.id} inView delay={i * 0.06} className="h-full">
                 <NewsCard item={item} lang={lang} pinnedLabel={content.ui.pinned} />
               </BlurFade>
             ))}

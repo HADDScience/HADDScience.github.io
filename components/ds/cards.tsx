@@ -159,7 +159,7 @@ export function NewsCard({
               <Badge tone="brand">{pinnedLabel}</Badge>
             ) : null}
           </div>
-          <p className="mt-1 line-clamp-2 font-semibold text-balance group-hover:text-primary">
+          <p className="mt-1 line-clamp-2 font-semibold break-keep text-balance group-hover:text-primary">
             {item.title}
           </p>
         </div>
@@ -179,11 +179,11 @@ export function NewsCard({
     <SurfaceCard
       interactive
       className={cn(
-        "overflow-hidden p-0",
+        "h-full overflow-hidden p-0",
         item.pinned && "border-2 border-brand-blue-700 shadow-ds-brand"
       )}
     >
-      <Link href={href} {...linkProps} className="group block h-full">
+      <Link href={href} {...linkProps} className="group flex h-full flex-col">
         <div className="relative aspect-[16/10] overflow-hidden bg-muted">
           <Image
             src={item.image}
@@ -198,19 +198,19 @@ export function NewsCard({
             </Badge>
           ) : null}
         </div>
-        <div className="grid gap-2 p-5">
+        {/* 카드 높이를 맞추려고 제목·요약 모두 두 줄 자리를 늘 잡아 둔다. `break-keep` 이
+            없으면 "GG 바이오허 / 브" 처럼 한국어 낱말 가운데서 줄이 넘어간다. */}
+        <div className="grid flex-1 content-start gap-2 p-5">
           <time className="font-mono text-xs text-muted-foreground">
             {item.date}
           </time>
-          <p className="line-clamp-3 font-semibold text-balance group-hover:text-primary">
+          <p className="line-clamp-2 min-h-[2lh] font-semibold break-keep group-hover:text-primary">
             {item.title}
           </p>
-          {/* 요약은 관리자 페이지에서 쓴 글에만 있다. 카드뉴스 이관분은 비어 있다. */}
-          {item.summary ? (
-            <p className="line-clamp-2 text-sm text-muted-foreground">
-              {item.summary}
-            </p>
-          ) : null}
+          {/* 요약은 관리자 페이지에서 쓴 글에만 있다. 카드뉴스 이관분은 비어 있어 자리만 남는다. */}
+          <p className="line-clamp-2 min-h-[2lh] text-sm break-keep text-muted-foreground">
+            {item.summary}
+          </p>
         </div>
       </Link>
     </SurfaceCard>

@@ -35,7 +35,7 @@ export function PageHeader({
             {title}
           </span>
         </nav>
-        <h1 className="mt-4 text-3xl leading-[1.2] font-bold tracking-[-0.02em] text-balance md:text-4xl">
+        <h1 className="mt-4 text-3xl leading-[1.2] font-bold tracking-[-0.02em] break-keep text-balance md:text-4xl">
           {title}
         </h1>
         {description ? (
