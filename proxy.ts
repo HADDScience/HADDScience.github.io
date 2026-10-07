@@ -68,5 +68,17 @@ export const config = {
   // _next 내부 자산, public 파일, 파일 확장자가 있는 요청은 건드리지 않는다.
   // 언어 라우팅 밖에 있는 것도 제외한다: /admin(관리 화면) · /api(재검증) ·
   // /omnis(Omnis 로 rewrite) · /hub(허브 프로젝트로 rewrite) · /.well-known(MCP 디스커버리).
-  matcher: ["/((?!_next|admin|api|omnis|hub|\\.well-known|.*\\..*).*)"],
+  //
+  // 대표 주소에서는 언어가 붙은 경로(/ko · /en …)도 뺀다(2026-10-07). 이 함수가 하는 일이 그
+  // 경로에서는 `NextResponse.next()` 뿐인데, 도는 것만으로 요청마다 함수 호출이 한 번씩 잡혔다 —
+  // 크롤러 트래픽이 Hobby 한도를 채운 몫의 절반이 이것이었다. 옛 호스트는 경로와 상관없이
+  // 넘겨야 하므로 첫 줄이 따로 받는다. matcher 는 빌드 때 읽는 상수라 언어 목록(`AVAILABLE_LANGS`)을
+  // 가져다 쓸 수 없다 — 언어를 늘리면 여기도 고친다.
+  matcher: [
+    {
+      source: "/((?!_next|admin|api|omnis|hub|\\.well-known|.*\\..*).*)",
+      has: [{ type: "host", value: "haddscience.vercel.app" }],
+    },
+    "/((?!(?:ko|en)(?:/|$)|_next|admin|api|omnis|hub|\\.well-known|.*\\..*).*)",
+  ],
 }

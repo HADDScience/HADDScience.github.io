@@ -29,9 +29,14 @@ import type { NewsItem, Post, PostLocale, SiteContent } from "./types"
  *
  * 저장 즉시 반영은 이 주기가 아니라 웹훅(`/api/revalidate` 가 `posts` 태그를 비운다)이
  * 맡으므로 주기를 늘려도 편집 결과가 늦게 뜨지 않는다. 이 주기가 실제로 쓰이는 것은
- * 웹훅이 실패했을 때의 안전망뿐이다 — 그때 늦어도 30분 안에는 맞춰진다.
+ * 웹훅이 실패했을 때의 안전망뿐이다 — 그때 늦어도 하루 안에는 맞춰진다.
+ *
+ * 2026-10-07 에 30분에서 하루로 늘렸다. 사람 방문은 하루 20~40쪽인데 Vercel 요청은 하루
+ * 약 1.9만 건이다 — 나머지는 크롤러다. 크롤러가 수백 쪽을 돌 때마다 30분 지난 쪽은 전부
+ * STALE 이라 다시 만들어졌고, 그때마다 함수 실행 · ISR 쓰기 · Omnis → Neon 깨우기가 따라왔다
+ * (Hobby 의 ISR Writes · Active CPU 한도 100% 경고, Neon 과금).
  */
-const POSTS_REVALIDATE_SECONDS = 30 * 60
+const POSTS_REVALIDATE_SECONDS = 24 * 60 * 60
 
 /** 캐시 태그. `/api/revalidate` 가 이 이름으로 비운다. */
 export const POSTS_TAG = "posts"
