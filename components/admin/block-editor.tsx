@@ -59,6 +59,8 @@ export interface BlockEditorProps {
   onPickImage: (file: File) => Promise<string>
   /** 아직 커밋하지 않은 이미지의 미리보기 주소. */
   resolveSrc: (src: string) => string
+  /** 사진 캡션을 「출처(필수)」로 받는다. 칼럼은 본문 사진에 출처를 단다(10/13 회의). */
+  captionIsSource?: boolean
 }
 
 export function BlockEditor({
@@ -66,6 +68,7 @@ export function BlockEditor({
   onChange,
   onPickImage,
   resolveSrc,
+  captionIsSource,
 }: BlockEditorProps) {
   const update = (i: number, next: PostBlock) =>
     onChange(blocks.map((b, j) => (j === i ? next : b)))
@@ -134,6 +137,7 @@ export function BlockEditor({
               onChange={(next) => update(i, next)}
               onPickImage={onPickImage}
               resolveSrc={resolveSrc}
+              captionIsSource={captionIsSource}
             />
           ) : block.type === "heading" ? (
             <Input
@@ -276,7 +280,9 @@ function ImageBlockFields({
   onChange,
   onPickImage,
   resolveSrc,
+  captionIsSource,
 }: {
+  captionIsSource?: boolean
   block: Extract<PostBlock, { type: "image" }>
   onChange: (block: PostBlock) => void
   onPickImage: (file: File) => Promise<string>
@@ -346,11 +352,17 @@ function ImageBlockFields({
             />
           </div>
           <div className="grid gap-1.5">
-            <Label htmlFor={`${inputId}-cap`}>캡션 (선택)</Label>
+            <Label htmlFor={`${inputId}-cap`}>
+              {captionIsSource ? "출처 (필수)" : "캡션 (선택)"}
+            </Label>
             <Input
               id={`${inputId}-cap`}
               value={block.caption ?? ""}
-              placeholder="사진 아래 표시할 문구"
+              placeholder={
+                captionIsSource
+                  ? "예: 사진 = 보건복지부 제공 · AI 생성 이미지"
+                  : "사진 아래 표시할 문구"
+              }
               onChange={(e) =>
                 onChange({ ...block, caption: e.target.value || undefined })
               }

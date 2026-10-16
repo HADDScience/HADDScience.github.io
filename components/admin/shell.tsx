@@ -14,8 +14,9 @@ import { cn } from "@/lib/utils"
 /**
  * 관리 화면의 공통 틀 — 로그인 관문 + 머리 + 화면 전환.
  *
- * 화면이 둘이다: **통계**(`/admin`)는 숫자를 보는 곳이고 여기가 첫 화면이다.
- * **콘텐츠**(`/admin/content`)는 글을 쓰고 고치는 곳. 한 화면에 다 있으면 글 하나
+ * 화면이 셋이다: **통계**(`/admin`)는 숫자를 보는 곳이고 여기가 첫 화면이다.
+ * **콘텐츠**(`/admin/content`)는 글을 쓰고 고치는 곳. **칼럼**(`/admin/column`)은 키워드를 골라
+ * AI 초안을 받고 대표님 검토를 거쳐 하드:라이브러리에 올리는 곳. 한 화면에 다 있으면 글 하나
  * 고치러 들어와도 통계부터 읽고 내려와야 했다.
  *
  * 로그인 상태 셋(`loading` · `anonymous` · `ready`)을 여기서 한 번만 다룬다. 페이지마다
@@ -26,6 +27,7 @@ import { cn } from "@/lib/utils"
 const TABS = [
   { href: "/admin", label: "통계" },
   { href: "/admin/content", label: "콘텐츠" },
+  { href: "/admin/column", label: "칼럼" },
 ] as const
 
 export function AdminShell({
@@ -33,7 +35,7 @@ export function AdminShell({
   title,
   children,
 }: {
-  current: "/admin" | "/admin/content"
+  current: (typeof TABS)[number]["href"]
   title: string
   /** 로그인이 끝난 뒤에만 부른다 — 세션 토큰이 있어야 그릴 수 있는 화면이다. */
   children: (cfg: ApiConfig) => React.ReactNode
