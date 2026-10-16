@@ -86,7 +86,7 @@ export type KeywordAction =
   | { action: "removeSource"; url: string }
 
 export const keywordAction = (cfg: ApiConfig, id: string, body: KeywordAction) =>
-  api<{ ok: true }>(cfg, `/column/keywords/${id}`, { method: "PATCH", body: JSON.stringify(body) })
+  api<{ ok: true }>(cfg, `/column/keywords/${id}`, { method: "POST", body: JSON.stringify(body) })
 
 export const loadDrafts = (cfg: ApiConfig) => api<{ me: Me; drafts: DraftSummary[] }>(cfg, "/column/drafts")
 
