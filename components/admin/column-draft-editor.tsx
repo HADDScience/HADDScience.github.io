@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowLeft, Check, ExternalLink, Eye, Loader2, Save, Send, Trash2, Undo2, Upload } from "lucide-react"
+import { ArrowLeft, Check, ExternalLink, Eye, FileDown, Loader2, Save, Send, Trash2, Undo2, Upload } from "lucide-react"
 import * as React from "react"
 import { toast } from "sonner"
 
@@ -111,6 +111,30 @@ export function ColumnDraftEditor({ cfg, id, onClose }: { cfg: ApiConfig; id: st
     await run("검토 요청", () => requestReview(cfg, draftId), "대표님께 검토를 요청했습니다")
   }
 
+  /** 화면에 보이는 그대로(저장 안 한 변경 포함) 워드로 내려받는다. docx 라이브러리는 누를 때만 불러온다. */
+  async function exportDocx() {
+    if (!draft) return
+    setWorking("내보내기")
+    try {
+      const { buildColumnDocx, columnDocxName } = await import("@/lib/column-docx")
+      const blob = await buildColumnDocx(draft)
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement("a")
+      a.href = url
+      a.download = columnDocxName(draft.title)
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      // 클릭 직후 revoke 하면 일부 브라우저가 다운로드를 시작하지 못한다.
+      setTimeout(() => URL.revokeObjectURL(url), 10_000)
+      toast.success("워드 파일을 내려받았습니다", dirty ? { description: "저장하지 않은 변경도 들어 있습니다." } : undefined)
+    } catch (err) {
+      toast.error("워드로 내보내지 못했습니다", { description: err instanceof Error ? err.message : undefined })
+    } finally {
+      setWorking(null)
+    }
+  }
+
   async function pickImage(file: File): Promise<string> {
     if (!draft?.postId) throw new Error("기사 id 가 없습니다")
     const prepared = await prepareImage(file)
@@ -133,6 +157,10 @@ export function ColumnDraftEditor({ cfg, id, onClose }: { cfg: ApiConfig; id: st
           <Button variant="outline" onClick={() => setPreview((v) => !v)}>
             <Eye className="size-4" />
             {preview ? "편집" : "미리보기"}
+          </Button>
+          <Button variant="outline" disabled={!!working} onClick={() => void exportDocx()}>
+            {working === "내보내기" ? <Loader2 className="size-4 animate-spin" /> : <FileDown className="size-4" />}
+            워드로 내보내기
           </Button>
           {editable ? (
             <>

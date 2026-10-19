@@ -15,6 +15,7 @@
     "@base-ui/react": "^1.7.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "docx": "^9.5.1",
     "fflate": "^0.8.3",
     "html-to-image": "^1.11.13",
     "lucide-react": "^1.29.0",
