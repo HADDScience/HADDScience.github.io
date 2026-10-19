@@ -49,9 +49,10 @@ export async function api<T>(
     let code: string | undefined
     let detail = res.statusText
     try {
-      const body = (await res.json()) as { error?: string; issues?: string[] }
+      const body = (await res.json()) as { error?: string; issues?: string[]; message?: string }
       code = body.error
-      detail = body.issues?.join(", ") ?? MESSAGE[code ?? ""] ?? code ?? detail
+      // 서버가 사람에게 보일 문장(message)을 주면 그것이 먼저다 — 코드만 보이면 원인을 알 수 없다.
+      detail = body.issues?.join(", ") ?? body.message ?? MESSAGE[code ?? ""] ?? code ?? detail
     } catch {
       /* 본문이 JSON 이 아니면 상태 텍스트를 그대로 쓴다 */
     }
