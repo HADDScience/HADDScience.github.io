@@ -3,6 +3,7 @@ import Image from "next/image"
 import { LiveCard } from "@/components/cardnews/live-card"
 import { BlurFade } from "@/components/ui/blur-fade"
 import type { CardDeck, PostBlock } from "@/content/types"
+import { youtubeEmbedSrc } from "@/lib/youtube"
 
 /**
  * 기사 본문 렌더러.
@@ -109,6 +110,34 @@ export function PostBody({
                 </section>
               </BlurFade>
             )
+
+          case "video": {
+            // ID 가 비었거나 형식이 틀리면(편집기에서 주소를 붙여 넣기 전) 아무것도 그리지 않는다.
+            const src = youtubeEmbedSrc(block.id, block.start)
+            if (!src) return null
+            return (
+              <BlurFade key={i} inView delay={delay}>
+                <figure className="grid gap-2">
+                  <div className="relative aspect-video overflow-hidden rounded-lg bg-muted">
+                    <iframe
+                      src={src}
+                      title={block.title || "YouTube 영상"}
+                      loading="lazy"
+                      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                      // 유튜브는 리퍼러가 없으면 재생을 막는다(오류 153). 브라우저 기본값을 못 박아 둔다.
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      className="absolute inset-0 h-full w-full border-0"
+                    />
+                  </div>
+                  {block.title ? (
+                    <figcaption className="text-sm text-muted-foreground">
+                      {block.title}
+                    </figcaption>
+                  ) : null}
+                </figure>
+              </BlurFade>
+            )
+          }
 
           case "image": {
             const ordinal = imageOrdinals.get(i) ?? 0

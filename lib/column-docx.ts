@@ -12,6 +12,7 @@ import {
 
 import type { PostBlock } from "@/content/types"
 import { DRAFT_LABEL, type Draft } from "@/lib/admin-column"
+import { youtubeWatchUrl } from "@/lib/youtube"
 
 /**
  * 칼럼 초안을 워드 파일(.docx)로 굽는다 — 대표님께 메일·카톡으로 보내는 검토본.
@@ -89,6 +90,14 @@ async function block(b: PostBlock): Promise<Paragraph[]> {
       }
       return out
     }
+    case "video":
+      // 워드에는 영상을 넣을 수 없다. 유튜브에서 보는 주소를 건다.
+      return [
+        new Paragraph({
+          children: [run(`▶ ${b.title || "영상"}  `), link(youtubeWatchUrl(b.id, b.start))],
+          spacing: { before: 200, after: 200 },
+        }),
+      ]
     case "links":
       return [
         new Paragraph({ children: [run(b.title, { bold: true })], spacing: { before: 200, after: 80 }, keepNext: true }),

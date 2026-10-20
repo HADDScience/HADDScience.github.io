@@ -95,6 +95,11 @@ export type PostBlock =
    * 읽고, 실제로 눌린다. 제목은 번역되고 항목(언론사 이름·URL)은 그대로 둔다.
    */
   | { type: "links"; title: string; items: { label: string; href: string }[] }
+  /**
+   * 유튜브 영상. 주소가 아니라 11자 영상 ID 를 저장하고 임베드 주소는 화면이 만든다(`lib/youtube.ts`).
+   * `start` 는 시작 위치(초). title 만 번역되고 ID·시작 위치는 원문 그대로 간다.
+   */
+  | { type: "video"; provider: "youtube"; id: string; start?: number; title?: string }
 
 export interface PostLocale {
   title: string
