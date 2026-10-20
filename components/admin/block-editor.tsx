@@ -10,6 +10,7 @@ import {
   Quote,
   Trash2,
   Type,
+  Video,
 } from "lucide-react"
 import * as React from "react"
 
@@ -19,6 +20,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import type { PostBlock } from "@/content/types"
 import { cn } from "@/lib/utils"
+import { parseYouTube, youtubeEmbedSrc, youtubeWatchUrl } from "@/lib/youtube"
 
 /**
  * 본문 블록 편집기.
@@ -26,7 +28,7 @@ import { cn } from "@/lib/utils"
  * Tiptap · BlockNote 같은 리치 에디터를 얹지 않은 이유: 저 도구들은 자체 테마
  * 체계를 갖고 있어 우리 디자인시스템의 토큰·라디우스·버튼 규격을 그대로 입히기
  * 어렵고, 결과물도 HTML 문자열이라 언어별 번역·이미지 분리가 까다로워진다.
- * 우리 블록은 네 종류뿐이라 직접 만드는 편이 작고 정확하다.
+ * 우리 블록은 몇 종류뿐이라 직접 만드는 편이 작고 정확하다.
  */
 
 const BLOCK_LABEL: Record<PostBlock["type"], string> = {
@@ -35,6 +37,7 @@ const BLOCK_LABEL: Record<PostBlock["type"], string> = {
   quote: "인용",
   image: "이미지",
   links: "링크 목록",
+  video: "영상",
 }
 
 /** "이름 | URL" 한 줄이 항목 하나. 편집기에서 표 대신 텍스트로 다루는 게 빠르다. */
@@ -91,7 +94,9 @@ export function BlockEditor({
           ? { type: "quote", text: "" }
           : type === "links"
             ? { type: "links", title: "관련 기사", items: [] }
-            : { type, text: "" }
+            : type === "video"
+              ? { type: "video", provider: "youtube", id: "" }
+              : { type, text: "" }
     onChange([...blocks, created])
   }
 
@@ -160,6 +165,8 @@ export function BlockEditor({
                 onBlur={(e) => update(i, { ...block, items: parseLinkLines(e.target.value) })}
               />
             </div>
+          ) : block.type === "video" ? (
+            <VideoBlockFields block={block} onChange={(next) => update(i, next)} />
           ) : block.type === "quote" ? (
             <div className="grid gap-2">
               <Textarea
@@ -214,6 +221,12 @@ export function BlockEditor({
           icon={<Link2 className="size-4" />}
         >
           링크 목록
+        </AddButton>
+        <AddButton
+          onClick={() => add("video")}
+          icon={<Video className="size-4" />}
+        >
+          영상
         </AddButton>
       </div>
     </div>
@@ -371,6 +384,135 @@ function ImageBlockFields({
           {block.src ? (
             <p className="font-mono text-xs break-all text-muted-foreground">
               {block.src}
+            </p>
+          ) : null}
+        </div>
+      </div>
+
+      {error ? (
+        <p role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      ) : null}
+    </div>
+  )
+}
+
+/** 355 → "5분 55초". 시작 칸 옆 안내에 쓴다. */
+function clock(sec: number): string {
+  const h = Math.floor(sec / 3600)
+  const m = Math.floor((sec % 3600) / 60)
+  const s = sec % 60
+  return [h ? `${h}시간` : "", m ? `${m}분` : "", s || (!h && !m) ? `${s}초` : ""].filter(Boolean).join(" ")
+}
+
+/**
+ * 영상 블록. 유튜브 주소를 붙여 넣으면 영상 ID 와 시작 위치(`?t=`)를 뽑아 블록에 넣는다 —
+ * 저장되는 것은 주소가 아니라 ID 다. 주소 칸은 이 화면에만 있는 입력이다.
+ */
+function VideoBlockFields({
+  block,
+  onChange,
+}: {
+  block: Extract<PostBlock, { type: "video" }>
+  onChange: (block: PostBlock) => void
+}) {
+  const [url, setUrl] = React.useState(() =>
+    block.id ? youtubeWatchUrl(block.id, block.start) : ""
+  )
+  const [error, setError] = React.useState<string | null>(null)
+  // 블록은 순번을 key 로 쓰므로 위·아래로 옮기면 이 칸에 다른 영상이 들어온다. 그때 주소 칸을 맞춘다.
+  const [seenId, setSeenId] = React.useState(block.id)
+  if (seenId !== block.id) {
+    setSeenId(block.id)
+    if (parseYouTube(url)?.id !== block.id) {
+      setUrl(block.id ? youtubeWatchUrl(block.id, block.start) : "")
+      setError(null)
+    }
+  }
+  const inputId = React.useId()
+  const src = youtubeEmbedSrc(block.id, block.start)
+
+  function paste(value: string) {
+    setUrl(value)
+    if (!value.trim()) {
+      setError(null)
+      onChange({ ...block, id: "", start: undefined })
+      return
+    }
+    const parsed = parseYouTube(value)
+    if (!parsed) {
+      setError("유튜브 주소를 읽지 못했습니다. youtu.be/… 나 youtube.com/watch?v=… 주소를 붙여 넣어 주세요.")
+      return
+    }
+    setError(null)
+    onChange({ ...block, id: parsed.id, start: parsed.start })
+  }
+
+  return (
+    <div className="grid gap-3">
+      <div className="grid gap-3 sm:grid-cols-[240px_1fr]">
+        <div className="relative grid aspect-video place-items-center overflow-hidden rounded-[12px] border border-dashed border-border bg-muted text-sm text-muted-foreground">
+          {src ? (
+            <iframe
+              key={src}
+              src={src}
+              title={block.title || "영상 미리보기"}
+              loading="lazy"
+              allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="absolute inset-0 size-full border-0"
+            />
+          ) : (
+            <span className="grid justify-items-center gap-1">
+              <Video className="size-5" />
+              주소를 붙여 넣으세요
+            </span>
+          )}
+        </div>
+
+        <div className="grid content-start gap-2">
+          <div className="grid gap-1.5">
+            <Label htmlFor={`${inputId}-url`}>유튜브 주소</Label>
+            <Input
+              id={`${inputId}-url`}
+              value={url}
+              inputMode="url"
+              placeholder="https://youtu.be/… 또는 youtube.com/watch?v=…"
+              onChange={(e) => paste(e.target.value)}
+              aria-invalid={error ? true : undefined}
+            />
+          </div>
+          <div className="grid gap-1.5">
+            <Label htmlFor={`${inputId}-start`}>시작 위치 (초, 선택)</Label>
+            <Input
+              id={`${inputId}-start`}
+              type="number"
+              min={0}
+              step={1}
+              value={block.start ?? ""}
+              placeholder="0"
+              onChange={(e) => {
+                const n = parseInt(e.target.value, 10)
+                onChange({ ...block, start: Number.isFinite(n) && n > 0 ? n : undefined })
+              }}
+            />
+            {block.start ? (
+              <p className="text-xs text-muted-foreground">{clock(block.start)}부터 재생합니다</p>
+            ) : null}
+          </div>
+          <div className="grid gap-1.5">
+            <Label htmlFor={`${inputId}-title`}>설명 (선택)</Label>
+            <Input
+              id={`${inputId}-title`}
+              value={block.title ?? ""}
+              placeholder="영상 아래 표시할 짧은 설명 (화면 낭독기도 읽습니다)"
+              onChange={(e) => onChange({ ...block, title: e.target.value || undefined })}
+            />
+          </div>
+          {block.id ? (
+            <p className="font-mono text-xs break-all text-muted-foreground">
+              영상 ID {block.id}
             </p>
           ) : null}
         </div>
