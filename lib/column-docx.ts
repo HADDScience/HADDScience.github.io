@@ -6,12 +6,17 @@ import {
   ImageRun,
   Packer,
   Paragraph,
+  ShadingType,
+  Table,
+  TableCell,
+  TableRow,
   TextRun,
+  WidthType,
   type ParagraphChild,
 } from "docx"
 
 import type { PostBlock } from "@/content/types"
-import { DRAFT_LABEL, type Draft } from "@/lib/admin-column"
+import { DRAFT_LABEL, placeSuggestions, type Draft, type ImageSuggestion } from "@/lib/admin-column"
 import { youtubeWatchUrl } from "@/lib/youtube"
 
 /**
@@ -20,6 +25,7 @@ import { youtubeWatchUrl } from "@/lib/youtube"
  * 브라우저에서 만든다. 사진은 `/omnis/api/website/media/…` 로 같은 오리진에서 오므로(rewrite)
  * 그대로 받아 캔버스에서 PNG 로 바꾼다 — 워드는 webp 를 넣지 못한다.
  * 본문의 [1] 같은 근거 번호는 지우지 않는다. 검토본이라 끝에 붙는 「근거 기사」 목록과 맞춰 볼 수 있어야 한다.
+ * 이미지 제안도 회색 상자로 넣는다(소제목 아래, 썸네일용은 부제 아래). 「완료」로 접은 제안은 뺀다 — 사진을 이미 넣었다는 뜻이다.
  */
 
 const FONT = "맑은 고딕"
@@ -112,6 +118,44 @@ async function block(b: PostBlock): Promise<Paragraph[]> {
   }
 }
 
+const BOX_FILL = "EFEFEF"
+const BOX_LINE = "BFBFBF"
+
+/**
+ * 이미지 제안 하나 → 회색 상자. 칸 하나짜리 표로 만든다 — 문단마다 음영·테두리를 주면 워드가
+ * 테두리가 다른 문단을 한 상자로 잇지 않아 줄 사이가 끊긴다. 표 뒤에는 빈 문단을 둔다(표끼리 붙지 않게).
+ */
+function suggestionBox(s: ImageSuggestion): (Table | Paragraph)[] {
+  const edge = { style: BorderStyle.SINGLE, size: 4, color: BOX_LINE }
+  const p = (children: ParagraphChild[]) => new Paragraph({ children, spacing: { after: 40 }, keepNext: true })
+  const where = s.target === "lead" ? "글 맨 앞 · 목록 썸네일" : "이 소제목 아래"
+  const rows: ParagraphChild[][] = [
+    [run(`이미지 제안 (${where}) — 검토용, 게시되지 않습니다`, { bold: true, size: 18, color: "444444" })],
+    ...(s.idea ? [[run("추천: ", { bold: true, size: 18 }), run(s.idea, { size: 18 })]] : []),
+    ...(s.sources.length ? [[run("어디서 구할지:", { bold: true, size: 18 })], ...s.sources.map((src) => [run(`· ${src}`, { size: 18 })])] : []),
+    ...(s.prompt ? [[run("AI 생성 프롬프트 (영문):", { bold: true, size: 18 })], [run(s.prompt, { size: 18, color: "333333" })]] : []),
+  ]
+  return [
+    new Table({
+      width: { size: 100, type: WidthType.PERCENTAGE },
+      borders: { top: edge, bottom: edge, left: edge, right: edge, insideHorizontal: edge, insideVertical: edge },
+      rows: [
+        new TableRow({
+          cantSplit: true,
+          children: [
+            new TableCell({
+              children: rows.map(p),
+              shading: { type: ShadingType.CLEAR, color: "auto", fill: BOX_FILL },
+              margins: { top: 100, bottom: 100, left: 140, right: 140 },
+            }),
+          ],
+        }),
+      ],
+    }),
+    new Paragraph({ children: [], spacing: { after: 120 } }),
+  ]
+}
+
 function link(href: string): ExternalHyperlink {
   return new ExternalHyperlink({
     link: href,
@@ -121,9 +165,17 @@ function link(href: string): ExternalHyperlink {
 
 const ymd = (d: Date) => `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`
 
-export async function buildColumnDocx(draft: Pick<Draft, "title" | "summary" | "blocks" | "status" | "keyword">): Promise<Blob> {
-  const body: Paragraph[] = []
-  for (const b of draft.blocks) body.push(...(await block(b)))
+export async function buildColumnDocx(
+  draft: Pick<Draft, "title" | "summary" | "blocks" | "status" | "keyword" | "imageSuggestions">
+): Promise<Blob> {
+  // 편집기와 같은 자리에 놓으려고 전체 목록으로 자리를 정한 뒤 완료한 것을 뺀다
+  const placed = placeSuggestions(draft.blocks, draft.imageSuggestions)
+  const boxes = (list: ImageSuggestion[] = []) => list.filter((s) => !s.done).flatMap(suggestionBox)
+  const body: (Table | Paragraph)[] = boxes([...placed.lead, ...placed.unplaced])
+  for (const [i, b] of draft.blocks.entries()) {
+    body.push(...(await block(b)))
+    body.push(...boxes(placed.at.get(i)))
+  }
 
   const sources = draft.keyword.sources.map((s, i) => {
     const children: ParagraphChild[] = [
