@@ -64,6 +64,8 @@ export interface BlockEditorProps {
   resolveSrc: (src: string) => string
   /** 사진 캡션을 「출처(필수)」로 받는다. 칼럼은 본문 사진에 출처를 단다(10/13 회의). */
   captionIsSource?: boolean
+  /** i 번째 블록 카드 맨 아래에 붙일 것. 칼럼 초안은 소제목 아래에 이미지 제안을 둔다. */
+  renderAfter?: (index: number) => React.ReactNode
 }
 
 export function BlockEditor({
@@ -72,6 +74,7 @@ export function BlockEditor({
   onPickImage,
   resolveSrc,
   captionIsSource,
+  renderAfter,
 }: BlockEditorProps) {
   const update = (i: number, next: PostBlock) =>
     onChange(blocks.map((b, j) => (j === i ? next : b)))
@@ -191,6 +194,7 @@ export function BlockEditor({
               onChange={(e) => update(i, { ...block, text: e.target.value })}
             />
           )}
+          {renderAfter?.(i)}
         </div>
       ))}
 
