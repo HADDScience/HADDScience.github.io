@@ -5,6 +5,7 @@ import * as React from "react"
 import { toast } from "sonner"
 
 import { BlockEditor } from "@/components/admin/block-editor"
+import { ImageSuggestionBox } from "@/components/admin/column-image-suggestion"
 import { PostBody } from "@/components/ds/post-body"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -17,11 +18,13 @@ import {
   deleteDraft,
   DRAFT_LABEL,
   loadDraft,
+  placeSuggestions,
   publish,
   requestReview,
   saveDraft,
   uploadDraftImage,
   type Draft,
+  type ImageSuggestion,
   type Me,
 } from "@/lib/admin-column"
 import { prepareImage } from "@/lib/admin-image"
@@ -35,6 +38,9 @@ import { cn } from "@/lib/utils"
  *
  * 고칠 수 있는 것은 「초안」·「수정 요청」 상태뿐이다. 검토에 들어가면 잠긴다 — 대표님이 보는
  * 동안 글이 바뀌면 무엇을 승인했는지 알 수 없다.
+ *
+ * 이미지 제안(AI 가 초안과 함께 낸 「어떤 사진을 어디서」)은 소제목 아래 상자로 보인다. 검토용이라
+ * 미리보기(공개 화면 모양)에는 없고, 게시할 때도 서버가 블록만 보내므로 빠진다.
  */
 export function ColumnDraftEditor({ cfg, id, onClose }: { cfg: ApiConfig; id: string; onClose: () => void }) {
   const [draft, setDraft] = React.useState<Draft | null>(null)
@@ -103,7 +109,31 @@ export function ColumnDraftEditor({ cfg, id, onClose }: { cfg: ApiConfig; id: st
   }
 
   const save = () =>
-    run("저장", () => saveDraft(cfg, draft.id, { title: draft.title, summary: draft.summary, blocks: draft.blocks }), "저장했습니다")
+    run(
+      "저장",
+      () =>
+        saveDraft(cfg, draft.id, {
+          title: draft.title,
+          summary: draft.summary,
+          blocks: draft.blocks,
+          // 제안 없이 만든 옛 초안(null)은 보내지 않는다 — 서버가 그대로 둔다
+          imageSuggestions: draft.imageSuggestions ?? undefined,
+        }),
+      "저장했습니다"
+    )
+
+  const placed = placeSuggestions(draft.blocks, draft.imageSuggestions)
+  const suggestionBoxes = (list: ImageSuggestion[]) =>
+    list.map((s) => (
+      <ImageSuggestionBox
+        key={s.id}
+        s={s}
+        editable={editable}
+        onChange={(next) => set({ imageSuggestions: (draft.imageSuggestions ?? []).map((x) => (x.id === s.id ? next : x)) })}
+        onRemove={() => set({ imageSuggestions: (draft.imageSuggestions ?? []).filter((x) => x.id !== s.id) })}
+      />
+    ))
+  const topBoxes = [...placed.lead, ...placed.unplaced]
 
   const draftId = draft.id
   async function submit() {
@@ -203,6 +233,14 @@ export function ColumnDraftEditor({ cfg, id, onClose }: { cfg: ApiConfig; id: st
                 <Label htmlFor="col-summary">부제</Label>
                 <Textarea id="col-summary" rows={2} value={draft.summary} disabled={!editable} onChange={(e) => set({ summary: e.target.value })} />
               </div>
+              {topBoxes.length ? (
+                <div className="grid gap-2">
+                  {placed.unplaced.length ? (
+                    <p className="text-xs text-muted-foreground">소제목을 찾지 못한 제안 {placed.unplaced.length}건도 여기에 모았습니다.</p>
+                  ) : null}
+                  {suggestionBoxes(topBoxes)}
+                </div>
+              ) : null}
               {editable ? (
                 <BlockEditor
                   blocks={draft.blocks}
@@ -210,10 +248,24 @@ export function ColumnDraftEditor({ cfg, id, onClose }: { cfg: ApiConfig; id: st
                   onPickImage={pickImage}
                   resolveSrc={(s) => s}
                   captionIsSource
+                  renderAfter={(i) => {
+                    const list = placed.at.get(i)
+                    return list ? <div className="grid gap-2">{suggestionBoxes(list)}</div> : null
+                  }}
                 />
               ) : (
-                <div className="rounded-lg border border-border bg-card p-6">
-                  <PostBody blocks={draft.blocks} resolveSrc={(s) => s} />
+                <div className="grid gap-4 rounded-lg border border-border bg-card p-6">
+                  {placed.at.size ? (
+                    // 검토 중에도 제안이 소제목 아래에 보이도록 소제목에서 끊어 그린다
+                    splitAtHeadings(draft.blocks).map(({ start, blocks }) => (
+                      <React.Fragment key={start}>
+                        <PostBody blocks={blocks} resolveSrc={(s) => s} />
+                        {placed.at.get(start) ? <div className="grid gap-2">{suggestionBoxes(placed.at.get(start)!)}</div> : null}
+                      </React.Fragment>
+                    ))
+                  ) : (
+                    <PostBody blocks={draft.blocks} resolveSrc={(s) => s} />
+                  )}
                 </div>
               )}
             </>
@@ -322,6 +374,20 @@ export function ColumnDraftEditor({ cfg, id, onClose }: { cfg: ApiConfig; id: st
       </div>
     </div>
   )
+}
+
+/**
+ * 읽기 전용 화면에서 제안을 소제목 바로 아래에 끼우려고 블록을 나눈다.
+ * 소제목은 혼자 한 조각이 되고(start = 그 소제목의 순번), 나머지는 다음 소제목 전까지 한 조각이다.
+ */
+function splitAtHeadings(blocks: PostBlock[]): { start: number; blocks: PostBlock[] }[] {
+  const out: { start: number; blocks: PostBlock[] }[] = []
+  blocks.forEach((b, i) => {
+    const last = out[out.length - 1]
+    if (b.type === "heading" || !last || last.blocks[0].type === "heading") out.push({ start: i, blocks: [b] })
+    else last.blocks.push(b)
+  })
+  return out
 }
 
 function BackButton({ onClose, dirty }: { onClose: () => void; dirty?: boolean }) {

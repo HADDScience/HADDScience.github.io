@@ -71,8 +71,25 @@ export interface DraftSummary {
   keyword: { id: string; term: string }
 }
 
+/**
+ * 이미지 제안 — 검토용. 게시되지 않는다(Omnis `lib/column/image-suggest.ts`).
+ * 소제목과는 `heading`(만들 때의 글자)과 `n`(몇 번째 소제목)으로 이어진다 — `placeSuggestions`.
+ */
+export interface ImageSuggestion {
+  id: string
+  target: "lead" | "heading"
+  heading?: string
+  n?: number
+  idea: string
+  sources: string[]
+  prompt: string
+  done?: boolean
+}
+
 export interface Draft extends DraftSummary {
   blocks: PostBlock[]
+  /** 2026-10-21 이전 초안은 null(제안 없음) */
+  imageSuggestions?: ImageSuggestion[] | null
   keyword: { id: string; term: string; summary: string; sources: KeywordSource[] }
 }
 
@@ -97,7 +114,12 @@ export const createDraft = (cfg: ApiConfig, keywordId: string) =>
 export const loadDraft = (cfg: ApiConfig, id: string) =>
   api<{ draft: Draft; problems: string[]; me: Me }>(cfg, `/column/drafts/${id}`)
 
-export const saveDraft = (cfg: ApiConfig, id: string, body: { title: string; summary: string; blocks: PostBlock[] }) =>
+/** `imageSuggestions` 를 빼면 서버가 저장된 제안을 그대로 둔다. */
+export const saveDraft = (
+  cfg: ApiConfig,
+  id: string,
+  body: { title: string; summary: string; blocks: PostBlock[]; imageSuggestions?: ImageSuggestion[] }
+) =>
   api<{ problems: string[] }>(cfg, `/column/drafts/${id}`, { method: "PUT", body: JSON.stringify(body) })
 
 export const deleteDraft = (cfg: ApiConfig, id: string) => api<{ ok: true }>(cfg, `/column/drafts/${id}`, { method: "DELETE" })
@@ -133,4 +155,37 @@ export const KEYWORD_LABEL: Record<KeywordStatus, string> = {
   reserved: "예약됨",
   used: "사용됨",
   discarded: "버림",
+}
+
+/**
+ * 제안을 놓을 자리. 글자가 같은 소제목을 먼저 찾고, 없으면 n 번째 소제목에 붙인다 —
+ * 소제목을 고쳐 쓰는 동안에도 상자가 제자리에 있고, 순서를 바꿔도 따라간다.
+ * 둘 다 안 되면(소제목을 지웠을 때) `unplaced` 로 모아 글 맨 앞에 보인다.
+ */
+export function placeSuggestions(blocks: PostBlock[], list: ImageSuggestion[] | null | undefined) {
+  const headings = blocks.flatMap((b, i) => (b.type === "heading" ? [i] : []))
+  const text = (i: number) => (blocks[i].type === "heading" ? blocks[i].text.trim() : "")
+  const at = new Map<number, ImageSuggestion[]>()
+  const lead: ImageSuggestion[] = []
+  const unplaced: ImageSuggestion[] = []
+  const used = new Set<number>()
+  const put = (i: number, s: ImageSuggestion) => {
+    used.add(i)
+    at.set(i, [...(at.get(i) ?? []), s])
+  }
+  const rest: ImageSuggestion[] = []
+  for (const s of list ?? []) {
+    if (s.target === "lead") lead.push(s)
+    else {
+      const i = headings.find((h) => !used.has(h) && !!s.heading && text(h) === s.heading.trim())
+      if (i === undefined) rest.push(s)
+      else put(i, s)
+    }
+  }
+  for (const s of rest) {
+    const i = s.n === undefined ? undefined : headings[s.n]
+    if (i === undefined || used.has(i)) unplaced.push(s)
+    else put(i, s)
+  }
+  return { lead, at, unplaced }
 }
