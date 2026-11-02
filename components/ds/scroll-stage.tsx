@@ -180,7 +180,7 @@ export function ScrollStage({
                     <div className="relative h-32 md:h-44">
                       <Image
                         src={p.image}
-                        alt={`${p.name} ${p.form}`}
+                        alt={p.imageAlt ?? `${p.name} ${p.form}`}
                         fill
                         sizes="(min-width: 768px) 22vw, 45vw"
                         className="object-contain drop-shadow-[0_18px_36px_rgba(0,0,0,0.45)]"

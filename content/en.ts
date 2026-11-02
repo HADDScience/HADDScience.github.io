@@ -15,7 +15,7 @@ export const en: SiteContent = {
     lang: "en",
     title: "HADD SCIENCE | Organoid & 3D cell culture biomaterials",
     description:
-      "HADD SCIENCE builds biomaterials for organoid and 3D cell culture on natural polynucleotide gel technology — the animal-free gel-type medium ADDGEL and the ready-to-use liquid medium LiVEGEL, for research use.",
+      "HADD SCIENCE builds biomaterials for organoid and 3D cell culture on natural polynucleotide gel technology — the animal-free gel-type media supplement ADDGEL and the 3D organoid live imaging solution LiVEGEL, for research use.",
     // 한국어판과 같은 원칙: 화면에 실제로 있는 말만 적는다.
     keywords: [
       "HADD SCIENCE",
@@ -24,7 +24,7 @@ export const en: SiteContent = {
       "organoid culture",
       "biomaterial",
       "3D cell culture",
-      "gel-type culture media",
+      "gel-type media supplement",
       "hydrogel",
       "Matrigel alternative",
       "spheroid",
@@ -365,10 +365,10 @@ export const en: SiteContent = {
       },
       {
         eyebrow: "LiVEGEL",
-        title: ["Simply add, culture instantly.", "A new standard in liquid 3D cell culture"],
+        title: ["Simply add, image in place.", "A live imaging solution for 3D organoids"],
         description: [
-          "A ready-to-use liquid medium that needs no preparation.",
-          "Experience faster, simpler 3D culture with LiVEGEL.",
+          "Ready to use, no preparation needed.",
+          "Keep organoids in place and capture clearer live images with LiVEGEL.",
         ],
         cta: { label: "Explore LiVEGEL", href: "/products/livegel" },
         image: "/products/livegel.webp",
@@ -391,8 +391,8 @@ export const en: SiteContent = {
       { value: "2024", label: "HADD Science founded" },
     ],
     productSection: {
-      eyebrow: "Gel-type culture media",
-      title: "Culture matrix for 3D cell culture.",
+      eyebrow: "Gel-type media supplement",
+      title: "For 3D cell and organoid culture.",
       heading: "ADDGEL — Three forms, one powerful 3D culture solution",
       cta: "View all products",
     },
@@ -423,7 +423,7 @@ export const en: SiteContent = {
       lineup: {
         eyebrow: "Product lineup",
         title: "Four forms, shaped by how research works",
-        description: "Pick a format and spheroid · organoid 3D culture begins.",
+        description: "Choose a format to start 3D culture and imaging of spheroids and organoids.",
       },
       scrollHint: "Scroll",
     },
@@ -589,11 +589,11 @@ export const en: SiteContent = {
     {
       id: "addgel",
       name: "ADDGEL",
-      eyebrow: "Gel-type culture media",
-      tagline: "culture matrix for 3D cell culture.",
+      eyebrow: "Gel-type media supplement",
+      tagline: "for 3D cell and organoid culture.",
       heading: "ADDGEL — Three forms, one powerful 3D culture solution",
       description:
-        "A medium composition for 3D cell culture and organoid culture that replaces conventional Matrigel and hydrogels.",
+        "A gel-type supplement mixed into your own medium — replaces Matrigel and hydrogels in 3D cell and organoid culture.",
       regulatory: "For research use only",
       href: "/products",
       variants: [
@@ -631,25 +631,62 @@ export const en: SiteContent = {
     {
       id: "livegel",
       name: "LiVEGEL",
-      eyebrow: "Ready-to-use liquid culture media",
-      tagline: "for advanced 3D cell culture.",
-      heading: "LiVEGEL — Simply add, instantly culture in 3D",
+      eyebrow: "Ready-to-use live imaging solution",
+      tagline: "for imaging 3D organoids & spheroids.",
+      heading: "LiVEGEL — Simply add, image in place.",
       description:
-        "A ready-to-use liquid medium composition for organoid and spheroid 3D cell culture.",
+        "A ready-to-use liquid solution for 3D live imaging of organoids and spheroids.",
       regulatory: "For research use only",
       href: "/products/livegel",
       variants: [
         {
           id: "livegel-1ml",
           name: "LiVEGEL",
-          form: "1ml Dropper",
+          form: "Dropper bottle · 3 mL / 5 mL",
           image: "/products/livegel.webp",
+          imageAlt: "LiVEGEL Dropper bottle",
           storage: "2°C ~ 8°C",
           sampleRequest: true,
           sampleNote:
             "Press the sample request button and complete the form to request a sample.",
         },
       ],
+      // 공용 FAQ·CTA 는 ADDGEL 기준이다. LiVEGEL 은 배양 배지가 아니라 이미징 솔루션이라 따로 둔다.
+      faq: [
+        {
+          q: "Is LiVEGEL a culture medium?",
+          a: "No. LiVEGEL is a live imaging solution for 3D organoids and spheroids. Add your organoids to LiVEGEL at the point of imaging or electrophysiological recording.",
+        },
+        {
+          q: "How do I use it?",
+          a: "(1) Bring refrigerated LiVEGEL to room temperature just before use. (2) Place your organoids with LiVEGEL in an imaging plate, such as a 24-well plate. (3) Start time-lapse live imaging. Organoids stay in place throughout long-term imaging.",
+        },
+        {
+          q: "What does it do?",
+          a: "It holds organoids in place during long-term imaging and MEA recording, reducing image mismatch, and improves fluorescence image clarity (in-house data: about 20% sharper on average in SH-SY5Y cells).",
+        },
+        {
+          q: "How should LiVEGEL be stored?",
+          a: "Store at 2–8°C and bring to room temperature just before use.",
+        },
+        {
+          q: "Can I use it with ADDGEL?",
+          a: "Yes. Organoids grown in ADDGEL can be transferred to LiVEGEL for long-term live imaging.",
+        },
+        {
+          q: "Can I get a sample?",
+          a: "Samples are available for LiVEGEL. Tell us about your cells and imaging setup on the contact page, and we will follow up.",
+        },
+        {
+          q: "Can the products be used for clinical or diagnostic purposes?",
+          a: "No. All products are for research use only.",
+        },
+      ],
+      ctaBand: {
+        title: "Let us help you set up LiVEGEL for your imaging.",
+        description:
+          "Tell us about your cells or organoids and your imaging setup, and we will recommend a sample and protocol.",
+      },
     },
   ],
 

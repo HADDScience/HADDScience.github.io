@@ -29,6 +29,8 @@ export function ProductFamilyPage({
 
   const p = content.productsPage
   const subnav = content.nav[1].children ?? []
+  const faq = family.faq ?? p.faq
+  const ctaBand = family.ctaBand ?? content.home.ctaBand
 
   return (
     <>
@@ -84,7 +86,7 @@ export function ProductFamilyPage({
         <Container narrow>
           <h2 className="text-2xl font-bold md:text-3xl">{p.faqTitle}</h2>
           <div className="mt-8">
-            <FaqAccordion items={p.faq} />
+            <FaqAccordion items={faq} />
           </div>
         </Container>
       </Section>
@@ -97,10 +99,10 @@ export function ProductFamilyPage({
           >
             <div className="grid gap-2">
               <h2 className="text-2xl font-bold text-white md:text-3xl">
-                {content.home.ctaBand.title}
+                {ctaBand.title}
               </h2>
               <p className="text-lg text-white/72">
-                {content.home.ctaBand.description}
+                {ctaBand.description}
               </p>
             </div>
             <Button
