@@ -58,6 +58,8 @@ export interface ProductVariant {
   name: string
   form: string
   image: string
+  /** 있으면 이미지 alt 로 쓴다. 없으면 `${name} ${form}`. 라벨에 용량이 들어가는 제품처럼 둘이 다를 때 쓴다. */
+  imageAlt?: string
   storage: string
   sampleRequest: boolean
   sampleNote: string
@@ -73,6 +75,10 @@ export interface ProductFamily {
   regulatory: string
   href: string
   variants: ProductVariant[]
+  /** 있으면 이 제품 페이지에서 `productsPage.faq` 대신 쓴다. */
+  faq?: { q: string; a: string }[]
+  /** 있으면 이 제품 페이지의 하단 CTA 제목·문장을 `home.ctaBand` 대신 쓴다. */
+  ctaBand?: { title: string; description: string }
 }
 
 /**

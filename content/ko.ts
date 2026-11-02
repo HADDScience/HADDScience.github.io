@@ -9,7 +9,7 @@ export const ko: SiteContent = {
     lang: "ko",
     title: "하드사이언스 HADD SCIENCE | 오가노이드 · 3D 세포배양 생체소재",
     description:
-      "하드사이언스는 자연유래 폴리핵산 젤 기술로 오가노이드와 3차원(3D) 세포배양을 위한 생체소재를 만듭니다. Animal free 젤타입 배지 ADDGEL과 액상형 배지 LiVEGEL을 연구용으로 공급합니다.",
+      "하드사이언스는 자연유래 폴리핵산 젤 기술로 오가노이드와 3차원(3D) 세포배양을 위한 생체소재를 만듭니다. Animal free 젤타입 배지 서플리먼트 ADDGEL과 3D 오가노이드 라이브 이미징 솔루션 LiVEGEL을 연구용으로 공급합니다.",
     // 화면 카피에 실제로 있는 말만 적는다 — 아래 home·about·products 를 함께 볼 것.
     keywords: [
       "하드사이언스",
@@ -21,7 +21,7 @@ export const ko: SiteContent = {
       "3D 세포배양",
       "3차원 세포배양",
       "세포배양 젤",
-      "젤타입 배지",
+      "젤타입 배지 서플리먼트",
       "하이드로젤",
       "매트리젤 대체",
       "스페로이드",
@@ -364,10 +364,10 @@ export const ko: SiteContent = {
       },
       {
         eyebrow: "LiVEGEL",
-        title: ["간편하게 넣고, 바로 배양!", "액상형 3D 세포배양의 새로운 기준"],
+        title: ["간편하게 넣고, 바로 이미징!", "3D 오가노이드 라이브 이미징 솔루션"],
         description: [
-          "별도 준비 없이 바로 사용 가능한 액상형 배지,",
-          "LiVEGEL로 더 빠르고 간편한 3D 배양을 경험하세요.",
+          "별도 준비 없이 바로 쓰는 액상형 솔루션,",
+          "LiVEGEL로 오가노이드를 제자리에 고정하고 더 선명한 라이브 이미지를 얻으세요.",
         ],
         cta: { label: "라이브젤 자세히 보기", href: "/products/livegel" },
         image: "/products/livegel.webp",
@@ -390,8 +390,8 @@ export const ko: SiteContent = {
       { value: "2024", label: "하드사이언스 설립" },
     ],
     productSection: {
-      eyebrow: "Gel-type culture media",
-      title: "Culture matrix for 3D cell culture.",
+      eyebrow: "Gel-type media supplement",
+      title: "For 3D cell and organoid culture.",
       heading: "ADDGEL — Three forms, one powerful 3D culture solution",
       cta: "전체 제품 보기",
     },
@@ -422,7 +422,7 @@ export const ko: SiteContent = {
       lineup: {
         eyebrow: "Product lineup",
         title: "연구가 필요한 형태로, 네 가지",
-        description: "제형만 고르면 스페로이드 · 오가노이드 3차원 배양이 시작됩니다.",
+        description: "제형만 고르면 스페로이드 · 오가노이드 3차원 배양과 이미징이 시작됩니다.",
       },
       scrollHint: "스크롤",
     },
@@ -572,11 +572,11 @@ export const ko: SiteContent = {
     {
       id: "addgel",
       name: "ADDGEL",
-      eyebrow: "Gel-type culture media",
-      tagline: "culture matrix for 3D cell culture.",
+      eyebrow: "Gel-type media supplement",
+      tagline: "for 3D cell and organoid culture.",
       heading: "ADDGEL — Three forms, one powerful 3D culture solution",
       description:
-        "기존 매트리젤 / 하이드로젤을 대체하는 3D 세포배양 · 오가노이드 배양용 배지 조성물",
+        "기존 배지에 섞어 쓰는 젤타입 배지 서플리먼트 — 3D 세포 · 오가노이드 배양에서 매트리젤 · 하이드로젤 대체",
       regulatory: "For research use only",
       href: "/products",
       variants: [
@@ -612,24 +612,61 @@ export const ko: SiteContent = {
     {
       id: "livegel",
       name: "LiVEGEL",
-      eyebrow: "Ready-to-use liquid culture media",
-      tagline: "for advanced 3D cell culture.",
-      heading: "LiVEGEL — Simply add, instantly culture in 3D",
+      eyebrow: "Ready-to-use live imaging solution",
+      tagline: "for imaging 3D organoids & spheroids.",
+      heading: "LiVEGEL — Simply add, image in place.",
       description:
-        "넣고 바로 쓰는 액상형 — 오가노이드 · 스페로이드 3D 세포배양용 배지 조성물",
+        "넣고 바로 쓰는 액상형 — 오가노이드 · 스페로이드 3D 세포 이미징용 솔루션",
       regulatory: "For research use only",
       href: "/products/livegel",
       variants: [
         {
           id: "livegel-1ml",
           name: "LiVEGEL",
-          form: "1ml Dropper",
+          form: "Dropper bottle · 3 mL / 5 mL",
           image: "/products/livegel.webp",
+          imageAlt: "LiVEGEL Dropper bottle",
           storage: "2°C ~ 8°C",
           sampleRequest: true,
           sampleNote: "샘플 신청 버튼을 누르신 후 양식을 작성하시면 샘플 신청이 가능합니다.",
         },
       ],
+      // 공용 FAQ·CTA 는 ADDGEL 기준이다. LiVEGEL 은 배양 배지가 아니라 이미징 솔루션이라 따로 둔다.
+      faq: [
+        {
+          q: "LiVEGEL은 배양 배지인가요?",
+          a: "아니요. LiVEGEL은 3D 오가노이드·스페로이드의 라이브 이미징용 솔루션입니다. 배양한 오가노이드를 이미징·전기생리 측정 시점에 LiVEGEL에 넣어 사용합니다.",
+        },
+        {
+          q: "어떻게 사용하나요?",
+          a: "① 냉장 보관된 LiVEGEL을 사용 직전 상온으로 맞춥니다. ② 오가노이드를 LiVEGEL과 함께 24-well plate 등 이미징 플레이트에 넣습니다. ③ 타임랩스 라이브 이미징을 진행합니다. 장기간 촬영 중에도 위치가 고정됩니다.",
+        },
+        {
+          q: "어떤 효과가 있나요?",
+          a: "장기 이미징·전기생리(MEA) 측정 중 오가노이드 위치를 고정해 이미지 미스매칭을 줄이고, 형광 이미지 선명도를 높입니다(자사 실험, SH-SY5Y 기준 평균 약 20% 향상).",
+        },
+        {
+          q: "보관 조건은 어떻게 되나요?",
+          a: "2–8°C 냉장 보관하고, 사용 직전 상온으로 맞추어 사용합니다.",
+        },
+        {
+          q: "ADDGEL과 함께 사용할 수 있나요?",
+          a: "네. ADDGEL로 배양한 오가노이드를 LiVEGEL로 옮겨 장기 라이브 이미징에 활용할 수 있습니다.",
+        },
+        {
+          q: "샘플을 받아볼 수 있나요?",
+          a: "LiVEGEL은 샘플 신청이 가능합니다. 문의하기에서 사용하시는 세포·오가노이드와 이미징 조건을 알려주시면 안내해 드립니다.",
+        },
+        {
+          q: "임상·진단에 쓸 수 있나요?",
+          a: "아니요. 모든 제품은 연구용(For research use only)입니다.",
+        },
+      ],
+      ctaBand: {
+        title: "이미징 조건에 맞는 LiVEGEL 사용법을 안내해 드립니다.",
+        description:
+          "사용하시는 세포·오가노이드와 이미징 조건을 알려주시면 샘플과 프로토콜을 안내해 드립니다.",
+      },
     },
   ],
 

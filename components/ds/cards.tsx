@@ -44,7 +44,7 @@ export function ProductCard({
     <div className="relative h-52 bg-surface-plate">
       <Image
         src={variant.image}
-        alt={`${variant.name} ${variant.form}`}
+        alt={variant.imageAlt ?? `${variant.name} ${variant.form}`}
         fill
         sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
         className="object-contain p-6"
