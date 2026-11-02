@@ -32,6 +32,8 @@ export function NavBar({
   const pathname = usePathname()
   const [open, setOpen] = React.useState(false)
   const close = () => setOpen(false)
+  // 하위 메뉴를 누르면 포인터가 그 자리에 있어 hover 만으로는 닫히지 않는다. 다시 들어올 때 푼다.
+  const [dropdownDismissed, setDropdownDismissed] = React.useState(false)
 
   const isActive = (item: NavItem) => {
     const root = localePath(lang, item.href)
@@ -80,7 +82,16 @@ export function NavBar({
           {items.map((item) => {
             const active = isActive(item)
             return (
-              <div key={item.href} className="group relative py-6">
+              <div
+                key={item.href}
+                className="group relative py-6"
+                // 마우스로는 포커스를 주지 않는다. 포커스가 남으면 focus-within 때문에 페이지를
+                // 옮긴 뒤에도 드롭다운이 열려 있다. focus-visible 로 바꾸면 Tab 으로 하위 메뉴에
+                // 들어가는 순간 드롭다운이 먼저 닫혀 포커스를 잃는다.
+                onMouseDown={(event) => event.preventDefault()}
+                onPointerEnter={() => setDropdownDismissed(false)}
+                onFocus={() => setDropdownDismissed(false)}
+              >
                 <Link
                   href={localePath(lang, item.href)}
                   aria-current={active ? "page" : undefined}
@@ -94,11 +105,18 @@ export function NavBar({
                   {item.label}
                 </Link>
                 {item.children?.length ? (
-                  <div className="invisible absolute top-full left-1/2 grid w-48 -translate-x-1/2 gap-1 rounded-lg border border-border bg-popover p-2 text-popover-foreground opacity-0 shadow-ds-md transition-opacity duration-200 ease-[var(--ease-standard)] group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <div
+                    className={cn(
+                      "invisible absolute top-full left-1/2 grid w-48 -translate-x-1/2 gap-1 rounded-lg border border-border bg-popover p-2 text-popover-foreground opacity-0 shadow-ds-md transition-opacity duration-200 ease-[var(--ease-standard)]",
+                      !dropdownDismissed &&
+                        "group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
+                    )}
+                  >
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
                         href={localePath(lang, child.href)}
+                        onClick={() => setDropdownDismissed(true)}
                         className="rounded-[6px] px-3 py-2 text-sm font-medium transition-colors duration-120 ease-[var(--ease-standard)] hover:bg-accent hover:text-accent-foreground"
                       >
                         {child.label}
