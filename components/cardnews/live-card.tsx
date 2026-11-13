@@ -6,6 +6,7 @@ import type { Card, CardDeck } from "@/content/types"
 import { CARD_SIZE } from "@/lib/cardnews"
 
 import { CardFace, CardImageLoading } from "./card-face"
+import { CardMotion } from "./doodle"
 import "./live-card.css"
 
 /**
@@ -59,7 +60,10 @@ export function LiveCard({
       <div className="live-card-canvas" style={{ width: CARD_SIZE, height: CARD_SIZE }}>
         {/* 기사 페이지에서는 카드 사진을 화면에 가까워질 때 받는다. 굽는 무대는 기본값(즉시). */}
         <CardImageLoading value="lazy">
-          <CardFace card={card} deck={deck} />
+          {/* 손그림 표시는 기사 페이지에서만 그려지듯 나타난다. 굽는 무대는 정지 그림. */}
+          <CardMotion value={true}>
+            <CardFace card={card} deck={deck} />
+          </CardMotion>
         </CardImageLoading>
       </div>
     </figure>

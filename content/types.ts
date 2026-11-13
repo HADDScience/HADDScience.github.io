@@ -196,7 +196,30 @@ export interface CardImage {
 export type CardStat = { value: string; unit?: string; label: string }
 export type CardListItem = { title: string; desc?: string; emoji?: string }
 
-export type Card =
+/**
+ * 카드 오른쪽 위 손그림 표시. 기사 페이지(HTML 카드)에서는 연필로 그리듯 한 번 그려지고,
+ * 구운 PNG·편집기 미리보기에서는 다 그려진 정지 상태다. 제품 강조용 — 한 덱에 한두 장만.
+ */
+export type CardDoodleKind = "circle" | "arrow" | "star"
+
+/**
+ * 사진 속 한 곳을 짚는 낙서 하나. 좌표·크기는 카드(1080) 기준 %.
+ * 동그라미는 상자에 맞춰 타원으로 늘어난다. 배열 순서대로 그려진다.
+ */
+export interface CardDoodleMark {
+  kind: CardDoodleKind
+  x: number
+  y: number
+  w: number
+  h?: number
+  /** 도(°). 화살표 방향을 돌릴 때. 화살표 기본 방향은 왼쪽 아래 → 오른쪽 위. */
+  rotate?: number
+}
+
+/** 문자열이면 카드 오른쪽 위 기본 자리, 배열이면 정한 자리에 그린다. */
+export type CardDoodle = CardDoodleKind | CardDoodleMark[]
+
+export type Card = { doodle?: CardDoodle } & (
   | {
       type: "cover"
       title: string
@@ -282,6 +305,7 @@ export type Card =
       marker: "number" | "bullet" | "emoji"
       items: CardListItem[]
     }
+)
 
 export type ChapterLayout = Extract<Card, { type: "chapter" }>["layout"]
 

@@ -484,3 +484,34 @@
 .cn-root.cn-placeholders .badge.placeholder { background: #C7D5E3; color: #fff; }
 .cn-root.cn-placeholders .overlay-text .placeholder { color: rgba(255,255,255,.6); }
 .cn-root.cn-placeholders .stat-value .placeholder { color: #F7C58A; }
+
+/* 손그림 표시(doodle) -----------------------------------------------------
+   사진 속 한 곳(또는 카드 오른쪽 위)을 짚는 액센트(#F7941D) 연필 선. 기본은 다 그려진 정지 그림(PNG·편집기).
+   기사 페이지에서만 doodle.tsx 가 is-armed → is-drawing 을 붙여 한 번 그린다. */
+.cn-root .doodle {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+}
+.cn-root .doodle.is-armed .doodle-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.cn-root .doodle.is-drawing .doodle-line {
+  animation: cn-doodle-draw .9s cubic-bezier(.45, .05, .35, 1) forwards;
+  animation-delay: calc(var(--d, 0s) + var(--i, 0) * .22s);
+}
+.cn-root .doodle.is-drawing .doodle-line.ghost {
+  animation-delay: calc(var(--d, 0s) + var(--i, 0) * .22s + .3s);
+}
+@keyframes cn-doodle-draw {
+  to { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cn-root .doodle .doodle-line {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}

@@ -5,6 +5,7 @@ import * as React from "react"
 import type { Card, CardDeck, CardImage } from "@/content/types"
 import { CARD_SIZE, defaultRatio } from "@/lib/cardnews"
 
+import { Doodle } from "./doodle"
 import "./card.css"
 
 /**
@@ -500,6 +501,7 @@ export function CardFace({ card, deck, resolveSrc, ref, placeholders }: CardFace
       ) : (
         <ChapterFace card={card} resolveSrc={resolveSrc} />
       )}
+      {card.doodle ? <Doodle doodle={card.doodle} /> : null}
     </div>
   )
 }
