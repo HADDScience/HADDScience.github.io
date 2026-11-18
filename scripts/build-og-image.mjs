@@ -47,7 +47,8 @@ async function html() {
     /* 히어로와 같은 120° 네이비 그라디언트. 글자가 놓이는 왼쪽을 더 누른다. */
     .scrim { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(6,46,99,.90) 0%, rgba(6,46,99,.62) 58%, rgba(8,116,181,.38) 100%); }
     .body { position: absolute; inset: 0; padding: 72px 80px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; }
-    .logo { height: 34px; width: auto; }
+    /* flex 열의 기본 stretch 가 로고를 가로로 늘려 찌그러뜨린다 — 제 비율로 둔다 */
+    .logo { align-self: flex-start; height: 34px; width: auto; }
     h1 { font-size: 66px; line-height: 1.14; letter-spacing: -0.035em; font-weight: 800; }
     .en { margin-top: 22px; font-size: 27px; letter-spacing: -0.01em; color: rgba(255,255,255,.80); }
     .foot { display: flex; align-items: center; gap: 14px; font-size: 22px; font-weight: 700; letter-spacing: .02em; color: rgba(255,255,255,.72); }
