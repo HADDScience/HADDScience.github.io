@@ -32,6 +32,9 @@ export interface CarouselLabels {
  * - `prefers-reduced-motion` 이면 부드러운 스크롤 대신 바로 넘긴다.
  * - 지금 몇 번째인지는 스크롤 위치로 계산한다. 버튼으로 넘기든 손으로 밀든 같은 값을 본다.
  *
+ * 크기: PC 에서는 최대 640px, 사진 높이는 화면 높이의 절반 이하(2026-11-24 사용자 의견 — 처음엔 본문 폭
+ * 812px 를 꽉 채워 너무 컸다). 모바일은 꽉 찬 폭.
+ *
  * 아이콘 세트를 쓰지 않는 디자인시스템 규칙에 따라 버튼은 유니코드 ‹ › 를 쓴다.
  */
 export function PhotoCarousel({
@@ -83,7 +86,9 @@ export function PhotoCarousel({
       aria-label={labels.label}
       // 화살표 키는 캐러셀 안 어디에 포커스가 있든(사진 · 버튼 · 점) 받는다. 점을 누른 뒤에도 이어서 넘길 수 있다.
       onKeyDown={onKeyDown}
-      className="grid gap-4"
+      // PC 에서는 사진이 본문보다 눈에 띄지 않게 폭을 640px 안으로, 사진 높이(4:3)가 화면 높이의 절반을
+      // 넘지 않게 줄인다. 본문 글과 같은 왼쪽 선에 붙인다. 모바일(sm 미만)은 꽉 찬 폭 그대로다.
+      className="grid w-full gap-4 sm:max-w-[min(640px,calc(50svh*4/3))]"
     >
       <div className="relative">
         <div
@@ -107,7 +112,7 @@ export function PhotoCarousel({
                   fill
                   // 첫 장만 먼저 받는다. 나머지는 넘길 때 받는다.
                   priority={i === 0}
-                  sizes="(min-width: 1024px) 760px, 100vw"
+                  sizes="(min-width: 640px) 640px, 100vw"
                   className={photo.fit === "contain" ? "object-contain" : "object-cover"}
                 />
               </div>
