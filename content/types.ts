@@ -1,3 +1,5 @@
+import type { RecruitPeriod } from "@/lib/career-deadline"
+
 export type Lang = "ko" | "en"
 
 export interface NavChild {
@@ -356,7 +358,7 @@ export interface OfficeLocation {
  *
  * 공고 문구의 근거는 그 공고의 신청 서류다. 서류에 없는 조건(급여 · 마감일 등)을 지어 넣지 않는다.
  */
-export interface JobPosting {
+export interface JobPosting extends RecruitPeriod {
   /** 주소에 쓰는 이름. `/career/<slug>` */
   slug: string
   title: string
@@ -365,11 +367,20 @@ export interface JobPosting {
   /** 목록 필터의 값. `career.fields` · `career.types` 의 value 중 하나. */
   field: string
   type: string
-  /** 마감된 공고는 목록에 남되 지원서를 받지 않는다. */
-  status: "open" | "closed"
+  /**
+   * 모집 기간 표시. 마감 시각(`closesAt`)과 같은 날을 사람이 읽는 꼴로 적는다.
+   * 마감된 공고는 목록에 남되 지원서를 받지 않는다 — 판단은 `lib/career-deadline.ts`.
+   */
+  periodLabel: string
+  /**
+   * 하는 일의 갈래. 상세에 목록으로 보이고, 지원서의 「관심 있는 일」 선택지가 된다.
+   * value 는 지원서에 실려 가는 값이라 언어와 상관없이 같아야 한다.
+   */
+  tracks: { value: string; label: string }[]
   tags: string[]
   /** 상세 오른쪽 요약 카드. 순서대로 보인다. */
   facts: { label: string; value: string }[]
+  /** 첫 절 다음에 「하는 일」(tracks)이 들어가고, 나머지 절이 그 뒤에 온다. */
   sections: { title: string; paragraphs?: string[]; list?: string[] }[]
   /** 전형 단계. `detail` 은 날짜처럼 단계 아래에 작게 붙는 말. */
   steps: { label: string; detail?: string }[]
@@ -559,8 +570,13 @@ export interface SiteContent {
     fields: { value: string; label: string }[]
     types: { value: string; label: string }[]
     detail: {
-      aboutTitle: string
       summaryTitle: string
+      tracksTitle: string
+      tracksNote: string
+      periodTitle: string
+      /** 카운트다운 앞말과 단위. `마감까지` + `{d}일 {h}시간 {m}분 {s}초` */
+      countdownLabel: string
+      units: { days: string; hours: string; minutes: string; seconds: string }
       stepsTitle: string
       notesTitle: string
       applyCta: string
@@ -593,6 +609,8 @@ export interface SiteContent {
       portfolioUrlPlaceholder: string
       motivation: string
       motivationPlaceholder: string
+      interests: string
+      interestsHint: string
       /** `{n}` · `{max}` 자리에 글자 수가 들어간다. */
       charCount: string
       consentTitle: string

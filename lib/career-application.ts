@@ -59,6 +59,8 @@ export interface ApplicationPayload {
   resume: FileMeta | null
   portfolioFile: FileMeta | null
   portfolioUrl: string
+  /** 고른 「관심 있는 일」의 value. 선택 사항이라 비어 있어도 된다. API 가 공고의 tracks 로 거른다. */
+  interests: string[]
   motivation: string
   consent: boolean
 }

@@ -3,7 +3,8 @@
 import Link from "next/link"
 import * as React from "react"
 
-import { Badge, SurfaceCard, Tag } from "@/components/ds/primitives"
+import { JobStatusBadge } from "@/components/ds/job-status"
+import { SurfaceCard, Tag } from "@/components/ds/primitives"
 import { Input } from "@/components/ui/input"
 import { localePath, type Lang } from "@/content"
 import type { SiteContent } from "@/content/types"
@@ -13,7 +14,16 @@ import { cn } from "@/lib/utils"
  * 공고 목록 — 왼쪽 필터 · 위 검색 · 공고 줄. 공고가 몇 개 되지 않으므로 거르기는 브라우저에서 한다.
  * 필터 값을 주소에 싣지 않는 이유: 페이지가 정적으로 구워지고, 공유할 만큼 공고가 많지 않다.
  */
-export function JobBoard({ lang, career: c }: { lang: Lang; career: SiteContent["career"] }) {
+export function JobBoard({
+  lang,
+  career: c,
+  serverNow,
+}: {
+  lang: Lang
+  career: SiteContent["career"]
+  /** 서버가 목록을 그린 시각. 상태 배지가 하이드레이션까지 이 값으로 그려진다. */
+  serverNow: number
+}) {
   const [query, setQuery] = React.useState("")
   const [field, setField] = React.useState<string | null>(null)
   const [type, setType] = React.useState<string | null>(null)
@@ -97,9 +107,12 @@ export function JobBoard({ lang, career: c }: { lang: Lang; career: SiteContent[
                 >
                   <SurfaceCard interactive className="grid gap-4 p-6 md:p-8">
                     <div className="flex flex-wrap items-center gap-2">
-                      <Badge tone={job.status === "open" ? "success" : "neutral"}>
-                        {job.status === "open" ? c.list.open : c.list.closed}
-                      </Badge>
+                      <JobStatusBadge
+                        job={job}
+                        serverNow={serverNow}
+                        openLabel={c.list.open}
+                        closedLabel={c.list.closed}
+                      />
                       <span className="text-sm text-muted-foreground">
                         {labelOf(c.fields, job.field)} · {labelOf(c.types, job.type)}
                       </span>
@@ -118,6 +131,10 @@ export function JobBoard({ lang, career: c }: { lang: Lang; career: SiteContent[
                         →
                       </span>
                     </div>
+                    <p className="text-sm">
+                      <span className="font-semibold text-muted-foreground">{c.detail.periodTitle}</span>{" "}
+                      <span className="font-semibold">{job.periodLabel}</span>
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {job.tags.map((tag) => (
                         <Tag key={tag} tone="neutral">
