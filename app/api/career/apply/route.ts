@@ -170,9 +170,16 @@ async function deliver(
   }
 
   if (!res.ok) {
-    const body = (await res.json().catch(() => null)) as { error?: string } | null
+    const body = (await res.json().catch(() => null)) as { error?: string; issues?: unknown } | null
     // 400 이면 홈페이지와 옴니스의 검사 규칙이 어긋난 것이고, 401 이면 비밀이 틀린 것이다 — 둘 다 설정 · 코드 문제다.
-    console.error(`[career] 옴니스가 지원서를 받지 않았다: HTTP ${res.status} ${body?.error ?? ""}`)
+    // 옴니스의 issues 는 「칸: 규칙」(예: "portfolioFile.size: 10MB 이하")이라 지원자가 쓴 값이 들어 있지 않다.
+    // 어느 칸이 어긋났는지 알아야 고칠 수 있어 함께 남긴다(2026-11-24 운영 실패 때 이것이 없어 원인을 좁히지 못했다).
+    const issues = Array.isArray(body?.issues)
+      ? body.issues.filter((i): i is string => typeof i === "string").slice(0, 10).join(" ; ")
+      : ""
+    console.error(
+      `[career] 옴니스가 지원서를 받지 않았다: HTTP ${res.status} ${body?.error ?? ""}${issues ? ` — ${issues}` : ""}`
+    )
     return null
   }
 
