@@ -656,6 +656,8 @@ export interface SiteContent {
       uploadingHint: string
       /** 완료 화면의 「접수 번호」 */
       receiptLabel: string
+      /** 완료 화면 — 옴니스가 접수 확인 메일을 보냈다는 안내(접수 번호가 있을 때만) */
+      receiptMail: string
       failMailto: string
       rateLimited: string
       reset: string
