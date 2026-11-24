@@ -299,6 +299,7 @@ export const en: SiteContent = {
           title: "12. Changes to this policy",
           paragraphs: [
             "We announce any change on this page at least 7 days before it takes effect, and at least 30 days before where the change is to your disadvantage.",
+            "The revision of November 24, 2026 adds information on how we receive job applications and how that personal information is handled. It does not reduce your rights or add to your obligations, so it takes effect on the day it is posted.",
           ],
         },
       ],
