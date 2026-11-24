@@ -8,8 +8,9 @@ import type { Lang } from "./types"
  * 순서가 화면 순서다. 다른 사람 얼굴이 크게 나오는 사진은 흐리게 하거나 빼고 넣는다.
  * 비율은 4:3 틀에 맞춰 보인다. 잘리면 안 되는 사진은 `fit: "contain"`.
  *
- * 2026-11-24: 라운지 · 공유오피스는 해상도와 구도 때문에 뺐다(사용자 의견). 원본은
- * `~/work/omnis-reports/career-photos-261124/`.
+ * 2026-11-24: PPT 에서 뽑은 라운지 · 공유오피스는 해상도와 구도 때문에 뺐다(사용자 의견, 원본
+ * `~/work/omnis-reports/career-photos-261124/`). 공유사무실 · 탕비실은 사용자가 랩스테이션에서 직접 찍은
+ * HEIC 를 sRGB 로 바꾸고 메타데이터(EXIF · 위치 · XMP · ICC)를 모두 지운 webp 다(1600×1200).
  */
 const PHOTOS: {
   src: string
@@ -33,6 +34,34 @@ const PHOTOS: {
       en: {
         alt: "Basic bio lab with benches, reagent shelves and a refrigerator",
         caption: "Lab, Lab Station, Gwanggyo Bio Hub",
+      },
+    },
+  },
+  {
+    // 2026-11-24 사용자가 직접 찍은 사진(IMG_7158). 안쪽에 앉은 사람은 칸막이 너머 머리 윗부분만 보여 알아볼 수 없다.
+    src: "/career/shared-office.webp",
+    text: {
+      ko: {
+        alt: "07호 공유사무실 B 유리문 너머로 보이는 칸막이 책상들",
+        caption: "광교 바이오허브 랩스테이션 공유사무실",
+      },
+      en: {
+        alt: "Partitioned desks seen through the glass door of Shared Office B (room 07)",
+        caption: "Shared office, Lab Station, Gwanggyo Bio Hub",
+      },
+    },
+  },
+  {
+    // 2026-11-24 사용자가 직접 찍은 사진(IMG_7159).
+    src: "/career/pantry.webp",
+    text: {
+      ko: {
+        alt: "개수대와 정수기, 전자레인지, 높은 의자가 있는 탕비실",
+        caption: "광교 바이오허브 랩스테이션 탕비실",
+      },
+      en: {
+        alt: "Pantry with sinks, a water purifier, a microwave and bar stools",
+        caption: "Pantry, Lab Station, Gwanggyo Bio Hub",
       },
     },
   },
