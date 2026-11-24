@@ -16,6 +16,7 @@ import {
   type ApplicationPayload,
   type FileMeta,
 } from "@/lib/career-application"
+import { isClosedNow } from "@/lib/career-deadline"
 import { cn } from "@/lib/utils"
 
 type Errors = Partial<Record<ApplicationField, string>>
@@ -49,6 +50,10 @@ const SELECT_CLASS =
  * 로 되돌려 지원서를 잃지 않는다. 받을 곳이 정해지기 전(2026-11-24)에는 API 가 늘 503 을 주므로
  * 지금은 이 되돌림이 실제 접수 경로다. 메일에는 파일을 붙일 수 없으니 첨부해 달라고 적는다.
  *
+ * 마감(2026-11-27 17:00 KST) 뒤에는 접수하지 않는다. 상세 페이지가 마감 시각에 폼을 통째로 내리지만
+ * (`WhenOpen`), 제출 순간에 한 번 더 보고 API 가 410 을 주면 그것도 따른다. 마감 뒤에는 메일 되돌림을
+ * 띄우지 않는다 — 되돌림이 열리면 마감 뒤 지원이 메일로 들어온다.
+ *
  * 봇 거르기도 문의 폼과 같다 — 허니팟 칸 `company` 와 폼을 만난 뒤 지난 시간 `elapsedMs`.
  */
 export function ApplicationForm({
@@ -56,15 +61,20 @@ export function ApplicationForm({
   email,
   lang,
   job,
+  closedNotice,
 }: {
   form: Form
   /** 메일 되돌림을 받을 주소. */
   email: string
+  /** 「모집이 끝났습니다」 */
+  closedNotice: string
   lang: Lang
   job: JobPosting
 }) {
   const [errors, setErrors] = React.useState<Errors>({})
-  const [status, setStatus] = React.useState<"idle" | "sending" | "sent" | "failed">("idle")
+  const [status, setStatus] = React.useState<
+    "idle" | "sending" | "sent" | "failed" | "closed"
+  >("idle")
   const [failBody, setFailBody] = React.useState(t.failBody)
   const [mailtoHref, setMailtoHref] = React.useState("")
   const [motivationLength, setMotivationLength] = React.useState(0)
@@ -80,6 +90,10 @@ export function ApplicationForm({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (status === "sending") return
+    if (isClosedNow(job)) {
+      setStatus("closed")
+      return
+    }
 
     const data = new FormData(event.currentTarget)
     const value = (key: string) => String(data.get(key) ?? "").trim()
@@ -102,6 +116,7 @@ export function ApplicationForm({
       resume: file("resume"),
       portfolioFile: file("portfolioFile"),
       portfolioUrl: value("portfolioUrl"),
+      interests: data.getAll("interests").map(String),
       motivation: value("motivation"),
       consent: data.get("consent") !== null,
     }
@@ -130,7 +145,7 @@ export function ApplicationForm({
           ...payload,
           lang,
           company: value("company"),
-          elapsedMs: Date.now() - (startedAt.current ?? Date.now()),
+          elapsedMs: elapsedSince(startedAt.current),
         }),
       })
 
@@ -138,7 +153,12 @@ export function ApplicationForm({
         setStatus("sent")
         return
       }
+      if (res.status === 410) {
+        setStatus("closed")
+        return
+      }
       if (res.status === 429) {
+        if (isClosedNow(job)) return setStatus("closed")
         setFailBody(t.rateLimited)
         setStatus("failed")
         return
@@ -158,12 +178,20 @@ export function ApplicationForm({
           return
         }
       }
-      setFailBody(t.failBody)
-      setStatus("failed")
+      fail()
     } catch {
-      setFailBody(t.failBody)
-      setStatus("failed")
+      fail()
     }
+  }
+
+  /** 메일 되돌림을 띄운다. 그새 마감이 지났으면 띄우지 않는다. */
+  const fail = () => {
+    if (isClosedNow(job)) {
+      setStatus("closed")
+      return
+    }
+    setFailBody(t.failBody)
+    setStatus("failed")
   }
 
   const reset = () => {
@@ -173,6 +201,14 @@ export function ApplicationForm({
     setMotivationLength(0)
     startedAt.current = Date.now()
     setStatus("idle")
+  }
+
+  if (status === "closed") {
+    return (
+      <p className="text-xl font-bold break-keep" role="alert">
+        {closedNotice}
+      </p>
+    )
   }
 
   if (status === "sent") {
@@ -333,6 +369,24 @@ export function ApplicationForm({
         </div>
       </fieldset>
 
+      <fieldset className="grid gap-3">
+        <legend className="text-sm font-semibold">{t.interests}</legend>
+        <p className="-mt-1 text-sm text-muted-foreground">{t.interestsHint}</p>
+        <div className="grid gap-2">
+          {job.tracks.map((track) => (
+            <label key={track.value} className="flex items-start gap-3 text-sm">
+              <input
+                type="checkbox"
+                name="interests"
+                value={track.value}
+                className="mt-0.5 size-4 shrink-0 accent-primary"
+              />
+              <span className="break-keep">{track.label}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
       <Field label={t.motivation} htmlFor="motivation" required error={errors.motivation}>
         <Textarea
           id="motivation"
@@ -419,6 +473,9 @@ function buildMailto(
     `${t.phone}: ${p.phone}`,
     `${t.email}: ${p.email}`,
     `${t.portfolioUrl}: ${p.portfolioUrl}`,
+    `${t.interests}: ${p.interests
+      .map((v) => job.tracks.find((tr) => tr.value === v)?.label ?? v)
+      .join(", ")}`,
     "",
     `${t.motivation}:`,
     p.motivation,
@@ -467,4 +524,10 @@ function Field({
       {error ? <p className="text-sm text-status-danger">{error}</p> : null}
     </div>
   )
+}
+
+/** 폼을 만난 뒤 지난 시간(ms). 봇 거르기에 쓴다. 제출 처리기에서만 부른다. */
+function elapsedSince(start: number | null): number {
+  const now = Date.now()
+  return now - (start ?? now)
 }

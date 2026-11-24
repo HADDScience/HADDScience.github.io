@@ -802,16 +802,20 @@ export const en: SiteContent = {
       open: "Open",
       closed: "Closed",
     },
-    fields: [{ value: "ai-data", label: "AI & Data" }],
+    fields: [{ value: "bio-company", label: "Research, dev & planning" }],
     types: [{ value: "practicum", label: "Practicum internship" }],
     detail: {
-      aboutTitle: "About HADD SCIENCE",
       summaryTitle: "At a glance",
+      tracksTitle: "What you can work on",
+      tracksNote: "The work we need doesn't fit into a single role, so we've split it into three tracks. Tell us which ones interest you in the application and we'll take it into account.",
+      periodTitle: "Application period",
+      countdownLabel: "Closes in",
+      units: { days: "d", hours: "h", minutes: "m", seconds: "s" },
       stepsTitle: "Hiring process",
       notesTitle: "Good to know",
       applyCta: "Apply now",
       backToList: "← All positions",
-      closedNotice: "This position is no longer accepting applications.",
+      closedNotice: "Applications are closed.",
     },
     form: {
       title: "Application",
@@ -843,12 +847,14 @@ export const en: SiteContent = {
       motivation: "Why this internship?",
       motivationPlaceholder: "Tell us briefly why you're applying and what you'd like to work on.",
       charCount: "{n} / {max} characters",
+      interests: "Tracks you're interested in",
+      interestsHint: "Optional. Pick as many as you like.",
       consentTitle: "Collection and use of personal information",
       consentTable: {
         head: ["Items collected", "Purpose", "Retention"],
         rows: [
           [
-            "Name, department, student ID, year, expected graduation, phone, email, résumé, portfolio (if provided), motivation",
+            "Name, department, student ID, year, expected graduation, phone, email, résumé, portfolio (if provided), tracks of interest (if selected), motivation",
             "Selecting practicum interns and notifying applicants of the result",
             "Six months after selection closes, then destroyed without delay.",
           ],
@@ -883,68 +889,39 @@ export const en: SiteContent = {
       {
         slug: "suwon-anchor-practicum-intern-2026-winter",
         title: "[USW Anchor Project × Field Practicum] Intern",
-        summary:
-          "An eight-week practicum: clean up neural signal data recorded from brain organoids, then build the tool that analyzes it.",
-        field: "ai-data",
+        summary: "An eight-week practicum where you come and do real work at a bio company.",
+        field: "bio-company",
         type: "practicum",
-        status: "open",
-        tags: ["Practicum", "8 weeks", "AI & Data", "USW 3rd–4th year"],
+        closesAt: "2026-11-27T17:00:00+09:00",
+        periodLabel: "Nov 24 – Nov 27 (Fri), 2026, 5:00 PM KST",
+        tags: ["Practicum", "8 weeks", "USW 3rd–4th year"],
         facts: [
           { label: "Openings", value: "3" },
           { label: "Period", value: "Dec 28, 2026 – Feb 19, 2027 (8 weeks)" },
           { label: "Hours", value: "Mon–Fri, 4 hours a day" },
-          { label: "Team", value: "AI Development" },
           {
             label: "Location",
             value: "Lab Station, 8F Gyeonggi Bio Center (147 Gwanggyo-ro, Yeongtong-gu, Suwon)",
           },
-          { label: "Bring", value: "Your own laptop" },
+        ],
+        tracks: [
+          { value: "ai-bio", label: "AI-driven bio research" },
+          { value: "dev", label: "Developing our internal work system (Omnis) and website" },
+          { value: "grants", label: "Writing applications for national R&D programs and TIPS" },
         ],
         sections: [
           {
-            title: "What you'll do",
+            title: "About the practicum",
             paragraphs: [
-              "You'll join HADD SCIENCE's project to build an AI tool for analyzing bio-signal patterns in brain organoids. Starting from neural signals recorded from brain organoids with multi-electrode arrays (MEA), you'll detect spikes and bursts, extract pattern metrics and build a tool that classifies recordings by condition.",
-              "Your work runs from organizing data we've already collected through to implementing the analysis tool.",
-            ],
-            list: [
-              "Organizing and preprocessing collected MEA data (filtering, noise removal)",
-              "Detecting spikes, bursts and network bursts",
-              "Extracting pattern metrics such as firing rate, burst interval and inter-channel synchrony",
-              "Building a condition classifier and visualizing results",
-              "Packaging the tool, writing the final report and presenting it",
+              "HADD SCIENCE is a bio company that makes biomaterials for organoids and 3D cell culture. For eight weeks you'll work alongside us and see how a bio company actually runs.",
             ],
           },
           {
-            title: "Why it matters",
-            paragraphs: [
-              "We want to quantify, through neural signal patterns, how mature an organoid is and what changes when it is treated with a material or drug. You'll work with real biological experiment data and design a research analysis tool from scratch.",
-            ],
-          },
-          {
-            title: "The eight weeks",
-            list: [
-              "Week 1 — Brain organoids, how MEA works, and the data structure",
-              "Week 2 — Preprocessing (filtering, noise removal)",
-              "Week 3 — Spike detection",
-              "Week 4 — Burst and network-burst detection",
-              "Week 5 — Pattern metrics (firing rate, burst interval, inter-channel synchrony)",
-              "Week 6 — Condition classification model",
-              "Week 7 — Visualization and tool clean-up",
-              "Week 8 — Final report and presentation",
-            ],
-          },
-          {
-            title: "Who we're looking for",
+            title: "Who can apply",
             list: [
               "3rd- or 4th-year students at the University of Suwon taking part in the field practicum credit program",
-              "Comfortable with basic Python",
               "Students graduating in February 2027 cannot take part",
             ],
-          },
-          {
-            title: "Nice to have",
-            list: ["Coursework in signal processing or machine learning"],
           },
         ],
         steps: [
@@ -955,9 +932,8 @@ export const en: SiteContent = {
         ],
         notes: [
           "Dates and hours may change to fit the university's schedule.",
-          "No lab experiments or sample handling. You'll work with public datasets and experiment data provided by the company; company data is shared after you sign a confidentiality agreement.",
           "Please bring your own laptop.",
-          "Apply on this page. Selected students then complete the university's Field Practicum Support Center paperwork separately.",
+          "Selected students then complete the university's Field Practicum Support Center paperwork separately.",
         ],
       },
     ],

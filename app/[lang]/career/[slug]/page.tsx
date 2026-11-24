@@ -2,14 +2,16 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
+import { DeadlineCountdown, JobStatusBadge, WhenOpen } from "@/components/ds/job-status"
 import { PageHeader } from "@/components/ds/page-header"
-import { Badge, Container, Section, SurfaceCard, Tag } from "@/components/ds/primitives"
+import { Container, Section, SurfaceCard, Tag } from "@/components/ds/primitives"
 import { ApplicationForm } from "@/components/forms/application-form"
 import { Button } from "@/components/ui/button"
 import { AVAILABLE_LANGS, isLang, localePath } from "@/content"
 import { en } from "@/content/en"
 import { ko } from "@/content/ko"
 import { getContent } from "@/content/server"
+import { renderedAt } from "@/lib/career-deadline"
 import { JsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo"
 
 /**
@@ -17,6 +19,13 @@ import { JsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo"
  * `dynamicParams = false` 로 막지 않는 이유: 그러면 `next start` 가 404 마다 NoFallbackError 를
  * 로그에 찍는다(2026-11-24 실측). 다른 동적 경로(`news/[id]`)와 같은 방식을 쓴다.
  */
+/**
+ * 모집 상태는 브라우저가 시계로 다시 판단하지만(`components/ds/job-status.tsx`), 서버가 그린 HTML 도
+ * 마감 근처에서 오래 남지 않게 5분마다 새로 그린다. 공고 페이지는 넷(ko·en × 목록·상세)뿐이라
+ * 크롤러가 와도 재생성 횟수가 많지 않다.
+ */
+export const revalidate = 300
+
 export function generateStaticParams() {
   const byLang = { ko, en }
   return AVAILABLE_LANGS.flatMap((lang) =>
@@ -55,7 +64,14 @@ export default async function JobDetailPage({
   if (!job) notFound()
 
   const d = c.career.detail
-  const open = job.status === "open"
+  // 서버가 이 페이지를 그린 시각. 하이드레이션까지는 이 값으로 상태를 그린다.
+  const serverNow = renderedAt()
+  const period = { closesAt: job.closesAt }
+  const closed = (
+    <p className="rounded-lg bg-muted px-4 py-3 text-center font-bold text-muted-foreground">
+      {d.closedNotice}
+    </p>
+  )
 
   return (
     <>
@@ -79,9 +95,12 @@ export default async function JobDetailPage({
           <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_340px] lg:gap-16">
             <article className="grid content-start gap-12">
               <div className="flex flex-wrap items-center gap-2">
-                <Badge tone={open ? "success" : "neutral"}>
-                  {open ? c.career.list.open : c.career.list.closed}
-                </Badge>
+                <JobStatusBadge
+                  job={period}
+                  serverNow={serverNow}
+                  openLabel={c.career.list.open}
+                  closedLabel={c.career.list.closed}
+                />
                 {job.tags.map((tag) => (
                   <Tag key={tag} tone="neutral">
                     {tag}
@@ -89,46 +108,27 @@ export default async function JobDetailPage({
                 ))}
               </div>
 
-              {/* 회사 소개는 ABOUT 페이지의 문구를 그대로 쓴다. 두 곳의 말이 어긋나지 않게. */}
+              {job.sections.slice(0, 1).map((section) => (
+                <JobSection key={section.title} section={section} />
+              ))}
+
               <section className="grid gap-4">
-                <h2 className="text-2xl font-bold">{d.aboutTitle}</h2>
-                <div className="grid gap-1 text-muted-foreground">
-                  {c.about.story.body.map((line) => (
-                    <p key={line} className="break-keep">
-                      {line}
-                    </p>
-                  ))}
-                </div>
-                <ul className="grid gap-4 sm:grid-cols-3">
-                  {c.about.whatWeDo.items.map((item) => (
-                    <li key={item.index} className="grid gap-2 border-t-2 border-primary pt-4">
-                      <span className="font-mono text-sm font-bold text-brand-blue-500">{item.index}</span>
-                      <p className="font-semibold break-keep">{item.title}</p>
-                      <p className="text-sm text-muted-foreground break-keep">{item.description}</p>
+                <h2 className="text-2xl font-bold">{d.tracksTitle}</h2>
+                <ol className="grid gap-3 sm:grid-cols-3">
+                  {job.tracks.map((track, i) => (
+                    <li key={track.value} className="grid content-start gap-2 border-t-2 border-primary pt-4">
+                      <span className="font-mono text-sm font-bold text-brand-blue-500">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="font-semibold break-keep">{track.label}</span>
                     </li>
                   ))}
-                </ul>
+                </ol>
+                <p className="text-muted-foreground break-keep">{d.tracksNote}</p>
               </section>
 
-              {job.sections.map((section) => (
-                <section key={section.title} className="grid gap-4">
-                  <h2 className="text-2xl font-bold">{section.title}</h2>
-                  {section.paragraphs?.map((p) => (
-                    <p key={p} className="leading-[1.8] break-keep">
-                      {p}
-                    </p>
-                  ))}
-                  {section.list?.length ? (
-                    <ul className="grid gap-2">
-                      {section.list.map((item) => (
-                        <li key={item} className="flex gap-3 leading-[1.7] break-keep">
-                          <span aria-hidden className="mt-[0.7em] size-1.5 shrink-0 rounded-full bg-brand-blue-500" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </section>
+              {job.sections.slice(1).map((section) => (
+                <JobSection key={section.title} section={section} />
               ))}
 
               <section className="grid gap-4">
@@ -172,6 +172,10 @@ export default async function JobDetailPage({
                   {d.summaryTitle}
                 </p>
                 <dl className="grid gap-4">
+                  <div className="grid gap-1">
+                    <dt className="text-xs font-semibold text-muted-foreground">{d.periodTitle}</dt>
+                    <dd className="text-sm font-semibold break-keep">{job.periodLabel}</dd>
+                  </div>
                   {job.facts.map((fact) => (
                     <div key={fact.label} className="grid gap-1">
                       <dt className="text-xs font-semibold text-muted-foreground">{fact.label}</dt>
@@ -179,20 +183,23 @@ export default async function JobDetailPage({
                     </div>
                   ))}
                 </dl>
-                {open ? (
+                <DeadlineCountdown
+                  job={period}
+                  label={d.countdownLabel}
+                  units={d.units}
+                />
+                <WhenOpen job={period} serverNow={serverNow} fallback={closed}>
                   <Button nativeButton={false} size="lg" className="w-full" render={<a href="#apply" />}>
                     {d.applyCta}
                   </Button>
-                ) : (
-                  <p className="text-sm font-semibold text-muted-foreground">{d.closedNotice}</p>
-                )}
+                </WhenOpen>
               </SurfaceCard>
             </aside>
           </div>
         </Container>
       </Section>
 
-      {open ? (
+      <WhenOpen job={period} serverNow={serverNow} fallback={null}>
         <Section tone="subtle" id="apply" className="scroll-mt-20">
           <Container narrow>
             <div className="grid gap-3">
@@ -200,11 +207,44 @@ export default async function JobDetailPage({
               <p className="text-muted-foreground">{c.career.form.description}</p>
             </div>
             <SurfaceCard className="mt-8 p-6 md:p-10">
-              <ApplicationForm form={c.career.form} email={c.company.email} lang={lang} job={job} />
+              <ApplicationForm
+                form={c.career.form}
+                email={c.company.email}
+                lang={lang}
+                job={job}
+                closedNotice={d.closedNotice}
+              />
             </SurfaceCard>
           </Container>
         </Section>
-      ) : null}
+      </WhenOpen>
     </>
+  )
+}
+
+function JobSection({
+  section,
+}: {
+  section: { title: string; paragraphs?: string[]; list?: string[] }
+}) {
+  return (
+    <section className="grid gap-4">
+      <h2 className="text-2xl font-bold">{section.title}</h2>
+      {section.paragraphs?.map((p) => (
+        <p key={p} className="leading-[1.8] break-keep">
+          {p}
+        </p>
+      ))}
+      {section.list?.length ? (
+        <ul className="grid gap-2">
+          {section.list.map((item) => (
+            <li key={item} className="flex gap-3 leading-[1.7] break-keep">
+              <span aria-hidden className="mt-[0.7em] size-1.5 shrink-0 rounded-full bg-brand-blue-500" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </section>
   )
 }

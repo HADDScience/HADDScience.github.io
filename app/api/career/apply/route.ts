@@ -7,6 +7,7 @@ import {
   type ApplicationPayload,
   type FileMeta,
 } from "@/lib/career-application"
+import { isClosed } from "@/lib/career-deadline"
 
 /**
  * 지원서 접수 — **골격만 있다** (2026-11-24).
@@ -20,6 +21,11 @@ import {
  * 받을 곳을 정하면 `deliver()` 만 바꾸면 된다. 선택지는 작업 보고서
  * (`~/work/omnis-reports/hadd-career-261124.md`)에 적었다.
  *
+ * 마감(공고의 `closesAt`, 2026-11-27 17:00 KST)이 지나면 410 `closed` 를 준다. 서버 시계로 판단하므로
+ * 방문자 브라우저의 시계가 틀려도 마감 뒤 지원서는 받지 않는다. 폼은 410 을 보면 메일 되돌림 없이
+ * 「모집이 끝났습니다」만 보여 준다. 마감 판단은 봇 거르기보다 먼저 한다 — 마감 뒤에는 사람에게도
+ * 접수된 척 201 을 주면 안 되기 때문이다.
+ *
  * 파일은 이 라우트로 오지 않는다. Vercel Function 본문 한도(4.5MB)보다 이력서 상한(10MB)이 크다.
  * 저장소가 정해지면 브라우저가 저장소에 직접 올리고, 여기에는 올라간 파일의 메타데이터만 온다.
  */
@@ -30,10 +36,10 @@ export const dynamic = "force-dynamic"
 /** 문의 폼과 같은 값. 사람이 이 폼을 3초 안에 채울 수는 없다. */
 const MIN_ELAPSED_MS = 3000
 
-/** 지원을 받는 공고. 언어와 상관없이 slug 가 같다. */
-const OPEN_JOBS = new Set(
-  [...ko.career.jobs, ...en.career.jobs].filter((j) => j.status === "open").map((j) => j.slug)
-)
+/** 공고. 언어와 상관없이 slug · 마감 · tracks 의 value 가 같으므로 한국어 쪽을 기준으로 본다. */
+const JOBS = new Map(ko.career.jobs.map((j) => [j.slug, j]))
+// 영어 쪽에만 있는 공고가 생기면 조용히 404 가 되지 않게 함께 넣는다.
+for (const j of en.career.jobs) if (!JOBS.has(j.slug)) JOBS.set(j.slug, j)
 
 export async function POST(req: NextRequest) {
   const body: unknown = await req.json().catch(() => null)
@@ -42,6 +48,15 @@ export async function POST(req: NextRequest) {
   }
   const raw = body as Record<string, unknown>
   const str = (key: string) => (typeof raw[key] === "string" ? (raw[key] as string).trim() : "")
+
+  // 공고는 페이지가 정해 보내므로 방문자가 틀릴 수 없다. 틀렸다면 코드 문제다.
+  const job = JOBS.get(str("job"))
+  if (!job) {
+    return NextResponse.json({ error: "unknown_job" }, { status: 400 })
+  }
+  if (isClosed(job, Date.now())) {
+    return NextResponse.json({ error: "closed" }, { status: 410 })
+  }
 
   // 봇 거르기 — 문의 폼과 같다. 걸리면 접수된 척 201 을 준다(실패를 알려 주면 봇이 고쳐 온다).
   const elapsed = typeof raw.elapsedMs === "number" ? raw.elapsedMs : 0
@@ -61,13 +76,14 @@ export async function POST(req: NextRequest) {
     resume: fileMeta(raw.resume),
     portfolioFile: fileMeta(raw.portfolioFile),
     portfolioUrl: str("portfolioUrl"),
+    // 공고에 없는 값은 버린다. 선택 사항이므로 오류로 돌려보내지 않는다.
+    interests: Array.isArray(raw.interests)
+      ? [...new Set(raw.interests.filter((v): v is string => typeof v === "string"))].filter((v) =>
+          job.tracks.some((t) => t.value === v)
+        )
+      : [],
     motivation: str("motivation"),
     consent: raw.consent === true,
-  }
-
-  // 공고는 페이지가 정해 보내므로 방문자가 틀릴 수 없다. 틀렸다면 마감됐거나 코드 문제다.
-  if (!OPEN_JOBS.has(payload.job)) {
-    return NextResponse.json({ error: "job_closed" }, { status: 400 })
   }
 
   const fields = validateApplication(payload)
