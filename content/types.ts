@@ -380,6 +380,11 @@ export interface JobPosting extends RecruitPeriod {
   tags: string[]
   /** 상세 오른쪽 요약 카드. 순서대로 보인다. */
   facts: { label: string; value: string }[]
+  /**
+   * 일하게 될 곳 사진. 상세의 첫 절 다음에 캐러셀로 보인다. `src` 는 `public/` 기준 경로.
+   * `fit: "contain"` 은 잘리면 안 되는 사진(비율이 4:3 이 아닌 원본을 그대로 쓰는 경우)에 쓴다.
+   */
+  photos?: { src: string; alt: string; caption: string; fit?: "cover" | "contain" }[]
   /** 첫 절 다음에 「하는 일」(tracks)이 들어가고, 나머지 절이 그 뒤에 온다. */
   sections: { title: string; paragraphs?: string[]; list?: string[] }[]
   /** 전형 단계. `detail` 은 날짜처럼 단계 아래에 작게 붙는 말. */
@@ -571,6 +576,9 @@ export interface SiteContent {
     types: { value: string; label: string }[]
     detail: {
       summaryTitle: string
+      photosTitle: string
+      /** 사진 캐러셀의 버튼 · 점 · 위치 안내. `{n}` · `{total}` 자리에 숫자가 들어간다. */
+      carousel: { label: string; prev: string; next: string; goTo: string; position: string }
       tracksTitle: string
       tracksNote: string
       periodTitle: string
