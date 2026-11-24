@@ -5,6 +5,9 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+/** PC(lg 이상)에서 한 화면에 나란히 보이는 장수. 슬라이드 폭 `lg:w-[calc((100%-1rem)/2)]` 과 맞춘다. */
+const PC_VISIBLE = 2
+
 export interface CarouselPhoto {
   src: string
   alt: string
@@ -32,8 +35,13 @@ export interface CarouselLabels {
  * - `prefers-reduced-motion` 이면 부드러운 스크롤 대신 바로 넘긴다.
  * - 지금 몇 번째인지는 스크롤 위치로 계산한다. 버튼으로 넘기든 손으로 밀든 같은 값을 본다.
  *
- * 크기: PC 에서는 최대 640px, 사진 높이는 화면 높이의 절반 이하(2026-11-24 사용자 의견 — 처음엔 본문 폭
- * 812px 를 꽉 채워 너무 컸다). 모바일은 꽉 찬 폭.
+ * 크기와 장수(2026-11-24 사용자 의견 두 번):
+ * - 모바일(sm 미만): 1장, 꽉 찬 폭.
+ * - 태블릿(sm~lg): 1장, 폭 640px 안 · 사진 높이가 화면 높이의 절반 이하.
+ * - PC(lg 이상): 2장을 나란히 놓아 본문 폭을 채운다. 넘기면 1장씩 움직인다. 처음엔 1장이 본문 폭(812px)을
+ *   꽉 채워 너무 컸고, 640px 로 줄이니 오른쪽이 애매하게 비었다. 2장이면 한 장이 약 398×298px 다.
+ * 몇 장이 보이는지와 한 칸의 폭은 화면에서 잰다(`measure`). 그래서 버튼 · 점 · 밀기 · 「n / 4」가 장수와
+ * 상관없이 같은 계산을 쓴다.
  *
  * 아이콘 세트를 쓰지 않는 디자인시스템 규칙에 따라 버튼은 유니코드 ‹ › 를 쓴다.
  */
@@ -45,25 +53,54 @@ export function PhotoCarousel({
   labels: CarouselLabels
 }) {
   const trackRef = React.useRef<HTMLDivElement>(null)
+  /** 맨 왼쪽에 보이는 사진의 번호(0부터). */
   const [index, setIndex] = React.useState(0)
+  /** 한 화면에 보이는 장수. 서버와 첫 렌더는 1, 화면 폭을 잰 뒤 PC 면 2. */
+  const [visible, setVisible] = React.useState(1)
   const total = photos.length
+  // PC 는 2장을 나란히 보인다. 사진이 그 이하면 PC 에서는 넘길 것이 없으니 버튼 · 점 · 「n / 2」를 숨긴다.
+  // 화면을 재기 전(서버 렌더)에도 맞게 CSS(lg:hidden)로 숨긴다 — 재고 나서 숨기면 첫 화면에 잠깐 보인다.
+  const fitsOnPc = total <= PC_VISIBLE
+  const lastIndex = Math.max(0, total - visible)
+
+  /** 한 칸(사진 폭 + 사이 간격)과 보이는 장수. 슬라이드의 실제 위치로 잰다. */
+  const measure = React.useCallback(() => {
+    const track = trackRef.current
+    const slides = track?.children
+    if (!track || !slides?.length) return { step: 0, visible: 1 }
+    const first = slides[0] as HTMLElement
+    const step = slides.length > 1 ? (slides[1] as HTMLElement).offsetLeft - first.offsetLeft : track.clientWidth
+    const gap = step - first.offsetWidth
+    return { step, visible: step > 0 ? Math.max(1, Math.round((track.clientWidth + gap) / step)) : 1 }
+  }, [])
+
+  // 화면 폭이 바뀌면(회전 · 창 크기) 보이는 장수를 다시 잰다.
+  React.useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+    const observer = new ResizeObserver(() => setVisible(measure().visible))
+    observer.observe(track)
+    return () => observer.disconnect()
+  }, [measure])
 
   const goTo = React.useCallback(
     (i: number) => {
       const track = trackRef.current
       if (!track) return
-      const next = Math.max(0, Math.min(total - 1, i))
+      const m = measure()
+      const next = Math.max(0, Math.min(total - m.visible, i))
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      track.scrollTo({ left: next * track.clientWidth, behavior: reduce ? "auto" : "smooth" })
+      track.scrollTo({ left: next * m.step, behavior: reduce ? "auto" : "smooth" })
     },
-    [total]
+    [measure, total]
   )
 
-  // 스크롤이 멈춘 자리에서 번호를 읽는다. 한 장 폭으로 나눠 반올림하면 손으로 반쯤 민 경우도 맞는다.
+  // 스크롤이 멈춘 자리에서 번호를 읽는다. 한 칸 폭으로 나눠 반올림하면 손으로 반쯤 민 경우도 맞는다.
   const onScroll = () => {
     const track = trackRef.current
-    if (!track || track.clientWidth === 0) return
-    const i = Math.round(track.scrollLeft / track.clientWidth)
+    const { step } = measure()
+    if (!track || step <= 0) return
+    const i = Math.round(track.scrollLeft / step)
     if (i !== index) setIndex(i)
   }
 
@@ -77,7 +114,9 @@ export function PhotoCarousel({
     }
   }
 
-  const position = labels.position.replace("{n}", String(index + 1)).replace("{total}", String(total))
+  // 2장이 보이면 「1–2 / 4」 처럼 보이는 범위를 적는다.
+  const shown = visible > 1 ? `${index + 1}–${Math.min(total, index + visible)}` : String(index + 1)
+  const position = labels.position.replace("{n}", shown).replace("{total}", String(total))
 
   return (
     <div
@@ -88,14 +127,14 @@ export function PhotoCarousel({
       onKeyDown={onKeyDown}
       // PC 에서는 사진이 본문보다 눈에 띄지 않게 폭을 640px 안으로, 사진 높이(4:3)가 화면 높이의 절반을
       // 넘지 않게 줄인다. 본문 글과 같은 왼쪽 선에 붙인다. 모바일(sm 미만)은 꽉 찬 폭 그대로다.
-      className="grid w-full gap-4 sm:max-w-[min(640px,calc(50svh*4/3))]"
+      className="grid w-full gap-4 sm:max-w-[min(640px,calc(50svh*4/3))] lg:max-w-none"
     >
       <div className="relative">
         <div
           ref={trackRef}
           tabIndex={0}
           onScroll={onScroll}
-          className="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-lg [scrollbar-width:none] focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:outline-none [&::-webkit-scrollbar]:hidden"
+          className="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-lg lg:gap-4 [scrollbar-width:none] focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:outline-none [&::-webkit-scrollbar]:hidden"
         >
           {photos.map((photo, i) => (
             <figure
@@ -103,16 +142,16 @@ export function PhotoCarousel({
               role="group"
               aria-roledescription="slide"
               aria-label={labels.position.replace("{n}", String(i + 1)).replace("{total}", String(total))}
-              className="grid w-full shrink-0 snap-start gap-3"
+              className="grid w-full shrink-0 snap-start gap-3 lg:w-[calc((100%-1rem)/2)]"
             >
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-muted">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
-                  // 첫 장만 먼저 받는다. 나머지는 넘길 때 받는다.
-                  priority={i === 0}
-                  sizes="(min-width: 640px) 640px, 100vw"
+                  // 처음 보이는 장(PC 는 2장)만 먼저 받는다. 나머지는 넘길 때 받는다.
+                  priority={i < 2}
+                  sizes="(min-width: 1024px) 400px, (min-width: 640px) 640px, 100vw"
                   className={photo.fit === "contain" ? "object-contain" : "object-cover"}
                 />
               </div>
@@ -121,31 +160,39 @@ export function PhotoCarousel({
           ))}
         </div>
 
-        <ArrowButton side="left" label={labels.prev} disabled={index === 0} onClick={() => goTo(index - 1)} />
+        <ArrowButton
+          side="left"
+          label={labels.prev}
+          disabled={index === 0}
+          onClick={() => goTo(index - 1)}
+          className={cn(fitsOnPc && "lg:hidden")}
+        />
         <ArrowButton
           side="right"
           label={labels.next}
-          disabled={index === total - 1}
+          disabled={index >= lastIndex}
           onClick={() => goTo(index + 1)}
+          className={cn(fitsOnPc && "lg:hidden")}
         />
       </div>
 
-      <div className="flex items-center justify-between gap-4">
+      <div className={cn("flex items-center justify-between gap-4", fitsOnPc && "lg:hidden")}>
         <div className="flex items-center gap-2">
           {photos.map((photo, i) => (
             <button
               key={photo.src}
               type="button"
-              onClick={() => goTo(i)}
+              // 2장이 보일 때 마지막 점을 누르면 마지막 두 장(3–4)으로 간다.
+              onClick={() => goTo(Math.min(i, lastIndex))}
               aria-label={labels.goTo.replace("{n}", String(i + 1))}
-              aria-current={i === index ? "true" : undefined}
+              aria-current={i >= index && i < index + visible ? "true" : undefined}
               // 점은 작아도 누르는 자리는 24px 를 확보한다.
               className="flex h-6 items-center justify-center"
             >
               <span
                 className={cn(
                   "block h-2 rounded-full transition-all duration-200 ease-[var(--ease-standard)] motion-reduce:transition-none",
-                  i === index ? "w-6 bg-primary" : "w-2 bg-border hover:bg-brand-blue-300"
+                  i >= index && i < index + visible ? "w-6 bg-primary" : "w-2 bg-border hover:bg-brand-blue-300"
                 )}
               />
             </button>
@@ -164,11 +211,13 @@ function ArrowButton({
   label,
   disabled,
   onClick,
+  className,
 }: {
   side: "left" | "right"
   label: string
   disabled: boolean
   onClick: () => void
+  className?: string
 }) {
   return (
     <button
@@ -179,7 +228,8 @@ function ArrowButton({
       className={cn(
         // 사진 위에 얹히므로 채운 흰 바탕을 쓴다(반투명이면 밝은 사진에서 안 보인다).
         "absolute top-[calc((100%-2.25rem)/2)] flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-xl text-foreground shadow-ds-md transition-opacity duration-200 ease-[var(--ease-standard)] hover:text-primary disabled:pointer-events-none disabled:opacity-0",
-        side === "left" ? "left-3" : "right-3"
+        side === "left" ? "left-3" : "right-3",
+        className
       )}
     >
       <span aria-hidden>{side === "left" ? "‹" : "›"}</span>

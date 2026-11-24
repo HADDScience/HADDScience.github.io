@@ -1,3 +1,4 @@
+import { careerPhotos } from "./career-photos"
 import type { SiteContent } from "./types"
 
 /**
@@ -940,29 +941,8 @@ export const en: SiteContent = {
             value: "Lab Station, 8F Gyeonggi Bio Center (147 Gwanggyo-ro, Yeongtong-gu, Suwon)",
           },
         ],
-        photos: [
-          {
-            src: "/career/meeting-room.webp",
-            alt: "Meeting room at Lab Station with a long table and chairs",
-            caption: "Meeting room, Lab Station, Gwanggyo Bio Hub",
-          },
-          {
-            src: "/career/lounge.webp",
-            alt: "Lab Station lounge with curved sofas and small side tables",
-            caption: "Lounge, Lab Station, Gwanggyo Bio Hub",
-          },
-          {
-            src: "/career/lab.webp",
-            alt: "Basic bio lab with benches, reagent shelves and a refrigerator",
-            caption: "Lab, Lab Station, Gwanggyo Bio Hub",
-          },
-          {
-            src: "/career/shared-office.webp",
-            alt: "Desks inside the shared office at Lab Station",
-            caption: "Shared office, Lab Station, Gwanggyo Bio Hub",
-            fit: "contain",
-          },
-        ],
+        // 사진 목록은 `content/career-photos.ts` 한 곳에 있다.
+        photos: careerPhotos("en"),
         tracks: [
           { value: "ai-bio", label: "AI-driven bio research" },
           { value: "dev", label: "Developing our internal work system (Omnis) and website" },

@@ -1,0 +1,101 @@
+import type { Lang } from "./types"
+
+/**
+ * 채용 공고 「일하게 될 곳」 사진. 사진 목록은 여기 한 곳에만 둔다 — 한국어 · 영어 공고가 같은 사진을 쓰고,
+ * 글(alt · 캡션)만 언어별로 다르다.
+ *
+ * 사진 더하는 법: 긴 변 1600px 안팎 webp 로 줄여 `public/career/` 에 넣고, 아래 배열에 한 줄 더한다.
+ * 순서가 화면 순서다. 다른 사람 얼굴이 크게 나오는 사진은 흐리게 하거나 빼고 넣는다.
+ * 비율은 4:3 틀에 맞춰 보인다. 잘리면 안 되는 사진은 `fit: "contain"`.
+ *
+ * 2026-11-24: PPT 에서 뽑은 라운지 · 공유오피스는 해상도와 구도 때문에 뺐다(사용자 의견, 원본
+ * `~/work/omnis-reports/career-photos-261124/`). 공유사무실 · 탕비실은 사용자가 랩스테이션에서 직접 찍은
+ * HEIC 를 sRGB 로 바꾸고 메타데이터(EXIF · 위치 · XMP · ICC)를 모두 지운 webp 다(1600×1200).
+ * 입구 · 라운지(로고 벽)도 사용자가 찍은 사진이다. 둘 다 세로 사진이라 4:3 가로로 잘랐다(사인 · 로고가 가운데).
+ */
+const PHOTOS: {
+  src: string
+  fit?: "cover" | "contain"
+  text: Record<Lang, { alt: string; caption: string }>
+}[] = [
+  {
+    // 사용자가 찍은 사진(IMG_7156). 방향 태그(6)대로 세우고, 사인 틀이 4.3° 기울어 있어 수평을 맞췄다.
+    src: "/career/entrance.webp",
+    text: {
+      ko: {
+        alt: "초록 벽에 「GG biohub Lab station」 이라고 적힌 랩스테이션 입구 사인",
+        caption: "광교 바이오허브 랩스테이션 입구",
+      },
+      en: {
+        alt: "Lab Station entrance sign reading “GG biohub Lab station” on a green wall",
+        caption: "Entrance, Lab Station, Gwanggyo Bio Hub",
+      },
+    },
+  },
+  {
+    src: "/career/meeting-room.webp",
+    text: {
+      ko: { alt: "긴 테이블과 의자가 놓인 랩스테이션 회의실", caption: "광교 바이오허브 랩스테이션 회의실" },
+      en: {
+        alt: "Meeting room at Lab Station with a long table and chairs",
+        caption: "Meeting room, Lab Station, Gwanggyo Bio Hub",
+      },
+    },
+  },
+  {
+    src: "/career/lab.webp",
+    text: {
+      ko: { alt: "실험대와 시약 선반, 냉장고가 있는 기초 바이오 실험실", caption: "광교 바이오허브 랩스테이션 실험실" },
+      en: {
+        alt: "Basic bio lab with benches, reagent shelves and a refrigerator",
+        caption: "Lab, Lab Station, Gwanggyo Bio Hub",
+      },
+    },
+  },
+  {
+    // 2026-11-24 사용자가 직접 찍은 사진(IMG_7158). 안쪽에 앉은 사람은 칸막이 너머 머리 윗부분만 보여 알아볼 수 없다.
+    src: "/career/shared-office.webp",
+    text: {
+      ko: {
+        alt: "07호 공유사무실 B 유리문 너머로 보이는 칸막이 책상들",
+        caption: "광교 바이오허브 랩스테이션 공유사무실",
+      },
+      en: {
+        alt: "Partitioned desks seen through the glass door of Shared Office B (room 07)",
+        caption: "Shared office, Lab Station, Gwanggyo Bio Hub",
+      },
+    },
+  },
+  {
+    // 2026-11-24 사용자가 직접 찍은 사진(IMG_7159).
+    src: "/career/pantry.webp",
+    text: {
+      ko: {
+        alt: "개수대와 정수기, 전자레인지, 높은 의자가 있는 탕비실",
+        caption: "광교 바이오허브 랩스테이션 탕비실",
+      },
+      en: {
+        alt: "Pantry with sinks, a water purifier, a microwave and bar stools",
+        caption: "Pantry, Lab Station, Gwanggyo Bio Hub",
+      },
+    },
+  },
+  {
+    // 사용자가 찍은 사진(IMG_7160). 방향 태그(6)대로 세웠다. 로고 글자는 0.2° 로 수평이라 돌리지 않았다.
+    src: "/career/logo-wall.webp",
+    text: {
+      ko: {
+        alt: "둥근 조명 아래 「Lab station」 로고가 붙은 라운지 벽과 화단",
+        caption: "광교 바이오허브 랩스테이션 라운지",
+      },
+      en: {
+        alt: "Lounge wall with the “Lab station” logo under a round light, with plants below",
+        caption: "Lounge, Lab Station, Gwanggyo Bio Hub",
+      },
+    },
+  },
+]
+
+export function careerPhotos(lang: Lang) {
+  return PHOTOS.map((p) => ({ src: p.src, fit: p.fit, ...p.text[lang] }))
+}
