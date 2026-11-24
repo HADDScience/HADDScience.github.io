@@ -156,7 +156,7 @@ export const en: SiteContent = {
               [
                 "Job application (required)",
                 "Name, department, student ID, year, expected graduation, phone, email, résumé, motivation",
-                "Selecting applicants and notifying them of the result",
+                "Sending a receipt email, selecting applicants and notifying them of the result",
                 "Six months after selection closes; where no close of selection is set, 12 months from the date received",
               ],
               [
@@ -194,6 +194,7 @@ export const en: SiteContent = {
             "An enquiry first lands in the inbox of the Company's internal system. Only after a member of staff has read it is it moved into our customer and quotation records. An enquiry that is never moved does not become a customer record, and it is deleted from the inbox once the retention period ends.",
             "If an enquiry leads to a quotation, the information is from that point held as the record of a trading counterparty and follows the periods in section 7.",
             "A job application submitted on the job page is stored in the application inbox of the Company's internal system, where only the hiring staff designated by the Company can open it. Your résumé and portfolio files are kept on a storage device the Company manages itself in Korea (NAS). Applications are used for selection only.",
+            "Once an application is received, we send a receipt email with the reference number to the email address you entered, and a copy containing only the reference number, name and department to the Company's mailbox (info@haddscience.com). These emails are sent from the Company's email account (NAVER WORKS).",
             "If the application can't be sent online because the internal system can't be reached, we ask you to send what you entered from your own email program to the Company's mailbox (info@haddscience.com); applications received that way are kept in the Company's mailbox. You are also welcome to apply by email from the start.",
             "If you are selected and start a placement or job, any information needed from then on is handled under a separate agreement or contract and consent. You may ask us to delete your application at any time before the retention period ends, and we will do so without delay.",
           ],
@@ -228,10 +229,10 @@ export const en: SiteContent = {
               ],
               [
                 "NAVER Cloud Corp. (Republic of Korea)",
-                "Running the Company's email (NAVER WORKS) — storing job applications and attachments received by email (when online submission fails, or when you apply by email)",
-                "The application and attachments you send by email",
+                "Running the Company's email (NAVER WORKS) — sending and keeping the application receipt email and the Company copy; storing job applications and attachments received by email (when online submission fails, or when you apply by email)",
+                "Receipt email: your email address and reference number · Company copy: reference number, name, department · Applications by email: what you send and its attachments",
                 "Republic of Korea",
-                "Sent when you send the email, and stored in the Company's mailbox",
+                "Sent when the application is received (receipt email and copy) or when you send an email, and stored in the Company's mailbox",
               ],
             ],
           },
@@ -893,7 +894,7 @@ export const en: SiteContent = {
         rows: [
           [
             "Name, department, student ID, year, expected graduation, phone, email, résumé, portfolio (if provided), tracks of interest (if selected), motivation",
-            "Selecting practicum interns and notifying applicants of the result",
+            "Sending a receipt email, selecting practicum interns and notifying applicants of the result",
             "Six months after selection closes (12 months from the date received where no close of selection is set), then destroyed without delay.",
             "What you enter is stored in the Company's internal system database (Neon Inc., Singapore); your résumé and portfolio files are kept on a storage device the Company manages itself in Korea (NAS). If you'd rather your information not be stored outside Korea, you can apply by email to info@haddscience.com.",
           ],
@@ -901,7 +902,7 @@ export const en: SiteContent = {
       },
       consentRefusal:
         "You may decline. If you do, however, we will not be able to accept your application through this form. Your portfolio and tracks of interest are optional — leaving them out does not count against you.",
-      consentVersion: "career-consent-2026-11-24-omnis",
+      consentVersion: "career-consent-2026-11-24-mail",
       consent: "I have read the above and agree to the collection and use of my personal information.",
       submit: "Submit application",
       submitting: "Submitting…",
@@ -923,6 +924,7 @@ export const en: SiteContent = {
       uploadingTitle: "Sending your application",
       uploadingHint: "Uploading your files. Please keep this window open until it finishes.",
       receiptLabel: "Reference number",
+      receiptMail: "We've sent a receipt email to the address you entered. It may take a little while to arrive.",
       failMailto: "Apply by email",
       rateLimited: "You've submitted several times in a short period. Please try again shortly, or apply by email.",
       reset: "Start over",

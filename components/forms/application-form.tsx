@@ -297,6 +297,8 @@ export function ApplicationForm({
             {t.receiptLabel} <span className="font-mono text-primary">{code}</span>
           </p>
         ) : null}
+        {/* 접수 확인 메일은 옴니스가 접수 확정 때 보낸다 — 접수 번호가 있는(옴니스로 접수된) 경우에만 알린다. */}
+        {code ? <p className="text-sm text-muted-foreground">{t.receiptMail}</p> : null}
         <p className="text-muted-foreground">{t.successBody}</p>
       </div>
     )
