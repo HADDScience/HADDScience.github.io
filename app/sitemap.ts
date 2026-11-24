@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next"
 
 import { AVAILABLE_LANGS } from "@/content"
+import { ko } from "@/content/ko"
 import { hasArticle, listPosts } from "@/content/server"
 import { isoDate, languageAlternates, pageUrl } from "@/lib/seo"
 import { IS_REVIEW_BUILD } from "@/lib/site-env"
@@ -22,6 +23,9 @@ const STATIC_PATHS = [
   "/news",
   "/library",
   "/contact",
+  "/career",
+  // 공고 slug 는 언어와 상관없이 같다(`content/ko.ts` 의 `career.jobs`). 마감된 공고도 페이지는 남는다.
+  ...ko.career.jobs.map((job) => `/career/${job.slug}`),
   "/terms",
   "/privacy",
 ]

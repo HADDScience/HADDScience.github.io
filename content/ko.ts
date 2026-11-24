@@ -90,6 +90,7 @@ export const ko: SiteContent = {
       href: "/library",
       children: [{ label: "하드:라이브러리", href: "/library" }],
     },
+    { label: "CAREER", href: "/career", children: [{ label: "채용 공고", href: "/career" }] },
   ],
   navCta: "문의하기",
 
@@ -762,6 +763,181 @@ export const ko: SiteContent = {
     },
   },
 
+  /**
+   * 채용. 공고 문구의 근거는 수원대 현장실습 신청 서류
+   * (`~/Desktop/작업폴더/수원대앵커_현장실습_261117/` 의 기입안 WC_02 · 신청서 WC_09 · 학교 모집공고)와
+   * 2026-11-24 작업지시에서 확정한 값(인원 3명 · 기간 · 하루 4시간)이다.
+   * 실습지원비는 예산이 정해지지 않아 적지 않는다.
+   */
+  career: {
+    pageTitle: "채용",
+    breadcrumb: "CAREER",
+    headline: "하드사이언스와 함께할 사람을 찾습니다",
+    description: "지금 열려 있는 공고를 보고, 마음에 드는 자리에 바로 지원해 주세요.",
+    list: {
+      searchLabel: "공고 검색",
+      searchPlaceholder: "공고 이름이나 하는 일로 찾아보세요",
+      fieldLabel: "분야",
+      typeLabel: "고용 형태",
+      all: "전체",
+      count: "공고 {n}개",
+      empty: "조건에 맞는 공고가 없습니다.",
+      reset: "조건 지우기",
+      open: "모집 중",
+      closed: "마감",
+    },
+    fields: [{ value: "ai-data", label: "AI · 데이터" }],
+    types: [{ value: "practicum", label: "현장실습 인턴" }],
+    detail: {
+      aboutTitle: "하드사이언스는",
+      summaryTitle: "모집 요약",
+      stepsTitle: "전형 절차",
+      notesTitle: "알아 두세요",
+      applyCta: "지원하기",
+      backToList: "← 공고 목록",
+      closedNotice: "모집이 끝난 공고입니다.",
+    },
+    form: {
+      title: "지원서 작성",
+      description: "* 표시는 꼭 채워 주세요.",
+      name: "이름",
+      department: "학과",
+      departmentPlaceholder: "예: 데이터과학부",
+      studentId: "학번",
+      studentIdPlaceholder: "숫자만 적어 주세요",
+      grade: "학년",
+      gradeOptions: [
+        { value: "3", label: "3학년" },
+        { value: "4", label: "4학년" },
+      ],
+      gradePlaceholder: "학년을 골라 주세요",
+      graduation: "졸업 예정 시기",
+      graduationPlaceholder: "예: 2028년 2월",
+      phone: "연락처",
+      phonePlaceholder: "010-0000-0000",
+      email: "이메일",
+      emailPlaceholder: "you@example.com",
+      resume: "이력서",
+      resumeHint: "PDF 파일 하나, 10MB 까지 올릴 수 있습니다.",
+      portfolio: "포트폴리오",
+      portfolioHint: "선택 사항입니다. 파일(PDF, 10MB 까지)이나 링크 가운데 편한 쪽으로 내 주세요.",
+      portfolioFile: "파일",
+      portfolioUrl: "링크",
+      portfolioUrlPlaceholder: "https://github.com/…",
+      motivation: "지원 동기",
+      motivationPlaceholder: "이 실습에 지원하게 된 이유와, 해 보고 싶은 일을 짧게 적어 주세요.",
+      charCount: "{n} / {max}자",
+      consentTitle: "개인정보 수집·이용 안내",
+      consentTable: {
+        head: ["수집 항목", "이용 목적", "보유 기간"],
+        rows: [
+          [
+            "이름, 학과, 학번, 학년, 졸업 예정 시기, 연락처, 이메일, 이력서, 포트폴리오(낸 경우), 지원 동기",
+            "현장실습 지원자 선발과 결과 안내",
+            "선발 종료 후 6개월. 그 뒤 바로 파기합니다.",
+          ],
+        ],
+      },
+      consentRefusal:
+        "동의하지 않으실 수 있습니다. 다만 동의하지 않으면 지원서를 낼 수 없습니다.",
+      consent: "위 내용을 읽었고, 개인정보 수집·이용에 동의합니다.",
+      submit: "지원서 제출",
+      submitting: "제출하는 중…",
+      successTitle: "지원서를 받았습니다",
+      successBody: "검토한 뒤 적어 주신 연락처로 결과를 알려 드리겠습니다.",
+      required: "꼭 채워 주세요.",
+      invalidEmail: "이메일 주소를 다시 확인해 주세요.",
+      invalidPhone: "연락처를 다시 확인해 주세요.",
+      invalidStudentId: "학번은 숫자로만 적어 주세요.",
+      invalidUrl: "http:// 나 https:// 로 시작하는 주소를 적어 주세요.",
+      notPdf: "PDF 파일만 올릴 수 있습니다.",
+      tooLarge: "10MB 를 넘는 파일은 올릴 수 없습니다.",
+      tooLong: "글자 수가 너무 많습니다.",
+      failTitle: "온라인 접수가 되지 않았습니다",
+      failBody:
+        "지금은 지원서를 이 페이지에서 받을 수 없습니다. 아래 버튼을 누르면 작성하신 내용이 담긴 메일이 열립니다. 이력서 파일을 첨부해서 보내 주세요.",
+      failMailto: "메일로 지원하기",
+      rateLimited: "짧은 시간에 여러 번 제출하셨습니다. 잠시 뒤에 다시 시도하시거나 메일로 보내 주세요.",
+      reset: "다시 작성하기",
+      mailSubjectPrefix: "지원",
+      mailAttachNote: "※ 이력서 PDF 를 이 메일에 첨부해 주세요.",
+    },
+    jobs: [
+      {
+        slug: "suwon-anchor-practicum-intern-2026-winter",
+        title: "[수원대 앵커사업단x현장실습] Intern",
+        summary:
+          "뇌 오가노이드에서 측정한 신경 신호 데이터를 정돈하고, 그 데이터를 분석하는 도구를 직접 만들어 보는 8주 현장실습입니다.",
+        field: "ai-data",
+        type: "practicum",
+        status: "open",
+        tags: ["현장실습", "8주", "AI · 데이터", "수원대 3·4학년"],
+        facts: [
+          { label: "모집 인원", value: "3명" },
+          { label: "실습 기간", value: "2026.12.28 ~ 2027.2.19 (8주)" },
+          { label: "실습 시간", value: "월~금, 하루 4시간" },
+          { label: "소속", value: "AI개발팀" },
+          { label: "실습 장소", value: "경기바이오센터 8층 랩스테이션 (수원시 영통구 광교로 147)" },
+          { label: "준비물", value: "개인 노트북" },
+        ],
+        sections: [
+          {
+            title: "어떤 일을 하나요",
+            paragraphs: [
+              "하드사이언스가 진행하는 「뇌 오가노이드 생체신호 패턴 분석 AI 도구」 과제에 참여합니다. 뇌 오가노이드를 다채널 전극(MEA)으로 측정한 신경 전기신호에서 스파이크와 버스트를 찾고, 패턴 지표를 뽑아 조건별로 나누는 분석 도구를 만듭니다.",
+              "이미 수집된 데이터를 정돈하는 일부터 시작해서, 그 데이터를 분석하는 도구를 구현하는 데까지 맡게 됩니다.",
+            ],
+            list: [
+              "수집된 MEA 데이터 정돈과 전처리(필터링 · 노이즈 제거)",
+              "스파이크 · 버스트 · 네트워크 버스트 검출",
+              "발화율 · 버스트 주기 · 채널 간 동기화 같은 패턴 지표 추출",
+              "조건별 분류 모델 만들기와 결과 시각화",
+              "분석 도구 정리, 최종 보고서 작성과 발표",
+            ],
+          },
+          {
+            title: "왜 이 일을 하나요",
+            paragraphs: [
+              "오가노이드가 얼마나 성숙했는지, 소재나 약물을 처리했을 때 무엇이 달라지는지를 신경 신호 패턴으로 수치화하려고 합니다. 실습하시는 동안 실제 바이오 실험 데이터를 다뤄 보고, 연구 현장에서 쓰는 분석 도구를 처음부터 설계해 볼 수 있습니다.",
+            ],
+          },
+          {
+            title: "8주 동안 이렇게 진행합니다",
+            list: [
+              "1주차 — 뇌 오가노이드와 MEA 원리, 데이터 구조 익히기",
+              "2주차 — 데이터 전처리(필터링 · 노이즈 제거)",
+              "3주차 — 스파이크 검출",
+              "4주차 — 버스트 · 네트워크 버스트 검출",
+              "5주차 — 패턴 지표 추출(발화율 · 버스트 주기 · 채널 간 동기화)",
+              "6주차 — 조건별 분류 모델",
+              "7주차 — 결과 시각화와 도구 정리",
+              "8주차 — 최종 보고서 작성과 발표",
+            ],
+          },
+          {
+            title: "이런 분을 찾습니다",
+            list: [
+              "수원대학교 3 · 4학년 재학생으로, 현장실습 학점제에 참여하려는 분",
+              "파이썬 기초를 다룰 수 있는 분",
+            ],
+          },
+          {
+            title: "이런 경험이 있으면 더 좋습니다",
+            list: ["신호처리나 머신러닝 과목을 들어 본 분"],
+          },
+        ],
+        steps: ["서류 검토", "면접", "최종 선발", "학교 현장실습 절차"],
+        notes: [
+          "2027년 2월 졸업 예정자는 참여가 제한될 수 있습니다.",
+          "실습 기간과 시간은 학교 일정에 따라 조정될 수 있습니다.",
+          "실험이나 시료는 다루지 않습니다. 공개 데이터셋과 회사가 제공하는 실험 데이터로 작업하며, 회사 데이터는 비밀유지서약을 한 뒤에 드립니다.",
+          "개인 노트북을 가져와 주세요.",
+          "지원서는 이 페이지에서 받습니다. 선발된 분은 그 뒤에 학교 현장실습지원센터 서류를 따로 진행합니다.",
+        ],
+      },
+    ],
+  },
+
   footer: {
     tagline: "ADD the values to Human life.",
     columns: [
@@ -771,6 +947,7 @@ export const ko: SiteContent = {
           { label: "하드사이언스", href: "/about" },
           { label: "팀:하드", href: "/about/team" },
           { label: "위치", href: "/about/location" },
+          { label: "채용", href: "/career" },
         ],
       },
       {
