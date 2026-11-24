@@ -1,3 +1,4 @@
+import { careerPhotos } from "./career-photos"
 import type { SiteContent } from "./types"
 
 /**
@@ -925,29 +926,8 @@ export const ko: SiteContent = {
           { label: "근무시간", value: "평일 09:00~14:00(점심시간 1시간 포함, 하루 실습 4시간)" },
           { label: "실습 장소", value: "경기바이오센터 8층 랩스테이션 (수원시 영통구 광교로 147)" },
         ],
-        photos: [
-          {
-            src: "/career/meeting-room.webp",
-            alt: "긴 테이블과 의자가 놓인 랩스테이션 회의실",
-            caption: "광교 바이오허브 랩스테이션 회의실",
-          },
-          {
-            src: "/career/lounge.webp",
-            alt: "곡선 소파와 작은 탁자들이 놓인 랩스테이션 라운지",
-            caption: "광교 바이오허브 랩스테이션 라운지",
-          },
-          {
-            src: "/career/lab.webp",
-            alt: "실험대와 시약 선반, 냉장고가 있는 기초 바이오 실험실",
-            caption: "광교 바이오허브 랩스테이션 실험실",
-          },
-          {
-            src: "/career/shared-office.webp",
-            alt: "랩스테이션 공유사무실 안쪽의 사무 공간",
-            caption: "광교 바이오허브 랩스테이션 공유오피스",
-            fit: "contain",
-          },
-        ],
+        // 사진 목록은 `content/career-photos.ts` 한 곳에 있다.
+        photos: careerPhotos("ko"),
         tracks: [
           { value: "ai-bio", label: "AI 기반 바이오 연구" },
           { value: "dev", label: "사내 업무 시스템(옴니스)과 홈페이지 개발" },

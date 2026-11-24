@@ -5,6 +5,9 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+/** PC(lg 이상)에서 한 화면에 나란히 보이는 장수. 슬라이드 폭 `lg:w-[calc((100%-1rem)/2)]` 과 맞춘다. */
+const PC_VISIBLE = 2
+
 export interface CarouselPhoto {
   src: string
   alt: string
@@ -55,6 +58,9 @@ export function PhotoCarousel({
   /** 한 화면에 보이는 장수. 서버와 첫 렌더는 1, 화면 폭을 잰 뒤 PC 면 2. */
   const [visible, setVisible] = React.useState(1)
   const total = photos.length
+  // PC 는 2장을 나란히 보인다. 사진이 그 이하면 PC 에서는 넘길 것이 없으니 버튼 · 점 · 「n / 2」를 숨긴다.
+  // 화면을 재기 전(서버 렌더)에도 맞게 CSS(lg:hidden)로 숨긴다 — 재고 나서 숨기면 첫 화면에 잠깐 보인다.
+  const fitsOnPc = total <= PC_VISIBLE
   const lastIndex = Math.max(0, total - visible)
 
   /** 한 칸(사진 폭 + 사이 간격)과 보이는 장수. 슬라이드의 실제 위치로 잰다. */
@@ -154,16 +160,23 @@ export function PhotoCarousel({
           ))}
         </div>
 
-        <ArrowButton side="left" label={labels.prev} disabled={index === 0} onClick={() => goTo(index - 1)} />
+        <ArrowButton
+          side="left"
+          label={labels.prev}
+          disabled={index === 0}
+          onClick={() => goTo(index - 1)}
+          className={cn(fitsOnPc && "lg:hidden")}
+        />
         <ArrowButton
           side="right"
           label={labels.next}
           disabled={index >= lastIndex}
           onClick={() => goTo(index + 1)}
+          className={cn(fitsOnPc && "lg:hidden")}
         />
       </div>
 
-      <div className="flex items-center justify-between gap-4">
+      <div className={cn("flex items-center justify-between gap-4", fitsOnPc && "lg:hidden")}>
         <div className="flex items-center gap-2">
           {photos.map((photo, i) => (
             <button
@@ -198,11 +211,13 @@ function ArrowButton({
   label,
   disabled,
   onClick,
+  className,
 }: {
   side: "left" | "right"
   label: string
   disabled: boolean
   onClick: () => void
+  className?: string
 }) {
   return (
     <button
@@ -213,7 +228,8 @@ function ArrowButton({
       className={cn(
         // 사진 위에 얹히므로 채운 흰 바탕을 쓴다(반투명이면 밝은 사진에서 안 보인다).
         "absolute top-[calc((100%-2.25rem)/2)] flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-xl text-foreground shadow-ds-md transition-opacity duration-200 ease-[var(--ease-standard)] hover:text-primary disabled:pointer-events-none disabled:opacity-0",
-        side === "left" ? "left-3" : "right-3"
+        side === "left" ? "left-3" : "right-3",
+        className
       )}
     >
       <span aria-hidden>{side === "left" ? "‹" : "›"}</span>
