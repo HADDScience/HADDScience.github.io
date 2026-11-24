@@ -922,7 +922,10 @@ export const en: SiteContent = {
         facts: [
           { label: "Openings", value: "3" },
           { label: "Period", value: "Dec 28, 2026 – Feb 19, 2027 (8 weeks)" },
-          { label: "Hours", value: "Mon–Fri, 4 hours a day" },
+          {
+            label: "Working hours",
+            value: "Weekdays 9:00 AM to 2:00 PM, including a one-hour lunch break (4 hours of work a day)",
+          },
           {
             label: "Location",
             value: "Lab Station, 8F Gyeonggi Bio Center (147 Gwanggyo-ro, Yeongtong-gu, Suwon)",
