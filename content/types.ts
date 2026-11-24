@@ -350,6 +350,32 @@ export interface OfficeLocation {
   mapQuery: string
 }
 
+/**
+ * 채용 공고 한 건. 공고가 드물고(2026-11 기준 하나) 법적 문구가 섞이므로 Omnis 가 아니라
+ * 코드에 둔다 — 고친 내용이 커밋과 리뷰를 거친다.
+ *
+ * 공고 문구의 근거는 그 공고의 신청 서류다. 서류에 없는 조건(급여 · 마감일 등)을 지어 넣지 않는다.
+ */
+export interface JobPosting {
+  /** 주소에 쓰는 이름. `/career/<slug>` */
+  slug: string
+  title: string
+  /** 목록 카드와 상세 머리말에 쓰는 한두 문장. */
+  summary: string
+  /** 목록 필터의 값. `career.fields` · `career.types` 의 value 중 하나. */
+  field: string
+  type: string
+  /** 마감된 공고는 목록에 남되 지원서를 받지 않는다. */
+  status: "open" | "closed"
+  tags: string[]
+  /** 상세 오른쪽 요약 카드. 순서대로 보인다. */
+  facts: { label: string; value: string }[]
+  sections: { title: string; paragraphs?: string[]; list?: string[] }[]
+  /** 전형 단계. `detail` 은 날짜처럼 단계 아래에 작게 붙는 말. */
+  steps: { label: string; detail?: string }[]
+  notes: string[]
+}
+
 export interface SiteContent {
   meta: {
     lang: Lang
@@ -511,6 +537,94 @@ export interface SiteContent {
       failMailto: string
       rateLimited: string
     }
+  }
+  career: {
+    pageTitle: string
+    breadcrumb: string
+    headline: string
+    description: string
+    list: {
+      searchLabel: string
+      searchPlaceholder: string
+      fieldLabel: string
+      typeLabel: string
+      all: string
+      /** `{n}` 자리에 공고 수가 들어간다. */
+      count: string
+      empty: string
+      reset: string
+      open: string
+      closed: string
+    }
+    fields: { value: string; label: string }[]
+    types: { value: string; label: string }[]
+    detail: {
+      aboutTitle: string
+      summaryTitle: string
+      stepsTitle: string
+      notesTitle: string
+      applyCta: string
+      backToList: string
+      closedNotice: string
+    }
+    form: {
+      title: string
+      description: string
+      name: string
+      department: string
+      departmentPlaceholder: string
+      studentId: string
+      studentIdPlaceholder: string
+      grade: string
+      gradeOptions: { value: string; label: string }[]
+      gradePlaceholder: string
+      graduation: string
+      graduationPlaceholder: string
+      phone: string
+      phonePlaceholder: string
+      email: string
+      emailPlaceholder: string
+      resume: string
+      resumeHint: string
+      portfolio: string
+      portfolioHint: string
+      portfolioFile: string
+      portfolioUrl: string
+      portfolioUrlPlaceholder: string
+      motivation: string
+      motivationPlaceholder: string
+      /** `{n}` · `{max}` 자리에 글자 수가 들어간다. */
+      charCount: string
+      consentTitle: string
+      consentTable: { head: string[]; rows: string[][] }
+      consentRefusal: string
+      consent: string
+      submit: string
+      submitting: string
+      successTitle: string
+      successBody: string
+      required: string
+      invalidEmail: string
+      invalidPhone: string
+      invalidStudentId: string
+      invalidUrl: string
+      notPdf: string
+      tooLarge: string
+      tooLong: string
+      failTitle: string
+      failBody: string
+      /**
+       * 메일 되돌림에서는 지원자가 이력서를 직접 붙여야 한다. 제출 버튼 옆과 되돌림 화면에 굵게 보인다.
+       * 접수 경로가 생겨 메일 되돌림이 예외가 되면 문구를 바꾼다.
+       */
+      attachNotice: string
+      failMailto: string
+      rateLimited: string
+      reset: string
+      mailSubjectPrefix: string
+      mailAttachNote: string
+    }
+    jobs: JobPosting[]
   }
   footer: {
     tagline: string
