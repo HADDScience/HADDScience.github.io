@@ -371,7 +371,8 @@ export interface JobPosting {
   /** 상세 오른쪽 요약 카드. 순서대로 보인다. */
   facts: { label: string; value: string }[]
   sections: { title: string; paragraphs?: string[]; list?: string[] }[]
-  steps: string[]
+  /** 전형 단계. `detail` 은 날짜처럼 단계 아래에 작게 붙는 말. */
+  steps: { label: string; detail?: string }[]
   notes: string[]
 }
 
@@ -612,6 +613,11 @@ export interface SiteContent {
       tooLong: string
       failTitle: string
       failBody: string
+      /**
+       * 메일 되돌림에서는 지원자가 이력서를 직접 붙여야 한다. 제출 버튼 옆과 되돌림 화면에 굵게 보인다.
+       * 접수 경로가 생겨 메일 되돌림이 예외가 되면 문구를 바꾼다.
+       */
+      attachNotice: string
       failMailto: string
       rateLimited: string
       reset: string

@@ -135,11 +135,14 @@ export default async function JobDetailPage({
                 <h2 className="text-2xl font-bold">{d.stepsTitle}</h2>
                 <ol className="grid gap-3 sm:grid-cols-4">
                   {job.steps.map((step, i) => (
-                    <li key={step} className="grid gap-2 border-t-2 border-primary pt-4">
+                    <li key={step.label} className="grid content-start gap-2 border-t-2 border-primary pt-4">
                       <span className="font-mono text-sm font-bold text-brand-blue-500">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="font-semibold break-keep">{step}</span>
+                      <span className="font-semibold break-keep">{step.label}</span>
+                      {step.detail ? (
+                        <span className="text-sm text-muted-foreground break-keep">{step.detail}</span>
+                      ) : null}
                     </li>
                   ))}
                 </ol>

@@ -871,7 +871,8 @@ export const en: SiteContent = {
       tooLong: "This is too long.",
       failTitle: "We couldn't receive your application online",
       failBody:
-        "Online applications aren't available right now. The button below opens an email with everything you entered — please attach your résumé and send it.",
+        "Online applications aren't available right now. The button below opens an email with everything you entered.",
+      attachNotice: "When the email with your details opens, please attach your résumé (PDF) and send it.",
       failMailto: "Apply by email",
       rateLimited: "You've submitted several times in a short period. Please try again shortly, or apply by email.",
       reset: "Start over",
@@ -938,6 +939,7 @@ export const en: SiteContent = {
             list: [
               "3rd- or 4th-year students at the University of Suwon taking part in the field practicum credit program",
               "Comfortable with basic Python",
+              "Students graduating in February 2027 cannot take part",
             ],
           },
           {
@@ -945,9 +947,13 @@ export const en: SiteContent = {
             list: ["Coursework in signal processing or machine learning"],
           },
         ],
-        steps: ["Document review", "Interview", "Final selection", "University practicum paperwork"],
+        steps: [
+          { label: "Document review" },
+          { label: "Interview", detail: "Planned for Tue, Dec 1 — the date may change" },
+          { label: "Final selection" },
+          { label: "University practicum paperwork" },
+        ],
         notes: [
-          "Students graduating in February 2027 may not be eligible.",
           "Dates and hours may change to fit the university's schedule.",
           "No lab experiments or sample handling. You'll work with public datasets and experiment data provided by the company; company data is shared after you sign a confidentiality agreement.",
           "Please bring your own laptop.",

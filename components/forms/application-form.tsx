@@ -189,6 +189,8 @@ export function ApplicationForm({
       <div className="grid gap-3" role="alert">
         <p className="text-xl font-bold break-keep">{t.failTitle}</p>
         <p className="text-muted-foreground">{failBody}</p>
+        {/* 이력서는 메일에 자동으로 붙지 않는다. 가장 놓치기 쉬운 일이라 굵게 따로 둔다. */}
+        <p className="font-semibold text-foreground">{t.attachNotice}</p>
         <div className="mt-2 flex flex-wrap gap-3">
           <Button nativeButton={false} render={<a href={mailtoHref} />}>
             {t.failMailto}
@@ -387,10 +389,11 @@ export function ApplicationForm({
         </div>
       </section>
 
-      <div>
-        <Button type="submit" size="lg" disabled={sending} className="w-full sm:w-auto">
+      <div className="grid gap-3">
+        <Button type="submit" size="lg" disabled={sending} className="w-full sm:w-auto sm:justify-self-start">
           {sending ? t.submitting : t.submit}
         </Button>
+        <p className="text-sm font-semibold">{t.attachNotice}</p>
       </div>
     </form>
   )
