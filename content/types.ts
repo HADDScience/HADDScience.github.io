@@ -624,6 +624,11 @@ export interface SiteContent {
       consentTitle: string
       consentTable: { head: string[]; rows: string[][] }
       consentRefusal: string
+      /**
+       * 지원자가 본 동의 안내의 판. 옴니스에 지원서와 함께 저장된다(계약 2절 `consentVersion`).
+       * 위 동의 안내 문구를 고치면 이 값도 바꾼다.
+       */
+      consentVersion: string
       consent: string
       submit: string
       submitting: string
@@ -636,6 +641,8 @@ export interface SiteContent {
       invalidUrl: string
       notPdf: string
       tooLarge: string
+      /** 포트폴리오는 상한이 다르다(30MB). */
+      portfolioTooLarge: string
       tooLong: string
       failTitle: string
       failBody: string
@@ -644,6 +651,11 @@ export interface SiteContent {
        * 접수 경로가 생겨 메일 되돌림이 예외가 되면 문구를 바꾼다.
        */
       attachNotice: string
+      /** 파일을 올리는 동안 보이는 제목 · 안내 */
+      uploadingTitle: string
+      uploadingHint: string
+      /** 완료 화면의 「접수 번호」 */
+      receiptLabel: string
       failMailto: string
       rateLimited: string
       reset: string

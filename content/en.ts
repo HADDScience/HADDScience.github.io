@@ -127,6 +127,7 @@ export const en: SiteContent = {
      * 넣어 두었다 — 번역이 조항의 뜻을 바꿀 수 있기 때문이다.
      */
     // 2026-11-24 채용 지원을 넣었다. 근거와 범위는 `ko.ts` 의 privacy 주석과 같다.
+    // 옴니스 연결 문구(3 · 5 · 6 · 9절)는 연결이 운영에 켜질 때 함께 나가야 한다.
     privacy: {
       effectiveFrom: "2026-11-24",
       intro:
@@ -192,7 +193,8 @@ export const en: SiteContent = {
           paragraphs: [
             "An enquiry first lands in the inbox of the Company's internal system. Only after a member of staff has read it is it moved into our customer and quotation records. An enquiry that is never moved does not become a customer record, and it is deleted from the inbox once the retention period ends.",
             "If an enquiry leads to a quotation, the information is from that point held as the record of a trading counterparty and follows the periods in section 7.",
-            "A job application is made by filling in the form on the job page and sending it from your own email program to the Company's mailbox (info@haddscience.com). What you type into the form passes through this site's server to be checked but is not stored there; your résumé and portfolio files are attached to the email directly and never pass through the server. Applications received are kept in the Company's mailbox and used by the hiring staff for selection only.",
+            "A job application submitted on the job page is stored in the application inbox of the Company's internal system, where only the hiring staff designated by the Company can open it. Your résumé and portfolio files are kept on a storage device the Company manages itself in Korea (NAS). Applications are used for selection only.",
+            "If the application can't be sent online because the internal system can't be reached, we ask you to send what you entered from your own email program to the Company's mailbox (info@haddscience.com); applications received that way are kept in the Company's mailbox. You are also welcome to apply by email from the start.",
             "If you are selected and start a placement or job, any information needed from then on is handled under a separate agreement or contract and consent. You may ask us to delete your application at any time before the retention period ends, and we will do so without delay.",
           ],
         },
@@ -205,7 +207,7 @@ export const en: SiteContent = {
         {
           title: "5. Processors and transfer outside Korea",
           paragraphs: [
-            "The Company does not run its own servers. It uses the providers below, and your enquiry is stored outside Korea as part of that arrangement.",
+            "The Company does not run its own servers. It uses the providers below, and your enquiry and the details entered in a job application are stored outside Korea as part of that arrangement.",
           ],
           table: {
             head: ["Recipient", "Work entrusted", "Items transferred", "Country of storage", "When and how"],
@@ -213,20 +215,20 @@ export const en: SiteContent = {
               [
                 "Vercel Inc. (United States)",
                 "Hosting the website and internal system, and serving requests",
-                "Everything entered in the contact form and the job application form (application attachments excluded)",
+                "Everything entered in the contact form and the job application form, plus job application attachments (passed through, not stored)",
                 "United States — requests are served from the Seoul region. Vercel does not store the enquiry itself, but access logs (including the IP address) are retained.",
                 "Sent over the network at the moment you submit the form",
               ],
               [
                 "Neon Inc. (United States)",
-                "Holding the enquiry and visit-statistics databases",
-                "Everything entered in the contact form, plus the automatically collected items and the visit-statistics items",
+                "Holding the enquiry, job application and visit-statistics databases",
+                "Everything entered in the contact form, plus the automatically collected items; the details entered in a job application (attachments excluded) with the IP address and browser information at submission; and the visit-statistics items",
                 "Singapore",
                 "Sent and stored at the moment the enquiry is received",
               ],
               [
                 "NAVER Cloud Corp. (Republic of Korea)",
-                "Running the Company's email (NAVER WORKS) — storing job applications and attachments received by email",
+                "Running the Company's email (NAVER WORKS) — storing job applications and attachments received by email (when online submission fails, or when you apply by email)",
                 "The application and attachments you send by email",
                 "Republic of Korea",
                 "Sent when you send the email, and stored in the Company's mailbox",
@@ -237,14 +239,15 @@ export const en: SiteContent = {
             "Retention by the recipient: until the Company ends the arrangement or deletes the information.",
             "You may refuse the transfer of your personal information outside Korea. To do so, contact us by phone or email (section 10) instead of using the form.",
             "An enquiry submitted through the form cannot be handled without this transfer, so if you refuse it you cannot use the form. Reaching us by any other means remains entirely open to you.",
-            "You can also apply for a job without the form, by emailing the Company directly at info@haddscience.com.",
+            "You can also apply for a job without the form, by emailing the Company directly at info@haddscience.com. Your application is then not transferred outside Korea.",
           ],
         },
         {
           title: "6. Deletion",
           paragraphs: [
             "We delete personal information without delay once the retention period has passed or the purpose has been fulfilled. Electronic records are deleted by a method that makes them unrecoverable.",
-            "When the retention period for a job application ends, the hiring staff delete the email from the Company's mailbox and empty it from the trash as well. Any résumé or portfolio downloaded or printed for review is deleted or shredded at the same time.",
+            "When the retention period for a job application in the internal system ends, the system irrecoverably deletes the personal information in the application and the files on the storage device. An application that was never completed (files not fully uploaded) is deleted after 24 hours.",
+            "When the retention period for a job application received by email ends, the hiring staff delete the email from the Company's mailbox and empty it from the trash as well. Any résumé or portfolio downloaded or printed for review is deleted or shredded at the same time.",
           ],
         },
         {
@@ -269,6 +272,7 @@ export const en: SiteContent = {
           list: [
             "All traffic to this site and to the internal system is encrypted with HTTPS.",
             "Access to the enquiry inbox is limited to employees signed in with a company account, and permissions are kept to the minimum the work requires.",
+            "The job application inbox can be opened only by the hiring staff designated by the Company, and every view or file download is logged.",
             "This site uses no external analytics or advertising tools such as Google Analytics. We compile our visit statistics ourselves and collect nothing beyond what sections 1 and 2 describe.",
             "This site sets no cookies. Only your display theme (light or dark) is stored in your browser, and that value is never sent to our servers.",
           ],
@@ -874,7 +878,7 @@ export const en: SiteContent = {
       resume: "Résumé",
       resumeHint: "One PDF file, up to 10 MB.",
       portfolio: "Portfolio",
-      portfolioHint: "Optional. Upload a file (PDF, up to 10 MB) or share a link — whichever suits you.",
+      portfolioHint: "Optional. Upload a file (PDF, up to 30 MB) or share a link — whichever suits you.",
       portfolioFile: "File",
       portfolioUrl: "Link",
       portfolioUrlPlaceholder: "https://github.com/…",
@@ -885,17 +889,19 @@ export const en: SiteContent = {
       interestsHint: "Optional. Pick as many as you like.",
       consentTitle: "Collection and use of personal information",
       consentTable: {
-        head: ["Items collected", "Purpose", "Retention"],
+        head: ["Items collected", "Purpose", "Retention", "Where it is kept"],
         rows: [
           [
             "Name, department, student ID, year, expected graduation, phone, email, résumé, portfolio (if provided), tracks of interest (if selected), motivation",
             "Selecting practicum interns and notifying applicants of the result",
             "Six months after selection closes (12 months from the date received where no close of selection is set), then destroyed without delay.",
+            "What you enter is stored in the Company's internal system database (Neon Inc., Singapore); your résumé and portfolio files are kept on a storage device the Company manages itself in Korea (NAS). If you'd rather your information not be stored outside Korea, you can apply by email to info@haddscience.com.",
           ],
         ],
       },
       consentRefusal:
-        "You may decline. If you do, however, we will not be able to accept your application. Your portfolio and tracks of interest are optional — leaving them out does not count against you. Applications are received and kept in the Company's mailbox (info@haddscience.com).",
+        "You may decline. If you do, however, we will not be able to accept your application through this form. Your portfolio and tracks of interest are optional — leaving them out does not count against you.",
+      consentVersion: "career-consent-2026-11-24-omnis",
       consent: "I have read the above and agree to the collection and use of my personal information.",
       submit: "Submit application",
       submitting: "Submitting…",
@@ -908,11 +914,15 @@ export const en: SiteContent = {
       invalidUrl: "Enter an address starting with http:// or https://.",
       notPdf: "Only PDF files can be uploaded.",
       tooLarge: "Files larger than 10 MB can't be uploaded.",
+      portfolioTooLarge: "Portfolio files can be up to 30 MB.",
       tooLong: "This is too long.",
       failTitle: "We couldn't receive your application online",
       failBody:
-        "Online applications aren't available right now. The button below opens an email with everything you entered.",
+        "We couldn't send your application online. The button below opens an email with everything you entered.",
       attachNotice: "When the email with your details opens, please attach your résumé (PDF) and send it.",
+      uploadingTitle: "Sending your application",
+      uploadingHint: "Uploading your files. Please keep this window open until it finishes.",
+      receiptLabel: "Reference number",
       failMailto: "Apply by email",
       rateLimited: "You've submitted several times in a short period. Please try again shortly, or apply by email.",
       reset: "Start over",

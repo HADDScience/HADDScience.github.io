@@ -37,6 +37,7 @@ Vercel 프로젝트 `haddscience` 하나다. 한 도메인 `haddscience.vercel.a
 | `REVALIDATE_SECRET` | Omnis 가 저장 뒤 `/api/revalidate/` 를 부를 때 쓰는 비밀. Omnis 의 `WEBSITE_REVALIDATE_SECRET` 과 같은 값 |
 | `GOOGLE_SITE_VERIFICATION` | 구글 서치콘솔 소유확인 코드(`content=` 안쪽만). 없으면 태그가 아예 나가지 않는다 |
 | `NAVER_SITE_VERIFICATION` | 네이버 서치어드바이저 소유확인 코드. 위와 같다 |
+| `CAREER_SECRET` | 채용 지원서를 옴니스 지원서함으로 보낼 때 쓰는 비밀(`app/api/career/apply`). 옴니스의 `WEBSITE_CAREER_SECRET` 과 같은 값이고 **문의함 비밀과 다른 값**이다. **없으면 지원서 폼이 메일 되돌림(info@)으로만 받는다.** 운영에만 넣는다 — 프리뷰가 운영 옴니스를 부르면 운영 DB 에 지원서가 생긴다 |
 | `WEBSITE_VISIT_SECRET` | 방문 기록을 Omnis 로 넘길 때 쓰는 비밀. Omnis 의 같은 이름 변수와 같은 값. **없으면 집계가 조용히 멈춘다**(화면은 멀쩡하다) |
 
 2026-09-07 까지는 정적 export 를 GitHub Pages(컨펌)와 Synology(실서비스)에 올렸다. 기사가
