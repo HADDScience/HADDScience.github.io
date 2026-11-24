@@ -41,7 +41,7 @@ export default async function TermsPage({
           { name: c.footer.terms, path: "/terms" },
         ])}
       />
-      <PageHeader breadcrumb={c.legal.breadcrumb} title={c.footer.terms} />
+      <PageHeader breadcrumb={c.legal.breadcrumb} title={c.footer.terms} image="legal" />
       <Section>
         <Container narrow>
           <LegalDocument

@@ -41,6 +41,7 @@ export default async function CareerPage({
         breadcrumb={c.career.breadcrumb}
         title={c.career.headline}
         description={c.career.description}
+        image="career"
       />
       <Section compact>
         <Container>

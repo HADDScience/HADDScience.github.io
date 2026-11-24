@@ -50,6 +50,7 @@ export default async function LocationPage({
         title={c.location.pageTitle}
         links={subnav.map((s) => ({ ...s, href: path(s.href) }))}
         activeHref={path("/about/location")}
+        image="location"
       />
 
       <Section>

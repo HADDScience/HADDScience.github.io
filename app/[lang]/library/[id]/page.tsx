@@ -114,7 +114,7 @@ export default async function LibraryDetailPage({
           { name: locale.title, path: `/library/${post.id}` },
         ])}
       />
-      <PageHeader breadcrumb={content.library.breadcrumb} title={locale.title} />
+      <PageHeader breadcrumb={content.library.breadcrumb} title={locale.title} image="library" />
 
       <Section>
         <Container narrow>

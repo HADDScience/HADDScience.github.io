@@ -52,6 +52,7 @@ export default async function TeamPage({
         title={t.pageTitle}
         links={subnav.map((s) => ({ ...s, href: path(s.href) }))}
         activeHref={path("/about/team")}
+        image="team"
       />
 
       <Section>

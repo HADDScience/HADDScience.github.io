@@ -116,7 +116,7 @@ export default async function NewsDetailPage({
           { name: locale.title, path: `/news/${post.id}` },
         ])}
       />
-      <PageHeader breadcrumb={content.news.breadcrumb} title={locale.title} />
+      <PageHeader breadcrumb={content.news.breadcrumb} title={locale.title} image="news" />
 
       <Section>
         <Container narrow>

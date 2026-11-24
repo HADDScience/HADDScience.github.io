@@ -55,6 +55,7 @@ export default async function AboutPage({
         title={a.pageTitle}
         links={subnav.map((s) => ({ ...s, href: path(s.href) }))}
         activeHref={path("/about")}
+        image="about"
       />
 
       <Section>

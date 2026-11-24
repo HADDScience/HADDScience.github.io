@@ -38,6 +38,7 @@ export function LibraryListPage({
         breadcrumb={content.library.breadcrumb}
         title={content.library.headline}
         description={content.library.disclaimer}
+        image="library"
       />
 
       <Section>
