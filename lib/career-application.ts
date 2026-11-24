@@ -74,9 +74,14 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PHONE = /^[0-9+\-\s()]{9,30}$/
 const DIGITS = /^\d+$/
 
+/**
+ * PDF 파일인가 — 이름이 .pdf 로 끝나야 한다. 옴니스 검사(`lib/hr/rules.ts` fileMeta)가 이름으로 보기 때문에
+ * 여기서도 이름으로 본다. 예전에는 type 이 application/pdf 면 이름과 상관없이 통과시켜, 화면은 통과하고
+ * 옴니스가 400 을 주는 틈이 있었다(2026-11-24 운영 지원 실패 조사). 실제 내용이 PDF 인지는 옴니스가 첫
+ * 조각의 %PDF 로 다시 본다.
+ */
 export function isPdf(file: FileMeta): boolean {
-  // 브라우저가 type 을 비워 보내는 경우가 있어 확장자도 본다.
-  return file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf")
+  return file.name.toLowerCase().endsWith(".pdf")
 }
 
 function isHttpUrl(value: string): boolean {
@@ -93,6 +98,8 @@ export function checkFile(
   slot: "resume" | "portfolio" = "resume"
 ): ApplicationIssue | null {
   if (!isPdf(file)) return "notPdf"
+  // 빈 파일은 옴니스가 받지 않는다(크기 1 이상).
+  if (file.size < 1) return "required"
   if (slot === "portfolio") return file.size > PORTFOLIO_FILE_MAX_BYTES ? "portfolioTooLarge" : null
   return file.size > APPLICATION_FILE_MAX_BYTES ? "tooLarge" : null
 }

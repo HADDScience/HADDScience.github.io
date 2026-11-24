@@ -19,6 +19,7 @@ import {
 } from "@/lib/career-application"
 import { isClosedNow } from "@/lib/career-deadline"
 import { uploadFile, type UploadTicket } from "@/lib/career-upload"
+import { formatPhone } from "@/lib/phone"
 import { cn } from "@/lib/utils"
 
 type Errors = Partial<Record<ApplicationField, string>>
@@ -410,8 +411,16 @@ export function ApplicationForm({
             id="phone"
             name="phone"
             type="tel"
+            inputMode="tel"
             autoComplete="tel"
             maxLength={APPLICATION_MAX.phone}
+            // 숫자만 쳐도 · 붙여 넣어도 010-1234-5678 꼴로 맞춘다(lib/phone.ts). 값은 폼이 제출 때 읽으므로
+            // 상태로 들고 있지 않고 입력 칸의 값을 바로 고친다.
+            onInput={(e) => {
+              const el = e.currentTarget
+              const next = formatPhone(el.value)
+              if (next !== el.value) el.value = next
+            }}
             placeholder={t.phonePlaceholder}
             aria-invalid={!!errors.phone}
           />
