@@ -982,7 +982,7 @@ export const en: SiteContent = {
         notes: [
           "Dates and hours may change to fit the university's schedule.",
           "Please bring your own laptop.",
-          "Selected students then complete the university's Field Practicum Support Center paperwork separately.",
+          "This internship runs through the University of Suwon's Field Practicum Support Center, so there may be an additional application process on the university's side. You'll need to complete that administrative process before you can start the internship. We'll explain how to do it to the students who are selected after the interview.",
         ],
       },
     ],
