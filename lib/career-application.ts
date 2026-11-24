@@ -17,10 +17,14 @@ export const APPLICATION_MAX = {
 } as const
 
 /**
- * 파일 한 개의 상한. Vercel Function 본문 한도가 4.5MB 라서 파일은 API 본문으로 받을 수 없다 —
- * 저장소가 정해지면 브라우저가 저장소로 직접 올리고, API 에는 메타데이터만 온다.
+ * 파일 한 개의 상한. 파일은 이 사이트의 API 를 거치지 않고 브라우저가 옴니스로 조각(4MB) 업로드한다 —
+ * Vercel Function 본문 한도 4.5MB 와 상관없다.
+ * 이력서 10MB, 포트폴리오 30MB(2026-11-24 사용자 결정 — 작업물 PDF 는 이력서보다 크다).
+ * 옴니스 검사(`lib/hr/rules.ts`)의 상한과 같아야 한다. 어긋나면 화면은 통과하고 옴니스가 400 을 줘
+ * 메일 되돌림으로 떨어진다.
  */
 export const APPLICATION_FILE_MAX_BYTES = 10 * 1024 * 1024
+export const PORTFOLIO_FILE_MAX_BYTES = 30 * 1024 * 1024
 
 export const GRADES = ["3", "4"] as const
 
@@ -32,6 +36,7 @@ export type ApplicationIssue =
   | "invalidUrl"
   | "notPdf"
   | "tooLarge"
+  | "portfolioTooLarge"
   | "tooLong"
 
 export type ApplicationField =
@@ -83,10 +88,13 @@ function isHttpUrl(value: string): boolean {
   }
 }
 
-export function checkFile(file: FileMeta): ApplicationIssue | null {
+export function checkFile(
+  file: FileMeta,
+  slot: "resume" | "portfolio" = "resume"
+): ApplicationIssue | null {
   if (!isPdf(file)) return "notPdf"
-  if (file.size > APPLICATION_FILE_MAX_BYTES) return "tooLarge"
-  return null
+  if (slot === "portfolio") return file.size > PORTFOLIO_FILE_MAX_BYTES ? "portfolioTooLarge" : null
+  return file.size > APPLICATION_FILE_MAX_BYTES ? "tooLarge" : null
 }
 
 /** 칸별 문제를 돌려준다. 비어 있으면 통과. */
@@ -123,7 +131,7 @@ export function validateApplication(
     if (issue) issues.resume = issue
   }
   if (p.portfolioFile !== null) {
-    const issue = checkFile(p.portfolioFile)
+    const issue = checkFile(p.portfolioFile, "portfolio")
     if (issue) issues.portfolioFile = issue
   }
 

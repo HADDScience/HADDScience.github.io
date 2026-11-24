@@ -878,7 +878,7 @@ export const en: SiteContent = {
       resume: "Résumé",
       resumeHint: "One PDF file, up to 10 MB.",
       portfolio: "Portfolio",
-      portfolioHint: "Optional. Upload a file (PDF, up to 10 MB) or share a link — whichever suits you.",
+      portfolioHint: "Optional. Upload a file (PDF, up to 30 MB) or share a link — whichever suits you.",
       portfolioFile: "File",
       portfolioUrl: "Link",
       portfolioUrlPlaceholder: "https://github.com/…",
@@ -914,6 +914,7 @@ export const en: SiteContent = {
       invalidUrl: "Enter an address starting with http:// or https://.",
       notPdf: "Only PDF files can be uploaded.",
       tooLarge: "Files larger than 10 MB can't be uploaded.",
+      portfolioTooLarge: "Portfolio files can be up to 30 MB.",
       tooLong: "This is too long.",
       failTitle: "We couldn't receive your application online",
       failBody:

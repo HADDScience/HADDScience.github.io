@@ -870,7 +870,7 @@ export const ko: SiteContent = {
       resume: "이력서",
       resumeHint: "PDF 파일 하나, 10MB 까지 올릴 수 있습니다.",
       portfolio: "포트폴리오",
-      portfolioHint: "선택 사항입니다. 파일(PDF, 10MB 까지)이나 링크 가운데 편한 쪽으로 내 주세요.",
+      portfolioHint: "선택 사항입니다. 파일(PDF, 30MB 까지)이나 링크 가운데 편한 쪽으로 내 주세요.",
       portfolioFile: "파일",
       portfolioUrl: "링크",
       portfolioUrlPlaceholder: "https://github.com/…",
@@ -906,6 +906,7 @@ export const ko: SiteContent = {
       invalidUrl: "http:// 나 https:// 로 시작하는 주소를 적어 주세요.",
       notPdf: "PDF 파일만 올릴 수 있습니다.",
       tooLarge: "10MB 를 넘는 파일은 올릴 수 없습니다.",
+      portfolioTooLarge: "포트폴리오는 30MB 까지 올릴 수 있습니다.",
       tooLong: "글자 수가 너무 많습니다.",
       failTitle: "온라인 접수가 되지 않았습니다",
       failBody:

@@ -641,6 +641,8 @@ export interface SiteContent {
       invalidUrl: string
       notPdf: string
       tooLarge: string
+      /** 포트폴리오는 상한이 다르다(30MB). */
+      portfolioTooLarge: string
       tooLong: string
       failTitle: string
       failBody: string
