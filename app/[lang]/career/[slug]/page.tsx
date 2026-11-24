@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 
 import { DeadlineCountdown, JobStatusBadge, WhenOpen } from "@/components/ds/job-status"
 import { PageHeader } from "@/components/ds/page-header"
+import { PhotoCarousel } from "@/components/ds/photo-carousel"
 import { Container, Section, SurfaceCard, Tag } from "@/components/ds/primitives"
 import { ApplicationForm } from "@/components/forms/application-form"
 import { Button } from "@/components/ui/button"
@@ -111,6 +112,14 @@ export default async function JobDetailPage({
               {job.sections.slice(0, 1).map((section) => (
                 <JobSection key={section.title} section={section} />
               ))}
+
+              {/* 어떤 실습인지 읽은 바로 다음에 일하게 될 곳을 보여 준다. */}
+              {job.photos?.length ? (
+                <section className="grid gap-4">
+                  <h2 className="text-2xl font-bold">{d.photosTitle}</h2>
+                  <PhotoCarousel photos={job.photos} labels={d.carousel} />
+                </section>
+              ) : null}
 
               <section className="grid gap-4">
                 <h2 className="text-2xl font-bold">{d.tracksTitle}</h2>
