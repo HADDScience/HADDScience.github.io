@@ -39,6 +39,7 @@ export function ProductFamilyPage({
         title={family.name}
         links={subnav.map((s) => ({ ...s, href: path(s.href) }))}
         activeHref={path(family.href)}
+        image="products"
       />
 
       <Section>

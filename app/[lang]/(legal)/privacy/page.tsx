@@ -41,7 +41,7 @@ export default async function PrivacyPage({
           { name: c.footer.privacy, path: "/privacy" },
         ])}
       />
-      <PageHeader breadcrumb={c.legal.breadcrumb} title={c.footer.privacy} />
+      <PageHeader breadcrumb={c.legal.breadcrumb} title={c.footer.privacy} image="legal" />
       <Section>
         <Container narrow>
           <LegalDocument

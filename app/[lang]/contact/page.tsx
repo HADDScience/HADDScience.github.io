@@ -46,6 +46,7 @@ export default async function ContactPage({
         breadcrumb={c.contact.breadcrumb}
         title={c.contact.headline}
         description={c.contact.description}
+        image="contact"
       />
 
       <Section>

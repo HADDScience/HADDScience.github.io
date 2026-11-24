@@ -37,6 +37,7 @@ export function NewsListPage({
         breadcrumb={content.news.breadcrumb}
         title={content.news.headline}
         description={content.news.description}
+        image="news"
       />
 
       <Section>

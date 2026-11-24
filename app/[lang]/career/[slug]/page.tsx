@@ -65,7 +65,7 @@ export default async function JobDetailPage({
           { name: job.title, path: `/career/${job.slug}` },
         ])}
       />
-      <PageHeader breadcrumb={c.career.breadcrumb} title={job.title} description={job.summary} />
+      <PageHeader breadcrumb={c.career.breadcrumb} title={job.title} description={job.summary} image="career" />
 
       <Section compact>
         <Container>
