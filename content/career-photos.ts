@@ -11,12 +11,27 @@ import type { Lang } from "./types"
  * 2026-11-24: PPT 에서 뽑은 라운지 · 공유오피스는 해상도와 구도 때문에 뺐다(사용자 의견, 원본
  * `~/work/omnis-reports/career-photos-261124/`). 공유사무실 · 탕비실은 사용자가 랩스테이션에서 직접 찍은
  * HEIC 를 sRGB 로 바꾸고 메타데이터(EXIF · 위치 · XMP · ICC)를 모두 지운 webp 다(1600×1200).
+ * 입구 · 라운지(로고 벽)도 사용자가 찍은 사진이다. 둘 다 세로 사진이라 4:3 가로로 잘랐다(사인 · 로고가 가운데).
  */
 const PHOTOS: {
   src: string
   fit?: "cover" | "contain"
   text: Record<Lang, { alt: string; caption: string }>
 }[] = [
+  {
+    // 사용자가 찍은 사진(IMG_7156). 방향 태그(6)대로 세우고, 사인 틀이 4.3° 기울어 있어 수평을 맞췄다.
+    src: "/career/entrance.webp",
+    text: {
+      ko: {
+        alt: "초록 벽에 「GG biohub Lab station」 이라고 적힌 랩스테이션 입구 사인",
+        caption: "광교 바이오허브 랩스테이션 입구",
+      },
+      en: {
+        alt: "Lab Station entrance sign reading “GG biohub Lab station” on a green wall",
+        caption: "Entrance, Lab Station, Gwanggyo Bio Hub",
+      },
+    },
+  },
   {
     src: "/career/meeting-room.webp",
     text: {
@@ -62,6 +77,20 @@ const PHOTOS: {
       en: {
         alt: "Pantry with sinks, a water purifier, a microwave and bar stools",
         caption: "Pantry, Lab Station, Gwanggyo Bio Hub",
+      },
+    },
+  },
+  {
+    // 사용자가 찍은 사진(IMG_7160). 방향 태그(6)대로 세웠다. 로고 글자는 0.2° 로 수평이라 돌리지 않았다.
+    src: "/career/logo-wall.webp",
+    text: {
+      ko: {
+        alt: "둥근 조명 아래 「Lab station」 로고가 붙은 라운지 벽과 화단",
+        caption: "광교 바이오허브 랩스테이션 라운지",
+      },
+      en: {
+        alt: "Lounge wall with the “Lab station” logo under a round light, with plants below",
+        caption: "Lounge, Lab Station, Gwanggyo Bio Hub",
       },
     },
   },
