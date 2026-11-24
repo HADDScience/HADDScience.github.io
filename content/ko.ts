@@ -910,7 +910,7 @@ export const ko: SiteContent = {
         ],
         steps: [
           { label: "서류 검토" },
-          { label: "면접", detail: "12월 1일(화) 예정, 일정은 바뀔 수 있습니다" },
+          { label: "면접", detail: "2026년 12월 1일(화) 오전 11시, 랩스테이션 8층" },
           { label: "최종 선발" },
           { label: "학교 현장실습 절차" },
         ],

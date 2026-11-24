@@ -926,7 +926,7 @@ export const en: SiteContent = {
         ],
         steps: [
           { label: "Document review" },
-          { label: "Interview", detail: "Planned for Tue, Dec 1 — the date may change" },
+          { label: "Interview", detail: "Tuesday, December 1, 2026, 11:00 AM, Labstation 8F" },
           { label: "Final selection" },
           { label: "University practicum paperwork" },
         ],
