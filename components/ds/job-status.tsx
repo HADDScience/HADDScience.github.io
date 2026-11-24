@@ -36,7 +36,15 @@ export function JobStatusBadge({
   return <Badge tone={open ? "success" : "neutral"}>{open ? openLabel : closedLabel}</Badge>
 }
 
-/** 모집 중일 때만 `children`, 마감 뒤에는 `fallback`. */
+/**
+ * 안쪽 컴포넌트가 「지금 내리지 말라」고 붙잡는 함수. 지원서 폼이 제출을 시작하면 부른다 — 16:59 에 낸
+ * 지원서가 파일을 올리는 동안 17:00 이 되어 폼이 통째로 사라지면 업로드가 끊기고 접수 번호도 못 본다.
+ * 마감 판단은 API ① 이 이미 했다(서버 시계).
+ */
+const HoldOpenContext = React.createContext<(hold: boolean) => void>(() => {})
+export const useHoldOpen = () => React.useContext(HoldOpenContext)
+
+/** 모집 중일 때만 `children`, 마감 뒤에는 `fallback`. 안에서 `useHoldOpen()(true)` 로 붙잡으면 마감 뒤에도 남는다. */
 export function WhenOpen({
   job,
   serverNow,
@@ -48,7 +56,11 @@ export function WhenOpen({
   children: React.ReactNode
   fallback: React.ReactNode
 }) {
-  return useOpen(job, serverNow) ? children : fallback
+  const open = useOpen(job, serverNow)
+  const [held, setHeld] = React.useState(false)
+  return (
+    <HoldOpenContext.Provider value={setHeld}>{open || held ? children : fallback}</HoldOpenContext.Provider>
+  )
 }
 
 /**

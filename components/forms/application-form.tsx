@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { useHoldOpen } from "@/components/ds/job-status"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -17,6 +18,7 @@ import {
   type FileMeta,
 } from "@/lib/career-application"
 import { isClosedNow } from "@/lib/career-deadline"
+import { uploadFile, type UploadTicket } from "@/lib/career-upload"
 import { cn } from "@/lib/utils"
 
 type Errors = Partial<Record<ApplicationField, string>>
@@ -44,11 +46,14 @@ const SELECT_CLASS =
 /**
  * ApplicationForm — 상세 페이지가 카드 안에 놓으므로 완료·실패 화면은 카드를 다시 두르지 않는다.
  *
- * ApplicationForm — `POST /api/career/apply` 로 보낸다.
+ * ApplicationForm — 옴니스 지원서함으로 보낸다(계약 `omnis-hr-api-contract-261124.md`).
+ *   ① `POST /api/career/apply` → 지원서 id 와 파일 티켓
+ *   ③ 티켓으로 이력서 · 포트폴리오를 옴니스에 조각 PUT(진행 막대) — `lib/career-upload.ts`
+ *   ④ `POST /api/career/apply/complete` → 접수 번호
  *
- * 문의 폼(`contact-form.tsx`)과 같은 불변식을 지킨다: 접수가 실패하면 작성한 내용을 담은 `mailto:`
- * 로 되돌려 지원서를 잃지 않는다. 받을 곳이 정해지기 전(2026-11-24)에는 API 가 늘 503 을 주므로
- * 지금은 이 되돌림이 실제 접수 경로다. 메일에는 파일을 붙일 수 없으니 첨부해 달라고 적는다.
+ * 문의 폼(`contact-form.tsx`)과 같은 불변식을 지킨다: 어느 단계에서 실패해도 작성한 내용을 담은
+ * `mailto:` 로 되돌려 지원서를 잃지 않는다. 옴니스 연결이 꺼져 있으면(`CAREER_SECRET` 없음) ① 이 503 을
+ * 주므로 처음부터 이 되돌림이 접수 경로다. 메일에는 파일을 붙일 수 없으니 첨부해 달라고 적는다.
  *
  * 마감(2026-11-27 17:00 KST) 뒤에는 접수하지 않는다. 상세 페이지가 마감 시각에 폼을 통째로 내리지만
  * (`WhenOpen`), 제출 순간에 한 번 더 보고 API 가 410 을 주면 그것도 따른다. 마감 뒤에는 메일 되돌림을
@@ -73,8 +78,14 @@ export function ApplicationForm({
 }) {
   const [errors, setErrors] = React.useState<Errors>({})
   const [status, setStatus] = React.useState<
-    "idle" | "sending" | "sent" | "failed" | "closed"
+    "idle" | "sending" | "uploading" | "sent" | "failed" | "closed"
   >("idle")
+  /** 올린 바이트 / 전체 바이트. 진행 막대에 쓴다. */
+  const [progress, setProgress] = React.useState({ sent: 0, total: 0 })
+  /** 옴니스가 준 접수 번호. 완료 화면에 보인다. */
+  const [code, setCode] = React.useState<string | null>(null)
+  /** 제출을 시작하면 마감 시각이 지나도 폼을 내리지 않게 붙잡는다(`WhenOpen`). */
+  const holdOpen = useHoldOpen()
   const [failBody, setFailBody] = React.useState(t.failBody)
   const [mailtoHref, setMailtoHref] = React.useState("")
   const [motivationLength, setMotivationLength] = React.useState(0)
@@ -136,9 +147,15 @@ export function ApplicationForm({
 
     setMailtoHref(buildMailto(email, job, t, payload))
     setStatus("sending")
+    holdOpen(true)
 
-    try {
-      const res = await fetch("/api/career/apply", {
+    // 실제 파일. payload 에는 이름 · 크기만 들어가고, 바이트는 ③ 에서 옴니스로 바로 간다.
+    const files: Record<UploadTicket["slot"], File | null> = {
+      resume: fileOf(data, "resume"),
+      portfolio: fileOf(data, "portfolioFile"),
+    }
+    const open = () =>
+      fetch("/api/career/apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -149,9 +166,58 @@ export function ApplicationForm({
         }),
       })
 
+    try {
+      let res = await open()
+
       if (res.ok) {
-        setStatus("sent")
-        return
+        let opened = (await res.json().catch(() => null)) as Opened | null
+        // 봇 거르기에 걸린 요청은 id 없이 201 을 받는다. 사람에게는 일어나지 않는다.
+        if (!opened?.id) return finish(null)
+        // 5분 안에 같은 지원서를 이미 접수했다(두 번 누르기 · 재시도).
+        if (opened.code && opened.uploads.length === 0) return finish(opened.code)
+
+        setStatus("uploading")
+        let reopened = false
+        upload: for (;;) {
+          const total = opened.uploads.reduce((n, u) => n + u.size, 0)
+          let done = 0
+          setProgress({ sent: 0, total })
+          for (const ticket of opened.uploads) {
+            const file = files[ticket.slot]
+            if (!file) return fail()
+            const result = await uploadFile(ticket, file, (sent) => setProgress({ sent: done + sent, total }))
+            if (result === "not_receiving") break
+            if (result === "not_pdf") {
+              const field = ticket.slot === "resume" ? "resume" : "portfolioFile"
+              setErrors({ [field]: t.notPdf })
+              holdOpen(false)
+              setStatus("idle")
+              return
+            }
+            if (result === "bad_ticket" && !reopened) {
+              // 티켓이 만료됐다(30분). 지원서를 다시 열면 5분 안이면 같은 지원서에 새 티켓이 온다.
+              reopened = true
+              res = await open()
+              const again = res.ok ? ((await res.json().catch(() => null)) as Opened | null) : null
+              if (!again?.id) return fail()
+              if (again.code && again.uploads.length === 0) return finish(again.code)
+              opened = again
+              continue upload
+            }
+            if (result !== "ok") return fail()
+            done += ticket.size
+          }
+          break
+        }
+
+        const complete = await fetch("/api/career/apply/complete", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: opened.id }),
+        })
+        const result = (await complete.json().catch(() => null)) as { code?: string } | null
+        if (complete.ok && result?.code) return finish(result.code)
+        return fail()
       }
       if (res.status === 410) {
         setStatus("closed")
@@ -174,6 +240,7 @@ export function ApplicationForm({
               Object.entries(fields).map(([field, issue]) => [field, messageOf(issue)])
             )
           )
+          holdOpen(false)
           setStatus("idle")
           return
         }
@@ -182,6 +249,12 @@ export function ApplicationForm({
     } catch {
       fail()
     }
+  }
+
+  /** 접수 완료. 접수 번호가 있으면 보여 준다. */
+  const finish = (received: string | null) => {
+    setCode(received)
+    setStatus("sent")
   }
 
   /** 메일 되돌림을 띄운다. 그새 마감이 지났으면 띄우지 않는다. */
@@ -200,6 +273,9 @@ export function ApplicationForm({
     setMailtoHref("")
     setMotivationLength(0)
     startedAt.current = Date.now()
+    setProgress({ sent: 0, total: 0 })
+    setCode(null)
+    holdOpen(false)
     setStatus("idle")
   }
 
@@ -215,7 +291,37 @@ export function ApplicationForm({
     return (
       <div className="grid gap-3" role="status">
         <p className="text-xl font-bold break-keep">{t.successTitle}</p>
+        {code ? (
+          <p className="font-semibold">
+            {t.receiptLabel} <span className="font-mono text-primary">{code}</span>
+          </p>
+        ) : null}
         <p className="text-muted-foreground">{t.successBody}</p>
+      </div>
+    )
+  }
+
+  if (status === "uploading") {
+    const percent = progress.total > 0 ? Math.round((progress.sent / progress.total) * 100) : 0
+    return (
+      <div className="grid gap-4" role="status">
+        <p className="text-xl font-bold break-keep">{t.uploadingTitle}</p>
+        <div
+          role="progressbar"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={percent}
+          aria-label={t.uploadingTitle}
+          className="h-2 w-full overflow-hidden rounded-full bg-muted"
+        >
+          <div
+            className="h-full rounded-full bg-primary transition-[width] duration-200 ease-[var(--ease-standard)] motion-reduce:transition-none"
+            style={{ width: `${percent}%` }}
+          />
+        </div>
+        <p className="text-sm text-muted-foreground tabular-nums">
+          {percent}% · {t.uploadingHint}
+        </p>
       </div>
     )
   }
@@ -447,7 +553,6 @@ export function ApplicationForm({
         <Button type="submit" size="lg" disabled={sending} className="w-full sm:w-auto sm:justify-self-start">
           {sending ? t.submitting : t.submit}
         </Button>
-        <p className="text-sm font-semibold">{t.attachNotice}</p>
       </div>
     </form>
   )
@@ -530,4 +635,18 @@ function Field({
 function elapsedSince(start: number | null): number {
   const now = Date.now()
   return now - (start ?? now)
+}
+
+/** 옴니스가 연 지원서(① 의 응답, 계약 2절). */
+interface Opened {
+  id: string
+  duplicate?: boolean
+  code?: string
+  uploads: UploadTicket[]
+}
+
+/** FormData 의 파일 칸. 고르지 않으면 브라우저가 이름 없는 빈 File 을 넣는다. */
+function fileOf(data: FormData, key: string): File | null {
+  const f = data.get(key)
+  return f instanceof File && f.name !== "" ? f : null
 }
