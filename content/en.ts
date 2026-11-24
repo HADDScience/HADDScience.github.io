@@ -125,15 +125,16 @@ export const en: SiteContent = {
      * 한국어판이 정본이다. 분쟁이 생기면 한국어판이 우선한다는 조항을 두 문서 모두에
      * 넣어 두었다 — 번역이 조항의 뜻을 바꿀 수 있기 때문이다.
      */
+    // 2026-11-24 채용 지원을 넣었다. 근거와 범위는 `ko.ts` 의 privacy 주석과 같다.
     privacy: {
-      effectiveFrom: "2026-09-22",
+      effectiveFrom: "2026-11-24",
       intro:
         "HADD SCIENCE (\"the Company\") processes personal information collected through haddscience.com in accordance with the Personal Information Protection Act of the Republic of Korea and other applicable laws. This policy explains what we collect, why, how we handle it and when we delete it. Where this translation differs from the Korean version, the Korean version governs.",
       sections: [
         {
           title: "1. What we collect and why",
           paragraphs: [
-            "There are two places on this site where we collect information about you: the contact form and our visit statistics. There is no sign-up and no payment function, and we do not gather personal information by any other route.",
+            "There are three places on this site where we collect information about you: the contact form, the job application form and our visit statistics. There is no sign-up and no payment function, and we do not gather personal information by any other route.",
           ],
           table: {
             head: ["Source", "Items", "Purpose", "Retention"],
@@ -149,6 +150,18 @@ export const en: SiteContent = {
                 "Organization, phone number, enquiry type",
                 "Reaching you, and advising on quotes and products",
                 "3 years from the date received",
+              ],
+              [
+                "Job application (required)",
+                "Name, department, student ID, year, expected graduation, phone, email, résumé, motivation",
+                "Selecting applicants and notifying them of the result",
+                "Six months after selection closes; where no close of selection is set, 12 months from the date received",
+              ],
+              [
+                "Job application (optional)",
+                "Portfolio (file or link), tracks of interest",
+                "Selecting applicants and placing interns",
+                "Six months after selection closes; where no close of selection is set, 12 months from the date received",
               ],
               [
                 "Collected automatically on submission",
@@ -174,10 +187,12 @@ export const en: SiteContent = {
           ],
         },
         {
-          title: "3. How an enquiry is handled",
+          title: "3. How enquiries and job applications are handled",
           paragraphs: [
             "An enquiry first lands in the inbox of the Company's internal system. Only after a member of staff has read it is it moved into our customer and quotation records. An enquiry that is never moved does not become a customer record, and it is deleted from the inbox once the retention period ends.",
             "If an enquiry leads to a quotation, the information is from that point held as the record of a trading counterparty and follows the periods in section 7.",
+            "A job application is made by filling in the form on the job page and sending it from your own email program to the Company's mailbox (info@haddscience.com). What you type into the form passes through this site's server to be checked but is not stored there; your résumé and portfolio files are attached to the email directly and never pass through the server. Applications received are kept in the Company's mailbox and used by the hiring staff for selection only.",
+            "If you are selected and start a placement or job, any information needed from then on is handled under a separate agreement or contract and consent. You may ask us to delete your application at any time before the retention period ends, and we will do so without delay.",
           ],
         },
         {
@@ -197,7 +212,7 @@ export const en: SiteContent = {
               [
                 "Vercel Inc. (United States)",
                 "Hosting the website and internal system, and serving requests",
-                "Everything entered in the contact form",
+                "Everything entered in the contact form and the job application form (application attachments excluded)",
                 "United States — requests are served from the Seoul region. Vercel does not store the enquiry itself, but access logs (including the IP address) are retained.",
                 "Sent over the network at the moment you submit the form",
               ],
@@ -208,18 +223,27 @@ export const en: SiteContent = {
                 "Singapore",
                 "Sent and stored at the moment the enquiry is received",
               ],
+              [
+                "NAVER Cloud Corp. (Republic of Korea)",
+                "Running the Company's email (NAVER WORKS) — storing job applications and attachments received by email",
+                "The application and attachments you send by email",
+                "Republic of Korea",
+                "Sent when you send the email, and stored in the Company's mailbox",
+              ],
             ],
           },
           list: [
             "Retention by the recipient: until the Company ends the arrangement or deletes the information.",
             "You may refuse the transfer of your personal information outside Korea. To do so, contact us by phone or email (section 10) instead of using the form.",
             "An enquiry submitted through the form cannot be handled without this transfer, so if you refuse it you cannot use the form. Reaching us by any other means remains entirely open to you.",
+            "You can also apply for a job without the form, by emailing the Company directly at info@haddscience.com.",
           ],
         },
         {
           title: "6. Deletion",
           paragraphs: [
             "We delete personal information without delay once the retention period has passed or the purpose has been fulfilled. Electronic records are deleted by a method that makes them unrecoverable.",
+            "When the retention period for a job application ends, the hiring staff delete the email from the Company's mailbox and empty it from the trash as well. Any résumé or portfolio downloaded or printed for review is deleted or shredded at the same time.",
           ],
         },
         {
@@ -856,12 +880,12 @@ export const en: SiteContent = {
           [
             "Name, department, student ID, year, expected graduation, phone, email, résumé, portfolio (if provided), tracks of interest (if selected), motivation",
             "Selecting practicum interns and notifying applicants of the result",
-            "Six months after selection closes, then destroyed without delay.",
+            "Six months after selection closes (12 months from the date received where no close of selection is set), then destroyed without delay.",
           ],
         ],
       },
       consentRefusal:
-        "You may decline. If you do, however, we will not be able to accept your application.",
+        "You may decline. If you do, however, we will not be able to accept your application. Your portfolio and tracks of interest are optional — leaving them out does not count against you. Applications are received and kept in the Company's mailbox (info@haddscience.com).",
       consent: "I have read the above and agree to the collection and use of my personal information.",
       submit: "Submit application",
       submitting: "Submitting…",
