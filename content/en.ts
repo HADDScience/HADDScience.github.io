@@ -221,7 +221,7 @@ export const en: SiteContent = {
                 "Sent over the network at the moment you submit the form",
               ],
               [
-                "Neon Inc. (United States)",
+                "Neon, LLC (United States, a Databricks company)",
                 "Holding the enquiry, job application and visit-statistics databases",
                 "Everything entered in the contact form, plus the automatically collected items; the details entered in a job application (attachments excluded) with the IP address and browser information at submission; and the visit-statistics items",
                 "Singapore",
@@ -237,10 +237,11 @@ export const en: SiteContent = {
             ],
           },
           list: [
-            "Retention by the recipient: until the Company ends the arrangement or deletes the information.",
+            "Recipient contacts: Vercel Inc. privacy@vercel.com · Neon, LLC privacy@databricks.com (recipients outside Korea).",
+            "Purpose and retention by the recipient: used only for the work listed above, and kept until the Company ends the arrangement or deletes the information. Job applications are deleted by the Company when the retention period stated in section 1 ends.",
             "You may refuse the transfer of your personal information outside Korea. To do so, contact us by phone or email (section 10) instead of using the form.",
             "An enquiry submitted through the form cannot be handled without this transfer, so if you refuse it you cannot use the form. Reaching us by any other means remains entirely open to you.",
-            "You can also apply for a job without the form, by emailing the Company directly at info@haddscience.com. Your application is then not transferred outside Korea.",
+            "To refuse overseas storage of a job application, leave the consent box in the application form unticked and apply by email to info@haddscience.com instead. Your application is then not transferred outside Korea, and applying by email does not count against you.",
           ],
         },
         {
@@ -306,6 +307,7 @@ export const en: SiteContent = {
           paragraphs: [
             "We announce any change on this page at least 7 days before it takes effect, and at least 30 days before where the change is to your disadvantage.",
             "The revision of November 24, 2026 adds information on how we receive job applications and how that personal information is handled. It does not reduce your rights or add to your obligations, so it takes effect on the day it is posted.",
+            "On November 25, 2026 we added to section 5 the contacts of the recipients outside Korea, the purpose and retention of the transfer, and how to refuse overseas storage of a job application. How we handle personal information has not changed.",
           ],
         },
       ],
@@ -896,14 +898,14 @@ export const en: SiteContent = {
             "Name, department, student ID, year, expected graduation, phone, email, résumé, portfolio (if provided), tracks of interest (if selected), motivation",
             "Sending a receipt email, selecting practicum interns and notifying applicants of the result",
             "Six months after selection closes (12 months from the date received where no close of selection is set), then destroyed without delay.",
-            "What you enter is stored in the Company's internal system database (Neon Inc., Singapore); your résumé and portfolio files are kept on a storage device the Company manages itself in Korea (NAS). If you'd rather your information not be stored outside Korea, you can apply by email to info@haddscience.com.",
+            "What you enter is stored in the Company's internal system database (Neon, LLC, Singapore) as soon as you submit; your résumé and portfolio files are kept on a storage device the Company manages itself in Korea (NAS). If you'd rather your information not be stored outside Korea, you can apply by email to info@haddscience.com.",
           ],
         ],
       },
       consentRefusal:
         "You may decline. If you do, however, we will not be able to accept your application through this form. Your portfolio and tracks of interest are optional — leaving them out does not count against you.",
-      consentVersion: "career-consent-2026-11-24-mail",
-      consent: "I have read the above and agree to the collection and use of my personal information.",
+      consentVersion: "career-consent-2026-11-25-overseas",
+      consent: "I have read the above and agree to the collection and use of my personal information, including its storage in Singapore.",
       submit: "Submit application",
       submitting: "Submitting…",
       successTitle: "Application received",
