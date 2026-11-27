@@ -103,3 +103,49 @@ export function DeadlineCountdown({
     </p>
   )
 }
+
+/** 마감 뒤 개인 초대(lib/career-invite.ts)로 열린 토큰. 없으면 null — 폼이 이것을 보고 마감 검사를 건너뛰고 지원서에 싣는다 */
+const InviteContext = React.createContext<string | null>(null)
+export const useInviteToken = () => React.useContext(InviteContext)
+
+/**
+ * 주소의 `?invite=` 토큰이 이 공고에 지금 유효한지 서버에 묻는다(비밀은 서버에만). 유효하면 토큰, 아니면 null.
+ * 페이지는 정적으로 다시 만들어지므로(ISR) 주소를 화면에서 읽는다.
+ */
+function useValidInvite(slug: string): string | null {
+  const [token, setToken] = React.useState<string | null>(null)
+  React.useEffect(() => {
+    const given = new URLSearchParams(window.location.search).get("invite")
+    if (!given) return
+    let alive = true
+    fetch(`/api/career/invite?slug=${encodeURIComponent(slug)}&invite=${encodeURIComponent(given)}`, { cache: "no-store" })
+      .then((r) => (r.ok ? (r.json() as Promise<{ valid?: boolean }>) : { valid: false }))
+      .then((r) => { if (alive && r.valid) setToken(given) })
+      .catch(() => {})
+    return () => { alive = false }
+  }, [slug])
+  return token
+}
+
+/** `WhenOpen` 과 같되, 마감 뒤라도 유효한 개인 초대 토큰이 있으면 `children` 을 보인다 */
+export function WhenOpenOrInvited({
+  job,
+  slug,
+  serverNow,
+  children,
+  fallback,
+}: {
+  job: RecruitPeriod
+  slug: string
+  serverNow: number
+  children: React.ReactNode
+  fallback: React.ReactNode
+}) {
+  const invite = useValidInvite(slug)
+  if (invite) return <InviteContext.Provider value={invite}>{children}</InviteContext.Provider>
+  return (
+    <WhenOpen job={job} serverNow={serverNow} fallback={fallback}>
+      {children}
+    </WhenOpen>
+  )
+}

@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-import { DeadlineCountdown, JobStatusBadge, WhenOpen } from "@/components/ds/job-status"
+import { DeadlineCountdown, JobStatusBadge, WhenOpenOrInvited } from "@/components/ds/job-status"
 import { PageHeader } from "@/components/ds/page-header"
 import { PhotoCarousel } from "@/components/ds/photo-carousel"
 import { Container, Section, SurfaceCard, Tag } from "@/components/ds/primitives"
@@ -197,18 +197,19 @@ export default async function JobDetailPage({
                   label={d.countdownLabel}
                   units={d.units}
                 />
-                <WhenOpen job={period} serverNow={serverNow} fallback={closed}>
+                <WhenOpenOrInvited job={period} slug={job.slug} serverNow={serverNow} fallback={closed}>
                   <Button nativeButton={false} size="lg" className="w-full" render={<a href="#apply" />}>
                     {d.applyCta}
                   </Button>
-                </WhenOpen>
+                </WhenOpenOrInvited>
               </SurfaceCard>
             </aside>
           </div>
         </Container>
       </Section>
 
-      <WhenOpen job={period} serverNow={serverNow} fallback={null}>
+      {/* 마감 뒤에도 유효한 개인 초대(?invite=)가 있으면 폼을 보인다 — lib/career-invite.ts */}
+      <WhenOpenOrInvited job={period} slug={job.slug} serverNow={serverNow} fallback={null}>
         <Section tone="subtle" id="apply" className="scroll-mt-20">
           <Container narrow>
             <div className="grid gap-3">
@@ -226,7 +227,7 @@ export default async function JobDetailPage({
             </SurfaceCard>
           </Container>
         </Section>
-      </WhenOpen>
+      </WhenOpenOrInvited>
     </>
   )
 }
