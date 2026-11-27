@@ -8,6 +8,7 @@ import {
   type FileMeta,
 } from "@/lib/career-application"
 import { isClosed } from "@/lib/career-deadline"
+import { INVITE_SECRET_ENV, markMotivation, verifyInvite } from "@/lib/career-invite"
 import type { UploadTicket } from "@/lib/career-upload"
 import { omnisFetch } from "@/lib/omnis-fetch"
 import { OMNIS_API_BASE } from "@/lib/site-env"
@@ -56,7 +57,11 @@ export async function POST(req: NextRequest) {
   if (!job) {
     return NextResponse.json({ error: "unknown_job" }, { status: 400 })
   }
-  if (isClosed(job, Date.now())) {
+  // 마감 뒤에는 개인 초대 토큰(lib/career-invite.ts)이 이 공고 · 아직 유효할 때만 받는다. 만료 · 서명 틀림 · 다른 공고면 지금처럼 마감
+  const invite = isClosed(job, Date.now())
+    ? verifyInvite(raw.invite, job.slug, Date.now(), process.env[INVITE_SECRET_ENV])
+    : null
+  if (invite && !invite.ok) {
     return NextResponse.json({ error: "closed" }, { status: 410 })
   }
 
@@ -87,6 +92,7 @@ export async function POST(req: NextRequest) {
     motivation: str("motivation"),
     consent: raw.consent === true,
   }
+  const lateInvite = invite?.ok ? invite.tag : null
 
   const fields = validateApplication(payload)
   if (Object.keys(fields).length > 0) {
@@ -95,12 +101,13 @@ export async function POST(req: NextRequest) {
 
   const lang = str("lang") === "en" ? "en" : "ko"
   const content = lang === "en" ? en : ko
-  const opened = await deliver(payload, {
+  const opened = await deliver(lateInvite ? { ...payload, motivation: markMotivation(payload.motivation, 1500) } : payload, {
     lang,
     jobTitle: (content.career.jobs.find((j) => j.slug === job.slug) ?? job).title,
     consentVersion: content.career.form.consentVersion,
     ip: clientIp(req),
     userAgent: req.headers.get("user-agent") ?? undefined,
+    invite: lateInvite,
   })
   if (!opened) {
     return NextResponse.json({ error: "unavailable" }, { status: 503 })
@@ -127,7 +134,7 @@ export interface OpenedApplication {
  */
 async function deliver(
   payload: ApplicationPayload,
-  meta: { lang: "ko" | "en"; jobTitle: string; consentVersion: string; ip?: string; userAgent?: string }
+  meta: { lang: "ko" | "en"; jobTitle: string; consentVersion: string; ip?: string; userAgent?: string; invite?: string | null }
 ): Promise<OpenedApplication | null> {
   const secret = process.env.CAREER_SECRET
   if (!secret) {
@@ -161,6 +168,8 @@ async function deliver(
         portfolioFile: payload.portfolioFile,
         ip: meta.ip,
         userAgent: meta.userAgent,
+        // 마감 뒤 초대로 받은 추가 접수 — 옴니스 계약에 아직 없는 칸이라 지금은 버려진다. 그래서 지원 동기 앞에도 표시를 붙였다
+        ...(meta.invite ? { lateInvite: meta.invite } : {}),
       }),
       cache: "no-store",
     })

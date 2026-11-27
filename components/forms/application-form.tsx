@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { useHoldOpen } from "@/components/ds/job-status"
+import { useHoldOpen, useInviteToken } from "@/components/ds/job-status"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -87,6 +87,9 @@ export function ApplicationForm({
   const [code, setCode] = React.useState<string | null>(null)
   /** 제출을 시작하면 마감 시각이 지나도 폼을 내리지 않게 붙잡는다(`WhenOpen`). */
   const holdOpen = useHoldOpen()
+  /** 마감 뒤 개인 초대로 열린 폼이면 토큰 — 마감 검사를 건너뛰고(서버가 다시 검사한다) 지원서에 싣는다 */
+  const invite = useInviteToken()
+  const closedNow = () => !invite && isClosedNow(job)
   const [failBody, setFailBody] = React.useState(t.failBody)
   const [mailtoHref, setMailtoHref] = React.useState("")
   const [motivationLength, setMotivationLength] = React.useState(0)
@@ -102,7 +105,7 @@ export function ApplicationForm({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (status === "sending") return
-    if (isClosedNow(job)) {
+    if (closedNow()) {
       setStatus("closed")
       return
     }
@@ -164,6 +167,7 @@ export function ApplicationForm({
           lang,
           company: value("company"),
           elapsedMs: elapsedSince(startedAt.current),
+          ...(invite ? { invite } : {}),
         }),
       })
 
@@ -225,7 +229,7 @@ export function ApplicationForm({
         return
       }
       if (res.status === 429) {
-        if (isClosedNow(job)) return setStatus("closed")
+        if (closedNow()) return setStatus("closed")
         setFailBody(t.rateLimited)
         setStatus("failed")
         return
@@ -260,7 +264,7 @@ export function ApplicationForm({
 
   /** 메일 되돌림을 띄운다. 그새 마감이 지났으면 띄우지 않는다. */
   const fail = () => {
-    if (isClosedNow(job)) {
+    if (closedNow()) {
       setStatus("closed")
       return
     }
