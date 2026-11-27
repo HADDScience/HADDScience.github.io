@@ -99,6 +99,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "invalid_application", fields }, { status: 400 })
   }
 
+  // 확인용 — 마감 · 초대 · 칸 검사까지만 하고 옴니스로 보내지 않는다. 지원서가 생기지 않고, 받은 칸을 돌려주지 않는다
+  if (raw.dryRun === true) {
+    return NextResponse.json({ ok: true, dryRun: true, invited: lateInvite !== null }, { status: 200 })
+  }
+
   const lang = str("lang") === "en" ? "en" : "ko"
   const content = lang === "en" ? en : ko
   const opened = await deliver(lateInvite ? { ...payload, motivation: markMotivation(payload.motivation, 1500) } : payload, {

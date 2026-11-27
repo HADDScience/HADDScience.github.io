@@ -101,6 +101,8 @@ export default async function JobDetailPage({
                   serverNow={serverNow}
                   openLabel={c.career.list.open}
                   closedLabel={c.career.list.closed}
+                  slug={job.slug}
+                  invitedLabel={lang === "en" ? "Invited application" : "초대 지원"}
                 />
                 {job.tags.map((tag) => (
                   <Tag key={tag} tone="neutral">
