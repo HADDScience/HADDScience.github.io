@@ -26,13 +26,20 @@ export function JobStatusBadge({
   serverNow,
   openLabel,
   closedLabel,
+  slug,
+  invitedLabel,
 }: {
   job: RecruitPeriod
   serverNow: number
   openLabel: string
   closedLabel: string
+  /** 주면 마감 뒤라도 유효한 개인 초대(?invite=)일 때 invitedLabel 을 보인다 */
+  slug?: string
+  invitedLabel?: string
 }) {
   const open = useOpen(job, serverNow)
+  const invited = useValidInvite(slug ?? "") && !!slug && !!invitedLabel
+  if (!open && invited) return <Badge tone="success">{invitedLabel}</Badge>
   return <Badge tone={open ? "success" : "neutral"}>{open ? openLabel : closedLabel}</Badge>
 }
 
@@ -112,16 +119,28 @@ export const useInviteToken = () => React.useContext(InviteContext)
  * 주소의 `?invite=` 토큰이 이 공고에 지금 유효한지 서버에 묻는다(비밀은 서버에만). 유효하면 토큰, 아니면 null.
  * 페이지는 정적으로 다시 만들어지므로(ISR) 주소를 화면에서 읽는다.
  */
-function useValidInvite(slug: string): string | null {
+// 한 페이지의 배지 · 버튼 · 폼이 같은 확인 한 번을 나눠 쓴다
+const inviteChecks = new Map<string, Promise<string | null>>()
+function checkInvite(slug: string): Promise<string | null> {
+  const given = new URLSearchParams(window.location.search).get("invite")
+  if (!given) return Promise.resolve(null)
+  const key = `${slug}|${given}`
+  let p = inviteChecks.get(key)
+  if (!p) {
+    p = fetch(`/api/career/invite?slug=${encodeURIComponent(slug)}&invite=${encodeURIComponent(given)}`, { cache: "no-store" })
+      .then((r) => (r.ok ? (r.json() as Promise<{ valid?: boolean }>) : { valid: false }))
+      .then((r) => (r.valid ? given : null))
+      .catch(() => null)
+    inviteChecks.set(key, p)
+  }
+  return p
+}
+
+export function useValidInvite(slug: string): string | null {
   const [token, setToken] = React.useState<string | null>(null)
   React.useEffect(() => {
-    const given = new URLSearchParams(window.location.search).get("invite")
-    if (!given) return
     let alive = true
-    fetch(`/api/career/invite?slug=${encodeURIComponent(slug)}&invite=${encodeURIComponent(given)}`, { cache: "no-store" })
-      .then((r) => (r.ok ? (r.json() as Promise<{ valid?: boolean }>) : { valid: false }))
-      .then((r) => { if (alive && r.valid) setToken(given) })
-      .catch(() => {})
+    void checkInvite(slug).then((t) => { if (alive) setToken(t) })
     return () => { alive = false }
   }, [slug])
   return token
@@ -142,6 +161,12 @@ export function WhenOpenOrInvited({
   fallback: React.ReactNode
 }) {
   const invite = useValidInvite(slug)
+  // 폼은 확인이 끝난 뒤에 생긴다 — 주소의 #apply 로 가는 스크롤은 그 전에 끝나 위에 머문다. 생긴 뒤 다시 간다
+  React.useEffect(() => {
+    if (!invite || window.location.hash !== "#apply") return
+    const id = requestAnimationFrame(() => document.getElementById("apply")?.scrollIntoView({ block: "start" }))
+    return () => cancelAnimationFrame(id)
+  }, [invite])
   if (invite) return <InviteContext.Provider value={invite}>{children}</InviteContext.Provider>
   return (
     <WhenOpen job={job} serverNow={serverNow} fallback={fallback}>
